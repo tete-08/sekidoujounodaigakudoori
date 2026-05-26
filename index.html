@@ -1357,7 +1357,7 @@ onclick="openBook(this)">
 
 <p>
 
-2026/5/26 17:17 : 最終更新
+2026/5/26 17:34 : 最終更新
 
 </p>
 
@@ -1642,13 +1642,6 @@ onclick="showSection('book')">
 HO一覧
 </div>
 
-<div class="ho-item active"
-onclick="changeHO(this,'導入HO','ここに導入HOの内容が入ります。')">
-
-導入HO
-
-</div>
-
 <div id="discussionMenu"></div>
 
 </div>
@@ -1827,13 +1820,13 @@ function selectCharacter(id, element){
 function startGame(){
 
   if(!selectedCharacter){
-
     openAlert();
     return;
   }
 
   showSection("hoPage");
 
+  buildHOList(); // ←これ追加
 }
 
 function changeHO(element,title,text){
@@ -1870,6 +1863,25 @@ function closeAlert(){
     .style.display = "none";
 
 }
+
+const HO_DATA = {
+  pl1: {
+    title: "導入HO（医者）",
+    text: "あなたは本日、村に派遣された医師である。村の異常な静けさに違和感を覚える。"
+  },
+  pl2: {
+    title: "導入HO（警察）",
+    text: "あなたはこの村を担当する巡査だ。最近の不可解な事件を追っている。"
+  },
+  pl3: {
+    title: "導入HO（村長）",
+    text: "あなたは村長として村を守ってきた。外部からの調査に警戒している。"
+  },
+  pl4: {
+    title: "導入HO（使用人）",
+    text: "あなたは島名志家に仕える使用人。村の裏事情を少しだけ知っている。"
+  }
+};
 
 /* 議論 */
 
@@ -1927,6 +1939,53 @@ function endGame(){
 
   // マダミス一覧へ戻る
   showSection("library");
+}
+
+function buildHOList() {
+  const menu = document.getElementById("discussionMenu");
+  menu.innerHTML = "";
+
+  if (!selectedCharacter) return;
+
+  const c = characters.find(x => x.id === selectedCharacter);
+
+  const div = document.createElement("div");
+  div.className = "ho-item active";
+  div.textContent = c.name;
+
+  div.onclick = function () {
+    const data = HO_DATA[c.id];
+    changeHO(this, data.title, data.text);
+  };
+
+  menu.appendChild(div);
+}
+
+const characters = [
+  { id: "pl1", name: "導入HO（医者）" },
+  { id: "pl2", name: "導入HO（警察）" },
+  { id: "pl3", name: "導入HO（村長）" },
+  { id: "pl4", name: "導入HO（使用人）" }
+];
+
+function buildHOList() {
+  const menu = document.getElementById("discussionMenu");
+  menu.innerHTML = "";
+
+  if (!selectedCharacter) return;
+
+  const c = characters.find(x => x.id === selectedCharacter);
+
+  const div = document.createElement("div");
+  div.className = "ho-item active";
+  div.textContent = c.name;
+
+  div.onclick = function () {
+    const data = HO_DATA[c.id];
+    changeHO(this, data.title, data.text);
+  };
+
+  menu.appendChild(div);
 }
 
 </script>
