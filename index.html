@@ -220,6 +220,8 @@ nav a:hover{
 /* タイトル */
 
 .section-title{
+  width: 100%;
+  text-align: center;
 
   text-align:center;
 
@@ -1090,15 +1092,6 @@ nav a:hover{
   color:white;
 }
 
-.timer{
-
-  font-size:34px;
-
-  margin-bottom:40px;
-
-  text-align:center;
-}
-
 .memo-area{
 
   width:100%;
@@ -1204,6 +1197,22 @@ nav a:hover{
   background:#4a2c18;
 
   color:white;
+}
+
+.ho-timer{
+  position: fixed;
+  top: 180px;
+  right: 35px;
+  z-index: 99999;
+
+  font-size: 22px;
+  padding: 10px 18px;
+
+  background: rgba(0,0,0,0.65);
+  color: #f7e5bc;
+
+  border: 1px solid rgba(255,230,180,0.3);
+  border-radius: 6px;
 }
 
 </style>
@@ -1348,7 +1357,7 @@ onclick="openBook(this)">
 
 <p>
 
-2026/5/26 15:20 : 最終更新
+2026/5/26 17:17 : 最終更新
 
 </p>
 
@@ -1646,6 +1655,8 @@ onclick="changeHO(this,'導入HO','ここに導入HOの内容が入ります。'
 
 <div class="ho-paper">
 
+<div class="ho-timer" id="timer">00:00</div>
+
 <div class="ho-title"
 id="hoTitle">
 
@@ -1672,37 +1683,13 @@ onclick="startDiscussion()">
 </div>
 
 <a class="return-button"
-onclick="showSection('characterSelect')">
+onclick="endGame()">
 
-← キャラ選択へ戻る
+ゲームを終了する
 
 </a>
 
 </section>
-
-<section class="section" id="discussionPage">
-
-<div class="paper-box">
-
-<div class="timer"
-id="timer">
-
-00:00
-
-</div>
-
-<textarea
-class="memo-area"
-placeholder="ここにメモを書き込めます。"></textarea>
-
-</div>
-
-<a class="return-button"
-onclick="showSection('hoPage')">
-
-← HOへ戻る
-
-</a>
 
 </section>
 
@@ -1886,32 +1873,14 @@ function closeAlert(){
 
 /* 議論 */
 
-let discussionAdded = false;
 let seconds = 0;
 let timerInterval;
 
 function startDiscussion(){
 
-  if(!discussionAdded){
-
-    document.getElementById("discussionMenu")
-      .innerHTML = `
-
-<div class="ho-item active"
-onclick="showDiscussion(this)">
-
-議論フェーズ
-
-</div>
-
-`;
-
-    discussionAdded = true;
-  }
-
-  showSection("discussionPage");
-
   clearInterval(timerInterval);
+
+  seconds = 0;
 
   timerInterval = setInterval(() => {
 
@@ -1932,21 +1901,32 @@ onclick="showDiscussion(this)">
 
 }
 
-function showDiscussion(element){
+function endGame(){
 
-  const items =
-    document.querySelectorAll(".ho-item");
+  // タイマー停止
+  clearInterval(timerInterval);
 
-  items.forEach(item => {
+  // タイマーリセット
+  seconds = 0;
 
-    item.classList.remove("active");
+  const timer = document.getElementById("timer");
+  if(timer){
+    timer.innerHTML = "00:00";
+  }
 
+  // HO状態を初期化したい場合（任意だけど推奨）
+  selectedCharacter = null;
+
+  // HO選択も初期化
+  document.querySelectorAll(".ho-item").forEach((item, index) => {
+    item.classList.toggle("active", index === 0);
   });
 
-  element.classList.add("active");
+  document.getElementById("hoTitle").innerHTML = "導入HO";
+  document.getElementById("hoText").innerHTML = "ここに導入HOの内容が入ります。";
 
-  showSection("discussionPage");
-
+  // マダミス一覧へ戻る
+  showSection("library");
 }
 
 </script>
