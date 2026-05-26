@@ -3,7 +3,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- 検索に出にくくする -->
@@ -40,6 +39,35 @@ body{
   overflow-x:hidden;
 
   min-height:100vh;
+}
+
+/* 本を開く時の暗転 */
+
+body.opening::before{
+
+  content:"";
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,0.42);
+
+  z-index:5000;
+
+  animation:fadeDark 0.45s forwards;
+}
+
+@keyframes fadeDark{
+
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+
 }
 
 .overlay{
@@ -267,7 +295,7 @@ nav a:hover{
 
   cursor:pointer;
 
-  transition:0.35s;
+  transition:0.28s;
 
   overflow:hidden;
 
@@ -278,8 +306,42 @@ nav a:hover{
 .book:hover{
 
   transform:
-    translateY(-12px)
+    translateY(-10px)
     rotate(-2deg);
+}
+
+/* ホバー影 */
+
+.book::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:12px;
+  bottom:-18px;
+
+  width:85%;
+  height:24px;
+
+  background:
+    radial-gradient(
+      rgba(0,0,0,0.5),
+      transparent
+    );
+
+  filter:blur(8px);
+
+  transition:0.28s;
+}
+
+.book:hover::after{
+
+  transform:
+    scaleX(1.3)
+    scaleY(1.7);
+
+  opacity:0.9;
 }
 
 /* 本色 */
@@ -356,8 +418,6 @@ nav a:hover{
     );
 }
 
-/* 和綴じラベル */
-
 .paper-label{
 
   position:absolute;
@@ -388,8 +448,6 @@ nav a:hover{
     0 0 12px rgba(0,0,0,0.25);
 }
 
-/* 横書きラベル */
-
 .horizontal-label{
 
   position:absolute;
@@ -410,12 +468,7 @@ nav a:hover{
   letter-spacing:2px;
 
   border:1px solid rgba(0,0,0,0.15);
-
-  box-shadow:
-    0 0 10px rgba(0,0,0,0.2);
 }
-
-/* タイトル */
 
 .book-title{
 
@@ -428,17 +481,7 @@ nav a:hover{
   color:#eadcc0;
 
   font-size:16px;
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-
-  letter-spacing:1px;
 }
-
-/* ハンコ */
 
 .stamp{
 
@@ -524,14 +567,6 @@ nav a:hover{
   align-items:center;
 }
 
-.author-icon img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-}
-
 .author-name{
 
   font-size:32px;
@@ -567,18 +602,6 @@ nav a:hover{
   color:#f0d8ae;
 
   text-decoration:none;
-
-  border-bottom:
-    1px solid rgba(240,216,174,0.3);
-
-  transition:0.3s;
-}
-
-.author-links a:hover{
-
-  color:white;
-
-  border-color:white;
 }
 
 /* モーダル */
@@ -631,13 +654,13 @@ nav a:hover{
 
   transform:
     rotateY(-90deg)
-    scale(0.8);
+    scale(0.86);
 
   opacity:0;
 
   transition:
-    transform 0.7s ease,
-    opacity 0.7s ease;
+    transform 0.42s ease,
+    opacity 0.42s ease;
 }
 
 .modal.show .open-book{
@@ -682,6 +705,28 @@ nav a:hover{
   color:#2b1b12;
 }
 
+/* テキスト遅延表示 */
+
+.page-content{
+
+  opacity:0;
+
+  transform:
+    translateY(10px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.modal.show-text .page-content{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
 .story-title{
 
   font-size:42px;
@@ -697,7 +742,7 @@ nav a:hover{
 
   font-size:14px;
 
-  line-height:2.4;
+  line-height:3.1;
 
   letter-spacing:1px;
 }
@@ -706,18 +751,21 @@ nav a:hover{
 
   font-size:14px;
 
-  line-height:2.2;
+  line-height:2.8;
 }
 
-.start-button{
+/* ボタン修正 */
 
-  position:absolute;
+.start-button,
+.back-button{
 
-  right:70px;
+  display:inline-flex;
 
-  bottom:70px;
+  justify-content:center;
+  align-items:center;
 
-  padding:14px 28px;
+  width:200px;
+  height:66px;
 
   border:1px solid #2b1a10;
 
@@ -725,44 +773,32 @@ nav a:hover{
 
   color:#2b1a10;
 
-  transition:0.3s;
+  transition:0.25s;
+
+  margin-top:50px;
 }
 
-.start-button:hover{
-
-  background:#2b1a10;
-
-  color:white;
-}
-
-.back-button{
-
-  position:absolute;
-
-  left:70px;
-  bottom:70px;
-
-  padding:14px 26px;
-
-  border:1px solid #2b1a10;
-
-  background:transparent;
-
-  color:#2b1a10;
-
-  cursor:pointer;
-
-  font-size:14px;
-
-  transition:0.3s;
-}
-
+.start-button:hover,
 .back-button:hover{
 
   background:#2b1a10;
 
   color:white;
 }
+
+/* 絶対配置削除 */
+
+.back-button{
+
+  position:relative;
+}
+
+.start-button{
+
+  position:relative;
+}
+
+/* 閉じる */
 
 .close-button{
 
@@ -785,6 +821,83 @@ nav a:hover{
   font-size:22px;
 
   cursor:pointer;
+}
+
+/* 飛ぶ本 */
+
+#flyingBook{
+
+  position:fixed;
+
+  width:170px;
+  height:250px;
+
+  z-index:10000;
+
+  pointer-events:none;
+
+  border-radius:3px;
+
+  overflow:hidden;
+
+  opacity:0;
+
+  transition:
+    top 0.45s ease,
+    left 0.45s ease,
+    transform 0.45s ease,
+    opacity 0.2s;
+
+  box-shadow:
+    0 50px 120px rgba(0,0,0,0.9);
+}
+
+#flyingBook::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  bottom:-70px;
+
+  transform:translateX(-50%);
+
+  width:180px;
+  height:60px;
+
+  background:
+    radial-gradient(
+      rgba(0,0,0,0.8),
+      transparent
+    );
+
+  filter:blur(16px);
+
+  animation:
+    shadowGrow 0.45s ease forwards;
+}
+
+@keyframes shadowGrow{
+
+  from{
+
+    transform:
+      translateX(-50%)
+      scale(0.4);
+
+    opacity:0.2;
+  }
+
+  to{
+
+    transform:
+      translateX(-50%)
+      scale(2.4);
+
+    opacity:1;
+  }
+
 }
 
 /* ランタン */
@@ -912,265 +1025,261 @@ nav a:hover{
 
 <div class="overlay">
 
-  <!-- ランタン -->
+<!-- ランタン -->
 
-  <div class="lantern"></div>
-  <div class="lantern"></div>
-  <div class="lantern"></div>
-  <div class="lantern"></div>
-  <div class="lantern"></div>
+<div class="lantern"></div>
+<div class="lantern"></div>
+<div class="lantern"></div>
+<div class="lantern"></div>
+<div class="lantern"></div>
 
-  <!-- ヘッダー -->
+<!-- ヘッダー -->
 
-  <header>
+<header>
 
-    <div class="header-inner">
+<div class="header-inner">
 
-      <div class="logo">
-        赤道上の大学通り
-      </div>
+<div class="logo">
+赤道上の大学通り
+</div>
 
-      <nav>
+<nav>
 
-        <a onclick="showSection('home')">
-          ホーム
-        </a>
+<a onclick="showSection('home')">
+ホーム
+</a>
 
-        <a onclick="showSection('library')">
-          マダミスシナリオ一覧
-        </a>
+<a onclick="showSection('library')">
+マダミスシナリオ一覧
+</a>
 
-        <a onclick="showSection('nazotoki')">
-          謎解き
-        </a>
+<a onclick="showSection('nazotoki')">
+謎解き
+</a>
 
-        <a onclick="showSection('updates')">
-          更新履歴
-        </a>
+<a onclick="showSection('updates')">
+更新履歴
+</a>
 
-        <a onclick="showSection('authors')">
-          作者紹介
-        </a>
+<a onclick="showSection('authors')">
+作者紹介
+</a>
 
-      </nav>
+</nav>
 
-    </div>
+</div>
 
-  </header>
+</header>
 
-  <!-- ホーム -->
+<!-- ホーム -->
 
-  <section class="section active" id="home">
+<section class="section active" id="home">
 
-    <div class="hero">
+<div class="hero">
 
-      <div class="hero-title">
-        赤道上の<br>
-        大学通り
-      </div>
+<div class="hero-title">
+赤道上の<br>
+大学通り
+</div>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <!-- 本棚 -->
+<!-- 本棚 -->
 
-  <section class="section" id="library">
+<section class="section" id="library">
 
-    <div class="section-title">
-      マダミスシナリオ一覧
-    </div>
+<div class="section-title">
+マダミスシナリオ一覧
+</div>
 
-    <div class="library">
+<div class="library">
 
-      <div class="shelf">
+<div class="shelf">
 
-        <!-- 本1 -->
+<!-- 本1 -->
 
-        <div class="book-wrapper">
+<div class="book-wrapper">
 
-          <div class="book book-red watoji" onclick="openBook()">
+<div class="book book-red watoji" onclick="openBook(this)">
 
-            <div class="paper-label">
-              火之迦具土神
-            </div>
+<div class="paper-label">
+火之迦具土神
+</div>
 
-            <div class="stamp"></div>
+<div class="stamp"></div>
 
-          </div>
+</div>
 
-          <div class="book-title">
-            しましま村殺人事件
-          </div>
+<div class="book-title">
+しましま村殺人事件
+</div>
 
-        </div>
+</div>
 
-        <!-- 本2 -->
+<!-- 本2 -->
 
-        <div class="book-wrapper">
+<div class="book-wrapper">
 
-          <div class="book book-blue">
+<div class="book book-blue">
 
-            <div class="horizontal-label">
-              作品2
-            </div>
+<div class="horizontal-label">
+作品2
+</div>
 
-          </div>
+</div>
 
-          <div class="book-title">
-            作品2
-          </div>
+<div class="book-title">
+作品2
+</div>
 
-        </div>
+</div>
 
-        <!-- 本3 -->
+<!-- 本3 -->
 
-        <div class="book-wrapper">
+<div class="book-wrapper">
 
-          <div class="book book-green">
+<div class="book book-green">
 
-            <div class="horizontal-label">
-              作品3
-            </div>
+<div class="horizontal-label">
+作品3
+</div>
 
-          </div>
+</div>
 
-          <div class="book-title">
-            作品3
-          </div>
+<div class="book-title">
+作品3
+</div>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <!-- 謎解き -->
+<!-- 謎解き -->
 
-  <section class="section" id="nazotoki">
+<section class="section" id="nazotoki">
 
-    <div class="section-title">
-      謎解き
-    </div>
+<div class="section-title">
+謎解き
+</div>
 
-    <div class="update-paper">
+<div class="update-paper">
 
-      現在準備中です。<br><br>
+現在準備中です。<br><br>
 
-      今後ここに、
-      謎解き作品や短編コンテンツを追加予定。
+今後ここに、
+謎解き作品や短編コンテンツを追加予定。
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <!-- 更新履歴 -->
+<!-- 更新履歴 -->
 
-  <section class="section" id="updates">
+<section class="section" id="updates">
 
-    <div class="section-title">
-      更新履歴
-    </div>
+<div class="section-title">
+更新履歴
+</div>
 
-    <div class="update-paper">
+<div class="update-paper">
 
-      2026/05/26 ： 作成中<br><br>
+2026/05/26 ： 作成中<br><br>
 
-      今後ここに更新内容を追加予定。
+今後ここに更新内容を追加予定。
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <!-- 作者紹介 -->
+<!-- 作者紹介 -->
 
-  <section class="section" id="authors">
+<section class="section" id="authors">
 
-    <div class="section-title">
-      作者紹介
-    </div>
+<div class="section-title">
+作者紹介
+</div>
 
-    <div class="author-box">
+<div class="author-box">
 
-      <!-- tete -->
+<!-- tete -->
 
-      <div class="author">
+<div class="author">
 
-        <div class="author-icon">
+<div class="author-icon">
+</div>
 
-          <!-- 画像 -->
-          <!-- <img src="images/ichigo.png"> -->
+<div>
 
-        </div>
+<div class="author-name">
+tete
+</div>
 
-        <div>
+<div class="author-role">
+Webサイト構築担当
+</div>
 
-          <div class="author-name">
-            tete
-          </div>
+<div class="author-text">
 
-          <div class="author-role">
-            Webサイト構築担当
-          </div>
+サイト構築を中心に担当しています。<br>
 
-          <div class="author-text">
+あいうえお。
 
-            サイト構築を中心に担当しています。<br>
+</div>
 
-            あいうえお。
+<div class="author-links">
 
-          </div>
+<a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6" target="_blank">
+YouTube
+</a>
 
-          <div class="author-links">
+<a href="https://x.com/_tete_8" target="_blank">
+X（Twitter）
+</a>
 
-            <a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6" target="_blank">
-              YouTube
-            </a>
+</div>
 
-            <a href="https://x.com/_tete_8" target="_blank">
-              X（Twitter）
-            </a>
+</div>
 
-          </div>
+</div>
 
-        </div>
+<!-- ちゃと -->
 
-      </div>
+<div class="author">
 
-      <!-- ちゃと -->
+<div class="author-icon">
+C
+</div>
 
-      <div class="author">
+<div>
 
-        <div class="author-icon">
-          C
-        </div>
+<div class="author-name">
+ちゃと
+</div>
 
-        <div>
+<div class="author-role">
+シナリオ制作担当
+</div>
 
-          <div class="author-name">
-            ちゃと
-          </div>
+<div class="author-text">
 
-          <div class="author-role">
-            シナリオ制作担当
-          </div>
+世界観やキャラクター、
+物語構成を中心に制作しています。
 
-          <div class="author-text">
+</div>
 
-            世界観やキャラクター、
-            物語構成を中心に制作しています。<br>
-            
-          </div>
+</div>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </div>
-
-  </section>
+</section>
 
 </div>
 
@@ -1178,80 +1287,148 @@ nav a:hover{
 
 <div class="modal" id="modal">
 
-  <button class="close-button" onclick="closeBook()">
-    ×
-  </button>
+<button class="close-button" onclick="closeBook()">
+×
+</button>
 
-  <div class="open-book">
+<div class="open-book">
 
-    <!-- 左 -->
+<!-- 左 -->
 
-    <div class="page">
+<div class="page">
 
-      <div class="story-title">
-        火之迦具土神
-      </div>
+<div class="page-content">
 
-      <div class="story-text">
+<div class="story-title">
+火之迦具土神
+</div>
 
-        山深き村に祀られる火の神――<br>
-        火之迦具土神。<br><br>
+<div class="story-text">
 
-        祭りの夜、<br>
-        神楽殿にて一人の死体が見つかった。<br><br>
+山深き村に祀られる火の神――<br>
+火之迦具土神。<br><br>
 
-        誰もが口を閉ざし、<br>
-        誰もが神を恐れている。
+祭りの夜、<br>
+神楽殿にて一人の死体が見つかった。<br><br>
 
-      </div>
-
-      <button class="back-button" onclick="closeBook()">
-        ← 本棚へ戻る
-      </button>
-
-    </div>
-
-    <!-- 右 -->
-
-    <div class="page">
-
-      <div class="info-text">
-
-        ■ プレイ人数：4人（GMレス）<br><br>
-
-        ■ 想定時間：2〜3時間<br><br>
-
-        ■ 注意事項<br>
-        ・通話環境推奨<br>
-        ・ネタバレ厳禁<br>
-        ・宗教的表現を含みます
-
-      </div>
-
-      <a href="#" class="start-button">
-        プレイ開始 →
-      </a>
-
-    </div>
-
-  </div>
+誰もが口を閉ざし、<br>
+誰もが神を恐れている。
 
 </div>
 
+<button class="back-button" onclick="closeBook()">
+← 本棚へ戻る
+</button>
+
+</div>
+
+</div>
+
+<!-- 右 -->
+
+<div class="page">
+
+<div class="page-content">
+
+<div class="info-text">
+
+■ プレイ人数：4人（GMレス）<br><br>
+
+■ 想定時間：2〜3時間<br><br>
+
+■ 注意事項<br>
+・通話環境推奨<br>
+・ネタバレ厳禁<br>
+・宗教的表現を含みます
+
+</div>
+
+<a href="#" class="start-button">
+プレイ開始 →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 飛ぶ本 -->
+
+<div id="flyingBook"></div>
+
 <script>
 
-function openBook(){
+let currentBookRect = null;
+
+function openBook(bookElement){
+
+  document.body.classList.add("opening");
 
   const modal =
     document.getElementById("modal");
 
-  modal.style.display = "flex";
+  const flying =
+    document.getElementById("flyingBook");
+
+  currentBookRect =
+    bookElement.getBoundingClientRect();
+
+  flying.className =
+    bookElement.className;
+
+  flying.id = "flyingBook";
+
+  flying.innerHTML =
+    bookElement.innerHTML;
+
+  flying.style.top =
+    currentBookRect.top + "px";
+
+  flying.style.left =
+    currentBookRect.left + "px";
+
+  flying.style.opacity = "1";
+
+  flying.style.transform =
+    "translate(0,0) scale(1)";
 
   setTimeout(() => {
 
-    modal.classList.add("show");
+    flying.style.top = "50%";
 
-  }, 10);
+    flying.style.left = "50%";
+
+    flying.style.transform =
+      "translate(-50%, -50%) scale(1.5) rotate(-4deg)";
+
+  }, 20);
+
+  setTimeout(() => {
+
+    modal.style.display = "flex";
+
+    setTimeout(() => {
+
+      modal.classList.add("show");
+
+    }, 30);
+
+  }, 420);
+
+  setTimeout(() => {
+
+    modal.classList.add("show-text");
+
+  }, 700);
+
+  setTimeout(() => {
+
+    flying.style.opacity = "0";
+
+  }, 450);
 
 }
 
@@ -1260,13 +1437,52 @@ function closeBook(){
   const modal =
     document.getElementById("modal");
 
-  modal.classList.remove("show");
+  const flying =
+    document.getElementById("flyingBook");
+
+  modal.classList.remove("show-text");
+
+  setTimeout(() => {
+
+    modal.classList.remove("show");
+
+  }, 80);
 
   setTimeout(() => {
 
     modal.style.display = "none";
 
-  }, 600);
+    flying.style.opacity = "1";
+
+    flying.style.top = "50%";
+
+    flying.style.left = "50%";
+
+    flying.style.transform =
+      "translate(-50%, -50%) scale(1.5) rotate(-4deg)";
+
+    setTimeout(() => {
+
+      flying.style.top =
+        currentBookRect.top + "px";
+
+      flying.style.left =
+        currentBookRect.left + "px";
+
+      flying.style.transform =
+        "translate(0,0) scale(1)";
+
+    }, 20);
+
+    setTimeout(() => {
+
+      flying.style.opacity = "0";
+
+      document.body.classList.remove("opening");
+
+    }, 450);
+
+  }, 350);
 
 }
 
