@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 検索に出にくくする -->
+<meta name="robots" content="noindex,nofollow">
+
+<title>赤道上の大学通り</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:"Zen Kaku Gothic New", sans-serif;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.92)),
+    url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  color:white;
+
+  overflow-x:hidden;
+
+  min-height:100vh;
+}
+
+.overlay{
+
+  width:100%;
+  min-height:100vh;
+
+  backdrop-filter:blur(2px);
+}
+
+/* ヘッダー */
+
+header{
+
+  width:100%;
+
+  padding:22px 30px;
+
+  background:rgba(10,8,6,0.86);
+
+  border-bottom:1px solid rgba(255,220,170,0.12);
+
+  position:sticky;
+  top:0;
+
+  z-index:999;
+}
+
+.header-inner{
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:18px;
+}
+
+.logo{
+
+  color:#f0dfba;
+
+  font-size:38px;
+
+  font-weight:700;
+
+  letter-spacing:1px;
+
+  white-space:nowrap;
+}
+
+nav{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:50px;
+
+  width:100%;
+
+  flex-wrap:wrap;
+}
+
+nav a{
+
+  color:#d8c4a0;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  letter-spacing:2px;
+
+  transition:0.3s;
+
+  cursor:pointer;
+
+  padding-bottom:5px;
+
+  border-bottom:1px solid transparent;
+}
+
+nav a:hover{
+
+  color:white;
+
+  border-color:#d8c4a0;
+}
+
+/* セクション */
+
+.section{
+
+  display:none;
+
+  min-height:100vh;
+
+  padding:80px 40px;
+}
+
+.active{
+  display:block;
+}
+
+/* ホーム */
+
+.hero{
+
+  height:82vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+}
+
+.hero-title{
+
+  font-size:120px;
+
+  line-height:1.1;
+
+  color:#f3e1bf;
+
+  font-weight:700;
+
+  letter-spacing:4px;
+
+  text-shadow:
+    0 0 30px rgba(255,220,170,0.15);
+}
+
+/* タイトル */
+
+.section-title{
+
+  text-align:center;
+
+  font-size:48px;
+
+  margin-bottom:70px;
+
+  color:#f1dec1;
+
+  font-weight:700;
+
+  letter-spacing:6px;
+}
+
+/* 本棚 */
+
+.library{
+
+  width:100%;
+  max-width:1300px;
+
+  margin:auto;
+}
+
+.shelf{
+
+  position:relative;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  justify-items:center;
+
+  gap:50px;
+
+  padding:50px 40px 80px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(95,60,35,0.95),
+      rgba(45,22,10,0.98)
+    );
+
+  border-radius:8px;
+
+  box-shadow:
+    0 0 50px rgba(0,0,0,0.85);
+}
+
+.shelf::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:100%;
+  height:22px;
+
+  background:#1d0e08;
+}
+
+/* 本 */
+
+.book-wrapper{
+
+  width:190px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.book{
+
+  width:170px;
+  height:250px;
+
+  position:relative;
+
+  border-radius:3px;
+
+  cursor:pointer;
+
+  transition:0.35s;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 0 35px rgba(0,0,0,0.75);
+}
+
+.book:hover{
+
+  transform:
+    translateY(-12px)
+    rotate(-2deg);
+}
+
+/* 本色 */
+
+.book-red{
+
+  background:
+    linear-gradient(
+      to right,
+      #2b130d,
+      #5c2d1f,
+      #2a120d
+    );
+}
+
+.book-blue{
+
+  background:
+    linear-gradient(
+      to right,
+      #14232d,
+      #244355,
+      #14212b
+    );
+}
+
+.book-green{
+
+  background:
+    linear-gradient(
+      to right,
+      #1a241b,
+      #384c38,
+      #172018
+    );
+}
+
+/* 和綴じ */
+
+.watoji::before{
+
+  content:"";
+
+  position:absolute;
+
+  right:14px;
+  top:0;
+
+  width:2px;
+  height:100%;
+
+  background:rgba(255,255,255,0.4);
+}
+
+.watoji::after{
+
+  content:"";
+
+  position:absolute;
+
+  right:8px;
+  top:0;
+
+  width:8px;
+  height:100%;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 34px,
+      rgba(255,255,255,0.5) 34px,
+      rgba(255,255,255,0.5) 37px
+    );
+}
+
+/* 和綴じラベル */
+
+.paper-label{
+
+  position:absolute;
+
+  top:18px;
+  left:18px;
+
+  width:48px;
+  height:190px;
+
+  background:#e8decb;
+
+  writing-mode:vertical-rl;
+
+  color:#120b08;
+
+  font-size:18px;
+
+  letter-spacing:2px;
+
+  line-height:1.5;
+
+  padding-top:14px;
+
+  font-family:'Yuji Syuku', serif;
+
+  box-shadow:
+    0 0 12px rgba(0,0,0,0.25);
+}
+
+/* 横書きラベル */
+
+.horizontal-label{
+
+  position:absolute;
+
+  top:30px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  background:#e8decb;
+
+  color:#120b08;
+
+  padding:10px 18px;
+
+  font-size:26px;
+
+  letter-spacing:2px;
+
+  border:1px solid rgba(0,0,0,0.15);
+
+  box-shadow:
+    0 0 10px rgba(0,0,0,0.2);
+}
+
+/* タイトル */
+
+.book-title{
+
+  margin-top:16px;
+
+  width:190px;
+
+  text-align:center;
+
+  color:#eadcc0;
+
+  font-size:16px;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  letter-spacing:1px;
+}
+
+/* ハンコ */
+
+.stamp{
+
+  position:absolute;
+
+  bottom:20px;
+  left:65px;
+
+  width:34px;
+  height:34px;
+
+  border:2px solid rgba(170,20,20,0.7);
+
+  transform:rotate(-10deg);
+}
+
+/* 更新履歴 */
+
+.update-paper{
+
+  max-width:700px;
+
+  margin:auto;
+
+  padding:50px;
+
+  background:#e8d7b7;
+
+  color:#2b1c13;
+
+  line-height:2.4;
+
+  border-radius:6px;
+
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.6);
+}
+
+/* 作者紹介 */
+
+.author-box{
+
+  max-width:900px;
+
+  margin:0 auto 40px;
+
+  padding:40px;
+
+  background:rgba(30,18,10,0.8);
+
+  border:1px solid rgba(255,220,170,0.12);
+
+  border-radius:10px;
+}
+
+.author{
+
+  display:flex;
+
+  gap:30px;
+
+  margin-bottom:40px;
+}
+
+.author-icon{
+
+  width:110px;
+  height:110px;
+
+  border-radius:50%;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5e4c8,
+      #d0b089
+    );
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.author-icon img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.author-name{
+
+  font-size:32px;
+
+  margin-bottom:10px;
+}
+
+.author-role{
+
+  color:#d5c2a0;
+
+  margin-bottom:14px;
+}
+
+.author-text{
+
+  line-height:2;
+}
+
+.author-links{
+
+  margin-top:18px;
+
+  display:flex;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+}
+
+.author-links a{
+
+  color:#f0d8ae;
+
+  text-decoration:none;
+
+  border-bottom:
+    1px solid rgba(240,216,174,0.3);
+
+  transition:0.3s;
+}
+
+.author-links a:hover{
+
+  color:white;
+
+  border-color:white;
+}
+
+/* モーダル */
+
+.modal{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,0.88);
+
+  display:none;
+
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+
+  perspective:2000px;
+}
+
+.open-book{
+
+  width:1200px;
+  max-width:96%;
+
+  height:760px;
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  background:
+    linear-gradient(
+      to right,
+      #e9d9b8,
+      #f2e6ca,
+      #e6d1ab
+    );
+
+  border-radius:10px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  box-shadow:
+    0 0 90px rgba(0,0,0,0.9);
+
+  transform:
+    rotateY(-90deg)
+    scale(0.8);
+
+  opacity:0;
+
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+.modal.show .open-book{
+
+  transform:
+    rotateY(0deg)
+    scale(1);
+
+  opacity:1;
+}
+
+.open-book::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:0;
+
+  transform:translateX(-50%);
+
+  width:90px;
+  height:100%;
+
+  background:
+    radial-gradient(
+      rgba(0,0,0,0.25),
+      transparent
+    );
+}
+
+.page{
+
+  padding:80px 70px;
+
+  position:relative;
+
+  background:
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+
+  color:#2b1b12;
+}
+
+.story-title{
+
+  font-size:42px;
+
+  margin-bottom:40px;
+
+  font-family:'Yuji Syuku', serif;
+
+  letter-spacing:4px;
+}
+
+.story-text{
+
+  font-size:14px;
+
+  line-height:2.4;
+
+  letter-spacing:1px;
+}
+
+.info-text{
+
+  font-size:14px;
+
+  line-height:2.2;
+}
+
+.start-button{
+
+  position:absolute;
+
+  right:70px;
+
+  bottom:70px;
+
+  padding:14px 28px;
+
+  border:1px solid #2b1a10;
+
+  text-decoration:none;
+
+  color:#2b1a10;
+
+  transition:0.3s;
+}
+
+.start-button:hover{
+
+  background:#2b1a10;
+
+  color:white;
+}
+
+.back-button{
+
+  position:absolute;
+
+  left:70px;
+  bottom:70px;
+
+  padding:14px 26px;
+
+  border:1px solid #2b1a10;
+
+  background:transparent;
+
+  color:#2b1a10;
+
+  cursor:pointer;
+
+  font-size:14px;
+
+  transition:0.3s;
+}
+
+.back-button:hover{
+
+  background:#2b1a10;
+
+  color:white;
+}
+
+.close-button{
+
+  position:absolute;
+
+  top:30px;
+  right:30px;
+
+  width:46px;
+  height:46px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:black;
+
+  color:white;
+
+  font-size:22px;
+
+  cursor:pointer;
+}
+
+/* ランタン */
+
+.lantern{
+
+  position:fixed;
+
+  width:50px;
+  height:70px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      rgba(255,220,120,0.4),
+      rgba(255,220,120,0.03)
+    );
+
+  box-shadow:
+    0 0 40px rgba(255,220,120,0.35);
+
+  animation:float 8s ease-in-out infinite;
+}
+
+.lantern:nth-child(1){
+  top:14%;
+  left:6%;
+}
+
+.lantern:nth-child(2){
+  top:26%;
+  right:8%;
+  animation-delay:2s;
+}
+
+.lantern:nth-child(3){
+  bottom:12%;
+  left:16%;
+  animation-delay:4s;
+}
+
+.lantern:nth-child(4){
+  top:60%;
+  right:18%;
+  animation-delay:1s;
+}
+
+.lantern:nth-child(5){
+  top:82%;
+  right:40%;
+  animation-delay:3s;
+}
+
+@keyframes float{
+
+  0%{
+    transform:
+      translateY(0)
+      translateX(0)
+      rotate(0deg);
+  }
+
+  25%{
+    transform:
+      translateY(-25px)
+      translateX(18px)
+      rotate(2deg);
+  }
+
+  50%{
+    transform:
+      translateY(-45px)
+      translateX(-12px)
+      rotate(-2deg);
+  }
+
+  75%{
+    transform:
+      translateY(-20px)
+      translateX(22px)
+      rotate(1deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      translateX(0)
+      rotate(0deg);
+  }
+
+}
+
+@media(max-width:900px){
+
+  .hero-title{
+    font-size:62px;
+  }
+
+  nav{
+    gap:20px;
+  }
+
+  .shelf{
+    grid-template-columns:1fr;
+  }
+
+  .open-book{
+    grid-template-columns:1fr;
+    height:auto;
+  }
+
+  .author{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+  <!-- ランタン -->
+
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+  <div class="lantern"></div>
+
+  <!-- ヘッダー -->
+
+  <header>
+
+    <div class="header-inner">
+
+      <div class="logo">
+        赤道上の大学通り
+      </div>
+
+      <nav>
+
+        <a onclick="showSection('home')">
+          ホーム
+        </a>
+
+        <a onclick="showSection('library')">
+          マダミスシナリオ一覧
+        </a>
+
+        <a onclick="showSection('nazotoki')">
+          謎解き
+        </a>
+
+        <a onclick="showSection('updates')">
+          更新履歴
+        </a>
+
+        <a onclick="showSection('authors')">
+          作者紹介
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- ホーム -->
+
+  <section class="section active" id="home">
+
+    <div class="hero">
+
+      <div class="hero-title">
+        赤道上の<br>
+        大学通り
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- 本棚 -->
+
+  <section class="section" id="library">
+
+    <div class="section-title">
+      マダミスシナリオ一覧
+    </div>
+
+    <div class="library">
+
+      <div class="shelf">
+
+        <!-- 本1 -->
+
+        <div class="book-wrapper">
+
+          <div class="book book-red watoji" onclick="openBook()">
+
+            <div class="paper-label">
+              火之迦具土神
+            </div>
+
+            <div class="stamp"></div>
+
+          </div>
+
+          <div class="book-title">
+            しましま村殺人事件
+          </div>
+
+        </div>
+
+        <!-- 本2 -->
+
+        <div class="book-wrapper">
+
+          <div class="book book-blue">
+
+            <div class="horizontal-label">
+              作品2
+            </div>
+
+          </div>
+
+          <div class="book-title">
+            作品2
+          </div>
+
+        </div>
+
+        <!-- 本3 -->
+
+        <div class="book-wrapper">
+
+          <div class="book book-green">
+
+            <div class="horizontal-label">
+              作品3
+            </div>
+
+          </div>
+
+          <div class="book-title">
+            作品3
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- 謎解き -->
+
+  <section class="section" id="nazotoki">
+
+    <div class="section-title">
+      謎解き
+    </div>
+
+    <div class="update-paper">
+
+      現在準備中です。<br><br>
+
+      今後ここに、
+      謎解き作品や短編コンテンツを追加予定。
+
+    </div>
+
+  </section>
+
+  <!-- 更新履歴 -->
+
+  <section class="section" id="updates">
+
+    <div class="section-title">
+      更新履歴
+    </div>
+
+    <div class="update-paper">
+
+      2026/05/26 ： 作成中<br><br>
+
+      今後ここに更新内容を追加予定。
+
+    </div>
+
+  </section>
+
+  <!-- 作者紹介 -->
+
+  <section class="section" id="authors">
+
+    <div class="section-title">
+      作者紹介
+    </div>
+
+    <div class="author-box">
+
+      <!-- tete -->
+
+      <div class="author">
+
+        <div class="author-icon">
+
+          <!-- 画像 -->
+          <!-- <img src="images/ichigo.png"> -->
+
+        </div>
+
+        <div>
+
+          <div class="author-name">
+            tete
+          </div>
+
+          <div class="author-role">
+            Webサイト構築担当
+          </div>
+
+          <div class="author-text">
+
+            サイト構築を中心に担当しています。<br>
+
+            あいうえお。
+
+          </div>
+
+          <div class="author-links">
+
+            <a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6" target="_blank">
+              YouTube
+            </a>
+
+            <a href="https://x.com/_tete_8" target="_blank">
+              X（Twitter）
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ちゃと -->
+
+      <div class="author">
+
+        <div class="author-icon">
+          C
+        </div>
+
+        <div>
+
+          <div class="author-name">
+            ちゃと
+          </div>
+
+          <div class="author-role">
+            シナリオ制作担当
+          </div>
+
+          <div class="author-text">
+
+            世界観やキャラクター、
+            物語構成を中心に制作しています。<br>
+
+            読み終わったあとも
+            心に残るマダミスを目指しています。
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<!-- モーダル -->
+
+<div class="modal" id="modal">
+
+  <button class="close-button" onclick="closeBook()">
+    ×
+  </button>
+
+  <div class="open-book">
+
+    <!-- 左 -->
+
+    <div class="page">
+
+      <div class="story-title">
+        火之迦具土神
+      </div>
+
+      <div class="story-text">
+
+        山深き村に祀られる火の神――<br>
+        火之迦具土神。<br><br>
+
+        祭りの夜、<br>
+        神楽殿にて一人の死体が見つかった。<br><br>
+
+        誰もが口を閉ざし、<br>
+        誰もが神を恐れている。
+
+      </div>
+
+      <button class="back-button" onclick="closeBook()">
+        ← 本棚へ戻る
+      </button>
+
+    </div>
+
+    <!-- 右 -->
+
+    <div class="page">
+
+      <div class="info-text">
+
+        ■ プレイ人数：4人（GMレス）<br><br>
+
+        ■ 想定時間：2〜3時間<br><br>
+
+        ■ 注意事項<br>
+        ・通話環境推奨<br>
+        ・ネタバレ厳禁<br>
+        ・宗教的表現を含みます
+
+      </div>
+
+      <a href="#" class="start-button">
+        プレイ開始 →
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function openBook(){
+
+  const modal =
+    document.getElementById("modal");
+
+  modal.style.display = "flex";
+
+  setTimeout(() => {
+
+    modal.classList.add("show");
+
+  }, 10);
+
+}
+
+function closeBook(){
+
+  const modal =
+    document.getElementById("modal");
+
+  modal.classList.remove("show");
+
+  setTimeout(() => {
+
+    modal.style.display = "none";
+
+  }, 600);
+
+}
+
+function showSection(id){
+
+  const sections =
+    document.querySelectorAll(".section");
+
+  sections.forEach(section => {
+
+    section.classList.remove("active");
+
+  });
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
