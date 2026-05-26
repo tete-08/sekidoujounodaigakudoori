@@ -299,8 +299,6 @@ nav a:hover{
     rotate(-2deg);
 }
 
-/* 古本感 */
-
 .book::before{
 
   content:"";
@@ -327,8 +325,6 @@ nav a:hover{
     inset 0 0 35px rgba(0,0,0,0.55),
     inset 0 0 5px rgba(255,255,255,0.08);
 }
-
-/* 本色 */
 
 .book-red{
 
@@ -363,8 +359,6 @@ nav a:hover{
     );
 }
 
-/* 和綴じ */
-
 .watoji::before{
 
   content:"";
@@ -386,8 +380,6 @@ nav a:hover{
       rgba(255,255,255,0.35) 36px
     );
 }
-
-/* ラベル */
 
 .paper-label{
 
@@ -539,8 +531,6 @@ nav a:hover{
     0 0 80px rgba(0,0,0,0.8);
 }
 
-/* 中央影 */
-
 .open-book::before{
 
   content:"";
@@ -552,17 +542,15 @@ nav a:hover{
 
   transform:translateX(-50%);
 
-  width:55px;
+  width:50px;
 
   height:100%;
 
   background:
     radial-gradient(
-      rgba(0,0,0,0.18),
+      rgba(0,0,0,0.15),
       transparent 70%
     );
-
-  pointer-events:none;
 }
 
 .page{
@@ -592,8 +580,6 @@ nav a:hover{
 
   text-align:center;
 
-  letter-spacing:1px;
-
   white-space:nowrap;
 }
 
@@ -613,9 +599,17 @@ nav a:hover{
 
   font-size:15px;
 
-  line-height:1.9;
+  line-height:1.95;
 
   letter-spacing:1px;
+
+  width:88%;
+
+  margin:auto;
+}
+
+.right-page .info-text{
+  margin-top:35px;
 }
 
 /* ボタン */
@@ -850,8 +844,6 @@ nav a:hover{
   cursor:pointer;
 
   min-height:330px;
-
-  position:relative;
 }
 
 .character-card:hover{
@@ -954,12 +946,83 @@ nav a:hover{
 
 /* HO */
 
+.ho-layout{
+
+  width:100%;
+  max-width:1400px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    320px 1fr;
+
+  gap:25px;
+}
+
+.ho-sidebar{
+
+  background:
+    rgba(20,10,5,0.82);
+
+  border:
+    2px solid rgba(255,230,180,0.12);
+
+  padding:24px;
+}
+
+.ho-menu-title{
+
+  font-size:24px;
+
+  margin-bottom:22px;
+
+  text-align:center;
+
+  color:#f7e5bc;
+}
+
+.ho-item{
+
+  width:100%;
+
+  padding:18px 16px;
+
+  margin-bottom:14px;
+
+  border:
+    2px solid rgba(255,255,255,0.08);
+
+  cursor:pointer;
+
+  transition:0.25s;
+
+  color:#f1e2c2;
+
+  line-height:1.7;
+}
+
+.ho-item:hover{
+
+  background:
+    rgba(255,240,200,0.08);
+
+  border-color:
+    rgba(255,240,200,0.35);
+}
+
+.ho-item.active{
+
+  background:
+    rgba(255,240,200,0.12);
+
+  border-color:#f7d79b;
+}
+
 .ho-paper{
 
   width:100%;
-  max-width:1100px;
-
-  margin:auto;
 
   background:
     url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
@@ -969,7 +1032,9 @@ nav a:hover{
 
   padding:70px;
 
-  min-height:700px;
+  min-height:760px;
+
+  position:relative;
 
   box-shadow:
     0 0 40px rgba(0,0,0,0.6);
@@ -989,6 +1054,156 @@ nav a:hover{
   font-size:20px;
 
   line-height:2.2;
+}
+
+/* 議論 */
+
+.discussion-button{
+
+  position:absolute;
+
+  right:70px;
+  bottom:35px;
+
+  width:240px;
+  height:62px;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  border:
+    2px solid #5b3921;
+
+  cursor:pointer;
+
+  transition:0.25s;
+
+  font-size:20px;
+}
+
+.discussion-button:hover{
+
+  background:#4a2c18;
+
+  color:white;
+}
+
+.timer{
+
+  font-size:34px;
+
+  margin-bottom:40px;
+
+  text-align:center;
+}
+
+.memo-area{
+
+  width:100%;
+  height:320px;
+
+  resize:none;
+
+  padding:20px;
+
+  font-size:18px;
+
+  background:
+    rgba(255,255,255,0.6);
+
+  border:
+    2px solid #8a6843;
+
+  outline:none;
+
+  font-family:"Zen Kaku Gothic New", sans-serif;
+}
+
+/* ポップアップ */
+
+.custom-alert{
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(0,0,0,0.72);
+
+  display:none;
+
+  justify-content:center;
+  align-items:center;
+
+  z-index:999999;
+}
+
+.alert-box{
+
+  width:520px;
+
+  background:
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+    linear-gradient(
+      to bottom,
+      #ead7b3,
+      #d9c09a
+    );
+
+  color:#2b1a10;
+
+  padding:55px 45px;
+
+  border:
+    4px solid #5b3921;
+
+  box-shadow:
+    0 0 60px rgba(0,0,0,0.8);
+
+  text-align:center;
+}
+
+.alert-title{
+
+  font-size:34px;
+
+  margin-bottom:24px;
+}
+
+.alert-text{
+
+  font-size:17px;
+
+  line-height:2;
+
+  margin-bottom:35px;
+}
+
+.alert-button{
+
+  width:220px;
+  height:56px;
+
+  margin:auto;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  border:
+    2px solid #5b3921;
+
+  cursor:pointer;
+}
+
+.alert-button:hover{
+
+  background:#4a2c18;
+
+  color:white;
 }
 
 </style>
@@ -1024,8 +1239,6 @@ nav a:hover{
 
 </header>
 
-<!-- ホーム -->
-
 <section class="section active" id="home">
 
 <div class="hero">
@@ -1038,8 +1251,6 @@ nav a:hover{
 </div>
 
 </section>
-
-<!-- 本棚 -->
 
 <section class="section" id="library">
 
@@ -1106,8 +1317,6 @@ onclick="openBook(this)">
 
 </section>
 
-<!-- 謎解き -->
-
 <section class="section" id="nazotoki">
 
 <div class="section-title">
@@ -1129,8 +1338,6 @@ onclick="openBook(this)">
 
 </section>
 
-<!-- 更新履歴 -->
-
 <section class="section" id="updates">
 
 <div class="section-title">
@@ -1141,15 +1348,13 @@ onclick="openBook(this)">
 
 <p>
 
-2026/05/26/14:29：作成中
+2026/5/26 15:20 : 最終更新
 
 </p>
 
 </div>
 
 </section>
-
-<!-- 作者紹介 -->
 
 <section class="section" id="authors">
 
@@ -1176,9 +1381,7 @@ Webサイト構築担当
 </div>
 
 <div class="author-text">
-
 サイト構築を中心に担当しています。
-
 </div>
 
 </div>
@@ -1204,10 +1407,8 @@ Webサイト構築担当
 </div>
 
 <div class="author-text">
-
 世界観やキャラクター、
 物語構成を中心に制作しています。
-
 </div>
 
 </div>
@@ -1217,8 +1418,6 @@ Webサイト構築担当
 </div>
 
 </section>
-
-<!-- 本 -->
 
 <section class="section" id="book">
 
@@ -1299,8 +1498,6 @@ onclick="showSection('characterSelect')">
 
 </section>
 
-<!-- キャラ選択 -->
-
 <section class="section" id="characterSelect">
 
 <div class="section-title">
@@ -1311,8 +1508,6 @@ onclick="showSection('characterSelect')">
 
 <div class="character-grid">
 
-<!-- PL1 -->
-
 <div class="character-card"
 onclick="selectCharacter('pl1', this)">
 
@@ -1321,10 +1516,8 @@ PL1
 </div>
 
 <div class="character-role">
-
 医者<br>
 砂田医師
-
 </div>
 
 <div class="character-age">
@@ -1332,15 +1525,11 @@ PL1
 </div>
 
 <div class="character-desc">
-
 本日付で村に派遣された医師。<br>
 この村へは初めてやってきた。
-
 </div>
 
 </div>
-
-<!-- PL2 -->
 
 <div class="character-card"
 onclick="selectCharacter('pl2', this)">
@@ -1350,10 +1539,8 @@ PL2
 </div>
 
 <div class="character-role">
-
 警察<br>
 竹割巡査
-
 </div>
 
 <div class="character-age">
@@ -1361,16 +1548,12 @@ PL2
 </div>
 
 <div class="character-desc">
-
 村を担当する警察官。<br>
 正義感が強く、<br>
 竹を割ったような性格だ。
-
 </div>
 
 </div>
-
-<!-- PL3 -->
 
 <div class="character-card"
 onclick="selectCharacter('pl3', this)">
@@ -1380,10 +1563,8 @@ PL3
 </div>
 
 <div class="character-role">
-
 村長<br>
 島名志村長
-
 </div>
 
 <div class="character-age">
@@ -1391,16 +1572,12 @@ PL3
 </div>
 
 <div class="character-desc">
-
 しましま村の村長。<br>
 人格者で、<br>
 村人から慕われている。
-
 </div>
 
 </div>
-
-<!-- PL4 -->
 
 <div class="character-card"
 onclick="selectCharacter('pl4', this)">
@@ -1410,10 +1587,8 @@ PL4
 </div>
 
 <div class="character-role">
-
 使用人<br>
 花畑あられ
-
 </div>
 
 <div class="character-age">
@@ -1421,11 +1596,9 @@ PL4
 </div>
 
 <div class="character-desc">
-
 島名志家に仕える使用人。<br>
 村の外への買い付けも<br>
 彼女の仕事だ。
-
 </div>
 
 </div>
@@ -1450,23 +1623,49 @@ onclick="showSection('book')">
 
 </section>
 
-<!-- HO -->
-
 <section class="section" id="hoPage">
+
+<div class="ho-layout">
+
+<div class="ho-sidebar">
+
+<div class="ho-menu-title">
+HO一覧
+</div>
+
+<div class="ho-item active"
+onclick="changeHO(this,'導入HO','ここに導入HOの内容が入ります。')">
+
+導入HO
+
+</div>
+
+<div id="discussionMenu"></div>
+
+</div>
 
 <div class="ho-paper">
 
 <div class="ho-title"
 id="hoTitle">
 
-PL1 HO
+導入HO
 
 </div>
 
 <div class="ho-text"
 id="hoText">
 
-PL1のHO
+ここに導入HOの内容が入ります。
+
+</div>
+
+<div class="discussion-button"
+onclick="startDiscussion()">
+
+議論に進む →
+
+</div>
 
 </div>
 
@@ -1481,7 +1680,31 @@ onclick="showSection('characterSelect')">
 
 </section>
 
-<!-- 振り返り -->
+<section class="section" id="discussionPage">
+
+<div class="paper-box">
+
+<div class="timer"
+id="timer">
+
+00:00
+
+</div>
+
+<textarea
+class="memo-area"
+placeholder="ここにメモを書き込めます。"></textarea>
+
+</div>
+
+<a class="return-button"
+onclick="showSection('hoPage')">
+
+← HOへ戻る
+
+</a>
+
+</section>
 
 <section class="section" id="review">
 
@@ -1492,9 +1715,7 @@ onclick="showSection('characterSelect')">
 <div class="paper-box">
 
 <p>
-
 ここに真相やエンディングを追加できます。
-
 </p>
 
 </div>
@@ -1507,6 +1728,30 @@ onclick="showSection('book')">
 </a>
 
 </section>
+
+<div class="custom-alert"
+id="customAlert">
+
+<div class="alert-box">
+
+<div class="alert-title">
+注意
+</div>
+
+<div class="alert-text">
+キャラクターを選択してください。
+</div>
+
+<div class="alert-button"
+onclick="closeAlert()">
+
+閉じる
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
@@ -1526,8 +1771,6 @@ function showSection(id){
     .classList.add("active");
 
 }
-
-/* 本演出 */
 
 function openBook(book){
 
@@ -1553,9 +1796,6 @@ function openBook(book){
     rect.left + "px";
 
   flying.style.opacity = "1";
-
-  flying.style.transform =
-    "scale(1) rotate(0deg)";
 
   setTimeout(() => {
 
@@ -1601,58 +1841,111 @@ function startGame(){
 
   if(!selectedCharacter){
 
-    alert("キャラクターを選択してください");
-
+    openAlert();
     return;
   }
 
-  const hoTitle =
-    document.getElementById("hoTitle");
-
-  const hoText =
-    document.getElementById("hoText");
-
-  if(selectedCharacter === "pl1"){
-
-    hoTitle.innerHTML =
-      "PL1：砂田医師";
-
-    hoText.innerHTML =
-      "PL1のHO";
-
-  }
-
-  if(selectedCharacter === "pl2"){
-
-    hoTitle.innerHTML =
-      "PL2：竹割巡査";
-
-    hoText.innerHTML =
-      "PL2のHO";
-
-  }
-
-  if(selectedCharacter === "pl3"){
-
-    hoTitle.innerHTML =
-      "PL3：島名志村長";
-
-    hoText.innerHTML =
-      "PL3のHO";
-
-  }
-
-  if(selectedCharacter === "pl4"){
-
-    hoTitle.innerHTML =
-      "PL4：花畑あられ";
-
-    hoText.innerHTML =
-      "PL4のHO";
-
-  }
-
   showSection("hoPage");
+
+}
+
+function changeHO(element,title,text){
+
+  const items =
+    document.querySelectorAll(".ho-item");
+
+  items.forEach(item => {
+
+    item.classList.remove("active");
+
+  });
+
+  element.classList.add("active");
+
+  document.getElementById("hoTitle")
+    .innerHTML = title;
+
+  document.getElementById("hoText")
+    .innerHTML = text;
+
+}
+
+function openAlert(){
+
+  document.getElementById("customAlert")
+    .style.display = "flex";
+
+}
+
+function closeAlert(){
+
+  document.getElementById("customAlert")
+    .style.display = "none";
+
+}
+
+/* 議論 */
+
+let discussionAdded = false;
+let seconds = 0;
+let timerInterval;
+
+function startDiscussion(){
+
+  if(!discussionAdded){
+
+    document.getElementById("discussionMenu")
+      .innerHTML = `
+
+<div class="ho-item active"
+onclick="showDiscussion(this)">
+
+議論フェーズ
+
+</div>
+
+`;
+
+    discussionAdded = true;
+  }
+
+  showSection("discussionPage");
+
+  clearInterval(timerInterval);
+
+  timerInterval = setInterval(() => {
+
+    seconds++;
+
+    let min =
+      String(Math.floor(seconds / 60))
+      .padStart(2,'0');
+
+    let sec =
+      String(seconds % 60)
+      .padStart(2,'0');
+
+    document.getElementById("timer")
+      .innerHTML = min + ":" + sec;
+
+  },1000);
+
+}
+
+function showDiscussion(element){
+
+  const items =
+    document.querySelectorAll(".ho-item");
+
+  items.forEach(item => {
+
+    item.classList.remove("active");
+
+  });
+
+  element.classList.add("active");
+
+  showSection("discussionPage");
 
 }
 
