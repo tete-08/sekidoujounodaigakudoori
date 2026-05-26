@@ -148,8 +148,6 @@ nav{
   justify-content:center;
 
   gap:55px;
-
-  flex-wrap:nowrap;
 }
 
 nav a{
@@ -498,7 +496,7 @@ nav a:hover{
     0 40px 90px rgba(0,0,0,0.9);
 }
 
-/* 開いた本 */
+/* 本 */
 
 .modal{
 
@@ -541,6 +539,8 @@ nav a:hover{
     0 0 80px rgba(0,0,0,0.8);
 }
 
+/* 中央影 */
+
 .open-book::before{
 
   content:"";
@@ -552,14 +552,17 @@ nav a:hover{
 
   transform:translateX(-50%);
 
-  width:120px;
+  width:55px;
+
   height:100%;
 
   background:
     radial-gradient(
-      rgba(0,0,0,0.22),
-      transparent
+      rgba(0,0,0,0.18),
+      transparent 70%
     );
+
+  pointer-events:none;
 }
 
 .page{
@@ -575,6 +578,10 @@ nav a:hover{
     url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 
   color:#2d1c12;
+}
+
+.right-page{
+  padding-top:78px;
 }
 
 .story-title{
@@ -606,7 +613,7 @@ nav a:hover{
 
   font-size:15px;
 
-  line-height:1.75;
+  line-height:1.9;
 
   letter-spacing:1px;
 }
@@ -641,6 +648,8 @@ nav a:hover{
   font-size:18px;
 
   transition:0.3s;
+
+  cursor:pointer;
 }
 
 .start-button:hover,
@@ -671,6 +680,49 @@ nav a:hover{
   right:60px;
 
   width:230px;
+}
+
+/* 共通戻る */
+
+.return-button{
+
+  position:fixed;
+
+  left:35px;
+  bottom:30px;
+
+  width:210px;
+  height:58px;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  background:
+    rgba(255,248,235,0.7);
+
+  color:#2b1a10;
+
+  border:
+    2px solid #8c6a45;
+
+  text-decoration:none;
+
+  font-size:18px;
+
+  z-index:9999;
+
+  transition:0.25s;
+
+  cursor:pointer;
+}
+
+.return-button:hover{
+
+  background:#3b2416;
+
+  color:white;
 }
 
 /* 紙 */
@@ -765,66 +817,147 @@ nav a:hover{
 
 /* キャラ選択 */
 
-.character-grid{
+.character-select-wrapper{
 
   width:100%;
   max-width:1400px;
 
   margin:auto;
+}
+
+.character-grid{
 
   display:grid;
 
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:40px;
+  gap:28px;
 }
 
 .character-card{
 
   background:
-    rgba(255,255,255,0.08);
+    rgba(255,255,255,0.06);
 
   border:
-    1px solid rgba(255,255,255,0.15);
+    2px solid rgba(255,255,255,0.12);
 
-  padding:38px 20px;
+  padding:32px 22px;
 
-  text-align:center;
-
-  backdrop-filter:blur(6px);
-
-  transition:0.3s;
+  transition:0.25s;
 
   cursor:pointer;
+
+  min-height:330px;
+
+  position:relative;
 }
 
 .character-card:hover{
-  transform:translateY(-10px);
+
+  transform:
+    translateY(-8px);
+
+  border-color:
+    rgba(255,240,200,0.45);
+}
+
+.character-card.selected{
+
+  border:
+    2px solid #ffe2a7;
+
+  box-shadow:
+    0 0 30px rgba(255,220,150,0.25);
+
+  background:
+    rgba(255,240,220,0.08);
 }
 
 .character-name{
 
   font-size:32px;
 
-  margin-bottom:18px;
+  color:#ffe8b7;
 
-  color:#ffe9be;
+  margin-bottom:16px;
+
+  text-align:center;
 }
 
 .character-role{
 
+  font-size:18px;
+
   line-height:2;
 
-  font-size:17px;
+  text-align:center;
+
+  margin-bottom:10px;
 }
 
-/* キャラページ */
+.character-age{
 
-.character-page{
+  text-align:center;
+
+  margin-bottom:20px;
+
+  font-size:15px;
+
+  color:#f0d9a8;
+}
+
+.character-desc{
+
+  font-size:14px;
+
+  line-height:1.9;
+
+  color:#e8dcc4;
+
+  text-align:center;
+}
+
+.character-start{
+
+  width:260px;
+  height:62px;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  margin:
+    45px 0 0 auto;
+
+  border:
+    2px solid #d4b27d;
+
+  color:#f7e6c1;
+
+  text-decoration:none;
+
+  font-size:20px;
+
+  transition:0.3s;
+
+  cursor:pointer;
+}
+
+.character-start:hover{
+
+  background:
+    rgba(255,240,200,0.15);
+}
+
+/* HO */
+
+.ho-paper{
 
   width:100%;
-  max-width:1200px;
+  max-width:1100px;
 
   margin:auto;
 
@@ -836,24 +969,26 @@ nav a:hover{
 
   padding:70px;
 
+  min-height:700px;
+
   box-shadow:
     0 0 40px rgba(0,0,0,0.6);
 }
 
-.character-page-title{
+.ho-title{
 
   text-align:center;
 
-  font-size:42px;
+  font-size:44px;
 
   margin-bottom:45px;
 }
 
-.character-text{
+.ho-text{
 
-  font-size:18px;
+  font-size:20px;
 
-  line-height:2.1;
+  line-height:2.2;
 }
 
 </style>
@@ -1006,9 +1141,7 @@ onclick="openBook(this)">
 
 <p>
 
-2026/05/26/13:58：作成中<br><br>
-
-今後ここに更新内容を追加予定。
+2026/05/26：作成中
 
 </p>
 
@@ -1029,9 +1162,7 @@ onclick="openBook(this)">
 <div class="author">
 
 <div class="author-icon">
-
 <img src="girl.png">
-
 </div>
 
 <div>
@@ -1126,7 +1257,7 @@ onclick="showSection('library')">
 
 </div>
 
-<div class="page">
+<div class="page right-page">
 
 <div class="info-text">
 
@@ -1139,7 +1270,8 @@ onclick="showSection('library')">
 ■ 注意事項<br>
 ・通話環境推奨<br>
 ・ネタバレ厳禁<br>
-・宗教的表現を含みます
+・宗教的表現を含みます<br>
+・音声による演出あり
 
 </div>
 
@@ -1175,12 +1307,14 @@ onclick="showSection('characterSelect')">
 キャラクター選択
 </div>
 
+<div class="character-select-wrapper">
+
 <div class="character-grid">
 
 <!-- PL1 -->
 
 <div class="character-card"
-onclick="openCharacter('char1')">
+onclick="selectCharacter('pl1', this)">
 
 <div class="character-name">
 PL1
@@ -1193,12 +1327,23 @@ PL1
 
 </div>
 
+<div class="character-age">
+年齢：29歳
+</div>
+
+<div class="character-desc">
+
+本日付で村に派遣された医師。<br>
+この村へは初めてやってきた。
+
+</div>
+
 </div>
 
 <!-- PL2 -->
 
 <div class="character-card"
-onclick="openCharacter('char2')">
+onclick="selectCharacter('pl2', this)">
 
 <div class="character-name">
 PL2
@@ -1211,12 +1356,24 @@ PL2
 
 </div>
 
+<div class="character-age">
+年齢：34歳
+</div>
+
+<div class="character-desc">
+
+村を担当する警察官。<br>
+正義感が強く、<br>
+竹を割ったような性格だ。
+
+</div>
+
 </div>
 
 <!-- PL3 -->
 
 <div class="character-card"
-onclick="openCharacter('char3')">
+onclick="selectCharacter('pl3', this)">
 
 <div class="character-name">
 PL3
@@ -1229,12 +1386,24 @@ PL3
 
 </div>
 
+<div class="character-age">
+年齢：52歳
+</div>
+
+<div class="character-desc">
+
+しましま村の村長。<br>
+人格者で、<br>
+村人から慕われている。
+
+</div>
+
 </div>
 
 <!-- PL4 -->
 
 <div class="character-card"
-onclick="openCharacter('char4')">
+onclick="selectCharacter('pl4', this)">
 
 <div class="character-name">
 PL4
@@ -1247,33 +1416,68 @@ PL4
 
 </div>
 
+<div class="character-age">
+年齢：22歳
+</div>
+
+<div class="character-desc">
+
+島名志家に仕える使用人。<br>
+村の外への買い付けも<br>
+彼女の仕事だ。
+
 </div>
 
 </div>
+
+</div>
+
+<div class="character-start"
+onclick="startGame()">
+
+ゲーム開始 →
+
+</div>
+
+</div>
+
+<a class="return-button"
+onclick="showSection('book')">
+
+← 本へ戻る
+
+</a>
 
 </section>
 
-<!-- キャラページ -->
+<!-- HO -->
 
-<section class="section" id="characterPage">
+<section class="section" id="hoPage">
 
-<div class="character-page">
+<div class="ho-paper">
 
-<div class="character-page-title"
-id="characterTitle">
+<div class="ho-title"
+id="hoTitle">
 
-PL1
-
-</div>
-
-<div class="character-text"
-id="characterText">
-
-ここにテキストが入ります。
+PL1 HO
 
 </div>
 
+<div class="ho-text"
+id="hoText">
+
+PL1のHO
+
 </div>
+
+</div>
+
+<a class="return-button"
+onclick="showSection('characterSelect')">
+
+← キャラ選択へ戻る
+
+</a>
 
 </section>
 
@@ -1289,12 +1493,18 @@ id="characterText">
 
 <p>
 
-ここに各キャラクターの情報、<br>
-真相、エンディング分岐などを追加できます。
+ここに真相やエンディングを追加できます。
 
 </p>
 
 </div>
+
+<a class="return-button"
+onclick="showSection('book')">
+
+← 本へ戻る
+
+</a>
 
 </section>
 
@@ -1317,7 +1527,7 @@ function showSection(id){
 
 }
 
-/* 本モーション */
+/* 本演出 */
 
 function openBook(book){
 
@@ -1368,82 +1578,81 @@ function openBook(book){
 
 }
 
-const characterData = {
+let selectedCharacter = null;
 
-  char1:{
+function selectCharacter(id, element){
 
-    title:"PL1：砂田医師",
+  selectedCharacter = id;
 
-    text:`
+  const cards =
+    document.querySelectorAll(".character-card");
 
-あなたは村の医者である。<br><br>
+  cards.forEach(card => {
 
-古くからこの村に住み、
-村人たちから信頼されている。
+    card.classList.remove("selected");
 
-`
+  });
 
-  },
+  element.classList.add("selected");
 
-  char2:{
+}
 
-    title:"PL2：竹割巡査",
+function startGame(){
 
-    text:`
+  if(!selectedCharacter){
 
-あなたは村を担当する巡査だ。<br><br>
+    alert("キャラクターを選択してください");
 
-事件当日、
-真っ先に現場へ駆けつけた。
+    return;
+  }
 
-`
+  const hoTitle =
+    document.getElementById("hoTitle");
 
-  },
+  const hoText =
+    document.getElementById("hoText");
 
-  char3:{
+  if(selectedCharacter === "pl1"){
 
-    title:"PL3：島名志村長",
+    hoTitle.innerHTML =
+      "PL1：砂田医師";
 
-    text:`
-
-あなたはしましま村の村長である。<br><br>
-
-村の秘密を知る立場にいる。
-
-`
-
-  },
-
-  char4:{
-
-    title:"PL4：花畑あられ",
-
-    text:`
-
-あなたは村に仕える使用人だ。<br><br>
-
-長年、
-村長家に仕えている。
-
-`
+    hoText.innerHTML =
+      "PL1のHO";
 
   }
 
-};
+  if(selectedCharacter === "pl2"){
 
-function openCharacter(id){
+    hoTitle.innerHTML =
+      "PL2：竹割巡査";
 
-  document.getElementById(
-    "characterTitle"
-  ).innerHTML =
-    characterData[id].title;
+    hoText.innerHTML =
+      "PL2のHO";
 
-  document.getElementById(
-    "characterText"
-  ).innerHTML =
-    characterData[id].text;
+  }
 
-  showSection("characterPage");
+  if(selectedCharacter === "pl3"){
+
+    hoTitle.innerHTML =
+      "PL3：島名志村長";
+
+    hoText.innerHTML =
+      "PL3のHO";
+
+  }
+
+  if(selectedCharacter === "pl4"){
+
+    hoTitle.innerHTML =
+      "PL4：花畑あられ";
+
+    hoText.innerHTML =
+      "PL4のHO";
+
+  }
+
+  showSection("hoPage");
 
 }
 
