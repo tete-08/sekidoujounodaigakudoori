@@ -4,8 +4,6 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- 検索に出にくくする -->
 <meta name="robots" content="noindex,nofollow">
 
 <title>赤道上の大学通り</title>
@@ -25,98 +23,122 @@
 
 body{
 
+  min-width:1400px;
+
   font-family:"Zen Kaku Gothic New", sans-serif;
 
   background:
-    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.92)),
-    url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920&auto=format&fit=crop');
+    linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
+    url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1920&auto=format&fit=crop');
 
   background-size:cover;
   background-position:center;
+  background-attachment:fixed;
 
-  color:white;
+  color:#f6ead2;
 
-  overflow-x:hidden;
-
-  min-height:100vh;
+  overflow-x:auto;
 }
 
-/* 本を開く時の暗転 */
+/* ランタン */
 
-body.opening::before{
-
-  content:"";
+.lantern{
 
   position:fixed;
 
-  inset:0;
+  width:70px;
+  height:70px;
 
-  background:rgba(0,0,0,0.42);
+  border-radius:50%;
 
-  z-index:5000;
+  background:
+    radial-gradient(
+      rgba(255,200,120,0.45),
+      rgba(255,200,120,0.02)
+    );
 
-  animation:fadeDark 0.45s forwards;
+  box-shadow:
+    0 0 50px rgba(255,200,120,0.35);
+
+  animation:float 7s ease-in-out infinite;
+
+  z-index:0;
 }
 
-@keyframes fadeDark{
-
-  from{
-    opacity:0;
-  }
-
-  to{
-    opacity:1;
-  }
-
+.l1{
+  top:120px;
+  left:80px;
 }
 
-.overlay{
+.l2{
+  top:180px;
+  right:100px;
+  animation-delay:2s;
+}
 
-  width:100%;
-  min-height:100vh;
+.l3{
+  top:420px;
+  right:260px;
+  animation-delay:4s;
+}
 
-  backdrop-filter:blur(2px);
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-20px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
 }
 
 /* ヘッダー */
 
 header{
 
-  width:100%;
-
-  padding:22px 30px;
-
-  background:rgba(10,8,6,0.86);
-
-  border-bottom:1px solid rgba(255,220,170,0.12);
-
   position:sticky;
   top:0;
 
   z-index:999;
+
+  background:rgba(0,0,0,0.90);
+
+  border-bottom:
+    1px solid rgba(255,220,170,0.12);
 }
 
 .header-inner{
 
-  display:flex;
-  flex-direction:column;
+  width:100%;
+  max-width:1400px;
 
-  align-items:center;
+  margin:auto;
 
-  gap:18px;
+  padding:18px 30px 14px;
+
+  text-align:center;
 }
 
 .logo{
 
-  color:#f0dfba;
+  font-size:62px;
 
-  font-size:38px;
+  color:#f6e5bf;
+
+  letter-spacing:10px;
+
+  margin-bottom:14px;
 
   font-weight:700;
 
-  letter-spacing:1px;
-
-  white-space:nowrap;
+  text-shadow:
+    0 0 18px rgba(255,220,170,0.18);
 }
 
 nav{
@@ -125,37 +147,28 @@ nav{
 
   justify-content:center;
 
-  gap:50px;
+  gap:55px;
 
-  width:100%;
-
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
 }
 
 nav a{
 
-  color:#d8c4a0;
+  color:#f3dfbb;
 
   text-decoration:none;
 
   font-size:14px;
 
-  letter-spacing:2px;
-
   transition:0.3s;
 
+  letter-spacing:2px;
+
   cursor:pointer;
-
-  padding-bottom:5px;
-
-  border-bottom:1px solid transparent;
 }
 
 nav a:hover{
-
-  color:white;
-
-  border-color:#d8c4a0;
+  opacity:0.7;
 }
 
 /* セクション */
@@ -166,7 +179,10 @@ nav a:hover{
 
   min-height:100vh;
 
-  padding:80px 40px;
+  padding:60px 40px 90px;
+
+  position:relative;
+  z-index:2;
 }
 
 .active{
@@ -177,12 +193,11 @@ nav a:hover{
 
 .hero{
 
-  height:82vh;
+  min-height:78vh;
 
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 
   text-align:center;
 }
@@ -191,16 +206,17 @@ nav a:hover{
 
   font-size:120px;
 
-  line-height:1.1;
+  line-height:1.15;
 
-  color:#f3e1bf;
+  color:#ffe7b8;
 
   font-weight:700;
 
-  letter-spacing:4px;
+  letter-spacing:8px;
 
   text-shadow:
-    0 0 30px rgba(255,220,170,0.15);
+    0 0 20px rgba(255,210,120,0.25),
+    0 0 60px rgba(255,210,120,0.12);
 }
 
 /* タイトル */
@@ -209,15 +225,13 @@ nav a:hover{
 
   text-align:center;
 
-  font-size:48px;
+  font-size:38px;
 
-  margin-bottom:70px;
+  margin-bottom:40px;
 
-  color:#f1dec1;
+  color:#f8e8c8;
 
-  font-weight:700;
-
-  letter-spacing:6px;
+  letter-spacing:4px;
 }
 
 /* 本棚 */
@@ -225,82 +239,59 @@ nav a:hover{
 .library{
 
   width:100%;
-  max-width:1300px;
+  max-width:1500px;
 
   margin:auto;
 }
 
 .shelf{
 
-  position:relative;
-
   display:grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(3,1fr);
 
-  justify-items:center;
+  gap:60px;
 
-  gap:50px;
-
-  padding:50px 40px 80px;
+  padding:50px;
 
   background:
     linear-gradient(
       to bottom,
-      rgba(95,60,35,0.95),
-      rgba(45,22,10,0.98)
+      #3b2416,
+      #24140c
     );
 
-  border-radius:8px;
+  border:
+    4px solid #4a2d1a;
 
   box-shadow:
-    0 0 50px rgba(0,0,0,0.85);
+    0 0 50px rgba(0,0,0,0.8);
 }
-
-.shelf::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  bottom:0;
-
-  width:100%;
-  height:22px;
-
-  background:#1d0e08;
-}
-
-/* 本 */
 
 .book-wrapper{
-
-  width:190px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  text-align:center;
 }
 
 .book{
 
-  width:170px;
-  height:250px;
+  width:210px;
+  height:310px;
+
+  margin:auto;
 
   position:relative;
 
-  border-radius:3px;
+  border-radius:4px;
 
   cursor:pointer;
 
-  transition:0.28s;
+  transition:0.3s;
 
   overflow:hidden;
 
   box-shadow:
-    0 0 35px rgba(0,0,0,0.75);
+    0 10px 40px rgba(0,0,0,0.7);
 }
 
 .book:hover{
@@ -310,7 +301,21 @@ nav a:hover{
     rotate(-2deg);
 }
 
-/* ホバー影 */
+/* 古本感 */
+
+.book::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    url('https://www.transparenttextures.com/patterns/old-wall.png');
+
+  opacity:0.35;
+}
 
 .book::after{
 
@@ -318,30 +323,11 @@ nav a:hover{
 
   position:absolute;
 
-  left:12px;
-  bottom:-18px;
+  inset:0;
 
-  width:85%;
-  height:24px;
-
-  background:
-    radial-gradient(
-      rgba(0,0,0,0.5),
-      transparent
-    );
-
-  filter:blur(8px);
-
-  transition:0.28s;
-}
-
-.book:hover::after{
-
-  transform:
-    scaleX(1.3)
-    scaleY(1.7);
-
-  opacity:0.9;
+  box-shadow:
+    inset 0 0 35px rgba(0,0,0,0.55),
+    inset 0 0 5px rgba(255,255,255,0.08);
 }
 
 /* 本色 */
@@ -351,9 +337,9 @@ nav a:hover{
   background:
     linear-gradient(
       to right,
-      #2b130d,
-      #5c2d1f,
-      #2a120d
+      #3b140b,
+      #6e311d,
+      #2c1008
     );
 }
 
@@ -362,9 +348,9 @@ nav a:hover{
   background:
     linear-gradient(
       to right,
-      #14232d,
-      #244355,
-      #14212b
+      #15212c,
+      #284962,
+      #14212c
     );
 }
 
@@ -373,9 +359,9 @@ nav a:hover{
   background:
     linear-gradient(
       to right,
-      #1a241b,
-      #384c38,
-      #172018
+      #1b2417,
+      #445340,
+      #1a2417
     );
 }
 
@@ -387,249 +373,148 @@ nav a:hover{
 
   position:absolute;
 
-  right:14px;
+  right:15px;
   top:0;
 
-  width:2px;
-  height:100%;
-
-  background:rgba(255,255,255,0.4);
-}
-
-.watoji::after{
-
-  content:"";
-
-  position:absolute;
-
-  right:8px;
-  top:0;
-
-  width:8px;
+  width:10px;
   height:100%;
 
   background:
     repeating-linear-gradient(
       to bottom,
       transparent 0px,
-      transparent 34px,
-      rgba(255,255,255,0.5) 34px,
-      rgba(255,255,255,0.5) 37px
+      transparent 32px,
+      rgba(255,255,255,0.35) 32px,
+      rgba(255,255,255,0.35) 36px
     );
 }
+
+/* ラベル */
 
 .paper-label{
 
   position:absolute;
 
-  top:18px;
-  left:18px;
+  top:20px;
+  left:50%;
 
-  width:48px;
-  height:190px;
+  transform:translateX(-50%);
 
-  background:#e8decb;
+  width:58px;
+  height:225px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #efe5cf,
+      #d8c7a2
+    );
 
   writing-mode:vertical-rl;
 
-  color:#120b08;
+  color:#1a1008;
 
-  font-size:18px;
+  font-size:30px;
 
-  letter-spacing:2px;
+  line-height:1.45;
 
-  line-height:1.5;
+  letter-spacing:4px;
 
-  padding-top:14px;
+  padding-top:18px;
 
   font-family:'Yuji Syuku', serif;
 
+  border:
+    1px solid rgba(0,0,0,0.18);
+
   box-shadow:
-    0 0 12px rgba(0,0,0,0.25);
+    0 0 20px rgba(0,0,0,0.35),
+    inset 0 0 10px rgba(255,255,255,0.18);
 }
 
 .horizontal-label{
 
   position:absolute;
 
-  top:30px;
+  top:120px;
   left:50%;
 
   transform:translateX(-50%);
 
-  background:#e8decb;
+  background:
+    linear-gradient(
+      to bottom,
+      #efe5cf,
+      #d8c7a2
+    );
 
-  color:#120b08;
+  color:#1a1008;
 
-  padding:10px 18px;
+  padding:14px 26px;
 
-  font-size:26px;
+  font-size:24px;
 
-  letter-spacing:2px;
+  border:
+    1px solid rgba(0,0,0,0.15);
 
-  border:1px solid rgba(0,0,0,0.15);
+  font-family:'Yuji Syuku', serif;
 }
 
 .book-title{
 
-  margin-top:16px;
-
-  width:190px;
-
-  text-align:center;
-
-  color:#eadcc0;
-
-  font-size:16px;
-}
-
-.stamp{
-
-  position:absolute;
-
-  bottom:20px;
-  left:65px;
-
-  width:34px;
-  height:34px;
-
-  border:2px solid rgba(170,20,20,0.7);
-
-  transform:rotate(-10deg);
-}
-
-/* 更新履歴 */
-
-.update-paper{
-
-  max-width:700px;
-
-  margin:auto;
-
-  padding:50px;
-
-  background:#e8d7b7;
-
-  color:#2b1c13;
-
-  line-height:2.4;
-
-  border-radius:6px;
-
-  box-shadow:
-    0 0 40px rgba(0,0,0,0.6);
-}
-
-/* 作者紹介 */
-
-.author-box{
-
-  max-width:900px;
-
-  margin:0 auto 40px;
-
-  padding:40px;
-
-  background:rgba(30,18,10,0.8);
-
-  border:1px solid rgba(255,220,170,0.12);
-
-  border-radius:10px;
-}
-
-.author{
-
-  display:flex;
-
-  gap:30px;
-
-  margin-bottom:40px;
-}
-
-.author-icon{
-
-  width:110px;
-  height:110px;
-
-  border-radius:50%;
-
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f5e4c8,
-      #d0b089
-    );
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.author-name{
-
-  font-size:32px;
-
-  margin-bottom:10px;
-}
-
-.author-role{
-
-  color:#d5c2a0;
-
-  margin-bottom:14px;
-}
-
-.author-text{
-
-  line-height:2;
-}
-
-.author-links{
-
   margin-top:18px;
 
-  display:flex;
+  font-size:18px;
 
-  gap:18px;
-
-  flex-wrap:wrap;
+  color:#f2e2c0;
 }
 
-.author-links a{
+/* 飛ぶ本 */
 
-  color:#f0d8ae;
-
-  text-decoration:none;
-}
-
-/* モーダル */
-
-.modal{
+#flyingBook{
 
   position:fixed;
 
-  inset:0;
+  width:210px;
+  height:310px;
 
-  background:rgba(0,0,0,0.88);
+  z-index:99999;
 
-  display:none;
+  pointer-events:none;
+
+  border-radius:4px;
+
+  overflow:hidden;
+
+  opacity:0;
+
+  transition:
+    top 0.5s ease,
+    left 0.5s ease,
+    transform 0.5s ease,
+    opacity 0.2s;
+
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.9);
+}
+
+/* 開いた本 */
+
+.modal{
+
+  width:100%;
+
+  display:flex;
 
   justify-content:center;
-  align-items:center;
-
-  z-index:9999;
-
-  perspective:2000px;
 }
 
 .open-book{
 
-  width:1200px;
-  max-width:96%;
+  width:100%;
+  max-width:1320px;
 
-  height:760px;
+  height:620px;
 
   display:grid;
 
@@ -638,38 +523,22 @@ nav a:hover{
   background:
     linear-gradient(
       to right,
-      #e9d9b8,
-      #f2e6ca,
-      #e6d1ab
+      #e9d8b6,
+      #f3e7cb,
+      #e6d0a7
     );
 
-  border-radius:10px;
+  border-radius:18px;
 
   overflow:hidden;
 
   position:relative;
 
+  border:
+    5px solid #3d2415;
+
   box-shadow:
-    0 0 90px rgba(0,0,0,0.9);
-
-  transform:
-    rotateY(-90deg)
-    scale(0.86);
-
-  opacity:0;
-
-  transition:
-    transform 0.42s ease,
-    opacity 0.42s ease;
-}
-
-.modal.show .open-book{
-
-  transform:
-    rotateY(0deg)
-    scale(1);
-
-  opacity:1;
+    0 0 80px rgba(0,0,0,0.8);
 }
 
 .open-book::before{
@@ -683,339 +552,308 @@ nav a:hover{
 
   transform:translateX(-50%);
 
-  width:90px;
+  width:120px;
   height:100%;
 
   background:
     radial-gradient(
-      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.22),
       transparent
     );
 }
 
 .page{
 
-  padding:80px 70px;
-
   position:relative;
+
+  padding:
+    48px
+    55px
+    110px;
 
   background:
     url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 
-  color:#2b1b12;
-}
-
-/* テキスト遅延表示 */
-
-.page-content{
-
-  opacity:0;
-
-  transform:
-    translateY(10px);
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.modal.show-text .page-content{
-
-  opacity:1;
-
-  transform:
-    translateY(0);
+  color:#2d1c12;
 }
 
 .story-title{
 
-  font-size:42px;
+  font-size:30px;
 
-  margin-bottom:40px;
+  margin-bottom:22px;
 
-  font-family:'Yuji Syuku', serif;
+  text-align:center;
 
-  letter-spacing:4px;
+  letter-spacing:1px;
+
+  white-space:nowrap;
 }
 
-.story-text{
+.divider{
 
-  font-size:14px;
+  width:220px;
+  height:2px;
 
-  line-height:3.1;
+  background:#9d7c55;
+
+  margin:
+    0 auto 25px;
+}
+
+.story-text,
+.info-text{
+
+  font-size:15px;
+
+  line-height:1.75;
 
   letter-spacing:1px;
 }
 
-.info-text{
-
-  font-size:14px;
-
-  line-height:2.8;
-}
-
-/* ボタン修正 */
+/* ボタン */
 
 .start-button,
-.back-button{
+.back-button,
+.review-button{
 
-  display:inline-flex;
+  position:absolute;
+
+  bottom:18px;
+
+  height:56px;
+
+  display:flex;
 
   justify-content:center;
   align-items:center;
 
-  width:200px;
-  height:66px;
-
-  border:1px solid #2b1a10;
-
   text-decoration:none;
+
+  border:
+    2px solid #82613f;
+
+  background:
+    rgba(255,250,240,0.65);
 
   color:#2b1a10;
 
-  transition:0.25s;
+  font-size:18px;
 
-  margin-top:50px;
+  transition:0.3s;
 }
 
 .start-button:hover,
-.back-button:hover{
+.back-button:hover,
+.review-button:hover{
 
-  background:#2b1a10;
+  background:#3d2415;
 
   color:white;
 }
 
-/* 絶対配置削除 */
-
 .back-button{
 
-  position:relative;
+  left:60px;
+
+  width:230px;
+}
+
+.review-button{
+
+  right:320px;
+
+  width:180px;
 }
 
 .start-button{
 
-  position:relative;
+  right:60px;
+
+  width:230px;
 }
 
-/* 閉じる */
+/* 紙 */
 
-.close-button{
+.paper-box{
 
-  position:absolute;
+  width:100%;
+  max-width:1100px;
 
-  top:30px;
-  right:30px;
+  margin:auto;
 
-  width:46px;
-  height:46px;
+  background:
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+    #e6d3b0;
 
-  border:none;
+  color:#2b1a10;
+
+  padding:45px;
+
+  border-radius:8px;
+
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.5);
+}
+
+.paper-box p{
+
+  line-height:2;
+  font-size:17px;
+}
+
+/* 作者 */
+
+.author{
+
+  display:flex;
+
+  gap:25px;
+
+  margin-bottom:40px;
+}
+
+.author:last-child{
+  margin-bottom:0;
+}
+
+.author-icon{
+
+  width:120px;
+  height:120px;
 
   border-radius:50%;
 
-  background:black;
+  overflow:hidden;
 
-  color:white;
+  flex-shrink:0;
 
-  font-size:22px;
+  border:
+    4px solid #d7bf96;
+}
+
+.author-icon img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.author-name{
+
+  font-size:32px;
+
+  margin-bottom:10px;
+}
+
+.author-role{
+
+  font-size:18px;
+
+  color:#6e4b28;
+
+  margin-bottom:12px;
+}
+
+.author-text{
+
+  font-size:16px;
+
+  line-height:1.9;
+}
+
+/* キャラ選択 */
+
+.character-grid{
+
+  width:100%;
+  max-width:1400px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:40px;
+}
+
+.character-card{
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid rgba(255,255,255,0.15);
+
+  padding:38px 20px;
+
+  text-align:center;
+
+  backdrop-filter:blur(6px);
+
+  transition:0.3s;
 
   cursor:pointer;
 }
 
-/* 飛ぶ本 */
-
-#flyingBook{
-
-  position:fixed;
-
-  width:170px;
-  height:250px;
-
-  z-index:10000;
-
-  pointer-events:none;
-
-  border-radius:3px;
-
-  overflow:hidden;
-
-  opacity:0;
-
-  transition:
-    top 0.45s ease,
-    left 0.45s ease,
-    transform 0.45s ease,
-    opacity 0.2s;
-
-  box-shadow:
-    0 50px 120px rgba(0,0,0,0.9);
+.character-card:hover{
+  transform:translateY(-10px);
 }
 
-#flyingBook::after{
+.character-name{
 
-  content:"";
+  font-size:32px;
 
-  position:absolute;
+  margin-bottom:18px;
 
-  left:50%;
-  bottom:-70px;
+  color:#ffe9be;
+}
 
-  transform:translateX(-50%);
+.character-role{
 
-  width:180px;
-  height:60px;
+  line-height:2;
+
+  font-size:17px;
+}
+
+/* キャラページ */
+
+.character-page{
+
+  width:100%;
+  max-width:1200px;
+
+  margin:auto;
 
   background:
-    radial-gradient(
-      rgba(0,0,0,0.8),
-      transparent
-    );
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+    #ead8b7;
 
-  filter:blur(16px);
+  color:#2b1a10;
 
-  animation:
-    shadowGrow 0.45s ease forwards;
-}
-
-@keyframes shadowGrow{
-
-  from{
-
-    transform:
-      translateX(-50%)
-      scale(0.4);
-
-    opacity:0.2;
-  }
-
-  to{
-
-    transform:
-      translateX(-50%)
-      scale(2.4);
-
-    opacity:1;
-  }
-
-}
-
-/* ランタン */
-
-.lantern{
-
-  position:fixed;
-
-  width:50px;
-  height:70px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      rgba(255,220,120,0.4),
-      rgba(255,220,120,0.03)
-    );
+  padding:70px;
 
   box-shadow:
-    0 0 40px rgba(255,220,120,0.35);
-
-  animation:float 8s ease-in-out infinite;
+    0 0 40px rgba(0,0,0,0.6);
 }
 
-.lantern:nth-child(1){
-  top:14%;
-  left:6%;
+.character-page-title{
+
+  text-align:center;
+
+  font-size:42px;
+
+  margin-bottom:45px;
 }
 
-.lantern:nth-child(2){
-  top:26%;
-  right:8%;
-  animation-delay:2s;
-}
+.character-text{
 
-.lantern:nth-child(3){
-  bottom:12%;
-  left:16%;
-  animation-delay:4s;
-}
+  font-size:18px;
 
-.lantern:nth-child(4){
-  top:60%;
-  right:18%;
-  animation-delay:1s;
-}
-
-.lantern:nth-child(5){
-  top:82%;
-  right:40%;
-  animation-delay:3s;
-}
-
-@keyframes float{
-
-  0%{
-    transform:
-      translateY(0)
-      translateX(0)
-      rotate(0deg);
-  }
-
-  25%{
-    transform:
-      translateY(-25px)
-      translateX(18px)
-      rotate(2deg);
-  }
-
-  50%{
-    transform:
-      translateY(-45px)
-      translateX(-12px)
-      rotate(-2deg);
-  }
-
-  75%{
-    transform:
-      translateY(-20px)
-      translateX(22px)
-      rotate(1deg);
-  }
-
-  100%{
-    transform:
-      translateY(0)
-      translateX(0)
-      rotate(0deg);
-  }
-
-}
-
-@media(max-width:900px){
-
-  .hero-title{
-    font-size:62px;
-  }
-
-  nav{
-    gap:20px;
-  }
-
-  .shelf{
-    grid-template-columns:1fr;
-  }
-
-  .open-book{
-    grid-template-columns:1fr;
-    height:auto;
-  }
-
-  .author{
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-
+  line-height:2.1;
 }
 
 </style>
@@ -1023,17 +861,11 @@ nav a:hover{
 
 <body>
 
-<div class="overlay">
+<div class="lantern l1"></div>
+<div class="lantern l2"></div>
+<div class="lantern l3"></div>
 
-<!-- ランタン -->
-
-<div class="lantern"></div>
-<div class="lantern"></div>
-<div class="lantern"></div>
-<div class="lantern"></div>
-<div class="lantern"></div>
-
-<!-- ヘッダー -->
+<div id="flyingBook"></div>
 
 <header>
 
@@ -1045,25 +877,11 @@ nav a:hover{
 
 <nav>
 
-<a onclick="showSection('home')">
-ホーム
-</a>
-
-<a onclick="showSection('library')">
-マダミスシナリオ一覧
-</a>
-
-<a onclick="showSection('nazotoki')">
-謎解き
-</a>
-
-<a onclick="showSection('updates')">
-更新履歴
-</a>
-
-<a onclick="showSection('authors')">
-作者紹介
-</a>
+<a onclick="showSection('home')">ホーム</a>
+<a onclick="showSection('library')">マダミス一覧</a>
+<a onclick="showSection('nazotoki')">謎解き</a>
+<a onclick="showSection('updates')">更新履歴</a>
+<a onclick="showSection('authors')">作者紹介</a>
 
 </nav>
 
@@ -1091,24 +909,21 @@ nav a:hover{
 <section class="section" id="library">
 
 <div class="section-title">
-マダミスシナリオ一覧
+マダミス一覧
 </div>
 
 <div class="library">
 
 <div class="shelf">
 
-<!-- 本1 -->
-
 <div class="book-wrapper">
 
-<div class="book book-red watoji" onclick="openBook(this)">
+<div class="book book-red watoji"
+onclick="openBook(this)">
 
 <div class="paper-label">
 火之迦具土神
 </div>
-
-<div class="stamp"></div>
 
 </div>
 
@@ -1117,8 +932,6 @@ nav a:hover{
 </div>
 
 </div>
-
-<!-- 本2 -->
 
 <div class="book-wrapper">
 
@@ -1135,8 +948,6 @@ nav a:hover{
 </div>
 
 </div>
-
-<!-- 本3 -->
 
 <div class="book-wrapper">
 
@@ -1168,12 +979,16 @@ nav a:hover{
 謎解き
 </div>
 
-<div class="update-paper">
+<div class="paper-box">
+
+<p>
 
 現在準備中です。<br><br>
 
 今後ここに、
-謎解き作品や短編コンテンツを追加予定。
+謎解き作品などを追加予定。
+
+</p>
 
 </div>
 
@@ -1187,11 +1002,15 @@ nav a:hover{
 更新履歴
 </div>
 
-<div class="update-paper">
+<div class="paper-box">
 
-2026/05/26 ： 作成中<br><br>
+<p>
+
+2026/05/26：作成中<br><br>
 
 今後ここに更新内容を追加予定。
+
+</p>
 
 </div>
 
@@ -1205,13 +1024,14 @@ nav a:hover{
 作者紹介
 </div>
 
-<div class="author-box">
-
-<!-- tete -->
+<div class="paper-box">
 
 <div class="author">
 
 <div class="author-icon">
+
+<img src="girl.png">
+
 </div>
 
 <div>
@@ -1226,34 +1046,20 @@ Webサイト構築担当
 
 <div class="author-text">
 
-サイト構築を中心に担当しています。<br>
-
-あいうえお。
-
-</div>
-
-<div class="author-links">
-
-<a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6" target="_blank">
-YouTube
-</a>
-
-<a href="https://x.com/_tete_8" target="_blank">
-X（Twitter）
-</a>
+サイト構築を中心に担当しています。
 
 </div>
 
 </div>
 
 </div>
-
-<!-- ちゃと -->
 
 <div class="author">
 
 <div class="author-icon">
-C
+
+<img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=500&auto=format&fit=crop">
+
 </div>
 
 <div>
@@ -1281,60 +1087,54 @@ C
 
 </section>
 
-</div>
+<!-- 本 -->
 
-<!-- モーダル -->
+<section class="section" id="book">
 
-<div class="modal" id="modal">
-
-<button class="close-button" onclick="closeBook()">
-×
-</button>
+<div class="modal">
 
 <div class="open-book">
 
-<!-- 左 -->
-
 <div class="page">
 
-<div class="page-content">
-
 <div class="story-title">
-火之迦具土神
+しましま村殺人事件
 </div>
+
+<div class="divider"></div>
 
 <div class="story-text">
 
-山深き村に祀られる火の神――<br>
-火之迦具土神。<br><br>
+あなた方が入村するのは19xx年<br>
+しましま村――<br><br>
 
-祭りの夜、<br>
-神楽殿にて一人の死体が見つかった。<br><br>
+PLとして訪れたこの日、<br>
+しましま村では殺人事件が起きる。<br><br>
 
-誰もが口を閉ざし、<br>
-誰もが神を恐れている。
+各PLとして<br>
+村に隠された謎を解き明かそう！
 
 </div>
 
-<button class="back-button" onclick="closeBook()">
+<a href="#"
+class="back-button"
+onclick="showSection('library')">
+
 ← 本棚へ戻る
-</button>
+
+</a>
 
 </div>
-
-</div>
-
-<!-- 右 -->
 
 <div class="page">
 
-<div class="page-content">
-
 <div class="info-text">
 
-■ プレイ人数：4人（GMレス）<br><br>
+■ プレイ人数<br>
+4人（GMレス）<br><br>
 
-■ 想定時間：2〜3時間<br><br>
+■ 想定時間<br>
+2〜3時間<br><br>
 
 ■ 注意事項<br>
 ・通話環境推奨<br>
@@ -1343,8 +1143,20 @@ C
 
 </div>
 
-<a href="#" class="start-button">
+<a href="#"
+class="review-button"
+onclick="showSection('review')">
+
+振り返り
+
+</a>
+
+<a href="#"
+class="start-button"
+onclick="showSection('characterSelect')">
+
 プレイ開始 →
+
 </a>
 
 </div>
@@ -1353,138 +1165,140 @@ C
 
 </div>
 
+</section>
+
+<!-- キャラ選択 -->
+
+<section class="section" id="characterSelect">
+
+<div class="section-title">
+キャラクター選択
 </div>
 
-<!-- 飛ぶ本 -->
+<div class="character-grid">
 
-<div id="flyingBook"></div>
+<!-- PL1 -->
+
+<div class="character-card"
+onclick="openCharacter('char1')">
+
+<div class="character-name">
+PL1
+</div>
+
+<div class="character-role">
+
+医者<br>
+砂田医師
+
+</div>
+
+</div>
+
+<!-- PL2 -->
+
+<div class="character-card"
+onclick="openCharacter('char2')">
+
+<div class="character-name">
+PL2
+</div>
+
+<div class="character-role">
+
+警察<br>
+竹割巡査
+
+</div>
+
+</div>
+
+<!-- PL3 -->
+
+<div class="character-card"
+onclick="openCharacter('char3')">
+
+<div class="character-name">
+PL3
+</div>
+
+<div class="character-role">
+
+村長<br>
+島名志村長
+
+</div>
+
+</div>
+
+<!-- PL4 -->
+
+<div class="character-card"
+onclick="openCharacter('char4')">
+
+<div class="character-name">
+PL4
+</div>
+
+<div class="character-role">
+
+使用人<br>
+花畑あられ
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- キャラページ -->
+
+<section class="section" id="characterPage">
+
+<div class="character-page">
+
+<div class="character-page-title"
+id="characterTitle">
+
+PL1
+
+</div>
+
+<div class="character-text"
+id="characterText">
+
+ここにテキストが入ります。
+
+</div>
+
+</div>
+
+</section>
+
+<!-- 振り返り -->
+
+<section class="section" id="review">
+
+<div class="section-title">
+振り返り
+</div>
+
+<div class="paper-box">
+
+<p>
+
+ここに各キャラクターの情報、<br>
+真相、エンディング分岐などを追加できます。
+
+</p>
+
+</div>
+
+</section>
 
 <script>
-
-let currentBookRect = null;
-
-function openBook(bookElement){
-
-  document.body.classList.add("opening");
-
-  const modal =
-    document.getElementById("modal");
-
-  const flying =
-    document.getElementById("flyingBook");
-
-  currentBookRect =
-    bookElement.getBoundingClientRect();
-
-  flying.className =
-    bookElement.className;
-
-  flying.id = "flyingBook";
-
-  flying.innerHTML =
-    bookElement.innerHTML;
-
-  flying.style.top =
-    currentBookRect.top + "px";
-
-  flying.style.left =
-    currentBookRect.left + "px";
-
-  flying.style.opacity = "1";
-
-  flying.style.transform =
-    "translate(0,0) scale(1)";
-
-  setTimeout(() => {
-
-    flying.style.top = "50%";
-
-    flying.style.left = "50%";
-
-    flying.style.transform =
-      "translate(-50%, -50%) scale(1.5) rotate(-4deg)";
-
-  }, 20);
-
-  setTimeout(() => {
-
-    modal.style.display = "flex";
-
-    setTimeout(() => {
-
-      modal.classList.add("show");
-
-    }, 30);
-
-  }, 420);
-
-  setTimeout(() => {
-
-    modal.classList.add("show-text");
-
-  }, 700);
-
-  setTimeout(() => {
-
-    flying.style.opacity = "0";
-
-  }, 450);
-
-}
-
-function closeBook(){
-
-  const modal =
-    document.getElementById("modal");
-
-  const flying =
-    document.getElementById("flyingBook");
-
-  modal.classList.remove("show-text");
-
-  setTimeout(() => {
-
-    modal.classList.remove("show");
-
-  }, 80);
-
-  setTimeout(() => {
-
-    modal.style.display = "none";
-
-    flying.style.opacity = "1";
-
-    flying.style.top = "50%";
-
-    flying.style.left = "50%";
-
-    flying.style.transform =
-      "translate(-50%, -50%) scale(1.5) rotate(-4deg)";
-
-    setTimeout(() => {
-
-      flying.style.top =
-        currentBookRect.top + "px";
-
-      flying.style.left =
-        currentBookRect.left + "px";
-
-      flying.style.transform =
-        "translate(0,0) scale(1)";
-
-    }, 20);
-
-    setTimeout(() => {
-
-      flying.style.opacity = "0";
-
-      document.body.classList.remove("opening");
-
-    }, 450);
-
-  }, 350);
-
-}
 
 function showSection(id){
 
@@ -1500,6 +1314,136 @@ function showSection(id){
   document
     .getElementById(id)
     .classList.add("active");
+
+}
+
+/* 本モーション */
+
+function openBook(book){
+
+  const flying =
+    document.getElementById("flyingBook");
+
+  const rect =
+    book.getBoundingClientRect();
+
+  flying.innerHTML =
+    book.innerHTML;
+
+  flying.className =
+    book.className;
+
+  flying.id =
+    "flyingBook";
+
+  flying.style.top =
+    rect.top + "px";
+
+  flying.style.left =
+    rect.left + "px";
+
+  flying.style.opacity = "1";
+
+  flying.style.transform =
+    "scale(1) rotate(0deg)";
+
+  setTimeout(() => {
+
+    flying.style.top = "50%";
+
+    flying.style.left = "50%";
+
+    flying.style.transform =
+      "translate(-50%,-50%) scale(1.5) rotate(-4deg)";
+
+  }, 20);
+
+  setTimeout(() => {
+
+    flying.style.opacity = "0";
+
+    showSection("book");
+
+  }, 500);
+
+}
+
+const characterData = {
+
+  char1:{
+
+    title:"PL1：砂田医師",
+
+    text:`
+
+あなたは村の医者である。<br><br>
+
+古くからこの村に住み、
+村人たちから信頼されている。
+
+`
+
+  },
+
+  char2:{
+
+    title:"PL2：竹割巡査",
+
+    text:`
+
+あなたは村を担当する巡査だ。<br><br>
+
+事件当日、
+真っ先に現場へ駆けつけた。
+
+`
+
+  },
+
+  char3:{
+
+    title:"PL3：島名志村長",
+
+    text:`
+
+あなたはしましま村の村長である。<br><br>
+
+村の秘密を知る立場にいる。
+
+`
+
+  },
+
+  char4:{
+
+    title:"PL4：花畑あられ",
+
+    text:`
+
+あなたは村に仕える使用人だ。<br><br>
+
+長年、
+村長家に仕えている。
+
+`
+
+  }
+
+};
+
+function openCharacter(id){
+
+  document.getElementById(
+    "characterTitle"
+  ).innerHTML =
+    characterData[id].title;
+
+  document.getElementById(
+    "characterText"
+  ).innerHTML =
+    characterData[id].text;
+
+  showSection("characterPage");
 
 }
 
