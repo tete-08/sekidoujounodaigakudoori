@@ -234,9 +234,12 @@ nav a{
 
 .page{
   position:relative;
-  padding:48px 55px 110px;
+  padding:48px 55px;
   background:url('https://www.transparenttextures.com/patterns/paper-fibers.png');
   color:#2d1c12;
+
+  display:flex;
+  flex-direction:column;
 }
 
 .story-title{
@@ -259,6 +262,10 @@ nav a{
   letter-spacing:1px;
   width:88%;
   margin:auto;
+}
+
+.page-content{
+  flex:1;
 }
 
 .start-button,
@@ -308,17 +315,19 @@ nav a{
 }
 
 .back-button,
-.review-button,
 .start-button{
-  position:absolute;
-  bottom:25px;
-  height:56px;
-  z-index:20;
+  width:260px;
+  height:62px;
+  font-size:18px;
 }
 
-.back-button{left:60px;width:230px;}
-.review-button{right:320px;width:180px;}
-.start-button{right:60px;width:230px;}
+.back-button{
+  align-self:flex-start;
+}
+
+.start-button{
+  align-self:flex-end;
+}
 
 .return-button{
   position:fixed;
@@ -411,6 +420,34 @@ nav a{
   background:rgba(20,10,5,0.82);
   border:2px solid rgba(255,230,180,0.12);
   padding:24px;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-back-button{
+  width:100%;
+  height:64px;
+
+  margin-top:18px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border:2px solid rgba(255,230,180,0.18);
+
+  background:rgba(0,0,0,0.25);
+
+  color:#f6ead2;
+
+  cursor:pointer;
+
+  transition:0.25s;
+}
+
+.sidebar-back-button:hover{
+  background:rgba(255,230,180,0.12);
 }
 
 .ho-item{
@@ -433,6 +470,54 @@ nav a{
   padding:70px;
   min-height:760px;
   position:relative;
+
+  padding-bottom:120px;
+}
+
+.ho-buttons{
+
+  position:absolute;
+
+  left:30px;
+  right:30px;
+  bottom:30px;
+
+  display:flex;
+  justify-content:space-between;
+
+}
+
+.ho-bottom-button{
+
+  width:260px;
+  height:60px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border:2px solid #c9a26f;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.ho-bottom-button:hover{
+
+  background:#3d2415;
+  color:#fff;
+
+}
+
+.ho-back{
+
+  background:rgba(255,250,240,0.6);
+}
+
+.ho-start{
+
+  background:rgba(255,250,240,0.6);
 }
 
 .ho-title{
@@ -559,6 +644,18 @@ nav a{
   background:#4a2c18;
   color:white;
   border-radius:12px;
+}
+
+.character-select-buttons{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:60px;
+  width:100%;
+}
+
+.character-select-buttons .character-start{
+  margin:0;
 }
 
 #extendTimeDisplay{
@@ -710,22 +807,6 @@ nav a{
 .author-text a:hover{
   opacity:0.7;
 }
-
-  .back-button,
-  .review-button,
-  .start-button{
-    position:relative;
-    width:100%;
-    left:auto;
-    right:auto;
-    bottom:auto;
-    margin-top:15px;
-  }
-
-  .return-button{
-    width:170px;
-    font-size:15px;
-  }
 
 </style>
 </head>
@@ -913,7 +994,7 @@ YouTube
 
 <div class="divider"></div>
 
-<div class="story-text">
+<div class="story-text page-content">
 あなた方が入村するのは19xx年。
 
 しましま村――。
@@ -934,7 +1015,7 @@ YouTube
 
 <div class="page">
 
-<div class="info-text">
+<div class="info-text page-content">
 
 ■ プレイ人数<br>
 4人（GMレス）<br><br>
@@ -1011,8 +1092,25 @@ YouTube
 
 </div>
 
-<div class="character-start" onclick="startGame()">
-ゲーム開始 →
+<div style="
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:40px;
+">
+
+<div class="character-select-buttons">
+
+  <div class="character-start"
+       onclick="showSection('book')">
+    ← 本棚へ戻る
+  </div>
+
+  <div class="character-start"
+       onclick="startGame()">
+    ゲーム開始 →
+  </div>
+
 </div>
 
 </section>
@@ -1035,20 +1133,56 @@ YouTube
 
 <div class="ho-layout">
 
-<div class="ho-sidebar">
-<h2>HO一覧</h2>
-<div id="discussionMenu"></div>
+  <div class="ho-sidebar">
+
+    <h2>HO一覧</h2>
+
+    <div id="discussionMenu"></div>
+
+<div
+  class="sidebar-back-button"
+  onclick="showSection('library')">
+
+  ← 本棚へ戻る
+
 </div>
 
-<div class="ho-paper">
-<div class="back-button ho-back-button"
-onclick="showSection('library')">
+  </div>
 
-← 本棚へ戻る
+  <div class="ho-paper">
+
+    <div class="ho-title" id="hoTitle">
+      導入HO
+    </div>
+
+    <div class="ho-text" id="hoText">
+      PL1の導入HOです。
+    </div>
+
+    <div class="ho-buttons">
+
+<div
+  class="ho-bottom-button ho-back"
+  onclick="showSection('library')">
+
+  ← 本棚へ戻る
 
 </div>
 
-<div class="ho-title" id="hoTitle">
+      <div
+        class="ho-bottom-button ho-start"
+        id="discussionButton"
+        onclick="handleDiscussionButton()">
+
+        議論を開始する →
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 導入HO
 </div>
 
@@ -1056,27 +1190,6 @@ onclick="showSection('library')">
 PL1の導入HOです。
 </div>
 
-<div style="margin-top:120px; display:flex; justify-content:flex-end; gap:20px;">
-
-<div class="character-start"
-onclick="startDiscussion()">
-
-議論を再開する →
-
-</div>
-
-<div class="character-start"
-id="discussionButton"
-onclick="handleDiscussionButton()">
-
-議論を開始する →
-
-</div>
-
-</div>
-
-</div>
-</div>
 </section>
 
 <section class="section" id="votePage">
@@ -1118,14 +1231,26 @@ PL4
 
 </div>
 
-<div style="margin-top:50px; display:flex; justify-content:center;">
+<div style="
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:20px;
+">
 
-<div class="character-start"
-onclick="confirmVote()">
+  <div class="character-start"
+       onclick="backToHO()">
 
-決定する →
+    ← HOに戻る
 
-</div>
+  </div>
+
+  <div class="character-start"
+       onclick="confirmVote()">
+
+    決定する →
+
+  </div>
 
 </div>
 
@@ -1169,6 +1294,28 @@ OK
 
 <script>
 
+function backToHO(){
+
+  showSection('hoPage');
+
+  if(discussionStarted && !timerRunning){
+    startDiscussion();
+  }
+
+}
+
+function returnToLibrary(){
+
+  selectedCharacter = null;
+
+  document.querySelectorAll('.character-card').forEach(card=>{
+    card.classList.remove('selected');
+  });
+
+  showSection('library');
+
+}
+
 function showSection(id){
 
   const sections = document.querySelectorAll('.section');
@@ -1178,6 +1325,18 @@ function showSection(id){
   });
 
   document.getElementById(id).classList.add('active');
+
+  const timerArea = document.querySelector('.timer-area');
+
+  if(timerArea){
+
+    if(id === 'hoPage'){
+      timerArea.style.display = 'block';
+    }else{
+      timerArea.style.display = 'none';
+    }
+
+  }
 
   window.scrollTo(0,0);
 
@@ -1313,9 +1472,11 @@ function handleDiscussionButton(){
 
   }else{
 
-    showSection('votePage');
+  pauseTimer();
 
-  }
+  showSection('votePage');
+
+}
 
 }
 
