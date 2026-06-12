@@ -1999,60 +1999,28 @@ a,
   }
 }
 
+
+
+/* ===== 本ページのボタン位置調整 ===== */
+.book-action-buttons{
+  justify-content:center;
+  align-items:center;
+}
+
+.book-action-buttons .back-button,
+.book-action-buttons .start-button{
+  margin:0;
+}
+
 @media(max-width:700px){
-
-  #book{
-    padding:16px 8px 70px;
-  }
-
-  .modal{
-    width:100%;
-    overflow-x:hidden;
-  }
-
-  .open-book{
-    display:block;
-    width:100%;
-    max-width:100%;
-    min-width:0;
-    border-width:2px;
-    border-radius:10px;
-  }
-
-  .page{
-    width:100%;
-    min-width:0;
-    padding:26px 18px;
-  }
-
-  .story-text,
-  .info-text{
-    width:100%;
-    margin:0;
-    font-size:14px;
-    line-height:1.75;
-    letter-spacing:0;
-    word-break:break-word;
-  }
-
-  .story-title{
-    font-size:24px;
-  }
-
-  .divider{
-    width:140px;
-  }
-
   .book-action-buttons{
     width:100%;
-    display:flex;
-    flex-direction:column-reverse;
+    flex-direction:column;
     gap:12px;
-    align-items:center;
   }
 
-  .book-action-buttons .start-button,
-  .back-button{
+  .book-action-buttons .back-button,
+  .book-action-buttons .start-button{
     width:100%;
     max-width:none;
   }
@@ -2291,10 +2259,6 @@ a,
 真実へ辿り着けるのだろうか。<br>
 </div>
 
-<a class="back-button" onclick="returnToLibrary()">
-← 本棚へ戻る
-</a>
-
 </div>
 
 <div class="page">
@@ -2318,6 +2282,10 @@ a,
 </div>
 
 <div class="book-action-buttons">
+  <a class="back-button" onclick="returnToLibrary()">
+  ← 本棚へ戻る
+  </a>
+
   <a class="start-button clear-ho-access" id="clearedHOButton" onclick="openClearedHOReview()" style="display:none;">
   クリア済みHO一覧
   </a>
