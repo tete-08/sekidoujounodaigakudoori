@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -205,6 +204,39 @@ nav a{
   letter-spacing:4px;
   padding-top:18px;
   font-family:'Yuji Syuku', serif;
+}
+
+.sns-button{
+
+  width:180px;
+  height:52px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(255,250,240,0.65);
+
+  border:2px solid #82613f;
+
+  color:#2b1a10;
+
+  border-radius:0;
+
+  font-weight:700;
+
+  transition:.25s;
+}
+
+.sns-button:hover{
+  background:#3d2415;
+  color:#fff;
+}
+
+.author-name{
+  font-family:"Zen Kaku Gothic New", sans-serif;
+  font-size:36px;
+  color:#4a2c18;
 }
 
 .book-title{
@@ -527,9 +559,10 @@ nav a{
 }
 
 .ho-text{
-  font-size:20px;
-  line-height:2.2;
-  white-space:pre-line;
+  font-family:"Zen Kaku Gothic New", sans-serif;
+  font-size:22px;
+  line-height:2.4;
+  letter-spacing:1px;
 }
 
 .timer-area{
@@ -574,9 +607,9 @@ nav a{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:rgba(255,255,255,0.08);
-  border:2px solid rgba(255,255,255,0.12);
-  color:#f8e8c8;
+  background:rgba(255,250,240,0.42);
+  border:2px solid rgba(130,97,63,0.45);
+  color:#2b1a10;
   font-size:24px;
   cursor:pointer;
   transition:0.25s;
@@ -613,10 +646,55 @@ nav a{
   text-align:center;
 }
 
+.author-list{
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+}
+
+.author-icon{
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.author-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 0%;
+}
+
+.author{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  padding:20px 40px;
+  background:none;
+  border:none;
+  border-radius:0;
+}
+
+.author + .author{
+  padding-top:80px;
+  border-top:1px solid rgba(120,90,60,.15);
+}
+
+@media(max-width:700px){
+  .author{
+    flex-direction:column;
+    text-align:center;
+  }
+
+}
+
 .popup-text{
   line-height:2;
   margin-bottom:25px;
   white-space:pre-line;
+  text-align:center;
 }
 
 .popup-input{
@@ -660,8 +738,16 @@ nav a{
 
 #extendTimeDisplay{
   font-size:40px;
-  width:80px;
+  min-width:110px;
   text-align:center;
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:6px;
+}
+
+.extend-time-unit{
+  font-size:22px;
 }
 
 .open-book::before{
@@ -693,9 +779,11 @@ nav a{
 }
 
 @media(max-width:1100px){
-
-  .ho-layout{
-    grid-template-columns:1fr;
+  .timer-area{
+    position:sticky;
+    top:10px;
+    right:auto;
+    margin-bottom:15px;
   }
 
   .timer-area{
@@ -704,11 +792,9 @@ nav a{
     right:auto;
     margin-bottom:20px;
   }
-
 }
 
 @media(max-width:700px){
-
   .logo{
     font-size:34px;
     letter-spacing:4px;
@@ -748,17 +834,31 @@ nav a{
     width:170px;
     font-size:15px;
   }
-
 }
 
-.author-icon img{
-  width:120px;
-  height:120px;
-  border-radius:999px;
-  object-fit:cover;
-  border:4px solid #8a6845;
-  display:block;
+.vote-action-buttons{
+  display:flex;
+  justify-content:center;
+  gap:80px;
+  margin-top:60px;
 }
+
+.vote-action-buttons .character-start{
+  width:360px;
+  height:72px;
+  margin:0;
+  font-size:22px;
+}
+
+.ho-text{
+  font-family:"Zen Kaku Gothic New", sans-serif;
+  font-size:22px;
+  line-height:2.4;
+  letter-spacing:1px;
+  white-space:pre-line;
+  word-break:break-word;
+}
+
 .author-name{
   font-size:28px;
   margin-bottom:10px;
@@ -783,13 +883,17 @@ nav a{
 
 .sns-button{
   padding:12px 22px;
-  background:#4a2c18;
-  color:#fff4d6;
   text-decoration:none;
   border-radius:999px;
   border:2px solid #d8b98a;
   transition:0.25s;
   font-weight:700;
+}
+
+.sns-button:hover{
+  background:#fff6e8;
+  color:#2b1a10;
+  transform:translateY(-2px);
 }
 
 .sns-button:hover{
@@ -806,6 +910,283 @@ nav a{
 
 .author-text a:hover{
   opacity:0.7;
+}
+
+
+/* HO内の音声ボタン */
+.audio-button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:42px;
+  height:42px;
+  margin-left:10px;
+  border:2px solid #82613f;
+  border-radius:50%;
+  background:rgba(255,250,240,0.75);
+  color:#2b1a10;
+  cursor:pointer;
+  font-size:20px;
+  vertical-align:middle;
+  transition:.25s;
+}
+
+.audio-button:hover{
+  background:#3d2415;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+
+/* 水平思考クイズ */
+.quiz-box{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#e6d3b0;
+  color:#2b1a10;
+  padding:42px;
+  border-radius:8px;
+}
+
+.quiz-tools{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+  flex-wrap:wrap;
+}
+
+.quiz-range-select{
+  width:min(100%,320px);
+  height:64px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.75);
+  color:#2b1a10;
+  padding:0 14px;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.quiz-tool-button,
+.quiz-page-button,
+.quiz-answer-button{
+  min-height:48px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  cursor:pointer;
+  font-weight:700;
+  transition:.25s;
+}
+
+.quiz-tool-button:hover,
+.quiz-page-button:hover,
+.quiz-answer-button:hover{
+  background:#3d2415;
+  color:#fff;
+}
+
+.quiz-tool-button,
+.quiz-page-button{
+  width:180px;
+  height:52px;
+  font-size:18px;
+}
+
+.quiz-tool-button{
+  max-width:100%;
+}
+
+.quiz-status{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:22px;
+  flex-wrap:wrap;
+}
+
+.quiz-progress{
+  flex:1;
+  min-width:240px;
+}
+
+.quiz-progress-text{
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.quiz-progress-bar{
+  width:100%;
+  height:12px;
+  border:1px solid rgba(80,50,25,0.35);
+  background:rgba(255,250,240,0.45);
+  overflow:hidden;
+}
+
+.quiz-progress-fill{
+  width:0%;
+  height:100%;
+  background:rgba(80,50,25,0.55);
+  transition:.25s;
+}
+
+.quiz-filter-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.quiz-filter-button{
+  min-width:130px;
+  height:46px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  cursor:pointer;
+  font-weight:700;
+  transition:.25s;
+}
+
+.quiz-filter-button:hover,
+.quiz-filter-button.active{
+  background:#3d2415;
+  color:#fff;
+}
+
+.quiz-list{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.quiz-card{
+  background:rgba(255,255,255,0.35);
+  border:2px solid rgba(80,50,25,0.25);
+  padding:24px;
+  border-radius:8px;
+}
+
+.quiz-card.solved{
+  border-color:rgba(80,50,25,0.12);
+  background:rgba(255,255,255,0.14);
+  color:rgba(43,26,16,0.55);
+}
+
+.quiz-card.solved .quiz-title::before{
+  content:'✓ ';
+}
+
+.quiz-card.solved .quiz-answer-button{
+  opacity:.65;
+}
+
+.quiz-head{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+
+.quiz-title{
+  font-size:21px;
+  font-weight:700;
+}
+
+.quiz-solved-label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.quiz-question,
+.quiz-answer{
+  line-height:1.9;
+  white-space:pre-line;
+}
+
+.quiz-answer{
+  display:none;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid rgba(80,50,25,0.25);
+}
+
+.quiz-answer.open{
+  display:block;
+}
+
+.quiz-answer-button{
+  margin-top:16px;
+  width:200px;
+  height:56px;
+  font-size:18px;
+}
+
+.quiz-pager{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-top:32px;
+}
+
+.quiz-page-button{
+  width:130px;
+}
+
+.quiz-page-button:disabled{
+  opacity:.35;
+  cursor:not-allowed;
+}
+
+.quiz-page-info{
+  min-width:190px;
+  text-align:center;
+  font-weight:700;
+}
+
+.quiz-empty{
+  text-align:center;
+  line-height:2;
+  padding:30px;
+}
+
+@media(max-width:700px){
+  .quiz-box{
+    padding:30px 20px;
+  }
+
+  .quiz-tools{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-head{
+    flex-direction:column;
+  }
+
+  .quiz-answer-button,
+  .quiz-page-button,
+  .quiz-tool-button,
+  .quiz-filter-button{
+    width:100%;
+  }
+
+  .quiz-status{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .quiz-pager{
+    flex-direction:column;
+  }
 }
 
 </style>
@@ -827,6 +1208,7 @@ nav a{
 <a onclick="showSection('home')">ホーム</a>
 <a onclick="showSection('library')">マダミス一覧</a>
 <a onclick="showSection('nazotoki')">謎解き</a>
+<a onclick="showSection('lateralQuiz')">水平思考クイズ</a>
 <a onclick="showSection('updates')">更新履歴</a>
 <a onclick="showSection('authors')">作者紹介</a>
 </nav>
@@ -850,9 +1232,7 @@ nav a{
 
 <div class="library">
 <div class="shelf">
-
 <div class="book-wrapper">
-
 <div class="book book-red watoji" onclick="showSection('book')">
 <div class="paper-label">
 火之迦具土神
@@ -883,6 +1263,45 @@ nav a{
 </div>
 </section>
 
+
+
+<section class="section" id="lateralQuiz">
+<div class="section-title">
+水平思考クイズ
+</div>
+
+<div class="quiz-box">
+  <div class="quiz-tools">
+    <button class="quiz-tool-button" onclick="moveQuizPage(-1)">← 前の10問</button>
+    <select class="quiz-range-select" id="quizRangeSelect" onchange="changeQuizRange()"></select>
+    <button class="quiz-tool-button" onclick="moveQuizPage(1)">次の10問 →</button>
+  </div>
+
+  <div class="quiz-status">
+    <div class="quiz-progress">
+      <div class="quiz-progress-text" id="quizProgressText">閲覧率：0/0問（0%）</div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quizProgressFill"></div>
+      </div>
+    </div>
+
+    <div class="quiz-filter-buttons">
+      <button class="quiz-filter-button active" id="quizFilterAll" onclick="setQuizFilter('all')">すべて</button>
+      <button class="quiz-filter-button" id="quizFilterUnviewed" onclick="setQuizFilter('unviewed')">未閲覧のみ</button>
+      <button class="quiz-filter-button" id="quizFilterViewed" onclick="setQuizFilter('viewed')">閲覧済みのみ</button>
+    </div>
+  </div>
+
+  <div class="quiz-list" id="quizList"></div>
+
+  <div class="quiz-pager" id="quizPager">
+    <button class="quiz-page-button" id="quizPrevButton" onclick="moveQuizPage(-1)">← 前の10問</button>
+    <div class="quiz-page-info" id="quizPageInfo"></div>
+    <button class="quiz-page-button" id="quizNextButton" onclick="moveQuizPage(1)">次の10問 →</button>
+  </div>
+</div>
+</section>
+
 <section class="section" id="updates">
 <div class="section-title">
 更新履歴
@@ -891,7 +1310,7 @@ nav a{
 <div class="paper-box">
 <p>
 
-2026/5/29 20:13 : 最終更新
+2026/6/12 17:10 : 最終更新
 
 </p>
 </div>
@@ -904,77 +1323,73 @@ nav a{
 </div>
 
 <div class="paper-box">
+<div class="author-list">
 
-<div class="author">
+  <!-- tete -->
+  <div class="author">
 
-<div class="author-icon">
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500&auto=format&fit=crop">
-</div>
+    <div class="author-icon">
+      <img src="images/1gou.png">
+    </div>
 
-<div>
+    <div>
 
-<div class="author-name">
-tete
-</div>
+      <div class="author-name">
+        tete
+      </div>
 
-<div class="author-role">
-Webサイト構築担当
-</div>
+      <div class="author-role">
+        Webサイト構築担当
+      </div>
 
-<div class="author-text">
+      <div class="author-text">
+        サイト構築を中心に担当しています。
+      </div>
 
-サイト構築を中心に担当しています。
+      <div class="author-links">
 
-<div class="author-links">
+        <a href="https://x.com/_tete_8"
+           target="_blank"
+           class="sns-button">
+          X
+        </a>
 
-<a href="https://x.com/_tete_8"
-target="_blank"
-class="sns-button">
+        <a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6"
+           target="_blank"
+           class="sns-button">
+          YouTube
+        </a>
 
-X
+      </div>
 
-</a>
+    </div>
 
-<a href="https://www.youtube.com/@tete_%E3%81%A6%E3%81%A6"
-target="_blank"
-class="sns-button">
+  </div>
 
-YouTube
+  <!-- ちゃと -->
+  <div class="author">
 
-</a>
+    <div class="author-icon">
+      <img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=500&auto=format&fit=crop">
+    </div>
 
-</div>
+    <div>
 
-</div>
+      <div class="author-name">
+        ちゃと
+      </div>
 
-</div>
+      <div class="author-role">
+        シナリオ制作担当
+      </div>
 
-<div class="author">
+      <div class="author-text">
+        世界観やキャラクター、物語構成を中心に制作しています。
+      </div>
 
-<div class="author-icon">
+    </div>
 
-<img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?q=80&w=500&auto=format&fit=crop">
-
-</div>
-
-<div>
-
-<div class="author-name">
-ちゃと
-</div>
-
-<div class="author-role">
-シナリオ制作担当
-</div>
-
-<div class="author-text">
-世界観やキャラクター、
-物語構成を中心に制作しています。
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </div>
 
@@ -1117,78 +1532,59 @@ margin-top:40px;
 
 <section class="section" id="hoPage">
 
-<div class="timer-area">
-<div class="ho-timer" id="timer">20:00</div>
+  <div class="timer-area">
+    <div class="ho-timer" id="timer">00:10</div>
 
-<div class="timer-buttons">
-<div class="timer-button" onclick="toggleTimer()" id="pauseBtn">
-一時停止
-</div>
+    <div class="timer-buttons">
+      <div class="timer-button" onclick="toggleTimer()" id="pauseBtn">
+        一時停止
+      </div>
 
-<div class="timer-button" onclick="startDiscussion()">
-議論開始
-</div>
-</div>
-</div>
-
-<div class="ho-layout">
-
-  <div class="ho-sidebar">
-
-    <h2>HO一覧</h2>
-
-    <div id="discussionMenu"></div>
-
-<div
-  class="sidebar-back-button"
-  onclick="showSection('library')">
-
-  ← 本棚へ戻る
-
-</div>
-
+      <div class="timer-button" onclick="startDiscussion()">
+        議論再開
+      </div>
+    </div>
   </div>
 
-  <div class="ho-paper">
+  <div class="ho-layout">
 
-    <div class="ho-title" id="hoTitle">
-      導入HO
+    <div class="ho-sidebar">
+      <h2>HO一覧</h2>
+
+      <div id="discussionMenu"></div>
+
+      <div class="sidebar-back-button" onclick="showSection('library')">
+        ← 本棚へ戻る
+      </div>
     </div>
 
-    <div class="ho-text" id="hoText">
-      PL1の導入HOです。
-    </div>
+    <div class="ho-paper">
 
-    <div class="ho-buttons">
+      <div class="ho-title" id="hoTitle">
+        導入HO
+      </div>
 
-<div
-  class="ho-bottom-button ho-back"
-  onclick="showSection('library')">
+      <div class="ho-text" id="hoText">
+        PL1の導入HOです。
+      </div>
 
-  ← 本棚へ戻る
 
-</div>
 
-      <div
-        class="ho-bottom-button ho-start"
-        id="discussionButton"
-        onclick="handleDiscussionButton()">
+      <div class="ho-buttons">
 
-        議論を開始する →
+        <div class="ho-bottom-button ho-back" onclick="showSection('library')">
+          ← 本棚へ戻る
+        </div>
+
+        <div class="ho-bottom-button ho-start" id="discussionButton" onclick="handleDiscussionButton()">
+          議論を開始する →
+        </div>
 
       </div>
 
     </div>
 
   </div>
-
-</div>
-導入HO
-</div>
-
-<div class="ho-text" id="hoText">
-PL1の導入HOです。
-</div>
 
 </section>
 
@@ -1231,26 +1627,21 @@ PL4
 
 </div>
 
-<div style="
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:20px;
-">
+<div class="vote-action-buttons">
 
   <div class="character-start"
        onclick="backToHO()">
 
-    ← HOに戻る
+    ← HOをもう一度みる
 
   </div>
 
-  <div class="character-start"
-       onclick="confirmVote()">
+  <div class="character-start vote-confirm-button"
+     onclick="confirmVote()">
 
-    決定する →
+  決定する →
 
-  </div>
+</div>
 
 </div>
 
@@ -1275,7 +1666,7 @@ gap:20px;
 <button onclick="changeExtendTime(-1)">
 ↓</button>
 
-<div id="extendTimeDisplay">5</div>
+<div id="extendTimeDisplay">5<span class="extend-time-unit">分</span></div>
 
 <button onclick="changeExtendTime(1)">
 ↑</button>
@@ -1289,10 +1680,51 @@ onclick="confirmPopup()">
 OK
 
 </div>
+
+<div class="resume-button"
+id="popupNoExtendButton"
+onclick="goToVoteFromPopup()"
+style="display:none; margin-top:15px;">
+
+延長しない
+
+</div>
+
 </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
+
+function escapeAudioId(id){
+  return String(id).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function renderHOText(text){
+  return String(text).replace(/\[audio:([^\]]+)\]/g, function(match, audioId){
+    const safeId = escapeAudioId(audioId.trim());
+    return '<button class="audio-button" type="button" onclick="playHOAudio(\'' + safeId + '\')" title="音声を再生">🔊</button>';
+  });
+}
+
+function playHOAudio(audioId){
+  const src = 'audio/' + audioId + '.mp3';
+  const audio = new Audio(src);
+  let failed = false;
+
+  audio.addEventListener('error', function(){
+    if(failed){ return; }
+    failed = true;
+    alert('音声ファイル未設定です。\n\n' + src + ' を追加すると再生できます。');
+  });
+
+  audio.play().catch(function(){
+    if(failed){ return; }
+    failed = true;
+    alert('音声ファイル未設定です。\n\n' + src + ' を追加すると再生できます。');
+  });
+}
+
 
 function backToHO(){
 
@@ -1368,7 +1800,7 @@ const HO_DATA = {
   pl2:[
     {
       title:'導入HO（警察）',
-      text:'PL2の導入HOです。\n\nあなたは村を担当する巡査だ。'
+      text:'PL2の導入HOです。\n\nあなたは村を担当する巡査だ。\n\n「あいうえお」と言った。[audio:pl2_intro]'
     }
   ],
 
@@ -1402,7 +1834,7 @@ function startGame(){
   const data = HO_DATA[selectedCharacter][0];
 
   document.getElementById('hoTitle').innerHTML = data.title;
-  document.getElementById('hoText').innerHTML = data.text;
+  document.getElementById('hoText').innerHTML = renderHOText(data.text);
 
 }
 
@@ -1433,7 +1865,7 @@ function buildHOList(){
       div.classList.add('active');
 
       document.getElementById('hoTitle').innerHTML = ho.title;
-      document.getElementById('hoText').innerHTML = ho.text;
+      document.getElementById('hoText').innerHTML = renderHOText(ho.text);
 
     };
 
@@ -1443,7 +1875,7 @@ function buildHOList(){
 
 }
 
-let totalSeconds = 20;
+let totalSeconds = 10;
 let timerInterval = null;
 let timerRunning = false;
 let additionalHOTriggered = false;
@@ -1461,6 +1893,16 @@ let discussionStarted = false;
 
 function handleDiscussionButton(){
 
+  if(document.getElementById('discussionButton').innerHTML.trim() === '議論を再開する'){
+
+    document.getElementById('discussionButton').innerHTML =
+      '投票に進む →';
+
+    startDiscussion();
+
+    return;
+  }
+
   if(!discussionStarted){
 
     discussionStarted = true;
@@ -1472,11 +1914,39 @@ function handleDiscussionButton(){
 
   }else{
 
-  pauseTimer();
+    if(!additionalHOTriggered){
 
-  showSection('votePage');
+      pauseTimer();
 
-}
+      document.getElementById('popupTitle').innerHTML =
+        'まだ議論が足りない';
+
+      document.getElementById('popupText').innerHTML =
+        'まだ十分に議論していないようだ。\n\nもう一度話し合ってみよう。';
+
+      document.querySelector('.time-selector').style.display =
+        'none';
+
+      document.getElementById('popupNoExtendButton').style.display =
+        'none';
+
+      document.getElementById('popup').style.display =
+        'flex';
+
+      popupMode = 'voteBlock';
+
+      document.getElementById('discussionButton').innerHTML =
+        '議論を再開する';
+
+      return;
+
+    }
+
+    pauseTimer();
+
+    showSection('votePage');
+
+  }
 
 }
 
@@ -1494,7 +1964,7 @@ function startDiscussion(){
 
     updateTimerDisplay();
 
-    if(totalSeconds === 10 && !additionalHOTriggered){
+    if(totalSeconds === 5 && !additionalHOTriggered){
 
       additionalHOTriggered = true;
 
@@ -1559,28 +2029,38 @@ const ADDITIONAL_HO = {
 
 };
 
+
+
 function addAdditionalHO(){
 
   const newHO = ADDITIONAL_HO[selectedCharacter];
 
   HO_DATA[selectedCharacter].push({
-
     title:newHO.title,
-
     text:newHO.text
-
   });
 
   buildHOList();
 
+  const latestIndex =
+    HO_DATA[selectedCharacter].length - 1;
+
   const latest =
-    HO_DATA[selectedCharacter][HO_DATA[selectedCharacter].length - 1];
+    HO_DATA[selectedCharacter][latestIndex];
+
+  document.querySelectorAll('.ho-item').forEach(item=>{
+    item.classList.remove('active');
+  });
+
+  const hoItems = document.querySelectorAll('.ho-item');
+
+  hoItems[latestIndex].classList.add('active');
 
   document.getElementById('hoTitle').innerHTML =
     latest.title;
 
   document.getElementById('hoText').innerHTML =
-    latest.text;
+    renderHOText(latest.text);
 
   document.getElementById('popupTitle').innerHTML =
     '追加HO';
@@ -1594,7 +2074,10 @@ function addAdditionalHO(){
   document.getElementById('popup').style.display =
     'flex';
 
-  popupMode = 'resume';
+  popupMode = 'notice';
+
+  document.getElementById('discussionButton').innerHTML =
+  '議論を再開する';
 
 }
 
@@ -1610,6 +2093,7 @@ function openExtendPopup(){
 
   document.querySelector('.time-selector').style.display = 'flex';
 
+  document.getElementById('popupNoExtendButton').style.display = 'flex';
 }
 
 let popupMode = '';
@@ -1625,7 +2109,19 @@ function changeExtendTime(value){
   }
 
   document.getElementById('extendTimeDisplay').innerHTML =
-    extendTime;
+    extendTime + '<span class="extend-time-unit">分</span>';
+
+}
+
+function goToVoteFromPopup(){
+
+  document.getElementById('popup').style.display = 'none';
+
+  document.getElementById('popupNoExtendButton').style.display = 'none';
+
+  pauseTimer();
+
+  showSection('votePage');
 
 }
 
@@ -1648,43 +2144,98 @@ function confirmPopup(){
 
   }
 
-  if(popupMode === 'resume'){
+  if(popupMode === 'voteBlock'){
 
     document.getElementById('popup').style.display = 'none';
 
     startDiscussion();
 
+    return;
+
   }
+
+  if(popupMode === 'notice'){
+
+    document.getElementById('popup').style.display = 'none';
+
+  }
+
+}
+
+const VOTE_RESULT_HO = {
+
+  pl1:{
+    PL1:'PL1用の投票結果HOです。\n\nここにPL1が投票後に読む内容を書きます。',
+    PL2:'PL1用の投票結果HOです。\n\nPL2に投票した場合の内容を書きます。',
+    PL3:'PL1用の投票結果HOです。\n\nPL3に投票した場合の内容を書きます。',
+    PL4:'PL1用の投票結果HOです。\n\nPL4に投票した場合の内容を書きます。'
+  },
+
+  pl2:{
+    PL1:'PL2用の投票結果HOです。\n\nPL1に投票した場合の内容を書きます。',
+    PL2:'PL2用の投票結果HOです。\n\nここにPL2が投票後に読む内容を書きます。',
+    PL3:'PL2用の投票結果HOです。\n\nPL3に投票した場合の内容を書きます。',
+    PL4:'PL2用の投票結果HOです。\n\nPL4に投票した場合の内容を書きます。'
+  },
+
+  pl3:{
+    PL1:'PL3用の投票結果HOです。\n\nPL1に投票した場合の内容を書きます。',
+    PL2:'PL3用の投票結果HOです。\n\nPL2に投票した場合の内容を書きます。',
+    PL3:'PL3用の投票結果HOです。\n\nここにPL3が投票後に読む内容を書きます。',
+    PL4:'PL3用の投票結果HOです。\n\nPL4に投票した場合の内容を書きます。'
+  },
+
+  pl4:{
+    PL1:'PL4用の投票結果HOです。\n\nPL1に投票した場合の内容を書きます。',
+    PL2:'PL4用の投票結果HOです。\n\nPL2に投票した場合の内容を書きます。',
+    PL3:'PL4用の投票結果HOです。\n\nPL3に投票した場合の内容を書きます。',
+    PL4:'PL4用の投票結果HOです。\n\nここにPL4が投票後に読む内容を書きます。'
+  }
+
+};
+
+function getVoteResultText(){
+
+  if(
+    VOTE_RESULT_HO[selectedCharacter] &&
+    VOTE_RESULT_HO[selectedCharacter][selectedVote]
+  ){
+    return VOTE_RESULT_HO[selectedCharacter][selectedVote];
+  }
+
+  return selectedVote + 'に投票した後のHOです。';
+
+}
+
+function showLatestHO(){
+
+  const latestIndex = HO_DATA[selectedCharacter].length - 1;
+  const latest = HO_DATA[selectedCharacter][latestIndex];
+
+  buildHOList();
+
+  document.querySelectorAll('.ho-item').forEach(item=>{
+    item.classList.remove('active');
+  });
+
+  const hoItems = document.querySelectorAll('.ho-item');
+
+  if(hoItems[latestIndex]){
+    hoItems[latestIndex].classList.add('active');
+  }
+
+  document.getElementById('hoTitle').innerHTML = latest.title;
+  document.getElementById('hoText').innerHTML = renderHOText(latest.text);
 
 }
 
 function voteCharacter(name){
 
-  HO_DATA[selectedCharacter].push({
-
-    title:'投票結果',
-
-    text:name + 'を犯人として突き出した。'
-
-  });
-
-  buildHOList();
-
-  if(name === 'PL1'){
-
-    document.getElementById('hoTitle').innerHTML = '犯人発見';
-
-    document.getElementById('hoText').innerHTML = 'PL1を犯人として突き出した。\n\nあなたたちは真相へ辿り着いた。';
-
-  }else{
-
-    document.getElementById('hoTitle').innerHTML = '誤った投票';
-
-    document.getElementById('hoText').innerHTML = name + 'を犯人として突き出した。\n\nしかし、それは誤った選択だった。';
-
-  }
+  selectedVote = name;
+  confirmVote();
 
 }
+
 
 updateTimerDisplay();
 
@@ -1706,19 +2257,6 @@ function selectVote(element,name){
 
 function confirmVote(){
 
-  clearInterval(timerInterval);
-
-timerRunning = false;
-
-totalSeconds = 20;
-
-updateTimerDisplay();
-
-discussionStarted = false;
-
-document.getElementById('discussionButton').innerHTML =
-  '議論を開始する →';
-
   if(!selectedVote){
 
     alert('投票先を選択してください');
@@ -1726,39 +2264,339 @@ document.getElementById('discussionButton').innerHTML =
     return;
   }
 
-  HO_DATA[selectedCharacter].push({
+  clearInterval(timerInterval);
 
+  timerRunning = false;
+
+  totalSeconds = 10;
+
+  updateTimerDisplay();
+
+  discussionStarted = false;
+
+  document.getElementById('discussionButton').innerHTML =
+    '議論を開始する →';
+
+  const existingIndex = HO_DATA[selectedCharacter].findIndex(ho=>ho.title === '投票結果');
+
+  const voteResultHO = {
     title:'投票結果',
+    text:getVoteResultText()
+  };
 
-    text:selectedVote + 'を犯人として突き出した。'
-
-  });
-
-  buildHOList();
-
-  showSection('hoPage');
-
-  if(selectedVote === 'PL1'){
-
-    document.getElementById('hoTitle').innerHTML =
-      '犯人発見';
-
-    document.getElementById('hoText').innerHTML =
-      'PL1を犯人として突き出した。<br><br>あなたたちは真相へ辿り着いた。';
-
+  if(existingIndex >= 0){
+    HO_DATA[selectedCharacter][existingIndex] = voteResultHO;
   }else{
-
-    document.getElementById('hoTitle').innerHTML =
-      '誤った投票';
-
-    document.getElementById('hoText').innerHTML =
-      selectedVote + 'を犯人として突き出した。<br><br>しかし、それは誤った選択だった。';
-
+    HO_DATA[selectedCharacter].push(voteResultHO);
   }
 
+  showSection('hoPage');
+  showLatestHO();
+
 }
+
+
+
+let LATERAL_QUIZZES = [];
+const QUIZ_EXCEL_PATH = 'suihei_question.xlsx';
+
+async function loadLateralQuizzesFromExcel(){
+  const list = document.getElementById('quizList');
+
+  if(list){
+    list.innerHTML = '<div class="quiz-empty">問題データを読み込み中です。</div>';
+  }
+
+  try{
+    const response = await fetch(QUIZ_EXCEL_PATH);
+
+    if(!response.ok){
+      throw new Error('Excelファイルを読み込めませんでした');
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(arrayBuffer, { type:'array' });
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(sheet, { defval:'' });
+
+    LATERAL_QUIZZES = rows
+      .map((row,index)=>{
+        const no = row.no || row.No || row.NO || row['番号'] || row['No.'] || row['問題番号'] || index + 1;
+        const question = row.question || row.Question || row['問題'] || row['問題文'] || '';
+        const answer = row.answer || row.Answer || row['答え'] || row['回答'] || row['解答'] || '';
+
+        return {
+          no:Number(no) || index + 1,
+          question:String(question).trim(),
+          answer:String(answer).trim()
+        };
+      })
+      .filter((quiz)=>quiz.question || quiz.answer)
+      .sort((a,b)=>a.no - b.no);
+
+    currentQuizPage = 0;
+    buildQuizRangeSelect();
+    renderQuizList();
+  }catch(error){
+    console.error(error);
+
+    if(list){
+      list.innerHTML = '<div class="quiz-empty">問題データを読み込めませんでした。<br>suihei_question.xlsx が index.html と同じフォルダに置かれているか確認してください。<br><br>※PCでHTMLを直接開いた場合、ブラウザによってはExcelを読み込めないことがあります。</div>';
+    }
+  }
+}
+
+const QUIZ_PAGE_SIZE = 10;
+const QUIZ_STORAGE_KEY = 'lateralQuizSolved';
+let currentQuizPage = 0;
+let currentQuizFilter = 'all';
+
+function getSolvedQuizzes(){
+  try{
+    return JSON.parse(localStorage.getItem(QUIZ_STORAGE_KEY)) || {};
+  }catch(e){
+    return {};
+  }
+}
+
+function saveSolvedQuizzes(data){
+  localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(data));
+}
+
+function getVisibleQuizzes(){
+  const viewed = getSolvedQuizzes();
+
+  return LATERAL_QUIZZES
+    .map((quiz,index)=>({ ...quiz, originalIndex:index }))
+    .filter((quiz)=>{
+      const isViewed = !!viewed[quiz.originalIndex];
+
+      if(currentQuizFilter === 'viewed'){
+        return isViewed;
+      }
+
+      if(currentQuizFilter === 'unviewed'){
+        return !isViewed;
+      }
+
+      return true;
+    });
+}
+
+function getFilterLabel(){
+  if(currentQuizFilter === 'viewed'){
+    return '閲覧済み';
+  }
+
+  if(currentQuizFilter === 'unviewed'){
+    return '未閲覧';
+  }
+
+  return '全問題';
+}
+
+function setQuizFilter(filter){
+  currentQuizFilter = filter;
+  currentQuizPage = 0;
+  buildQuizRangeSelect();
+  renderQuizList();
+}
+
+function updateQuizFilterButtons(){
+  document.querySelectorAll('.quiz-filter-button').forEach(button=>{
+    button.classList.remove('active');
+  });
+
+  const idMap = {
+    all:'quizFilterAll',
+    unviewed:'quizFilterUnviewed',
+    viewed:'quizFilterViewed'
+  };
+
+  const activeButton = document.getElementById(idMap[currentQuizFilter]);
+
+  if(activeButton){
+    activeButton.classList.add('active');
+  }
+}
+
+function updateQuizProgress(){
+  const viewed = getSolvedQuizzes();
+  const total = LATERAL_QUIZZES.length;
+  const viewedCount = LATERAL_QUIZZES.filter((quiz,index)=>viewed[index]).length;
+  const percent = total === 0 ? 0 : Math.round((viewedCount / total) * 100);
+
+  const progressText = document.getElementById('quizProgressText');
+  const progressFill = document.getElementById('quizProgressFill');
+
+  if(progressText){
+    progressText.textContent = '閲覧率：' + viewedCount + '/' + total + '問（' + percent + '%）';
+  }
+
+  if(progressFill){
+    progressFill.style.width = percent + '%';
+  }
+}
+
+function buildQuizRangeSelect(){
+  const select = document.getElementById('quizRangeSelect');
+  if(!select){ return; }
+
+  const visible = getVisibleQuizzes();
+  const pageCount = Math.max(1, Math.ceil(visible.length / QUIZ_PAGE_SIZE));
+  select.innerHTML = '';
+
+  for(let page = 0; page < pageCount; page++){
+    const start = page * QUIZ_PAGE_SIZE;
+    const end = Math.min((page + 1) * QUIZ_PAGE_SIZE, visible.length);
+    const firstQuizNumber = visible[start] ? visible[start].originalIndex + 1 : 0;
+    const lastQuizNumber = visible[end - 1] ? visible[end - 1].originalIndex + 1 : 0;
+    const option = document.createElement('option');
+    option.value = page;
+
+    if(visible.length === 0){
+      option.textContent = getFilterLabel() + '：該当なし';
+    }else{
+      option.textContent = getFilterLabel() + '：Q' + firstQuizNumber + '〜Q' + lastQuizNumber;
+    }
+
+    select.appendChild(option);
+  }
+
+  select.value = currentQuizPage;
+}
+
+function changeQuizRange(){
+  const select = document.getElementById('quizRangeSelect');
+  currentQuizPage = Number(select.value) || 0;
+  renderQuizList();
+}
+
+function moveQuizPage(direction){
+  const visible = getVisibleQuizzes();
+  const pageCount = Math.max(1, Math.ceil(visible.length / QUIZ_PAGE_SIZE));
+
+  currentQuizPage += direction;
+
+  if(currentQuizPage < 0){
+    currentQuizPage = 0;
+  }
+
+  if(currentQuizPage >= pageCount){
+    currentQuizPage = pageCount - 1;
+  }
+
+  renderQuizList();
+}
+
+function renderQuizList(){
+  const list = document.getElementById('quizList');
+  const pager = document.getElementById('quizPager');
+  const pageInfo = document.getElementById('quizPageInfo');
+  const prevButton = document.getElementById('quizPrevButton');
+  const nextButton = document.getElementById('quizNextButton');
+
+  if(!list){ return; }
+
+  updateQuizFilterButtons();
+  updateQuizProgress();
+
+  const solved = getSolvedQuizzes();
+  const visible = getVisibleQuizzes();
+  const pageCount = Math.max(1, Math.ceil(visible.length / QUIZ_PAGE_SIZE));
+
+  if(currentQuizPage >= pageCount){
+    currentQuizPage = pageCount - 1;
+  }
+
+  const rangeSelect = document.getElementById('quizRangeSelect');
+  if(rangeSelect){
+    buildQuizRangeSelect();
+    rangeSelect.value = currentQuizPage;
+  }
+
+  const start = currentQuizPage * QUIZ_PAGE_SIZE;
+  const quizzes = visible.slice(start, start + QUIZ_PAGE_SIZE);
+
+  list.innerHTML = '';
+
+  if(quizzes.length === 0){
+    list.innerHTML = '<div class="quiz-empty">条件に合う問題がありません。</div>';
+  }
+
+  quizzes.forEach((quiz)=>{
+    const quizIndex = quiz.originalIndex;
+    const card = document.createElement('div');
+    const isSolved = !!solved[quizIndex];
+
+    card.className = 'quiz-card';
+    if(isSolved){
+      card.classList.add('solved');
+    }
+
+    card.innerHTML = `
+      <div class="quiz-head">
+        <div class="quiz-title">Q${quizIndex + 1}</div>
+        <label class="quiz-solved-label">
+          <input type="checkbox" ${isSolved ? 'checked' : ''} onchange="toggleQuizSolved(${quizIndex}, this.checked)">
+          閲覧済み
+        </label>
+      </div>
+      <div class="quiz-question">${escapeHtml(quiz.question)}</div>
+      <button class="quiz-answer-button" onclick="toggleQuizAnswer(this)">答えを見る</button>
+      <div class="quiz-answer">${escapeHtml(quiz.answer)}</div>
+    `;
+
+    list.appendChild(card);
+  });
+
+  if(pager){
+    pager.style.display = visible.length > QUIZ_PAGE_SIZE ? 'flex' : 'none';
+  }
+
+  if(pageInfo){
+    pageInfo.textContent = getFilterLabel() + '：' + (currentQuizPage + 1) + ' / ' + pageCount + 'ページ（' + visible.length + '問）';
+  }
+
+  if(prevButton){
+    prevButton.disabled = currentQuizPage === 0;
+  }
+
+  if(nextButton){
+    nextButton.disabled = currentQuizPage >= pageCount - 1;
+  }
+}
+
+function toggleQuizSolved(index, checked){
+  const solved = getSolvedQuizzes();
+
+  if(checked){
+    solved[index] = true;
+  }else{
+    delete solved[index];
+  }
+
+  saveSolvedQuizzes(solved);
+  renderQuizList();
+}
+
+function toggleQuizAnswer(button){
+  const answer = button.nextElementSibling;
+  const isOpen = answer.classList.toggle('open');
+  button.textContent = isOpen ? '答えを閉じる' : '答えを見る';
+}
+
+function escapeHtml(text){
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+loadLateralQuizzesFromExcel();
 
 </script>
 </body>
 </html>
-```
