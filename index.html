@@ -455,6 +455,14 @@ nav a{
 
   display:flex;
   flex-direction:column;
+  height:80vh;
+  overflow:hidden;
+}
+
+#discussionMenu{
+  flex:1;
+  overflow-y:auto;
+  padding-right:6px;
 }
 
 .sidebar-back-button{
@@ -500,22 +508,19 @@ nav a{
   background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#ead8b7;
   color:#2b1a10;
   padding:70px;
-  min-height:760px;
   position:relative;
-
   padding-bottom:120px;
+
+  height:80vh;
+  overflow-y:auto;
 }
 
 .ho-buttons{
 
-  position:absolute;
-
-  left:30px;
-  right:30px;
-  bottom:30px;
-
   display:flex;
   justify-content:space-between;
+
+  margin-top:60px;
 
 }
 
@@ -690,6 +695,10 @@ nav a{
 
 }
 
+.popup-box{
+  text-align:center;
+}
+
 .popup-text{
   line-height:2;
   margin-bottom:25px;
@@ -852,8 +861,8 @@ nav a{
 
 .ho-text{
   font-family:"Zen Kaku Gothic New", sans-serif;
-  font-size:22px;
-  line-height:2.4;
+  font-size:18px;
+  line-height:2.1;
   letter-spacing:1px;
   white-space:pre-line;
   word-break:break-word;
@@ -913,30 +922,239 @@ nav a{
 }
 
 
-/* HO内の音声ボタン */
-.audio-button{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  width:42px;
-  height:42px;
-  margin-left:10px;
-  border:2px solid #82613f;
-  border-radius:50%;
-  background:rgba(255,250,240,0.75);
+/* 真相解明 */
+.solution-box{
+  position:relative;
+  width:100%;
+  max-width:1000px;
+  margin:auto;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#e6d3b0;
   color:#2b1a10;
-  cursor:pointer;
+  padding:45px;
+  border-radius:8px;
+}
+
+
+.solution-score-fixed{
+  position:absolute;
+  top:18px;
+  right:22px;
+  padding:8px 16px;
+  border:2px solid rgba(80,50,25,0.25);
+  background:rgba(255,250,240,0.65);
+  font-weight:700;
+  font-size:18px;
+}
+
+.solution-lead{
+  text-align:center;
+  line-height:1.6;
+  margin-bottom:24px;
+}
+
+.solution-story{
+  font-size:22px;
+  line-height:1.55;
+  text-align:center;
+}
+
+.solution-input{
+  width:260px;
+  min-height:54px;
+  padding:10px 14px;
+  margin:0 8px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  font-size:18px;
+}
+
+.solution-correct{
+  display:inline-block;
+  min-width:180px;
+  padding:8px 18px;
+  margin:0 8px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.75);
+  font-weight:700;
+}
+
+.solution-mark{
+  margin-left:8px;
+  font-weight:700;
+}
+
+.solution-check-button{
+  width:260px;
+  height:62px;
+  margin:35px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
   font-size:20px;
-  vertical-align:middle;
+  font-weight:700;
+  cursor:pointer;
   transition:.25s;
 }
 
-.audio-button:hover{
+.solution-check-button:hover{
   background:#3d2415;
   color:#fff;
-  transform:translateY(-2px);
 }
 
+.solution-result{
+  margin-top:30px;
+  padding:24px;
+  border:2px solid rgba(80,50,25,0.25);
+  background:rgba(255,255,255,0.3);
+  line-height:2;
+  white-space:pre-line;
+}
+
+.solution-inline-actions{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+.solution-inline-actions .solution-check-button{
+  margin:0;
+}
+
+.ho-text.solution-mode{
+  font-size:18px;
+  line-height:1.55;
+}
+
+.credit-text,
+.author-note-text,
+.ending-text{
+  line-height:1.6;
+}
+
+.ending-actions{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-top:45px;
+}
+
+.ending-actions .ho-bottom-button{
+  position:static;
+}
+
+
+
+/* クリア後HO振り返り */
+.clear-review-box{
+  width:100%;
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:25px;
+}
+
+.clear-review-sidebar{
+  background:rgba(20,10,5,0.82);
+  border:2px solid rgba(255,230,180,0.12);
+  padding:22px;
+  height:80vh;
+  overflow-y:auto;
+}
+
+.clear-review-content{
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#ead8b7;
+  color:#2b1a10;
+  padding:60px;
+  height:80vh;
+  overflow-y:auto;
+}
+
+.clear-review-button{
+  width:100%;
+  min-height:58px;
+  margin-bottom:12px;
+  padding:12px 14px;
+  border:2px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.18);
+  color:#f6ead2;
+  text-align:left;
+  font-size:17px;
+  cursor:pointer;
+}
+
+.clear-review-button.active{
+  background:rgba(255,240,200,0.12);
+  border-color:#f7d79b;
+}
+
+.clear-review-title{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:34px;
+}
+
+.clear-review-text{
+  font-size:17px;
+  line-height:1.9;
+  white-space:pre-line;
+  word-break:break-word;
+}
+
+.clear-review-top-buttons{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  margin-bottom:22px;
+}
+
+.clear-review-top-buttons .clear-review-button{
+  min-width:0;
+  text-align:center;
+  padding:12px 4px;
+}
+
+.clear-ho-access{
+  margin-top:0;
+}
+
+.book-action-buttons{
+  align-self:flex-end;
+  display:flex;
+  gap:18px;
+  margin-top:18px;
+}
+
+.book-action-buttons .start-button{
+  margin:0;
+}
+
+.solution-correct-label{
+  display:inline-block;
+  min-width:180px;
+  padding:8px 18px;
+  margin:0 8px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.75);
+  font-weight:700;
+}
+
+
+@media(max-width:900px){
+  .clear-review-box{
+    grid-template-columns:1fr;
+  }
+  .clear-review-top-buttons{
+    grid-template-columns:1fr 1fr;
+  }
+}
 
 /* 水平思考クイズ */
 .quiz-box{
@@ -1206,7 +1424,7 @@ nav a{
 
 <nav>
 <a onclick="showSection('home')">ホーム</a>
-<a onclick="showSection('library')">マダミス一覧</a>
+<a onclick="returnToLibrary()">マダミス一覧</a>
 <a onclick="showSection('nazotoki')">謎解き</a>
 <a onclick="showSection('lateralQuiz')">水平思考クイズ</a>
 <a onclick="showSection('updates')">更新履歴</a>
@@ -1422,7 +1640,7 @@ nav a{
 事件の真相へ近づいていく。
 </div>
 
-<a class="back-button" onclick="showSection('library')">
+<a class="back-button" onclick="returnToLibrary()">
 ← 本棚へ戻る
 </a>
 
@@ -1441,16 +1659,58 @@ nav a{
 ■ 注意事項<br>
 ・通話推奨<br>
 ・ネタバレ厳禁<br>
-・宗教的表現あり
+・宗教的表現あり<br>
+・音声を使用した演出があります<br>
+・音声が聞けなくてもプレイは可能ですが、<br>
+　より作品を楽しむために音声を聞ける環境を推奨します
 
 </div>
 
-<a class="start-button" onclick="showSection('characterSelect')">
-プレイ開始 →
-</a>
+<div class="book-action-buttons">
+  <a class="start-button clear-ho-access" id="clearedHOButton" onclick="openClearedHOReview()" style="display:none;">
+  クリア済みHO一覧
+  </a>
+
+  <a class="start-button" onclick="showSection('characterSelect')">
+  プレイ開始 →
+  </a>
+</div>
 
 </div>
 </div>
+</div>
+</section>
+
+
+<section class="section" id="clearedHOPage">
+<div class="section-title">
+クリア済みHO一覧
+</div>
+
+<div class="clear-review-box">
+  <div class="clear-review-sidebar">
+    <div class="clear-review-top-buttons">
+      <button class="clear-review-button" onclick="selectClearReviewCharacter('pl1')">PL1</button>
+      <button class="clear-review-button" onclick="selectClearReviewCharacter('pl2')">PL2</button>
+      <button class="clear-review-button" onclick="selectClearReviewCharacter('pl3')">PL3</button>
+      <button class="clear-review-button" onclick="selectClearReviewCharacter('pl4')">PL4</button>
+    </div>
+
+    <div id="clearReviewMenu"></div>
+
+    <div class="sidebar-back-button" onclick="returnToLibrary()">
+      ← 本棚へ戻る
+    </div>
+  </div>
+
+  <div class="clear-review-content">
+    <div class="clear-review-title" id="clearReviewTitle">
+      HO一覧
+    </div>
+    <div class="clear-review-text" id="clearReviewText">
+      読み返したいPLを選択してください。
+    </div>
+  </div>
 </div>
 </section>
 
@@ -1464,11 +1724,11 @@ nav a{
 
 <div class="character-card" onclick="selectCharacter('pl1',this)">
 <div class="character-name">PL1</div>
-<div class="character-role">医者</div>
-<div class="character-age">29歳</div>
+<div class="character-role">医師</div>
+<div class="character-age">51歳</div>
 <div class="character-desc">
-本日付で村に派遣された医師。<br>
-この村へは初めてやってきた。
+砂場城一郎。<br>
+本日からしましま村診療所で働く医師。
 </div>
 </div>
 
@@ -1533,7 +1793,7 @@ margin-top:40px;
 <section class="section" id="hoPage">
 
   <div class="timer-area">
-    <div class="ho-timer" id="timer">00:10</div>
+    <div class="ho-timer" id="timer">20:00</div>
 
     <div class="timer-buttons">
       <div class="timer-button" onclick="toggleTimer()" id="pauseBtn">
@@ -1553,7 +1813,7 @@ margin-top:40px;
 
       <div id="discussionMenu"></div>
 
-      <div class="sidebar-back-button" onclick="showSection('library')">
+      <div class="sidebar-back-button" onclick="returnToLibrary()">
         ← 本棚へ戻る
       </div>
     </div>
@@ -1572,7 +1832,7 @@ margin-top:40px;
 
       <div class="ho-buttons">
 
-        <div class="ho-bottom-button ho-back" onclick="showSection('library')">
+        <div class="ho-bottom-button ho-back" onclick="returnToLibrary()">
           ← 本棚へ戻る
         </div>
 
@@ -1653,6 +1913,38 @@ PL4
 </div>
 </div>
 
+
+<section class="section" id="solutionPage">
+<div class="section-title">
+真相解明
+</div>
+
+<div class="solution-box">
+  <div class="solution-score-fixed" id="solutionScore">正解数：0/3</div>
+  <div class="solution-lead">
+    全員で相談し、事件の真相を埋めてください。
+  </div>
+
+  <div class="solution-story">
+    被害者を殺害した犯人は
+    <span id="culpritArea"></span>
+    だった。<br>
+
+    犯行には
+    <span id="methodArea"></span>
+    が使われた。<br>
+
+    その動機は
+    <span id="motiveArea"></span>
+    である。
+  </div>
+
+  <div class="solution-check-button" onclick="checkSolution()">
+    答え合わせ
+  </div>
+</div>
+</section>
+
 <div class="popup" id="popup">
 <div class="popup-box">
 <div class="popup-title" id="popupTitle">
@@ -1696,36 +1988,6 @@ style="display:none; margin-top:15px;">
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
 
-function escapeAudioId(id){
-  return String(id).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
-}
-
-function renderHOText(text){
-  return String(text).replace(/\[audio:([^\]]+)\]/g, function(match, audioId){
-    const safeId = escapeAudioId(audioId.trim());
-    return '<button class="audio-button" type="button" onclick="playHOAudio(\'' + safeId + '\')" title="音声を再生">🔊</button>';
-  });
-}
-
-function playHOAudio(audioId){
-  const src = 'audio/' + audioId + '.mp3';
-  const audio = new Audio(src);
-  let failed = false;
-
-  audio.addEventListener('error', function(){
-    if(failed){ return; }
-    failed = true;
-    alert('音声ファイル未設定です。\n\n' + src + ' を追加すると再生できます。');
-  });
-
-  audio.play().catch(function(){
-    if(failed){ return; }
-    failed = true;
-    alert('音声ファイル未設定です。\n\n' + src + ' を追加すると再生できます。');
-  });
-}
-
-
 function backToHO(){
 
   showSection('hoPage');
@@ -1738,17 +2000,59 @@ function backToHO(){
 
 function returnToLibrary(){
 
+  pauseTimer();
+
   selectedCharacter = null;
+  selectedVote = null;
+  discussionStarted = false;
+  discussionPhase = 'phase1';
+  additionalHOTriggered = false;
+  secondAdditionalHOTriggered = false;
+  totalSeconds = FIRST_DISCUSSION_SECONDS;
+  HO_DATA = JSON.parse(JSON.stringify(INITIAL_HO_DATA));
+
+  solutionAnswers = {
+    culprit:'',
+    method:'',
+    motive:''
+  };
+
+  solutionCorrect = {
+    culprit:false,
+    method:false,
+    motive:false
+  };
+
+  solutionUnlocked = false;
+  endingUnlocked = false;
+  creditUnlocked = false;
+  secretUnlocked = false;
+  lastViewedHOIndex = 0;
 
   document.querySelectorAll('.character-card').forEach(card=>{
     card.classList.remove('selected');
   });
 
+  document.querySelectorAll('.vote-button').forEach(btn=>{
+    btn.classList.remove('selected');
+  });
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.innerHTML = '議論を開始する →';
+  }
+
+  updateTimerDisplay();
   showSection('library');
 
 }
 
 function showSection(id){
+
+  if(id === 'solutionPage'){
+    openSolutionHO();
+    return;
+  }
 
   const sections = document.querySelectorAll('.section');
 
@@ -1770,11 +2074,20 @@ function showSection(id){
 
   }
 
+  if(id === 'solutionPage'){
+    renderSolutionForm();
+  }
+
   window.scrollTo(0,0);
 
 }
 
 let selectedCharacter = null;
+let solutionUnlocked = false;
+let endingUnlocked = false;
+let creditUnlocked = false;
+let secretUnlocked = false;
+let lastViewedHOIndex = 0;
 
 function selectCharacter(id, element){
 
@@ -1788,19 +2101,105 @@ function selectCharacter(id, element){
 
 }
 
-const HO_DATA = {
+const INITIAL_HO_DATA = {
 
   pl1:[
     {
-      title:'導入HO（医者）',
-      text:'PL1の導入HOです。\n\nあなたは本日、村へ派遣された医師である。'
+      title:'導入HO（医師）',
+      text:`PL1 キャラシート　医師
+
+◯あなたのプロフィール
+砂場　城一郎 (51)
+職業 : 医師
+秘密 : 犯人
+あなたは今日からしましま村診療所で働く医師だ。
+こんな辺鄙な村へようこそ！前任者が辞めてから少し期間が空いたため、村人からは歓迎されている。
+もちろん、村人の健康のためにも力を尽くすつもりだ。
+しかしあなたはただ医師として働きに来たわけではない。とある事件の真相を探りに来たのだ。
+その事件に関わっている人間を見つけた場合は、あるいは。
+
+◯あなたの秘密
+結論から言うと、あなたは村で起きる殺人事件の犯人である。正確に言えば正当防衛だったのだが、気が動転したあなたは死体を森に、凶器を川に捨ててしまった。
+殺人事件の経緯を知るためにも、まずはあなたが村に来た目的を説明しよう。
+
+◯村に来た目的
+8 年前、しましま村で誘拐殺人事件が起きた。
+生まれてすぐの赤子が誘拐されたのだ。
+犯人は村の診療所に勤めていた医師・落葉坂　雲梯 ( おちばざか　うんてい ) 。彼は赤子を誘拐したこと、赤子を殺害したこと、死体は燃やしたこと、犯行は単独で行ったことなどを遺書に書き遺し、首を吊った。
+この事件はしばらく世間を賑わせ、また別の事件が起きる頃には人々に忘れられていった。
+PL1 砂場城一郎を除いて。
+
+◯落葉坂雲梯との関係
+あなたと落葉坂雲梯について話そう。
+あなたはふもとの街にある孤児園で育った。生まれてすぐ親に捨てられたと聞いているが、詳細はわからない。
+あなたは孤立していた。他の子供たちより頭の良かったあなたは、子供らしい遊びをバカバカしく思っていたのだ。 (5 歳くらい -24 とか )そんなあなたが懐いていた人物が 1 人だけいる。
+落葉坂　雲梯。
+後にしましま村診療所の医師となり、誘拐事件の犯人として自殺するその人だ。
+「おまえは頭がいい。その頭は、人のために使うんだよ」
+彼もまた、同じ孤児園で育った孤児だった。医学部に進学し園を出た後でも、彼はときどき園に顔を出していた。
+「うんてい兄さん、次はいつかえってくるの？」
+あなたは彼が来る日を指折り数えて待っていた。彼もまた、あなたを気にかけていたようだった。
+時は経ち、あなたは彼に憧れ医師となった。 (25 歳 -45 歳 )その頃彼はというと、大学病院を辞め、山奥の村にある診療所に勤めていた。
+「絶対に入るな」と孤児園の職員に散々言われた、あの山だ。なんでも、山の神に魅入られて戻って来
+れなくなる、とかなんとか。くだらないと思い忘れていたが、村があったのか。
+なぜ雲梯兄さんがそんな村に行ったのか、気にならないわけではなかった。
+でもきっと、兄さんならどんな場所でも人のために生きている。いつか兄さんに会った時、恥ずかしくない自分でいたい。
+そんな思いを抱きながら、あなたも自分の居場所で懸命に働いていた。
+
+◯雲梯兄さんの自殺と誘拐事件
+そして 8 年前、誘拐事件が起きる。
+『山奥の集落で誘拐事件　犯人は診療所医師』
+『全部私がやりました』『遺書で誘拐自供』
+兄さんは全てを書き遺して首を吊った。
+ありえない。あの雲梯兄さんが、人の道に背くことをするはずがない。
+どうしても信じられなかったあなたは、事件のあった村に直接行って確かめようとした。
+しましま村。兄さんが暮らしていた村の名前までは判明した。しかし、場所がわからない。マスコミ関係や警察関係など辿れる限りの情報を辿ったが、情報の出所はわからなかった。
+それならばと医師として働こうとしたが、診療所にもすぐに新しい医師が補充されてしまった。あなたは諦めざるを得なかった。
+事件から 8 年経った今年、事態は動き出す。しましま村診療所の募集を見つけたのだ。あなたはすぐに手を挙げた。
+これでしましま村に行くことができる。兄さんに何があったのか、 8 年越しに事件の真相を探りに行くのだ。
+
+◯宗教施設「神の子の家」
+求人に応募したあなたを迎えに来たのは、村のものではなかった。
+「はじめまして。砂場先生」
+名刺の肩書には、「神の子の家」と書かれている。
+「神の子の家？」
+「しましま村と深い関係のある団体です。村のすぐ近くにあるんですよ」
+あなたを雇ったのは村ではなく、神の子の家という宗教施設らしい。田舎の求人にしては妙に給金が高かったが、金銭的にも関わっているのだろうか。
+あなたは何度か神の子の家を訪れ、事前説明を受けた。といっても、わざわざ呼ばれて聞く価値もない内容だ。カルテの使い方や診療所の設備説明など、当日でいいだろうに。
+「神って、どんな神なんですか？」
+雑談代わりに聞いてみても、誰もまともに取り合ってくれない。
+「この国をお救いくださるのですよ」
+神の子の家、しましま村に関わる宗教団体。きな臭い連中だ。雲梯兄さんの事件にも関わっているんだろうか。
+
+◯神の子の家で出会った親子
+神の子の家を訪れたある日、あなたは施設内で迷ってしまった。トイレを探していたのだが、場所を聞けるような職員もいない。途方に暮れていると、どこからか女の子の泣き声が聞こえてきた。この施設で子供なんて見たことがない。
+声のする方へ行ってみると、ガラス張りの子供部屋が現れた。中身が丸見えだ。うす桃色の壁紙に、大きな熊のぬいぐるみ、床に散らばっている絵本と、母親に縋りついている女の子。
+「やだー！行かないで！」
+女の子を見てあなたはぎょっとした。火傷だろうか、全身の皮膚がただれている。
+「ほら、いつものあられ、買ってくるから」
+「いらない！前のまだあるもん」
+母親と思しき女性が女の子をなだめている。
+「すぐ帰ってくるからね」
+母親が透明な扉を開けると、泣き声は一層大きくなった。一緒に部屋から出ようとする女の子を、母親は肩を押さえて説得している。
+なんなんだ、この親子は。ガラス張りで丸見えの部屋に、全身が爛れた女の子。異様な光景に呆気を取られているあなたは、ふと女の子がこちらをみていることに気がついた。
+「おじさん、だあれ？」
+その言葉に母親は弾かれたように振り向いた。
+「何しているの！ここから離れて！」
+「いや、トイレを …… 」
+「いいから早く！」
+ものすごい剣幕で怒鳴られたあなたは、驚いて来た道を戻った。
+そんなこんなで、あなたは入村の準備を整えて今日という日を迎えた。
+これからあなたの当日の行動を説明しよう。
+
+◯当日の行動
+9 時 :`
     }
   ],
 
   pl2:[
     {
       title:'導入HO（警察）',
-      text:'PL2の導入HOです。\n\nあなたは村を担当する巡査だ。\n\n「あいうえお」と言った。[audio:pl2_intro]'
+      text:'PL2の導入HOです。\n\nあなたは村を担当する巡査だ。'
     }
   ],
 
@@ -1820,6 +2219,8 @@ const HO_DATA = {
 
 };
 
+let HO_DATA = JSON.parse(JSON.stringify(INITIAL_HO_DATA));
+
 function startGame(){
 
   if(!selectedCharacter){
@@ -1831,54 +2232,342 @@ function startGame(){
 
   buildHOList();
 
-  const data = HO_DATA[selectedCharacter][0];
-
-  document.getElementById('hoTitle').innerHTML = data.title;
-  document.getElementById('hoText').innerHTML = renderHOText(data.text);
+  showHOByIndex(0);
 
 }
 
 function buildHOList(){
 
   const menu = document.getElementById('discussionMenu');
+  if(!menu || !selectedCharacter){ return; }
 
   menu.innerHTML = '';
 
   HO_DATA[selectedCharacter].forEach((ho,index)=>{
 
     const div = document.createElement('div');
-
     div.className = 'ho-item';
-
-    if(index === 0){
+    if(index === 0 && !solutionUnlocked && !endingUnlocked){
       div.classList.add('active');
     }
-
     div.innerHTML = ho.title;
 
     div.onclick = function(){
-
-      document.querySelectorAll('.ho-item').forEach(item=>{
-        item.classList.remove('active');
-      });
-
-      div.classList.add('active');
-
-      document.getElementById('hoTitle').innerHTML = ho.title;
-      document.getElementById('hoText').innerHTML = renderHOText(ho.text);
-
+      showHOByIndex(index);
     };
 
     menu.appendChild(div);
 
   });
 
+  if(solutionUnlocked){
+    addSpecialHOItem('真相解明', function(){
+      showSolutionHO();
+    });
+  }
+
+  if(endingUnlocked){
+    addSpecialHOItem('エンディング', function(){
+      showEndingHO();
+    });
+  }
+
+  if(creditUnlocked){
+    addSpecialHOItem('クレジット', function(){
+      showCreditHO();
+    });
+  }
+
+  if(secretUnlocked){
+    addSpecialHOItem('作者より', function(){
+      showSecretHO();
+    });
+  }
+
 }
 
-let totalSeconds = 10;
+function addSpecialHOItem(title, onclick){
+
+  const menu = document.getElementById('discussionMenu');
+  const div = document.createElement('div');
+
+  div.className = 'ho-item';
+  div.innerHTML = title;
+  div.onclick = onclick;
+
+  menu.appendChild(div);
+
+}
+
+function clearHOActive(){
+
+  document.querySelectorAll('.ho-item').forEach(item=>{
+    item.classList.remove('active');
+  });
+
+}
+
+function setActiveHOItemByTitle(title){
+
+  document.querySelectorAll('.ho-item').forEach(item=>{
+    if(item.textContent.trim() === title){
+      item.classList.add('active');
+      setTimeout(()=>item.scrollIntoView({block:'nearest'}),0);
+    }else{
+      item.classList.remove('active');
+    }
+  });
+
+}
+
+function showHOByIndex(index){
+
+  const ho = HO_DATA[selectedCharacter][index];
+  if(!ho){ return; }
+
+  lastViewedHOIndex = index;
+  clearHOActive();
+
+  const items = document.querySelectorAll('.ho-item');
+  if(items[index]){
+    items[index].classList.add('active');
+  }
+
+  const hoText = document.getElementById('hoText');
+  hoText.classList.remove('solution-mode');
+
+  document.getElementById('hoTitle').innerHTML = ho.title;
+  hoText.innerHTML = escapeHtml(ho.text).replace(/\n/g,'<br>');
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.style.display = 'flex';
+    discussionButton.setAttribute('onclick','handleDiscussionButton()');
+    if(solutionUnlocked){
+      discussionButton.innerHTML = '真相を解明する →';
+    }
+  }
+
+  const paper = document.querySelector('.ho-paper');
+  if(paper){ paper.scrollTop = 0; }
+
+}
+
+function openSolutionHO(){
+
+  solutionUnlocked = true;
+  showSection('hoPage');
+  buildHOList();
+  showSolutionHO();
+
+}
+
+function showSolutionHO(){
+
+  solutionUnlocked = true;
+  buildHOList();
+  setActiveHOItemByTitle('真相解明');
+
+  document.getElementById('hoTitle').innerHTML = '真相解明';
+
+  const hoText = document.getElementById('hoText');
+  hoText.classList.add('solution-mode');
+  hoText.innerHTML = `
+    <div class="solution-box">
+      <div class="solution-score-fixed" id="solutionScore">正解数：0/3</div>
+      <div class="solution-lead">
+        全員で相談し、事件の真相を埋めてください。
+      </div>
+
+      <div class="solution-story">
+        被害者を殺害した犯人は
+        <span id="culpritArea"></span>
+        だった。<br>
+
+        犯行には
+        <span id="methodArea"></span>
+        が使われた。<br>
+
+        その動機は
+        <span id="motiveArea"></span>
+        である。
+      </div>
+
+    </div>
+  `;
+
+  renderSolutionForm();
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.style.display = 'flex';
+    discussionButton.innerHTML = '答え合わせ';
+    discussionButton.setAttribute('onclick','handleSolutionAction()');
+  }
+
+  startSolutionTimer();
+
+  const paper = document.querySelector('.ho-paper');
+  if(paper){ paper.scrollTop = 0; }
+
+}
+
+function startSolutionTimer(){
+
+  pauseTimer();
+  discussionPhase = 'solution';
+  discussionStarted = false;
+  totalSeconds = 5;
+  updateTimerDisplay();
+
+  const timerArea = document.querySelector('.timer-area');
+  if(timerArea){
+    timerArea.style.display = 'block';
+  }
+
+  startDiscussion();
+
+}
+
+function showPreviousHO(){
+
+  showHOByIndex(lastViewedHOIndex);
+
+}
+
+function handleSolutionAction(){
+
+  const allCorrect = Object.values(solutionCorrect).every(Boolean);
+
+  if(allCorrect){
+    unlockEndingHO();
+    showEndingHO();
+    return;
+  }
+
+  checkSolution();
+
+}
+
+function unlockEndingHO(){
+
+  pauseTimer();
+  const timerArea = document.querySelector('.timer-area');
+  if(timerArea){
+    timerArea.style.display = 'none';
+  }
+
+  endingUnlocked = true;
+  creditUnlocked = true;
+  secretUnlocked = true;
+
+  try{
+    localStorage.setItem('shimashima_ending_cleared','true');
+  }catch(error){
+    console.warn(error);
+  }
+
+  updateClearedHOButton();
+  buildHOList();
+
+}
+
+function showEndingHO(){
+
+  unlockEndingHO();
+  setActiveHOItemByTitle('エンディング');
+
+  const hoText = document.getElementById('hoText');
+  hoText.classList.remove('solution-mode');
+
+  document.getElementById('hoTitle').innerHTML = 'エンディング';
+  hoText.innerHTML = `
+    <div class="ending-text">
+      <p>
+        ※ここに最終HO・エンディング本文を追加できます。<br><br>
+        読了お疲れ様でした。<br><br>
+        HO一覧に「クレジット」「作者より」が追加されました。<br>
+        引き続きお楽しみください。<br><br>
+        プレイ開始画面から他視点のHOも閲覧できるように追加しました。<br>
+        ぜひご確認ください。
+      </p>
+    </div>
+  `;
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.style.display = 'none';
+  }
+
+}
+
+function showCreditHO(){
+
+  creditUnlocked = true;
+  setActiveHOItemByTitle('クレジット');
+
+  const hoText = document.getElementById('hoText');
+  hoText.classList.remove('solution-mode');
+
+  document.getElementById('hoTitle').innerHTML = 'クレジット';
+  hoText.innerHTML = `
+    <div class="credit-text">
+      <p>
+        シナリオ制作：ちゃと<br>
+        Webサイト構築：tete<br><br>
+
+        テストプレイに参加してくださった皆様。<br>
+        syakev2、甘煌るな、ジョニー、その他友人の皆様。敬称略。<br><br>
+
+        Special Thanks：プレイヤーの皆様
+      </p>
+    </div>
+  `;
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.style.display = 'none';
+  }
+
+}
+
+function showSecretHO(){
+
+  secretUnlocked = true;
+  setActiveHOItemByTitle('作者より');
+
+  const hoText = document.getElementById('hoText');
+  hoText.classList.remove('solution-mode');
+
+  document.getElementById('hoTitle').innerHTML = '作者より';
+  hoText.innerHTML = `
+    <div class="author-note-text">
+      <p>
+        この度は「しましま村殺人事件」を遊んでいただき、誠にありがとうございます。<br><br>
+        シナリオやWebサイト上の不備・お問い合わせがございましたら、teteのXのDMまでお願いいたします。<br><br>
+        ※ここに作者より本文を追加できます。
+      </p>
+    </div>
+  `;
+
+  const discussionButton = document.getElementById('discussionButton');
+  if(discussionButton){
+    discussionButton.style.display = 'none';
+  }
+
+}
+
+const FIRST_DISCUSSION_SECONDS = 10;
+const FIRST_ADDITIONAL_HO_AFTER_SECONDS = 5;
+const SECOND_DISCUSSION_SECONDS = 10;
+const SECOND_ADDITIONAL_HO_AFTER_SECONDS = 5;
+
+let totalSeconds = FIRST_DISCUSSION_SECONDS;
 let timerInterval = null;
 let timerRunning = false;
 let additionalHOTriggered = false;
+let secondAdditionalHOTriggered = false;
+let discussionPhase = 'phase1';
 
 function updateTimerDisplay(){
 
@@ -1891,21 +2580,82 @@ function updateTimerDisplay(){
 
 let discussionStarted = false;
 
+function openDiscussionBlockPopup(title, text, mode){
+
+  pauseTimer();
+
+  document.getElementById('popupTitle').innerHTML = title;
+  document.getElementById('popupText').innerHTML = text;
+
+  document.querySelector('.time-selector').style.display = 'none';
+  document.getElementById('popupNoExtendButton').style.display = 'none';
+  document.getElementById('popup').style.display = 'flex';
+
+  popupMode = mode;
+
+}
+
 function handleDiscussionButton(){
 
-  if(document.getElementById('discussionButton').innerHTML.trim() === '議論を再開する'){
+  const buttonText = document.getElementById('discussionButton').innerHTML.trim();
+
+  if(buttonText === '次に進む →'){
+    proceedToSecondHO();
+    return;
+  }
+
+  if(buttonText === '第2議論を開始する →'){
+
+    discussionPhase = 'phase2';
+    secondDiscussionStarted = true;
+    totalSeconds = SECOND_DISCUSSION_SECONDS;
+    updateTimerDisplay();
 
     document.getElementById('discussionButton').innerHTML =
-      '投票に進む →';
+      '真相を解明する →';
 
     startDiscussion();
+    return;
+  }
 
+  if(buttonText === '真相を解明する →'){
+
+    if(!secondAdditionalHOTriggered){
+
+      openDiscussionBlockPopup(
+        'まだ情報が足りない',
+        'まだ真相を解明するには情報が足りないようだ。\n\nもう一度話し合ってみよう。',
+        'phase2Block'
+      );
+
+      return;
+    }
+
+    pauseTimer();
+    showSection('solutionPage');
+    return;
+  }
+
+  if(buttonText === '議論を再開する'){
+
+    if(discussionPhase === 'phase2'){
+      document.getElementById('discussionButton').innerHTML =
+        '真相を解明する →';
+    }else{
+      document.getElementById('discussionButton').innerHTML =
+        '投票に進む →';
+    }
+
+    startDiscussion();
     return;
   }
 
   if(!discussionStarted){
 
+    discussionPhase = 'phase1';
     discussionStarted = true;
+    totalSeconds = FIRST_DISCUSSION_SECONDS;
+    updateTimerDisplay();
 
     startDiscussion();
 
@@ -1916,34 +2666,16 @@ function handleDiscussionButton(){
 
     if(!additionalHOTriggered){
 
-      pauseTimer();
-
-      document.getElementById('popupTitle').innerHTML =
-        'まだ議論が足りない';
-
-      document.getElementById('popupText').innerHTML =
-        'まだ十分に議論していないようだ。\n\nもう一度話し合ってみよう。';
-
-      document.querySelector('.time-selector').style.display =
-        'none';
-
-      document.getElementById('popupNoExtendButton').style.display =
-        'none';
-
-      document.getElementById('popup').style.display =
-        'flex';
-
-      popupMode = 'voteBlock';
-
-      document.getElementById('discussionButton').innerHTML =
-        '議論を再開する';
+      openDiscussionBlockPopup(
+        'まだ議論が足りない',
+        'まだ十分に議論していないようだ。\n\nもう一度話し合ってみよう。',
+        'voteBlock'
+      );
 
       return;
-
     }
 
     pauseTimer();
-
     showSection('votePage');
 
   }
@@ -1964,12 +2696,29 @@ function startDiscussion(){
 
     updateTimerDisplay();
 
-    if(totalSeconds === 5 && !additionalHOTriggered){
+    if(
+      discussionPhase === 'phase1' &&
+      totalSeconds === FIRST_DISCUSSION_SECONDS - FIRST_ADDITIONAL_HO_AFTER_SECONDS &&
+      !additionalHOTriggered
+    ){
 
       additionalHOTriggered = true;
 
       pauseTimer();
       addAdditionalHO();
+
+    }
+
+    if(
+      discussionPhase === 'phase2' &&
+      totalSeconds === SECOND_DISCUSSION_SECONDS - SECOND_ADDITIONAL_HO_AFTER_SECONDS &&
+      !secondAdditionalHOTriggered
+    ){
+
+      secondAdditionalHOTriggered = true;
+
+      pauseTimer();
+      addSecondAdditionalHO();
 
     }
 
@@ -2029,6 +2778,128 @@ const ADDITIONAL_HO = {
 
 };
 
+const SECOND_HO = {
+
+  pl1:{
+    title:'第2HO',
+    text:'PL1用の第2HOです。\n\nここに第2議論前に読む情報を書きます。'
+  },
+
+  pl2:{
+    title:'第2HO',
+    text:'PL2用の第2HOです。\n\nここに第2議論前に読む情報を書きます。'
+  },
+
+  pl3:{
+    title:'第2HO',
+    text:'PL3用の第2HOです。\n\nここに第2議論前に読む情報を書きます。'
+  },
+
+  pl4:{
+    title:'第2HO',
+    text:'PL4用の第2HOです。\n\nここに第2議論前に読む情報を書きます。'
+  }
+
+};
+
+const SECOND_ADDITIONAL_HO = {
+
+  pl1:{
+    title:'第2追加HO',
+    text:'PL1用の第2追加HOです。\n\n第2議論の途中で追加される情報を書きます。'
+  },
+
+  pl2:{
+    title:'第2追加HO',
+    text:'PL2用の第2追加HOです。\n\n第2議論の途中で追加される情報を書きます。'
+  },
+
+  pl3:{
+    title:'第2追加HO',
+    text:'PL3用の第2追加HOです。\n\n第2議論の途中で追加される情報を書きます。'
+  },
+
+  pl4:{
+    title:'第2追加HO',
+    text:'PL4用の第2追加HOです。\n\n第2議論の途中で追加される情報を書きます。'
+  }
+
+};
+
+function proceedToSecondHO(){
+
+  const newHO = SECOND_HO[selectedCharacter];
+  const existingIndex = HO_DATA[selectedCharacter].findIndex(ho=>ho.title === newHO.title);
+  const secondHO = {
+    title:newHO.title,
+    text:newHO.text
+  };
+
+  if(existingIndex >= 0){
+    HO_DATA[selectedCharacter][existingIndex] = secondHO;
+  }else{
+    HO_DATA[selectedCharacter].push(secondHO);
+  }
+
+  discussionPhase = 'phase2Ready';
+  secondDiscussionStarted = false;
+  secondAdditionalHOTriggered = false;
+  totalSeconds = SECOND_DISCUSSION_SECONDS;
+  updateTimerDisplay();
+
+  showSection('hoPage');
+  buildHOList();
+  showLatestHO();
+
+  document.getElementById('discussionButton').innerHTML =
+    '第2議論を開始する →';
+
+}
+
+function addSecondAdditionalHO(){
+
+  const newHO = SECOND_ADDITIONAL_HO[selectedCharacter];
+
+  HO_DATA[selectedCharacter].push({
+    title:newHO.title,
+    text:newHO.text
+  });
+
+  buildHOList();
+
+  const latestIndex = HO_DATA[selectedCharacter].length - 1;
+  const latest = HO_DATA[selectedCharacter][latestIndex];
+
+  document.querySelectorAll('.ho-item').forEach(item=>{
+    item.classList.remove('active');
+  });
+
+  const hoItems = document.querySelectorAll('.ho-item');
+
+  if(hoItems[latestIndex]){
+    hoItems[latestIndex].classList.add('active');
+  }
+
+  document.getElementById('hoTitle').innerHTML = latest.title;
+  document.getElementById('hoText').innerHTML = latest.text;
+
+  document.getElementById('popupTitle').innerHTML = '第2追加HO';
+  document.getElementById('popupText').innerHTML =
+    '第2議論用のHOが追加されました。\n\n内容を確認後、「議論を再開する」を押してください。';
+
+  document.querySelector('.time-selector').style.display = 'none';
+  document.getElementById('popupNoExtendButton').style.display = 'none';
+  document.getElementById('popup').style.display = 'flex';
+
+  popupMode = 'notice';
+
+  document.getElementById('discussionButton').innerHTML =
+    '議論を再開する';
+
+}
+
+
+
 
 
 function addAdditionalHO(){
@@ -2060,7 +2931,7 @@ function addAdditionalHO(){
     latest.title;
 
   document.getElementById('hoText').innerHTML =
-    renderHOText(latest.text);
+    latest.text;
 
   document.getElementById('popupTitle').innerHTML =
     '追加HO';
@@ -2120,8 +2991,17 @@ function goToVoteFromPopup(){
   document.getElementById('popupNoExtendButton').style.display = 'none';
 
   pauseTimer();
+  discussionStarted = false;
 
-  showSection('votePage');
+  if(discussionPhase === 'solution'){
+    return;
+  }
+
+  if(discussionPhase === 'phase2'){
+    showSection('solutionPage');
+  }else{
+    showSection('votePage');
+  }
 
 }
 
@@ -2137,6 +3017,7 @@ function confirmPopup(){
       updateTimerDisplay();
 
       document.getElementById('popup').style.display = 'none';
+      document.getElementById('popupNoExtendButton').style.display = 'none';
 
       startDiscussion();
 
@@ -2147,9 +3028,21 @@ function confirmPopup(){
   if(popupMode === 'voteBlock'){
 
     document.getElementById('popup').style.display = 'none';
+    document.getElementById('discussionButton').innerHTML =
+      '投票に進む →';
 
     startDiscussion();
+    return;
 
+  }
+
+  if(popupMode === 'phase2Block'){
+
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('discussionButton').innerHTML =
+      '真相を解明する →';
+
+    startDiscussion();
     return;
 
   }
@@ -2210,22 +3103,7 @@ function getVoteResultText(){
 function showLatestHO(){
 
   const latestIndex = HO_DATA[selectedCharacter].length - 1;
-  const latest = HO_DATA[selectedCharacter][latestIndex];
-
-  buildHOList();
-
-  document.querySelectorAll('.ho-item').forEach(item=>{
-    item.classList.remove('active');
-  });
-
-  const hoItems = document.querySelectorAll('.ho-item');
-
-  if(hoItems[latestIndex]){
-    hoItems[latestIndex].classList.add('active');
-  }
-
-  document.getElementById('hoTitle').innerHTML = latest.title;
-  document.getElementById('hoText').innerHTML = renderHOText(latest.text);
+  showHOByIndex(latestIndex);
 
 }
 
@@ -2268,14 +3146,15 @@ function confirmVote(){
 
   timerRunning = false;
 
-  totalSeconds = 10;
+  totalSeconds = SECOND_DISCUSSION_SECONDS;
 
   updateTimerDisplay();
 
   discussionStarted = false;
+  discussionPhase = 'postVote';
 
   document.getElementById('discussionButton').innerHTML =
-    '議論を開始する →';
+    '次に進む →';
 
   const existingIndex = HO_DATA[selectedCharacter].findIndex(ho=>ho.title === '投票結果');
 
@@ -2291,7 +3170,11 @@ function confirmVote(){
   }
 
   showSection('hoPage');
+  buildHOList();
   showLatestHO();
+
+  document.getElementById('discussionButton').innerHTML =
+    '次に進む →';
 
 }
 
@@ -2594,6 +3477,237 @@ function escapeHtml(text){
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+
+const SOLUTION_OPTIONS = {
+  culprit:['PL1','PL2','PL3','PL4'],
+  method:['毒薬','ナイフ','事故に見せかけた工作'],
+  motive:['復讐','金銭','口封じ']
+};
+
+const SOLUTION_CORRECT = {
+  culprit:'PL3',
+  method:'毒薬',
+  motive:'復讐'
+};
+
+let solutionAnswers = {
+  culprit:'',
+  method:'',
+  motive:''
+};
+
+let solutionCorrect = {
+  culprit:false,
+  method:false,
+  motive:false
+};
+
+function renderSolutionForm(){
+
+  renderSolutionSelect('culpritArea','culprit');
+  renderSolutionSelect('methodArea','method');
+  renderSolutionSelect('motiveArea','motive');
+  updateSolutionScore();
+  updateSolutionActionButton();
+
+}
+
+function renderSolutionSelect(areaId, key){
+
+  const area = document.getElementById(areaId);
+  if(!area){ return; }
+
+  if(solutionCorrect[key]){
+    area.innerHTML =
+      '<span class="solution-correct-label">' +
+      escapeHtml(solutionAnswers[key]) +
+      '</span>';
+    return;
+  }
+
+  let html = '<select class="solution-input" onchange="saveSolutionAnswer(\'' + key + '\', this.value)">';
+  html += '<option value="">選択してください</option>';
+
+  SOLUTION_OPTIONS[key].forEach(option=>{
+    const selected = solutionAnswers[key] === option ? 'selected' : '';
+    html += '<option value="' + escapeHtml(option) + '" ' + selected + '>' + escapeHtml(option) + '</option>';
+  });
+
+  html += '</select>';
+  area.innerHTML = html;
+
+}
+
+function saveSolutionAnswer(key, value){
+  solutionAnswers[key] = value;
+}
+
+function updateSolutionScore(){
+  const score = document.getElementById('solutionScore');
+  if(!score){ return; }
+  const correctCount = Object.values(solutionCorrect).filter(Boolean).length;
+  score.textContent = '正解数：' + correctCount + '/' + Object.keys(SOLUTION_CORRECT).length;
+}
+
+function updateSolutionActionButton(){
+  const button = document.getElementById('discussionButton');
+  if(!button){ return; }
+  const allCorrect = Object.values(solutionCorrect).every(Boolean);
+  button.style.display = 'flex';
+  button.innerHTML = allCorrect ? 'エンディング →' : '答え合わせ';
+  button.setAttribute('onclick','handleSolutionAction()');
+}
+
+
+function checkSolution(){
+
+  Object.keys(SOLUTION_CORRECT).forEach(key=>{
+    if(solutionAnswers[key] === SOLUTION_CORRECT[key]){
+      solutionCorrect[key] = true;
+    }
+  });
+
+  renderSolutionForm();
+  updateSolutionScore();
+  updateSolutionActionButton();
+
+}
+
+
+function hasClearedEnding(){
+  try{
+    return localStorage.getItem('shimashima_ending_cleared') === 'true';
+  }catch(error){
+    return false;
+  }
+}
+
+function updateClearedHOButton(){
+  const button = document.getElementById('clearedHOButton');
+  if(!button){ return; }
+  button.style.display = hasClearedEnding() ? 'flex' : 'none';
+}
+
+let clearReviewCharacter = 'pl1';
+
+function openClearedHOReview(){
+  if(!hasClearedEnding()){
+    alert('エンディング到達後に開放されます。');
+    return;
+  }
+
+  showSection('clearedHOPage');
+  selectClearReviewCharacter(clearReviewCharacter || 'pl1');
+}
+
+function getClearReviewData(characterId){
+  const list = [];
+
+  if(INITIAL_HO_DATA[characterId]){
+    INITIAL_HO_DATA[characterId].forEach(ho=>{
+      list.push({
+        title:ho.title,
+        text:ho.text
+      });
+    });
+  }
+
+  if(ADDITIONAL_HO[characterId]){
+    list.push({
+      title:ADDITIONAL_HO[characterId].title,
+      text:ADDITIONAL_HO[characterId].text
+    });
+  }
+
+  if(VOTE_RESULT_HO[characterId]){
+    Object.keys(VOTE_RESULT_HO[characterId]).forEach(voteName=>{
+      list.push({
+        title:'投票結果（' + voteName + 'に投票）',
+        text:VOTE_RESULT_HO[characterId][voteName]
+      });
+    });
+  }
+
+  if(SECOND_HO[characterId]){
+    list.push({
+      title:SECOND_HO[characterId].title,
+      text:SECOND_HO[characterId].text
+    });
+  }
+
+  if(SECOND_ADDITIONAL_HO[characterId]){
+    list.push({
+      title:SECOND_ADDITIONAL_HO[characterId].title,
+      text:SECOND_ADDITIONAL_HO[characterId].text
+    });
+  }
+
+  list.push({
+    title:'エンディング',
+    text:'※ここに最終HO・エンディング本文を追加できます。\n\n読了お疲れ様でした。\n\nHO一覧に「クレジット」「作者より」が追加されました。\n引き続きお楽しみください。'
+  });
+
+  list.push({
+    title:'クレジット',
+    text:'シナリオ制作：ちゃと\nWebサイト構築：tete\n\nテストプレイに参加してくださった皆様。\nsyakev2、甘煌るな、ジョニー、その他友人の皆様。敬称略。\n\nSpecial Thanks：プレイヤーの皆様'
+  });
+
+  list.push({
+    title:'作者より',
+    text:'この度は「しましま村殺人事件」を遊んでいただき、誠にありがとうございます。\n\nシナリオやWebサイト上の不備・お問い合わせがございましたら、teteのXのDMまでお願いいたします。\n\n※ここに作者より本文を追加できます。'
+  });
+
+  return list;
+}
+
+function selectClearReviewCharacter(characterId){
+  clearReviewCharacter = characterId;
+
+  document.querySelectorAll('.clear-review-top-buttons .clear-review-button').forEach(button=>{
+    button.classList.remove('active');
+    if(button.textContent.trim().toLowerCase() === characterId){
+      button.classList.add('active');
+    }
+  });
+
+  const menu = document.getElementById('clearReviewMenu');
+  if(!menu){ return; }
+
+  const data = getClearReviewData(characterId);
+  menu.innerHTML = '';
+
+  data.forEach((ho,index)=>{
+    const button = document.createElement('button');
+    button.className = 'clear-review-button';
+    button.textContent = ho.title;
+    button.onclick = function(){
+      showClearReviewHO(characterId,index);
+    };
+    menu.appendChild(button);
+  });
+
+  showClearReviewHO(characterId,0);
+}
+
+function showClearReviewHO(characterId,index){
+  const data = getClearReviewData(characterId);
+  const ho = data[index];
+  if(!ho){ return; }
+
+  document.querySelectorAll('#clearReviewMenu .clear-review-button').forEach((button,i)=>{
+    button.classList.toggle('active', i === index);
+  });
+
+  document.getElementById('clearReviewTitle').innerHTML = escapeHtml(characterId.toUpperCase() + '：' + ho.title);
+  document.getElementById('clearReviewText').innerHTML = escapeHtml(ho.text).replace(/\n/g,'<br>');
+
+  const content = document.querySelector('.clear-review-content');
+  if(content){ content.scrollTop = 0; }
+}
+
+updateClearedHOButton();
+
 
 loadLateralQuizzesFromExcel();
 
