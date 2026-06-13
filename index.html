@@ -2026,6 +2026,125 @@ a,
   }
 }
 
+
+/* ===== PC/スマホ表示崩れ修正・最終上書き ===== */
+.section{
+  padding-top:28px;
+}
+
+#book .modal{
+  min-height:calc(100svh - 150px);
+  align-items:center;
+}
+
+.open-book{
+  width:min(1320px, calc(100vw - 48px));
+  min-height:min(620px, calc(100svh - 175px));
+}
+
+.book-action-buttons{
+  width:100%;
+  justify-content:flex-end;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.book-action-buttons .back-button,
+.book-action-buttons .start-button{
+  width:220px;
+  min-width:190px;
+  height:58px;
+  align-self:auto;
+  flex:0 0 auto;
+  font-size:16px;
+}
+
+#clearedHOButton{
+  order:2;
+}
+
+#book .book-action-buttons .back-button{
+  order:1;
+}
+
+#book .book-action-buttons .start-button:not(#clearedHOButton){
+  order:3;
+}
+
+.clear-review-box{
+  width:min(1400px, calc(100vw - 48px));
+}
+
+.clear-review-content,
+.clear-review-sidebar{
+  min-width:0;
+}
+
+.clear-review-text{
+  overflow-wrap:anywhere;
+}
+
+.timer-buttons{
+  flex-wrap:wrap;
+}
+
+.timer-button{
+  min-width:96px;
+}
+
+@media(max-width:900px){
+  #book .modal{
+    min-height:auto;
+  }
+
+  .open-book{
+    width:100%;
+    min-height:auto;
+  }
+
+  .page{
+    padding:26px 18px;
+  }
+
+  .book-action-buttons{
+    justify-content:center;
+    flex-direction:column;
+  }
+
+  .book-action-buttons .back-button,
+  .book-action-buttons .start-button{
+    width:100%;
+    min-width:0;
+    max-width:none;
+  }
+
+  .ho-paper{
+    height:auto;
+    min-height:calc(100svh - 185px);
+    padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  }
+
+  .timer-area{
+    max-width:calc(100vw - 20px);
+  }
+
+  .timer-button{
+    min-width:0;
+  }
+}
+
+@media(max-width:520px){
+  .solution-story{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .clear-review-box{
+    width:100%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2422,6 +2541,7 @@ margin-top:40px;
       <div class="timer-button" onclick="startDiscussion()">
         議論再開
       </div>
+
     </div>
   </div>
 
@@ -3024,7 +3144,13 @@ function showSolutionHO(){
     discussionButton.setAttribute('onclick','handleSolutionAction()');
   }
 
-  startSolutionTimer();
+  // 真相解明中はタイマーを表示・進行しない
+  pauseTimer();
+  discussionPhase = 'solution';
+  const timerArea = document.querySelector('.timer-area');
+  if(timerArea){
+    timerArea.style.display = 'none';
+  }
 
   const paper = document.querySelector('.ho-paper');
   if(paper){ paper.scrollTop = 0; }
@@ -3033,18 +3159,14 @@ function showSolutionHO(){
 
 function startSolutionTimer(){
 
+  // 互換用：真相解明ページではタイマーを使わない
   pauseTimer();
   discussionPhase = 'solution';
-  discussionStarted = false;
-  totalSeconds = 5;
-  updateTimerDisplay();
 
   const timerArea = document.querySelector('.timer-area');
   if(timerArea){
-    timerArea.style.display = 'block';
+    timerArea.style.display = 'none';
   }
-
-  startDiscussion();
 
 }
 
@@ -3251,7 +3373,7 @@ function handleDiscussionButton(){
     }
 
     pauseTimer();
-    showSection('solutionPage');
+    openSolutionHO();
     return;
   }
 
@@ -3372,6 +3494,7 @@ function pauseTimer(){
   timerRunning = false;
 
 }
+
 
 const ADDITIONAL_HO = {
 
@@ -3617,7 +3740,7 @@ function goToVoteFromPopup(){
   }
 
   if(discussionPhase === 'phase2'){
-    showSection('solutionPage');
+    openSolutionHO();
   }else{
     showSection('votePage');
   }
@@ -4422,7 +4545,7 @@ loadLateralQuizzesFromExcel();
     const isMobile = window.matchMedia('(max-width: 900px)').matches;
 
     if(timerArea){
-      if(active && active.id === 'hoPage'){
+      if(active && active.id === 'hoPage' && discussionPhase !== 'solution'){
         timerArea.style.display = isMobile ? 'flex' : 'block';
       }else{
         timerArea.style.display = 'none';
