@@ -37,6 +37,7 @@ img{
 }
 
 
+
 .dust-container{
   position:fixed;
   inset:0;
@@ -47,34 +48,89 @@ img{
 
 .dust{
   position:absolute;
-  bottom:-50px;
-  width:2px;
-  height:2px;
+  bottom:-80px;
+  width:11px;
+  height:11px;
   border-radius:50%;
-  background:rgba(255,235,180,.65);
-  box-shadow:0 0 6px rgba(255,220,150,.5);
+  background:radial-gradient(
+    circle,
+    rgba(255,245,210,.95) 0%,
+    rgba(255,225,150,.75) 35%,
+    rgba(255,225,150,0) 75%
+  );
+  box-shadow:
+    0 0 10px rgba(255,230,170,.9),
+    0 0 24px rgba(255,210,120,.6),
+    0 0 42px rgba(255,210,120,.35);
+  opacity:0;
   animation:dustFloat linear infinite;
 }
 
-.dust:nth-child(1){left:5%;animation-duration:28s;animation-delay:0s;}
-.dust:nth-child(2){left:15%;animation-duration:34s;animation-delay:4s;}
-.dust:nth-child(3){left:28%;animation-duration:30s;animation-delay:2s;}
-.dust:nth-child(4){left:40%;animation-duration:38s;animation-delay:8s;}
-.dust:nth-child(5){left:52%;animation-duration:26s;animation-delay:1s;}
-.dust:nth-child(6){left:63%;animation-duration:36s;animation-delay:5s;}
-.dust:nth-child(7){left:74%;animation-duration:32s;animation-delay:3s;}
-.dust:nth-child(8){left:82%;animation-duration:40s;animation-delay:6s;}
-.dust:nth-child(9){left:90%;animation-duration:29s;animation-delay:2s;}
-.dust:nth-child(10){left:96%;animation-duration:35s;animation-delay:7s;}
+.dust:nth-child(3n){
+  width:8px;
+  height:8px;
+}
+
+.dust:nth-child(4n){
+  width:15px;
+  height:15px;
+}
+
+.dust:nth-child(1){left:4%;animation-duration:35s;animation-delay:0s;}
+.dust:nth-child(2){left:9%;animation-duration:45s;animation-delay:3s;}
+.dust:nth-child(3){left:14%;animation-duration:39s;animation-delay:6s;}
+.dust:nth-child(4){left:19%;animation-duration:51s;animation-delay:1s;}
+.dust:nth-child(5){left:24%;animation-duration:38s;animation-delay:5s;}
+.dust:nth-child(6){left:29%;animation-duration:48s;animation-delay:8s;}
+.dust:nth-child(7){left:34%;animation-duration:41s;animation-delay:2s;}
+.dust:nth-child(8){left:39%;animation-duration:55s;animation-delay:7s;}
+.dust:nth-child(9){left:44%;animation-duration:36s;animation-delay:4s;}
+.dust:nth-child(10){left:49%;animation-duration:49s;animation-delay:9s;}
+.dust:nth-child(11){left:54%;animation-duration:42s;animation-delay:1s;}
+.dust:nth-child(12){left:59%;animation-duration:54s;animation-delay:6s;}
+.dust:nth-child(13){left:64%;animation-duration:38s;animation-delay:3s;}
+.dust:nth-child(14){left:69%;animation-duration:46s;animation-delay:8s;}
+.dust:nth-child(15){left:74%;animation-duration:44s;animation-delay:2s;}
+.dust:nth-child(16){left:79%;animation-duration:57s;animation-delay:5s;}
+.dust:nth-child(17){left:84%;animation-duration:39s;animation-delay:7s;}
+.dust:nth-child(18){left:89%;animation-duration:52s;animation-delay:0s;}
+.dust:nth-child(19){left:94%;animation-duration:41s;animation-delay:4s;}
+.dust:nth-child(20){left:98%;animation-duration:49s;animation-delay:10s;}
+.dust:nth-child(21){left:12%;animation-duration:61s;animation-delay:11s;}
+.dust:nth-child(22){left:31%;animation-duration:58s;animation-delay:13s;}
+.dust:nth-child(23){left:47%;animation-duration:64s;animation-delay:12s;}
+.dust:nth-child(24){left:66%;animation-duration:59s;animation-delay:14s;}
+.dust:nth-child(25){left:86%;animation-duration:62s;animation-delay:15s;}
 
 @keyframes dustFloat{
-0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}
-10%{opacity:.8;}
-25%{transform:translateY(-25vh) translateX(-20px) scale(1.2);}
-50%{transform:translateY(-50vh) translateX(15px) scale(.9);}
-75%{transform:translateY(-75vh) translateX(-25px) scale(1.1);}
-100%{transform:translateY(-120vh) translateX(20px) scale(1);opacity:0;}
+  0%{
+    transform:translateY(0) translateX(0) scale(.7);
+    opacity:0;
+  }
+
+  8%{
+    opacity:.95;
+  }
+
+  25%{
+    transform:translateY(-25vh) translateX(-45px) scale(1.15);
+  }
+
+  50%{
+    transform:translateY(-55vh) translateX(35px) scale(.85);
+    opacity:.85;
+  }
+
+  75%{
+    transform:translateY(-82vh) translateX(-30px) scale(1.25);
+  }
+
+  100%{
+    transform:translateY(-125vh) translateX(45px) scale(.8);
+    opacity:0;
+  }
 }
+
 
 
 header{
@@ -165,8 +221,10 @@ nav a{
   grid-template-columns:repeat(3,1fr);
   gap:60px;
   padding:50px;
-  background:linear-gradient(to bottom,#3b2416,#24140c);
-  border:4px solid #4a2d1a;
+  background:
+    linear-gradient(to bottom,rgba(59,36,22,0.42),rgba(36,20,12,0.48));
+  border:4px solid rgba(74,45,26,0.58);
+  backdrop-filter:blur(1.5px);
 }
 
 .book-wrapper{text-align:center;}
@@ -1966,13 +2024,898 @@ nav a{
   }
 }
 
+
+/* ===== 水平思考クイズ：一覧テーブル風UI ===== */
+#lateralQuiz .section-title{
+  margin-bottom:26px;
+  text-shadow:0 3px 18px rgba(0,0,0,.75);
+}
+
+#lateralQuiz .quiz-box{
+  max-width:1380px;
+  background:rgba(12,9,6,0.72);
+  color:#f6ead2;
+  border:1px solid rgba(214,171,92,0.45);
+  box-shadow:0 22px 70px rgba(0,0,0,.45);
+  backdrop-filter:blur(2px);
+  border-radius:4px;
+  padding:22px 26px 28px;
+}
+
+#lateralQuiz .quiz-tools{
+  margin-bottom:16px;
+}
+
+#lateralQuiz .quiz-range-select,
+#lateralQuiz .quiz-tool-button,
+#lateralQuiz .quiz-page-button,
+#lateralQuiz .quiz-answer-button,
+#lateralQuiz .quiz-filter-button{
+  background:rgba(12,9,6,0.46);
+  color:#f6ead2;
+  border:1px solid rgba(214,171,92,0.55);
+  border-radius:4px;
+  box-shadow:inset 0 0 16px rgba(255,220,150,.03);
+}
+
+#lateralQuiz .quiz-range-select{
+  width:min(100%,360px);
+}
+
+#lateralQuiz .quiz-tool-button:hover,
+#lateralQuiz .quiz-page-button:hover,
+#lateralQuiz .quiz-answer-button:hover,
+#lateralQuiz .quiz-filter-button:hover,
+#lateralQuiz .quiz-filter-button.active{
+  background:rgba(214,171,92,0.18);
+  color:#fff5d8;
+  border-color:rgba(255,210,120,0.95);
+  box-shadow:0 0 18px rgba(255,205,110,.18);
+}
+
+#lateralQuiz .quiz-status{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:26px;
+  margin:16px 0 20px;
+  padding:18px 20px;
+  background:rgba(10,8,6,0.48);
+  border:1px solid rgba(214,171,92,0.35);
+}
+
+#lateralQuiz .quiz-progress{
+  display:none;
+}
+
+.quiz-filter-group{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.quiz-filter-label{
+  color:#f6ead2;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+#lateralQuiz .quiz-list{
+  display:table;
+  width:100%;
+  border-collapse:collapse;
+  border:1px solid rgba(214,171,92,0.35);
+  background:rgba(8,7,5,0.38);
+}
+
+#lateralQuiz .quiz-list::before{
+  content:"";
+  display:table-row;
+}
+
+#lateralQuiz .quiz-table-head{
+  display:table-row;
+  background:rgba(214,171,92,0.13);
+}
+
+#lateralQuiz .quiz-th{
+  display:table-cell;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(214,171,92,0.35);
+  border-right:1px solid rgba(214,171,92,0.24);
+  text-align:center;
+  font-weight:700;
+  color:#f6ead2;
+}
+
+#lateralQuiz .quiz-th:last-child{
+  border-right:none;
+}
+
+#lateralQuiz .quiz-card{
+  display:table-row;
+  background:rgba(10,8,6,0.30);
+  border:none;
+  padding:0;
+  border-radius:0;
+}
+
+#lateralQuiz .quiz-card:hover{
+  background:rgba(255,220,150,0.06);
+}
+
+#lateralQuiz .quiz-card.solved{
+  background:rgba(255,255,255,0.04);
+  color:rgba(246,234,210,0.55);
+}
+
+#lateralQuiz .quiz-head,
+#lateralQuiz .quiz-question,
+#lateralQuiz .quiz-answer,
+#lateralQuiz .quiz-card-actions{
+  display:table-cell;
+  vertical-align:middle;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(214,171,92,0.22);
+  border-right:1px solid rgba(214,171,92,0.20);
+}
+
+#lateralQuiz .quiz-head{
+  width:90px;
+  text-align:center;
+  justify-content:center;
+}
+
+#lateralQuiz .quiz-question{
+  width:auto;
+  line-height:1.75;
+}
+
+#lateralQuiz .quiz-difficulty-cell{
+  display:table-cell;
+  width:150px;
+  text-align:center;
+  vertical-align:middle;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(214,171,92,0.22);
+  border-right:1px solid rgba(214,171,92,0.20);
+  white-space:nowrap;
+}
+
+#lateralQuiz .quiz-viewed-cell{
+  display:table-cell;
+  width:130px;
+  text-align:center;
+  vertical-align:middle;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(214,171,92,0.22);
+  border-right:1px solid rgba(214,171,92,0.20);
+  white-space:nowrap;
+}
+
+#lateralQuiz .quiz-card-actions{
+  width:120px;
+  text-align:center;
+  border-right:none;
+}
+
+#lateralQuiz .quiz-title{
+  font-size:19px;
+  color:#f6ead2;
+}
+
+#lateralQuiz .quiz-card.solved .quiz-title::before{
+  content:"";
+}
+
+.quiz-difficulty{
+  color:#f6ead2;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+#lateralQuiz .quiz-solved-label{
+  justify-content:center;
+  gap:6px;
+  font-size:15px;
+}
+
+#lateralQuiz .quiz-solved-label input{
+  display:none;
+}
+
+#lateralQuiz .quiz-answer-button{
+  width:78px;
+  height:42px;
+  min-height:42px;
+  margin:0;
+  font-size:15px;
+}
+
+#lateralQuiz .quiz-answer{
+  display:none;
+  width:100%;
+  margin:0;
+  padding:14px 16px;
+  border-top:none;
+  border-right:none;
+  background:rgba(255,250,240,0.08);
+  color:#fff3d0;
+}
+
+#lateralQuiz .quiz-answer.open{
+  display:table-row;
+}
+
+#lateralQuiz .quiz-answer.open::before{
+  content:"答え";
+  display:table-cell;
+  width:90px;
+  padding:14px 16px;
+  text-align:center;
+  font-weight:700;
+  border-bottom:1px solid rgba(214,171,92,0.22);
+  border-right:1px solid rgba(214,171,92,0.20);
+}
+
+#lateralQuiz .quiz-answer.open .quiz-answer-inner{
+  display:table-cell;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(214,171,92,0.22);
+  line-height:1.8;
+}
+
+#lateralQuiz .quiz-pager{
+  color:#f6ead2;
+}
+
+#lateralQuiz .quiz-page-info{
+  color:#f6ead2;
+}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-box{
+    padding:20px 14px;
+  }
+
+  #lateralQuiz .quiz-status{
+    align-items:stretch;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .quiz-filter-group{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  #lateralQuiz .quiz-list,
+  #lateralQuiz .quiz-table-head,
+  #lateralQuiz .quiz-card,
+  #lateralQuiz .quiz-head,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell,
+  #lateralQuiz .quiz-card-actions{
+    display:block;
+    width:100%;
+  }
+
+  #lateralQuiz .quiz-table-head{
+    display:none;
+  }
+
+  #lateralQuiz .quiz-card{
+    margin-bottom:16px;
+    border:1px solid rgba(214,171,92,0.32);
+  }
+
+  #lateralQuiz .quiz-head,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell,
+  #lateralQuiz .quiz-card-actions{
+    border-right:none;
+  }
+
+  #lateralQuiz .quiz-answer.open,
+  #lateralQuiz .quiz-answer.open::before,
+  #lateralQuiz .quiz-answer.open .quiz-answer-inner{
+    display:block;
+    width:100%;
+  }
+
+  #lateralQuiz .quiz-answer.open::before{
+    border-right:none;
+  }
+}
+
+
+#lateralQuiz .quiz-empty{
+  display:block;
+  width:100%;
+  color:#f6ead2;
+  text-align:center;
+  line-height:2;
+  padding:42px 20px;
+  border:1px solid rgba(214,171,92,0.35);
+  background:rgba(8,7,5,0.30);
+}
+
+
+/* ===== 水平思考クイズ：紙背景版・読みやすさ調整 ===== */
+#lateralQuiz .quiz-box{
+  max-width:1380px;
+  background:
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+    #e6d3b0;
+  color:#2b1a10;
+  border:2px solid #8c6a45;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  border-radius:8px;
+  padding:32px;
+}
+
+#lateralQuiz .quiz-status{
+  background:rgba(255,250,240,0.30);
+  border:1px solid rgba(130,97,63,0.35);
+}
+
+#lateralQuiz .quiz-filter-label,
+#lateralQuiz .quiz-page-info{
+  color:#2b1a10;
+}
+
+#lateralQuiz .quiz-range-select,
+#lateralQuiz .quiz-tool-button,
+#lateralQuiz .quiz-page-button,
+#lateralQuiz .quiz-answer-button,
+#lateralQuiz .quiz-filter-button{
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  border:2px solid #82613f;
+  box-shadow:none;
+}
+
+#lateralQuiz .quiz-tool-button:hover,
+#lateralQuiz .quiz-page-button:hover,
+#lateralQuiz .quiz-answer-button:hover,
+#lateralQuiz .quiz-filter-button:hover,
+#lateralQuiz .quiz-filter-button.active{
+  background:#3d2415;
+  color:#fff;
+  border-color:#82613f;
+  box-shadow:none;
+}
+
+#lateralQuiz .quiz-list{
+  background:rgba(255,250,240,0.22);
+  border:1px solid rgba(80,50,25,0.28);
+}
+
+#lateralQuiz .quiz-table-head{
+  background:rgba(80,50,25,0.10);
+}
+
+#lateralQuiz .quiz-th{
+  color:#2b1a10;
+  border-bottom:1px solid rgba(80,50,25,0.28);
+  border-right:1px solid rgba(80,50,25,0.18);
+}
+
+#lateralQuiz .quiz-card{
+  background:rgba(255,255,255,0.20);
+}
+
+#lateralQuiz .quiz-card:hover{
+  background:rgba(255,255,255,0.34);
+}
+
+#lateralQuiz .quiz-head,
+#lateralQuiz .quiz-question,
+#lateralQuiz .quiz-answer,
+#lateralQuiz .quiz-card-actions,
+#lateralQuiz .quiz-difficulty-cell,
+#lateralQuiz .quiz-viewed-cell{
+  border-bottom:1px solid rgba(80,50,25,0.22);
+  border-right:1px solid rgba(80,50,25,0.16);
+}
+
+#lateralQuiz .quiz-title,
+#lateralQuiz .quiz-difficulty,
+#lateralQuiz .quiz-solved-label{
+  color:#2b1a10;
+}
+
+#lateralQuiz .quiz-card.solved{
+  background:rgba(255,255,255,0.16);
+  color:rgba(43,26,16,0.62);
+}
+
+#lateralQuiz .quiz-answer-button{
+  width:130px;
+  height:44px;
+  min-height:44px;
+}
+
+#lateralQuiz .quiz-answer.open::before{
+  color:#2b1a10;
+  border-bottom:1px solid rgba(80,50,25,0.22);
+  border-right:1px solid rgba(80,50,25,0.16);
+}
+
+#lateralQuiz .quiz-answer.open .quiz-answer-inner{
+  color:#2b1a10;
+  border-bottom:1px solid rgba(80,50,25,0.22);
+}
+
+#lateralQuiz .quiz-empty{
+  color:#2b1a10;
+  border:1px solid rgba(80,50,25,0.25);
+  background:rgba(255,250,240,0.35);
+}
+
+
+/* ===== 水平思考クイズ：改良版UI ===== */
+#lateralQuiz .quiz-box{
+  max-width:1380px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,250,235,0.95), rgba(230,211,176,0.96) 68%),
+    url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+    #e6d3b0;
+  color:#2b1a10;
+  border:2px solid #8c6a45;
+  box-shadow:0 18px 45px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.28);
+  border-radius:10px;
+  padding:34px;
+}
+
+#lateralQuiz .quiz-tools{
+  padding-bottom:20px;
+  border-bottom:1px solid rgba(130,97,63,0.25);
+}
+
+#lateralQuiz .quiz-status{
+  background:rgba(255,250,240,0.26);
+  border:1px solid rgba(130,97,63,0.26);
+  color:#2b1a10;
+  gap:28px;
+}
+
+#lateralQuiz .quiz-filter-label,
+#lateralQuiz .quiz-page-info{
+  color:#2b1a10;
+}
+
+#lateralQuiz .quiz-range-select,
+#lateralQuiz .quiz-tool-button,
+#lateralQuiz .quiz-page-button,
+#lateralQuiz .quiz-filter-button{
+  background:rgba(255,250,240,0.64);
+  color:#2b1a10;
+  border:2px solid #82613f;
+  box-shadow:none;
+  border-radius:6px;
+}
+
+#lateralQuiz .quiz-tool-button:hover,
+#lateralQuiz .quiz-page-button:hover,
+#lateralQuiz .quiz-filter-button:hover,
+#lateralQuiz .quiz-filter-button.active{
+  background:#3d2415;
+  color:#fff;
+  border-color:#82613f;
+  box-shadow:0 4px 12px rgba(61,36,21,.20);
+}
+
+#lateralQuiz .quiz-list{
+  display:table;
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  background:rgba(255,250,240,0.28);
+  border:1px solid rgba(80,50,25,0.22);
+  border-radius:6px;
+  overflow:hidden;
+}
+
+#lateralQuiz .quiz-table-head{
+  display:table-row;
+  background:linear-gradient(to bottom,rgba(80,50,25,0.16),rgba(80,50,25,0.08));
+}
+
+#lateralQuiz .quiz-th{
+  color:#2b1a10;
+  border-bottom:1px solid rgba(80,50,25,0.24);
+  border-right:1px solid rgba(80,50,25,0.14);
+  font-size:17px;
+}
+
+#lateralQuiz .quiz-card{
+  display:table-row;
+  background:rgba(255,255,255,0.16);
+}
+
+#lateralQuiz .quiz-card:hover{
+  background:rgba(255,255,255,0.34);
+}
+
+#lateralQuiz .quiz-card.solved{
+  background:rgba(255,255,255,0.12);
+  color:rgba(43,26,16,0.72);
+}
+
+#lateralQuiz .quiz-head,
+#lateralQuiz .quiz-question,
+#lateralQuiz .quiz-card-actions,
+#lateralQuiz .quiz-difficulty-cell,
+#lateralQuiz .quiz-viewed-cell{
+  display:table-cell;
+  vertical-align:middle;
+  padding:18px 16px;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+  border-right:1px solid rgba(80,50,25,0.12);
+}
+
+#lateralQuiz .quiz-head{
+  width:88px;
+  text-align:center;
+}
+
+#lateralQuiz .quiz-question{
+  color:#2b1a10;
+  font-weight:500;
+  line-height:1.85;
+  letter-spacing:.03em;
+}
+
+#lateralQuiz .quiz-card.solved .quiz-question{
+  color:rgba(43,26,16,0.72);
+}
+
+#lateralQuiz .quiz-card-actions{
+  width:150px;
+  text-align:center;
+}
+
+#lateralQuiz .quiz-difficulty-cell{
+  width:140px;
+  text-align:center;
+  white-space:nowrap;
+}
+
+#lateralQuiz .quiz-viewed-cell{
+  width:150px;
+  text-align:center;
+  border-right:none;
+  white-space:nowrap;
+}
+
+#lateralQuiz .quiz-title,
+#lateralQuiz .quiz-difficulty,
+#lateralQuiz .quiz-solved-label{
+  color:#2b1a10;
+}
+
+#lateralQuiz .quiz-answer-button{
+  width:124px;
+  height:44px;
+  min-height:44px;
+  margin:0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(to bottom,#6b3f1d,#3d2415);
+  color:#fff6df;
+  border:1px solid #8c6a45;
+  border-radius:5px;
+  font-size:15px;
+  font-weight:700;
+  box-shadow:0 3px 10px rgba(61,36,21,.24);
+}
+
+#lateralQuiz .quiz-answer-button:hover{
+  background:#2b1a10;
+  color:#fff;
+}
+
+#lateralQuiz .quiz-answer{
+  display:none;
+}
+
+#lateralQuiz .quiz-answer.open{
+  display:table-row;
+  background:rgba(255,250,240,0.32);
+}
+
+#lateralQuiz .quiz-answer.open::before{
+  content:"";
+  display:none;
+}
+
+#lateralQuiz .quiz-answer-box{
+  display:table-cell;
+  padding:18px 24px;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+  color:#2b1a10;
+}
+
+#lateralQuiz .quiz-answer-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:64px;
+  height:34px;
+  margin-right:14px;
+  padding:0 16px;
+  border-radius:999px;
+  background:#9b6b2e;
+  color:#fff6df;
+  font-weight:700;
+}
+
+#lateralQuiz .quiz-answer-text{
+  display:inline;
+  color:#2b1a10;
+  font-weight:500;
+  line-height:1.9;
+  letter-spacing:.03em;
+}
+
+#lateralQuiz .quiz-empty{
+  color:#2b1a10;
+  border:1px solid rgba(80,50,25,0.22);
+  background:rgba(255,250,240,0.35);
+}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-box{
+    padding:22px 16px;
+  }
+
+  #lateralQuiz .quiz-status{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  #lateralQuiz .quiz-list,
+  #lateralQuiz .quiz-table-head,
+  #lateralQuiz .quiz-card,
+  #lateralQuiz .quiz-head,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-card-actions,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell,
+  #lateralQuiz .quiz-answer.open,
+  #lateralQuiz .quiz-answer-box{
+    display:block;
+    width:100%;
+  }
+
+  #lateralQuiz .quiz-table-head{
+    display:none;
+  }
+
+  #lateralQuiz .quiz-card{
+    margin-bottom:0;
+    border:1px solid rgba(80,50,25,0.18);
+    border-bottom:none;
+    padding:0;
+    border-radius:6px 6px 0 0;
+  }
+
+  #lateralQuiz .quiz-head,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-card-actions,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell{
+    border-right:none;
+    padding:12px 14px;
+  }
+
+  #lateralQuiz .quiz-head{
+    text-align:left;
+    font-size:18px;
+  }
+
+  #lateralQuiz .quiz-question{
+    font-size:16px;
+  }
+
+  #lateralQuiz .quiz-card-actions{
+    padding-top:8px;
+  }
+
+  #lateralQuiz .quiz-answer-button{
+    width:100%;
+    height:48px;
+  }
+
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell{
+    text-align:left;
+  }
+
+  #lateralQuiz .quiz-difficulty-cell::before{
+    content:"難易度：";
+    font-weight:700;
+    margin-right:8px;
+  }
+
+  #lateralQuiz .quiz-viewed-cell::before{
+    content:"閲覧状態：";
+    font-weight:700;
+    margin-right:8px;
+  }
+
+  #lateralQuiz .quiz-answer.open{
+    margin-bottom:16px;
+    border:1px solid rgba(80,50,25,0.18);
+    border-top:none;
+    border-radius:0 0 6px 6px;
+  }
+
+  #lateralQuiz .quiz-answer-box{
+    padding:16px 14px 18px;
+  }
+
+  #lateralQuiz .quiz-answer-label{
+    margin-bottom:10px;
+  }
+
+  #lateralQuiz .quiz-answer-text{
+    display:block;
+  }
+}
+
+
+/* ChatGPT修正版：答え表示を横長に */
+#lateralQuiz .quiz-answer.open{
+  display:table-row !important;
+}
+
+#lateralQuiz .quiz-answer-box{
+  display:table-cell !important;
+  padding:20px 24px !important;
+}
+
+#lateralQuiz .quiz-answer-label{
+  display:inline-flex !important;
+  vertical-align:top;
+  margin-right:16px !important;
+}
+
+#lateralQuiz .quiz-answer-text{
+  display:inline-block !important;
+  width:calc(100% - 100px);
+  vertical-align:top;
+  white-space:normal !important;
+  word-break:break-word;
+}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-answer-text{
+    display:block !important;
+    width:100% !important;
+    margin-top:10px;
+  }
+}
+
+
+/* ===== 答え表示・最終修正版 2026/6/15 ===== */
+#lateralQuiz .quiz-answer.open{
+  display:table-row !important;
+  background:rgba(255,250,240,0.36) !important;
+}
+
+#lateralQuiz .quiz-answer.open::before{
+  display:none !important;
+  content:none !important;
+}
+
+#lateralQuiz .quiz-answer-spacer{
+  display:table-cell !important;
+  width:88px !important;
+  min-width:88px !important;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+  border-right:1px solid rgba(80,50,25,0.12);
+}
+
+#lateralQuiz .quiz-answer-wide{
+  display:table-cell !important;
+  width:auto !important;
+  padding:18px 24px !important;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+  color:#2b1a10 !important;
+  white-space:normal !important;
+  word-break:normal !important;
+  overflow-wrap:anywhere;
+}
+
+#lateralQuiz .quiz-answer-badge{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  min-width:58px;
+  height:34px;
+  margin-right:16px;
+  padding:0 16px;
+  border-radius:999px;
+  background:#9b6b2e;
+  color:#fff6df;
+  font-weight:700;
+  vertical-align:top;
+  white-space:nowrap !important;
+}
+
+#lateralQuiz .quiz-answer-body{
+  display:inline !important;
+  width:auto !important;
+  white-space:normal !important;
+  word-break:normal !important;
+  overflow-wrap:anywhere;
+  line-height:1.9;
+  font-weight:500;
+  color:#2b1a10 !important;
+}
+
+#lateralQuiz .quiz-answer-box,
+#lateralQuiz .quiz-answer-inner,
+#lateralQuiz .quiz-answer-label,
+#lateralQuiz .quiz-answer-text{
+  writing-mode:horizontal-tb !important;
+  word-break:normal !important;
+}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-answer-spacer{
+    display:none !important;
+  }
+
+  #lateralQuiz .quiz-answer-wide{
+    display:block !important;
+    width:100% !important;
+    padding:16px 14px 18px !important;
+  }
+
+  #lateralQuiz .quiz-answer-badge{
+    margin-bottom:10px;
+  }
+
+  #lateralQuiz .quiz-answer-body{
+    display:block !important;
+  }
+}
+
 </style>
 </head>
 <body>
 <div class="dust-container">
-  <span class="dust"></span><span class="dust"></span><span class="dust"></span>
-  <span class="dust"></span><span class="dust"></span><span class="dust"></span>
-  <span class="dust"></span><span class="dust"></span><span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
   <span class="dust"></span>
 </div>
 
@@ -2097,10 +3040,23 @@ nav a{
       </div>
     </div>
 
-    <div class="quiz-filter-buttons">
-      <button class="quiz-filter-button active" id="quizFilterAll" onclick="setQuizFilter('all')">すべて</button>
-      <button class="quiz-filter-button" id="quizFilterUnviewed" onclick="setQuizFilter('unviewed')">未閲覧のみ</button>
-      <button class="quiz-filter-button" id="quizFilterViewed" onclick="setQuizFilter('viewed')">閲覧済みのみ</button>
+    <div class="quiz-filter-group">
+      <div class="quiz-filter-label">閲覧状態：</div>
+      <div class="quiz-filter-buttons">
+        <button class="quiz-filter-button active" id="quizFilterAll" onclick="setQuizFilter('all')">すべて</button>
+        <button class="quiz-filter-button" id="quizFilterUnviewed" onclick="setQuizFilter('unviewed')">未閲覧のみ</button>
+        <button class="quiz-filter-button" id="quizFilterViewed" onclick="setQuizFilter('viewed')">閲覧済みのみ</button>
+      </div>
+    </div>
+
+    <div class="quiz-filter-group">
+      <div class="quiz-filter-label">難易度：</div>
+      <div class="quiz-filter-buttons">
+        <button class="quiz-filter-button active" id="quizDifficultyAll" onclick="setQuizDifficultyFilter('all')">すべて</button>
+        <button class="quiz-filter-button" id="quizDifficulty1" onclick="setQuizDifficultyFilter(1)">★☆☆</button>
+        <button class="quiz-filter-button" id="quizDifficulty2" onclick="setQuizDifficultyFilter(2)">★★☆</button>
+        <button class="quiz-filter-button" id="quizDifficulty3" onclick="setQuizDifficultyFilter(3)">★★★</button>
+      </div>
     </div>
   </div>
 
@@ -2122,7 +3078,7 @@ nav a{
 <div class="paper-box">
 <p>
 
-2026/6/12 17:10 : 最終更新
+2026/6/15 18:20 : 最終更新
 
 </p>
 </div>
@@ -3801,8 +4757,21 @@ function confirmVote(){
 
 
 
+
 let LATERAL_QUIZZES = [];
-const QUIZ_EXCEL_PATH = 'suihei_question.xlsx';
+
+const QUIZ_EXCEL_CANDIDATES = [
+  'suihei_question.xlsx',
+  './suihei_question.xlsx',
+  'suihei_question.xlsm',
+  './suihei_question.xlsm',
+  'suihei_question.xls',
+  './suihei_question.xls',
+  'suihei_question',
+  './suihei_question',
+  'data/suihei_question.xlsx',
+  './data/suihei_question.xlsx'
+];
 
 async function loadLateralQuizzesFromExcel(){
   const list = document.getElementById('quizList');
@@ -3811,49 +4780,99 @@ async function loadLateralQuizzesFromExcel(){
     list.innerHTML = '<div class="quiz-empty">問題データを読み込み中です。</div>';
   }
 
-  try{
-    const response = await fetch(QUIZ_EXCEL_PATH);
+  for(const path of QUIZ_EXCEL_CANDIDATES){
+    try{
+      const response = await fetch(path + '?v=' + Date.now());
 
-    if(!response.ok){
-      throw new Error('Excelファイルを読み込めませんでした');
-    }
+      if(!response.ok){
+        continue;
+      }
 
-    const arrayBuffer = await response.arrayBuffer();
-    const workbook = XLSX.read(arrayBuffer, { type:'array' });
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const rows = XLSX.utils.sheet_to_json(sheet, { defval:'' });
+      const arrayBuffer = await response.arrayBuffer();
+      applyQuizWorkbook(arrayBuffer);
+      return;
 
-    LATERAL_QUIZZES = rows
-      .map((row,index)=>{
-        const no = row.no || row.No || row.NO || row['番号'] || row['No.'] || row['問題番号'] || index + 1;
-        const question = row.question || row.Question || row['問題'] || row['問題文'] || '';
-        const answer = row.answer || row.Answer || row['答え'] || row['回答'] || row['解答'] || '';
-
-        return {
-          no:Number(no) || index + 1,
-          question:String(question).trim(),
-          answer:String(answer).trim()
-        };
-      })
-      .filter((quiz)=>quiz.question || quiz.answer)
-      .sort((a,b)=>a.no - b.no);
-
-    currentQuizPage = 0;
-    buildQuizRangeSelect();
-    renderQuizList();
-  }catch(error){
-    console.error(error);
-
-    if(list){
-      list.innerHTML = '<div class="quiz-empty">問題データを読み込めませんでした。<br>suihei_question.xlsx が index.html と同じフォルダに置かれているか確認してください。<br><br>※PCでHTMLを直接開いた場合、ブラウザによってはExcelを読み込めないことがあります。</div>';
+    }catch(error){
+      // 次の候補を試す
     }
   }
+
+  renderQuizLoadError();
 }
+
+function applyQuizWorkbook(arrayBuffer){
+  const workbook = XLSX.read(arrayBuffer, { type:'array' });
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(sheet, { defval:'' });
+
+  LATERAL_QUIZZES = rows
+    .map((row,index)=>{
+      const no = row.no || row.No || row.NO || row['番号'] || row['No.'] || row['問題番号'] || index + 1;
+      const question = row.question || row.Question || row['問題'] || row['問題文'] || '';
+      const answer = row.answer || row.Answer || row['答え'] || row['回答'] || row['解答'] || '';
+      const difficultyRaw = row.difficulty || row.Difficulty || row['難易度'] || row['レベル'] || row.level || row.Level || '';
+      const difficulty = Number(difficultyRaw);
+
+      return {
+        no:Number(no) || index + 1,
+        question:String(question).trim(),
+        answer:String(answer).trim(),
+        difficulty:[1,2,3].includes(difficulty) ? difficulty : ''
+      };
+    })
+    .filter((quiz)=>quiz.question || quiz.answer)
+    .sort((a,b)=>a.no - b.no);
+
+  currentQuizPage = 0;
+  buildQuizRangeSelect();
+  renderQuizList();
+}
+
+function handleQuizExcelFile(input){
+  const file = input.files && input.files[0];
+
+  if(!file){
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(event){
+    try{
+      applyQuizWorkbook(event.target.result);
+    }catch(error){
+      console.error(error);
+      renderQuizLoadError('選択したExcelを読み込めませんでした。');
+    }
+  };
+
+  reader.readAsArrayBuffer(file);
+}
+
+function renderQuizLoadError(message){
+  const list = document.getElementById('quizList');
+
+  if(list){
+    list.innerHTML = `
+      <div class="quiz-empty">
+        ${message || '問題データを読み込めませんでした。'}<br>
+        suihei_question.xlsx が index.html と同じフォルダにある場合は、VSCodeのLive Serverで開いてください。<br><br>
+        直接HTMLを開いている場合は、下のボタンからExcelを選択すると読み込めます。<br><br>
+        <label class="quiz-tool-button" style="display:inline-flex; width:240px;">
+          Excelを選択
+          <input type="file" accept=".xlsx,.xls,.xlsm" onchange="handleQuizExcelFile(this)" style="display:none;">
+        </label>
+      </div>
+    `;
+  }
+}
+
 
 const QUIZ_PAGE_SIZE = 10;
 const QUIZ_STORAGE_KEY = 'lateralQuizSolved';
 let currentQuizPage = 0;
 let currentQuizFilter = 'all';
+let currentQuizDifficultyFilter = 'all';
 
 function getSolvedQuizzes(){
   try{
@@ -3879,8 +4898,12 @@ function getVisibleQuizzes(){
         return isViewed;
       }
 
-      if(currentQuizFilter === 'unviewed'){
-        return !isViewed;
+      if(currentQuizFilter === 'unviewed' && isViewed){
+        return false;
+      }
+
+      if(currentQuizDifficultyFilter !== 'all' && Number(quiz.difficulty) !== Number(currentQuizDifficultyFilter)){
+        return false;
       }
 
       return true;
@@ -3899,6 +4922,56 @@ function getFilterLabel(){
   return '全問題';
 }
 
+
+function getDifficultyStars(level){
+  switch(Number(level)){
+    case 1:
+      return '★☆☆';
+    case 2:
+      return '★★☆';
+    case 3:
+      return '★★★';
+    default:
+      return '---';
+  }
+}
+
+function getDifficultyLabel(){
+  if(currentQuizDifficultyFilter === 'all'){
+    return '難易度すべて';
+  }
+  return getDifficultyStars(currentQuizDifficultyFilter);
+}
+
+function setQuizDifficultyFilter(level){
+  currentQuizDifficultyFilter = level;
+  currentQuizPage = 0;
+  buildQuizRangeSelect();
+  renderQuizList();
+}
+
+function updateQuizDifficultyButtons(){
+  const idMap = {
+    all:'quizDifficultyAll',
+    1:'quizDifficulty1',
+    2:'quizDifficulty2',
+    3:'quizDifficulty3'
+  };
+
+  Object.values(idMap).forEach(id=>{
+    const button = document.getElementById(id);
+    if(button){
+      button.classList.remove('active');
+    }
+  });
+
+  const activeButton = document.getElementById(idMap[currentQuizDifficultyFilter]);
+  if(activeButton){
+    activeButton.classList.add('active');
+  }
+}
+
+
 function setQuizFilter(filter){
   currentQuizFilter = filter;
   currentQuizPage = 0;
@@ -3907,8 +4980,11 @@ function setQuizFilter(filter){
 }
 
 function updateQuizFilterButtons(){
-  document.querySelectorAll('.quiz-filter-button').forEach(button=>{
-    button.classList.remove('active');
+  ['quizFilterAll','quizFilterUnviewed','quizFilterViewed'].forEach(id=>{
+    const button = document.getElementById(id);
+    if(button){
+      button.classList.remove('active');
+    }
   });
 
   const idMap = {
@@ -3959,9 +5035,9 @@ function buildQuizRangeSelect(){
     option.value = page;
 
     if(visible.length === 0){
-      option.textContent = getFilterLabel() + '：該当なし';
+      option.textContent = getFilterLabel() + ' / ' + getDifficultyLabel() + '：該当なし';
     }else{
-      option.textContent = getFilterLabel() + '：Q' + firstQuizNumber + '〜Q' + lastQuizNumber;
+      option.textContent = getFilterLabel() + ' / ' + getDifficultyLabel() + '：Q' + firstQuizNumber + '〜Q' + lastQuizNumber;
     }
 
     select.appendChild(option);
@@ -3993,6 +5069,7 @@ function moveQuizPage(direction){
   renderQuizList();
 }
 
+
 function renderQuizList(){
   const list = document.getElementById('quizList');
   const pager = document.getElementById('quizPager');
@@ -4003,6 +5080,7 @@ function renderQuizList(){
   if(!list){ return; }
 
   updateQuizFilterButtons();
+  updateQuizDifficultyButtons();
   updateQuizProgress();
 
   const solved = getSolvedQuizzes();
@@ -4022,7 +5100,15 @@ function renderQuizList(){
   const start = currentQuizPage * QUIZ_PAGE_SIZE;
   const quizzes = visible.slice(start, start + QUIZ_PAGE_SIZE);
 
-  list.innerHTML = '';
+  list.innerHTML = `
+    <div class="quiz-table-head">
+      <div class="quiz-th">No.</div>
+      <div class="quiz-th">問題</div>
+      <div class="quiz-th">操作</div>
+      <div class="quiz-th">難易度</div>
+      <div class="quiz-th">閲覧状態</div>
+    </div>
+  `;
 
   if(quizzes.length === 0){
     list.innerHTML = '<div class="quiz-empty">条件に合う問題がありません。</div>';
@@ -4030,9 +5116,11 @@ function renderQuizList(){
 
   quizzes.forEach((quiz)=>{
     const quizIndex = quiz.originalIndex;
-    const card = document.createElement('div');
+    const quizKey = 'quiz-' + quizIndex;
+    const answerId = 'answer-' + quizIndex;
     const isSolved = !!solved[quizIndex];
 
+    const card = document.createElement('div');
     card.className = 'quiz-card';
     if(isSolved){
       card.classList.add('solved');
@@ -4040,18 +5128,44 @@ function renderQuizList(){
 
     card.innerHTML = `
       <div class="quiz-head">
-        <div class="quiz-title">Q${quizIndex + 1}</div>
+        <div class="quiz-title">${String(quiz.no || quizIndex + 1).padStart(3,'0')}</div>
+      </div>
+
+      <div class="quiz-question">
+        ${escapeHtml(quiz.question)}
+      </div>
+
+      <div class="quiz-card-actions">
+        <button class="quiz-answer-button" onclick="toggleQuizAnswer(this, '${answerId}', '${quizIndex}')">
+          答えを見る
+        </button>
+      </div>
+
+      <div class="quiz-difficulty-cell">
+        <span class="quiz-difficulty">${getDifficultyStars(quiz.difficulty)}</span>
+      </div>
+
+      <div class="quiz-viewed-cell">
         <label class="quiz-solved-label">
-          <input type="checkbox" ${isSolved ? 'checked' : ''} onchange="toggleQuizSolved(${quizIndex}, this.checked)">
-          閲覧済み
+          <input type="checkbox" ${isSolved ? 'checked' : ''} onchange="toggleQuizSolved('${quizIndex}', this.checked)">
+          ${isSolved ? '閲覧済み' : '未閲覧'}
         </label>
       </div>
-      <div class="quiz-question">${escapeHtml(quiz.question)}</div>
-      <button class="quiz-answer-button" onclick="toggleQuizAnswer(this)">答えを見る</button>
-      <div class="quiz-answer">${escapeHtml(quiz.answer)}</div>
+    `;
+
+    const answerRow = document.createElement('div');
+    answerRow.className = 'quiz-answer';
+    answerRow.id = answerId;
+    answerRow.innerHTML = `
+      <div class="quiz-answer-spacer"></div>
+      <div class="quiz-answer-wide" colspan="4">
+        <span class="quiz-answer-badge">答え</span>
+        <span class="quiz-answer-body">${escapeHtml(quiz.answer)}</span>
+      </div>
     `;
 
     list.appendChild(card);
+    list.appendChild(answerRow);
   });
 
   if(pager){
@@ -4059,7 +5173,7 @@ function renderQuizList(){
   }
 
   if(pageInfo){
-    pageInfo.textContent = getFilterLabel() + '：' + (currentQuizPage + 1) + ' / ' + pageCount + 'ページ（' + visible.length + '問）';
+    pageInfo.textContent = getFilterLabel() + ' / ' + getDifficultyLabel() + '：' + (currentQuizPage + 1) + ' / ' + pageCount + 'ページ（' + visible.length + '問）';
   }
 
   if(prevButton){
@@ -4070,6 +5184,7 @@ function renderQuizList(){
     nextButton.disabled = currentQuizPage >= pageCount - 1;
   }
 }
+
 
 function toggleQuizSolved(index, checked){
   const solved = getSolvedQuizzes();
@@ -4084,10 +5199,30 @@ function toggleQuizSolved(index, checked){
   renderQuizList();
 }
 
-function toggleQuizAnswer(button){
-  const answer = button.nextElementSibling;
+function toggleQuizAnswer(button, answerId, quizIndex){
+  const answer = document.getElementById(answerId);
+
+  if(!answer){
+    return;
+  }
+
+  const solved = getSolvedQuizzes();
+  solved[quizIndex] = true;
+  saveSolvedQuizzes(solved);
+
   const isOpen = answer.classList.toggle('open');
-  button.textContent = isOpen ? '答えを閉じる' : '答えを見る';
+  button.textContent = isOpen ? '閉じる' : '答えを見る';
+
+  renderQuizList();
+
+  const reopenedAnswer = document.getElementById(answerId);
+  if(isOpen && reopenedAnswer){
+    reopenedAnswer.classList.add('open');
+    const reopenedButton = document.querySelector(`button[onclick*="${answerId}"]`);
+    if(reopenedButton){
+      reopenedButton.textContent = '閉じる';
+    }
+  }
 }
 
 function escapeHtml(text){
