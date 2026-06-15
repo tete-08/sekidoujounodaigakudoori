@@ -23,8 +23,8 @@
 body{
   font-family:"Zen Kaku Gothic New", sans-serif;
   background:
-    linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
-    url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1920&auto=format&fit=crop');
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)),
+    url('images/library-bg.png');
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
@@ -580,6 +580,12 @@ nav a{
   text-align:center;
   font-size:44px;
   margin-bottom:45px;
+}
+
+.book-cover-image{
+    filter:
+      drop-shadow(0 0 20px rgba(255,220,120,.25))
+      drop-shadow(0 15px 30px rgba(0,0,0,.6));
 }
 
 .ho-text{
@@ -1818,13 +1824,133 @@ nav a{
   }
 }
 
+
+/* ホーム：現在公開中 */
+.home-inner{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:0 20px;
+}
+
+.home-lead{
+  margin-top:28px;
+  font-size:20px;
+  line-height:1.8;
+  color:#f3dfbb;
+  letter-spacing:2px;
+  text-shadow:0 2px 12px rgba(0,0,0,.65);
+}
+
+.home-status{
+  margin:54px auto 0;
+  padding:34px;
+  background:rgba(20,10,5,0.62);
+  border:1px solid rgba(255,230,180,0.18);
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+}
+
+.home-status-title{
+  text-align:center;
+  font-size:26px;
+  color:#ffe7b8;
+  letter-spacing:5px;
+  margin-bottom:28px;
+}
+
+.home-status-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.home-status-card{
+  min-height:190px;
+  padding:28px 20px;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),rgba(230,211,176,0.92);
+  color:#2b1a10;
+  border:2px solid #8c6a45;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  transition:.25s;
+  cursor:pointer;
+}
+
+.home-status-card:hover{
+  transform:translateY(-6px);
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#f0dfbf;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+.home-status-label{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-bottom:14px;
+}
+
+.home-status-number{
+  font-size:54px;
+  line-height:1;
+  font-weight:700;
+  color:#4a2c18;
+  margin-bottom:8px;
+}
+
+.home-status-unit{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.home-status-note{
+  font-size:14px;
+  line-height:1.6;
+  opacity:.82;
+}
+
+@media(max-width:900px){
+  .home-inner{
+    padding:0 10px;
+  }
+
+  .home-lead{
+    font-size:15px;
+    letter-spacing:1px;
+  }
+
+  .home-status{
+    margin-top:34px;
+    padding:22px 16px;
+  }
+
+  .home-status-title{
+    font-size:22px;
+    letter-spacing:3px;
+  }
+
+  .home-status-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .home-status-card{
+    min-height:150px;
+    padding:24px 18px;
+  }
+
+  .home-status-number{
+    font-size:46px;
+  }
+}
+
 </style>
 </head>
 <body>
 
-<div class="lantern l1"></div>
-<div class="lantern l2"></div>
-<div class="lantern l3"></div>
+
 
 <header>
 <div class="header-inner">
@@ -1847,9 +1973,40 @@ nav a{
 
 <section class="section active" id="home">
 <div class="hero">
-<div class="hero-title">
-赤道上の<br>大学通り
-</div>
+  <div class="home-inner">
+    <div class="hero-title">
+    赤道上の<br>大学通り
+    </div>
+
+
+    <div class="home-status">
+      <div class="home-status-title">
+        現在公開中
+      </div>
+
+      <div class="home-status-grid">
+
+        <div class="home-status-card" onclick="returnToLibrary()">
+          <div class="home-status-label">マーダーミステリー</div>
+          <div class="home-status-number">1</div>
+          <div class="home-status-unit">作品</div>
+        </div>
+
+        <div class="home-status-card" onclick="showSection('nazotoki')">
+          <div class="home-status-label">謎解き</div>
+          <div class="home-status-number">-</div>
+          <div class="home-status-unit">準備中</div>
+        </div>
+
+        <div class="home-status-card" onclick="showSection('lateralQuiz')">
+          <div class="home-status-label">水平思考クイズ</div>
+          <div class="home-status-number">100</div>
+          <div class="home-status-unit">問</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
