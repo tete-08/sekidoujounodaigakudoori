@@ -239,6 +239,25 @@ nav a{
   color:#4a2c18;
 }
 
+
+.book-cover-image{
+  width:210px;
+  margin:auto;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.book-cover-image:hover{
+  transform:translateY(-10px) rotate(-2deg);
+}
+
+.book-cover-image img{
+  width:100%;
+  display:block;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.6));
+}
+
+
 .book-title{
   margin-top:18px;
   font-size:18px;
@@ -576,25 +595,29 @@ nav a{
   right:20px;
   z-index:99999;
   background:rgba(0,0,0,0.75);
-  padding:15px;
+  padding:20px 22px;
   border-radius:10px;
   border:1px solid rgba(255,230,180,0.3);
+  width:260px;
 }
 
 .ho-timer{
-  font-size:38px;
+  font-size:48px;
+  line-height:1.1;
   text-align:center;
-  margin-bottom:12px;
+  margin-bottom:18px;
 }
 
 .timer-buttons{
   display:flex;
+  justify-content:center;
   gap:10px;
 }
 
 .timer-button{
-  width:120px;
-  height:46px;
+  width:190px;
+  height:58px;
+  font-size:20px;
 }
 
 .vote-area{
@@ -731,6 +754,11 @@ nav a{
   background:#4a2c18;
   color:white;
   border-radius:12px;
+}
+
+.time-selector .extend-reset-button{
+  width:120px;
+  font-size:16px;
 }
 
 .character-select-buttons{
@@ -1790,361 +1818,6 @@ nav a{
   }
 }
 
-
-
-/* ===== スマホ安定化・最終上書き ===== */
-html{
-  width:100%;
-  overflow-x:hidden;
-  -webkit-text-size-adjust:100%;
-}
-
-body{
-  width:100%;
-  min-width:0;
-}
-
-button,
-a,
-.character-card,
-.ho-item,
-.ho-bottom-button,
-.character-start,
-.vote-button{
-  -webkit-tap-highlight-color:rgba(255,230,180,0.18);
-  touch-action:manipulation;
-}
-
-.story-text,
-.info-text,
-.ho-text,
-.clear-review-text,
-.quiz-question,
-.quiz-answer,
-.popup-text{
-  overflow-wrap:anywhere;
-}
-
-.story-text{
-  white-space:normal;
-}
-
-@media(max-width:900px){
-  .lantern{
-    display:none;
-  }
-
-  header{
-    position:sticky;
-    top:0;
-  }
-
-  nav{
-    flex-wrap:nowrap;
-    justify-content:flex-start;
-    overflow-x:auto;
-    padding:0 8px 4px;
-    scrollbar-width:none;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  nav::-webkit-scrollbar{
-    display:none;
-  }
-
-  nav a{
-    flex:0 0 auto;
-    min-height:34px;
-    display:flex;
-    align-items:center;
-  }
-
-  .section{
-    min-height:100svh;
-    padding-left:12px;
-    padding-right:12px;
-    padding-bottom:calc(72px + env(safe-area-inset-bottom));
-  }
-
-  .hero{
-    min-height:calc(100svh - 120px);
-  }
-
-  .hero-title{
-    font-size:clamp(38px, 13vw, 56px);
-  }
-
-  .open-book{
-    box-shadow:0 8px 28px rgba(0,0,0,.45);
-  }
-
-  .page{
-    padding:28px 20px;
-  }
-
-  .story-text,
-  .info-text{
-    margin:0;
-    width:100%;
-  }
-
-  .book-action-buttons,
-  .character-select-buttons,
-  .vote-action-buttons,
-  .ending-actions,
-  .solution-inline-actions{
-    width:100%;
-  }
-
-  .start-button,
-  .back-button,
-  .review-button,
-  .character-start,
-  .ho-bottom-button,
-  .solution-check-button,
-  .resume-button{
-    width:100%;
-    max-width:none;
-    min-height:52px;
-  }
-
-  #hoPage{
-    padding:10px 10px calc(76px + env(safe-area-inset-bottom));
-  }
-
-  .ho-paper{
-    height:calc(100svh - 158px);
-    min-height:0;
-    padding:28px 18px calc(135px + env(safe-area-inset-bottom));
-    border-radius:8px;
-  }
-
-  .ho-sidebar{
-    padding-top:calc(22px + env(safe-area-inset-top));
-  }
-
-  .mobile-ho-toggle{
-    bottom:calc(74px + env(safe-area-inset-bottom));
-  }
-
-  .timer-area{
-    bottom:calc(8px + env(safe-area-inset-bottom));
-    min-height:54px;
-  }
-
-  .timer-buttons{
-    min-width:0;
-  }
-
-  .timer-button{
-    min-width:0;
-    padding:0 6px;
-  }
-
-  .popup-box{
-    max-height:calc(100svh - 32px);
-    overflow-y:auto;
-  }
-
-  .solution-story{
-    text-align:left;
-  }
-
-  .clear-review-sidebar{
-    max-height:40svh;
-  }
-
-  .clear-review-content{
-    height:auto;
-    min-height:48svh;
-    max-height:none;
-  }
-
-  .quiz-range-select{
-    width:100%;
-  }
-}
-
-@media(max-width:520px){
-  .logo{
-    font-size:clamp(26px, 9vw, 34px);
-    letter-spacing:3px;
-  }
-
-  .section-title{
-    font-size:24px;
-    letter-spacing:2px;
-  }
-
-  .story-title{
-    font-size:24px;
-  }
-
-  .character-name{
-    font-size:28px;
-  }
-
-  .vote-grid{
-    grid-template-columns:1fr;
-  }
-
-  .clear-review-top-buttons{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .solution-box,
-  .quiz-box,
-  .paper-box{
-    padding:26px 16px;
-  }
-}
-
-
-
-/* ===== 本ページのボタン位置調整 ===== */
-.book-action-buttons{
-  justify-content:center;
-  align-items:center;
-}
-
-.book-action-buttons .back-button,
-.book-action-buttons .start-button{
-  margin:0;
-}
-
-@media(max-width:700px){
-  .book-action-buttons{
-    width:100%;
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .book-action-buttons .back-button,
-  .book-action-buttons .start-button{
-    width:100%;
-    max-width:none;
-  }
-}
-
-
-/* ===== PC/スマホ表示崩れ修正・最終上書き ===== */
-.section{
-  padding-top:28px;
-}
-
-#book .modal{
-  min-height:calc(100svh - 150px);
-  align-items:center;
-}
-
-.open-book{
-  width:min(1320px, calc(100vw - 48px));
-  min-height:min(620px, calc(100svh - 175px));
-}
-
-.book-action-buttons{
-  width:100%;
-  justify-content:flex-end;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.book-action-buttons .back-button,
-.book-action-buttons .start-button{
-  width:220px;
-  min-width:190px;
-  height:58px;
-  align-self:auto;
-  flex:0 0 auto;
-  font-size:16px;
-}
-
-#clearedHOButton{
-  order:2;
-}
-
-#book .book-action-buttons .back-button{
-  order:1;
-}
-
-#book .book-action-buttons .start-button:not(#clearedHOButton){
-  order:3;
-}
-
-.clear-review-box{
-  width:min(1400px, calc(100vw - 48px));
-}
-
-.clear-review-content,
-.clear-review-sidebar{
-  min-width:0;
-}
-
-.clear-review-text{
-  overflow-wrap:anywhere;
-}
-
-.timer-buttons{
-  flex-wrap:wrap;
-}
-
-.timer-button{
-  min-width:96px;
-}
-
-@media(max-width:900px){
-  #book .modal{
-    min-height:auto;
-  }
-
-  .open-book{
-    width:100%;
-    min-height:auto;
-  }
-
-  .page{
-    padding:26px 18px;
-  }
-
-  .book-action-buttons{
-    justify-content:center;
-    flex-direction:column;
-  }
-
-  .book-action-buttons .back-button,
-  .book-action-buttons .start-button{
-    width:100%;
-    min-width:0;
-    max-width:none;
-  }
-
-  .ho-paper{
-    height:auto;
-    min-height:calc(100svh - 185px);
-    padding-bottom:calc(120px + env(safe-area-inset-bottom));
-  }
-
-  .timer-area{
-    max-width:calc(100vw - 20px);
-  }
-
-  .timer-button{
-    min-width:0;
-  }
-}
-
-@media(max-width:520px){
-  .solution-story{
-    font-size:16px;
-    line-height:1.7;
-  }
-
-  .clear-review-box{
-    width:100%;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -2189,10 +1862,10 @@ a,
 <div class="library">
 <div class="shelf">
 <div class="book-wrapper">
-<div class="book book-red watoji" onclick="showSection('book')">
-<div class="paper-label">
-火之迦具土神
-</div>
+
+<div class="book-cover-image" onclick="showSection('book')">
+<img src="images/simasima_cover.png"
+     alt="しましま村殺人事件">
 </div>
 
 <div class="book-title">
@@ -2366,17 +2039,21 @@ a,
 <div class="divider"></div>
 
 <div class="story-text page-content">
-あなたたちが訪れるのは19xx年。<br>
- ――しましま村。<br>
-山あいにひっそりと佇む、<br>
-古い因習が残る村。<br>
-一見穏やかに見えるその村で、<br>
-ある日ひとつの殺人事件が起こる。<br>
-それぞれが秘密を抱えながら、<br>
-あなたたちは事件の真相を追い始める。<br>
-果たして、あなたたちは<br>
-真実へ辿り着けるのだろうか。<br>
+あなた方が入村するのは19xx年。
+
+しましま村――。
+
+その村では奇妙な事件が続いていた。
+
+そして今日、ついに殺人事件が起きる。
+
+あなたたちは、それぞれの秘密を抱えながら、
+事件の真相へ近づいていく。
 </div>
+
+<a class="back-button" onclick="returnToLibrary()">
+← 本棚へ戻る
+</a>
 
 </div>
 
@@ -2401,10 +2078,6 @@ a,
 </div>
 
 <div class="book-action-buttons">
-  <a class="back-button" onclick="returnToLibrary()">
-  ← 本棚へ戻る
-  </a>
-
   <a class="start-button clear-ho-access" id="clearedHOButton" onclick="openClearedHOReview()" style="display:none;">
   クリア済みHO一覧
   </a>
@@ -2534,14 +2207,9 @@ margin-top:40px;
     <div class="ho-timer" id="timer">20:00</div>
 
     <div class="timer-buttons">
-      <div class="timer-button" onclick="toggleTimer()" id="pauseBtn">
+      <div class="timer-button" onclick="togglePauseResume()" id="pauseResumeBtn">
         一時停止
       </div>
-
-      <div class="timer-button" onclick="startDiscussion()">
-        議論再開
-      </div>
-
     </div>
   </div>
 
@@ -2702,6 +2370,9 @@ PL4
 <button onclick="changeExtendTime(1)">
 ↑</button>
 
+<button class="extend-reset-button" onclick="resetExtendTime()">
+リセット</button>
+
 </div>
 
 <div class="resume-button"
@@ -2806,7 +2477,7 @@ function showSection(id){
   if(timerArea){
 
     if(id === 'hoPage'){
-      timerArea.style.display = window.matchMedia('(max-width: 900px)').matches ? 'flex' : 'block';
+      timerArea.style.display = 'block';
     }else{
       timerArea.style.display = 'none';
     }
@@ -3144,13 +2815,7 @@ function showSolutionHO(){
     discussionButton.setAttribute('onclick','handleSolutionAction()');
   }
 
-  // 真相解明中はタイマーを表示・進行しない
-  pauseTimer();
-  discussionPhase = 'solution';
-  const timerArea = document.querySelector('.timer-area');
-  if(timerArea){
-    timerArea.style.display = 'none';
-  }
+  startSolutionTimer();
 
   const paper = document.querySelector('.ho-paper');
   if(paper){ paper.scrollTop = 0; }
@@ -3159,9 +2824,9 @@ function showSolutionHO(){
 
 function startSolutionTimer(){
 
-  // 互換用：真相解明ページではタイマーを使わない
   pauseTimer();
   discussionPhase = 'solution';
+  discussionStarted = false;
 
   const timerArea = document.querySelector('.timer-area');
   if(timerArea){
@@ -3373,7 +3038,7 @@ function handleDiscussionButton(){
     }
 
     pauseTimer();
-    openSolutionHO();
+    showSection('solutionPage');
     return;
   }
 
@@ -3430,6 +3095,7 @@ function startDiscussion(){
   }
 
   timerRunning = true;
+  updatePauseResumeButton();
 
   timerInterval = setInterval(()=>{
 
@@ -3468,6 +3134,7 @@ function startDiscussion(){
       clearInterval(timerInterval);
 
       timerRunning = false;
+      updatePauseResumeButton();
 
       openExtendPopup();
 
@@ -3477,7 +3144,7 @@ function startDiscussion(){
 
 }
 
-function toggleTimer(){
+function togglePauseResume(){
 
   if(timerRunning){
     pauseTimer();
@@ -3487,14 +3154,29 @@ function toggleTimer(){
 
 }
 
+function toggleTimer(){
+
+  togglePauseResume();
+
+}
+
+function updatePauseResumeButton(){
+
+  const btn = document.getElementById('pauseResumeBtn');
+  if(!btn){ return; }
+
+  btn.innerHTML = timerRunning ? '一時停止' : '議論再開';
+
+}
+
 function pauseTimer(){
 
   clearInterval(timerInterval);
 
   timerRunning = false;
+  updatePauseResumeButton();
 
 }
-
 
 const ADDITIONAL_HO = {
 
@@ -3713,6 +3395,13 @@ let popupMode = '';
 
 let extendTime = 5;
 
+function updateExtendTimeDisplay(){
+
+  document.getElementById('extendTimeDisplay').innerHTML =
+    extendTime + '<span class="extend-time-unit">分</span>';
+
+}
+
 function changeExtendTime(value){
 
   extendTime += value;
@@ -3721,8 +3410,14 @@ function changeExtendTime(value){
     extendTime = 1;
   }
 
-  document.getElementById('extendTimeDisplay').innerHTML =
-    extendTime + '<span class="extend-time-unit">分</span>';
+  updateExtendTimeDisplay();
+
+}
+
+function resetExtendTime(){
+
+  extendTime = 5;
+  updateExtendTimeDisplay();
 
 }
 
@@ -3740,7 +3435,7 @@ function goToVoteFromPopup(){
   }
 
   if(discussionPhase === 'phase2'){
-    openSolutionHO();
+    showSection('solutionPage');
   }else{
     showSection('votePage');
   }
@@ -3887,6 +3582,7 @@ function confirmVote(){
   clearInterval(timerInterval);
 
   timerRunning = false;
+  updatePauseResumeButton();
 
   totalSeconds = SECOND_DISCUSSION_SECONDS;
 
@@ -4533,43 +4229,6 @@ loadLateralQuizzesFromExcel();
   window.addEventListener('resize', updateMobileHOToggleVisibility);
   document.addEventListener('DOMContentLoaded', updateMobileHOToggleVisibility);
   setTimeout(updateMobileHOToggleVisibility, 0);
-})();
-</script>
-
-
-<script>
-(function(){
-  function applyMobileLayoutState(){
-    const timerArea = document.querySelector('.timer-area');
-    const active = document.querySelector('.section.active');
-    const isMobile = window.matchMedia('(max-width: 900px)').matches;
-
-    if(timerArea){
-      if(active && active.id === 'hoPage' && discussionPhase !== 'solution'){
-        timerArea.style.display = isMobile ? 'flex' : 'block';
-      }else{
-        timerArea.style.display = 'none';
-      }
-    }
-
-    const button = document.getElementById('mobileHOToggle');
-    if(button){
-      button.style.display = (active && active.id === 'hoPage' && isMobile) ? 'flex' : 'none';
-    }
-  }
-
-  const previousShowSection = window.showSection;
-  if(typeof previousShowSection === 'function'){
-    window.showSection = function(){
-      const result = previousShowSection.apply(this, arguments);
-      requestAnimationFrame(applyMobileLayoutState);
-      return result;
-    };
-  }
-
-  window.addEventListener('resize', applyMobileLayoutState);
-  document.addEventListener('DOMContentLoaded', applyMobileLayoutState);
-  requestAnimationFrame(applyMobileLayoutState);
 })();
 </script>
 
