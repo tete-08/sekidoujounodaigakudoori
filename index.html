@@ -3244,6 +3244,79 @@ body.font-medium{zoom:1;}
 body.font-large{zoom:1.10;}
 }
 
+
+
+/* ===== 設定ボタン：表示安定化＆スマホ左下配置 2026/6/16 ===== */
+.mobile-settings-button{
+  display:flex !important;
+  position:fixed !important;
+  right:18px !important;
+  left:auto !important;
+  bottom:calc(22px + env(safe-area-inset-bottom, 0px)) !important;
+  z-index:2147483647 !important;
+  width:56px !important;
+  height:56px !important;
+  min-width:56px !important;
+  min-height:56px !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border:2px solid #c9a26f !important;
+  border-radius:50% !important;
+  background:rgba(20,10,5,.96) !important;
+  color:#f6ead2 !important;
+  font-family:Arial,"Helvetica Neue",sans-serif !important;
+  font-size:0 !important;
+  line-height:1 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  transform:none !important;
+  -webkit-transform:none !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.55) !important;
+}
+
+.mobile-settings-button::before{
+  content:"\2699";
+  display:block;
+  font-size:30px;
+  line-height:1;
+  color:#f6ead2;
+}
+
+.mobile-settings-panel{
+  z-index:2147483646 !important;
+}
+
+@media(max-width:900px){
+  .mobile-settings-button{
+    left:12px !important;
+    right:auto !important;
+    bottom:calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    min-height:52px !important;
+  }
+
+  .mobile-settings-button::before{
+    font-size:28px;
+  }
+
+  .mobile-settings-panel{
+    left:12px !important;
+    right:auto !important;
+    bottom:calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+    width:min(calc(100vw - 24px),390px) !important;
+    transform:translateY(12px) !important;
+  }
+
+  .mobile-settings-panel.open,
+  .mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel,
+  .mobile-settings-panel:hover{
+    transform:translateY(0) !important;
+  }
+}
+
 </style>
 
 <style id="chatgpt-answer-layout-fix">
@@ -6391,7 +6464,7 @@ loadLateralQuizzesFromExcel();
 
 
 
-<button type="button" class="mobile-settings-button" id="mobileSettingsButton" aria-label="設定を開く" title="設定">⚙️</button>
+<button type="button" class="mobile-settings-button" id="mobileSettingsButton" aria-label="設定を開く" title="設定" aria-expanded="false">設定</button>
 <div class="mobile-settings-overlay" id="mobileSettingsOverlay"></div>
 <div class="mobile-settings-panel" id="mobileSettingsPanel" role="dialog" aria-modal="true" aria-labelledby="mobileSettingsTitle">
   <h2 class="mobile-settings-title" id="mobileSettingsTitle">表示・音量設定</h2>
