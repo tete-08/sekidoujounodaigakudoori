@@ -2888,7 +2888,823 @@ nav a{
   }
 }
 
+
+
+/* ===== 水平思考クイズ：答え行を右端まで使う版 2026/6/15 20:06 ===== */
+#lateralQuiz .quiz-list{
+  display:block !important;
+}
+
+#lateralQuiz .quiz-table-head,
+#lateralQuiz .quiz-card,
+#lateralQuiz .quiz-answer.open{
+  display:grid !important;
+  grid-template-columns:88px minmax(0,1fr) 150px 140px 150px;
+  width:100%;
+}
+
+#lateralQuiz .quiz-th,
+#lateralQuiz .quiz-head,
+#lateralQuiz .quiz-question,
+#lateralQuiz .quiz-card-actions,
+#lateralQuiz .quiz-difficulty-cell,
+#lateralQuiz .quiz-viewed-cell{
+  display:flex !important;
+  align-items:center;
+}
+
+#lateralQuiz .quiz-th,
+#lateralQuiz .quiz-head,
+#lateralQuiz .quiz-card-actions,
+#lateralQuiz .quiz-difficulty-cell,
+#lateralQuiz .quiz-viewed-cell{
+  justify-content:center;
+}
+
+#lateralQuiz .quiz-question{
+  justify-content:flex-start;
+}
+
+#lateralQuiz .quiz-answer.open{
+  grid-template-columns:88px minmax(0,1fr) 150px 140px 150px;
+}
+
+#lateralQuiz .quiz-answer-spacer{
+  display:block !important;
+  width:auto !important;
+  min-width:0 !important;
+  grid-column:1;
+  grid-row:1;
+}
+
+#lateralQuiz .quiz-answer-wide{
+  display:block !important;
+  grid-column:2 / 6;
+  grid-row:1;
+  width:100% !important;
+  min-width:0;
+  padding:20px 28px !important;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+}
+
+#lateralQuiz .quiz-answer-body{
+  display:inline !important;
+  overflow-wrap:anywhere;
+}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-table-head{
+    display:none !important;
+  }
+
+  #lateralQuiz .quiz-card,
+  #lateralQuiz .quiz-answer.open{
+    display:block !important;
+    width:100%;
+  }
+
+  #lateralQuiz .quiz-head,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-card-actions,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell{
+    display:block !important;
+  }
+
+  #lateralQuiz .quiz-answer-wide{
+    grid-column:auto;
+  }
+}
+
+
+
+/* ===== 水平思考クイズ：答え行ワンポイント装飾 2026/6/15 ===== */
+#lateralQuiz .quiz-card,
+#lateralQuiz .quiz-answer.open{
+  background:rgba(255,255,255,0.16) !important;
+}
+
+#lateralQuiz .quiz-card:hover,
+#lateralQuiz .quiz-card:hover + .quiz-answer.open{
+  background:rgba(255,255,255,0.34) !important;
+}
+
+#lateralQuiz .quiz-answer.open{
+  grid-template-columns:88px minmax(0,1fr) 150px 140px 150px !important;
+}
+
+#lateralQuiz .quiz-answer-wide{
+  grid-column:2 / 3 !important;
+  padding:20px 28px 20px 32px !important;
+  border-right:1px solid rgba(80,50,25,0.10);
+}
+
+#lateralQuiz .quiz-answer-illust{
+  grid-column:3 / 6;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  min-height:86px;
+  padding:16px 34px 18px 22px;
+  border-bottom:1px solid rgba(80,50,25,0.18);
+  position:relative;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+#lateralQuiz .quiz-answer-illust::before{
+  content:"";
+  position:absolute;
+  right:22px;
+  bottom:12px;
+  width:190px;
+  height:82px;
+  border-radius:999px;
+  background:radial-gradient(circle, rgba(255,250,240,0.28), rgba(255,250,240,0));
+}
+
+#lateralQuiz .quiz-answer-deco{
+  position:relative;
+  width:150px;
+  height:82px;
+  color:rgba(80,50,25,0.32);
+  opacity:.78;
+  transform:rotate(-3deg);
+}
+
+#lateralQuiz .quiz-answer-deco .deco-main,
+#lateralQuiz .quiz-answer-deco .deco-sub,
+#lateralQuiz .quiz-answer-deco .deco-star-a,
+#lateralQuiz .quiz-answer-deco .deco-star-b{
+  position:absolute;
+  font-family:"Yuji Syuku", "Zen Kaku Gothic New", serif;
+  line-height:1;
+  text-shadow:0 1px 0 rgba(255,250,240,.34);
+}
+
+#lateralQuiz .quiz-answer-deco .deco-main{
+  right:12px;
+  bottom:4px;
+  font-size:42px;
+}
+
+#lateralQuiz .quiz-answer-deco .deco-sub{
+  right:66px;
+  bottom:8px;
+  font-size:40px;
+}
+
+#lateralQuiz .quiz-answer-deco .deco-star-a{
+  right:108px;
+  bottom:52px;
+  font-size:16px;
+}
+
+#lateralQuiz .quiz-answer-deco .deco-star-b{
+  right:82px;
+  bottom:36px;
+  font-size:11px;
+}
+
+#lateralQuiz .quiz-answer-deco.deco-moon .deco-main{font-size:38px; right:6px; bottom:30px;}
+#lateralQuiz .quiz-answer-deco.deco-moon .deco-sub{font-size:38px; right:48px; bottom:4px;}
+#lateralQuiz .quiz-answer-deco.deco-key .deco-main{font-size:40px; right:8px; bottom:6px; transform:rotate(-18deg);}
+#lateralQuiz .quiz-answer-deco.deco-key .deco-sub{font-size:34px; right:62px; bottom:14px;}
+#lateralQuiz .quiz-answer-deco.deco-glass .deco-main{font-size:42px; right:18px; bottom:7px; transform:rotate(-12deg);}
+#lateralQuiz .quiz-answer-deco.deco-glass .deco-sub{font-size:32px; right:78px; bottom:20px;}
+
+@media(max-width:900px){
+  #lateralQuiz .quiz-answer-wide{
+    border-right:none;
+  }
+
+  #lateralQuiz .quiz-answer-illust{
+    display:none !important;
+  }
+}
+
+
+/* ===== PC・スマホ共通：設定ボタン表示 2026/6/16 ===== */
+.mobile-settings-button{
+  display:flex;
+  position:fixed;
+  right:18px;
+  bottom:22px;
+  z-index:100006;
+  width:56px;
+  height:56px;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #c9a26f;
+  border-radius:50%;
+  background:rgba(20,10,5,.94);
+  color:#f6ead2;
+  font-size:26px !important;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+
+.mobile-settings-button:hover{
+  background:rgba(61,36,21,.96);
+}
+
+.mobile-settings-overlay{
+  display:none !important;
+}
+
+.mobile-settings-panel{
+  display:block;
+  position:fixed;
+  right:18px;
+  bottom:90px;
+  transform:translateX(calc(100% + 28px));
+  opacity:0;
+  pointer-events:none;
+  z-index:100005;
+  width:min(92vw,390px);
+  max-height:72vh;
+  overflow-y:auto;
+  padding:20px 18px;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#ead8b7;
+  color:#2b1a10;
+  border:3px solid #5b3921;
+  border-radius:10px;
+  box-shadow:0 18px 60px rgba(0,0,0,.55);
+  transition:transform .28s ease, opacity .22s ease;
+}
+
+.mobile-settings-panel.open,
+.mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel,
+.mobile-settings-panel:hover{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mobile-settings-title{
+  text-align:center;
+  font-size:20px;
+  margin-bottom:16px;
+  letter-spacing:2px;
+}
+
+.mobile-setting-row{
+  display:grid;
+  grid-template-columns:105px 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-top:1px solid rgba(80,50,25,.18);
+  font-size:14px;
+}
+
+.mobile-setting-row:first-of-type{
+  border-top:none;
+}
+
+.mobile-setting-row input[type="range"]{
+  width:100%;
+}
+
+.mobile-setting-row input[type="checkbox"]{
+  width:22px;
+  height:22px;
+}
+
+.mobile-setting-value{
+  min-width:46px;
+  text-align:right;
+  font-weight:700;
+}
+
+.mobile-settings-close{
+  width:100%;
+  height:46px;
+  margin-top:16px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.mobile-settings-note{
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.6;
+  opacity:.78;
+}
+
+@media(max-width:900px){
+  .mobile-settings-button{
+    right:12px;
+    bottom:92px;
+    width:52px;
+    height:52px;
+    font-size:24px !important;
+  }
+
+  .mobile-settings-panel{
+    right:12px;
+    bottom:152px;
+    width:min(88vw,380px);
+    max-height:72dvh;
+  }
+}
+
+
+/* ===== Settings ===== */
+.settings-gear{
+position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+background:rgba(20,10,5,.92);border:2px solid #c9a26f;color:#f6ead2;
+font-size:28px;cursor:pointer;z-index:100001;
+}
+.settings-panel{
+position:fixed;right:20px;bottom:88px;width:280px;padding:18px;
+background:rgba(20,10,5,.96);border:2px solid #c9a26f;border-radius:12px;
+color:#f6ead2;z-index:100001;display:none;
+}
+.settings-panel.open{display:block;}
+.settings-row{margin-bottom:16px;}
+.settings-row label{display:block;margin-bottom:8px;}
+.settings-size-buttons{display:flex;gap:8px;}
+.settings-size-buttons button{
+flex:1;padding:10px;border:1px solid #c9a26f;background:rgba(255,255,255,.08);
+color:#f6ead2;cursor:pointer;border-radius:8px;
+}
+.settings-size-buttons button.active{background:#c9a26f;color:#2b1a10;font-weight:700;}
+body.font-small{zoom:0.92;}
+body.font-medium{zoom:1;}
+body.font-large{zoom:1.08;}
+@media(max-width:900px){
+body.font-small{zoom:0.95;}
+body.font-medium{zoom:1;}
+body.font-large{zoom:1.10;}
+}
+
 </style>
+
+<style id="chatgpt-answer-layout-fix">
+/* 答え欄最終調整 */
+#lateralQuiz .quiz-answer-wide{
+    position:relative;
+    padding:18px 180px 18px 24px !important;
+}
+
+#lateralQuiz .quiz-answer-badge{
+    float:left;
+    margin-right:18px !important;
+}
+
+#lateralQuiz .quiz-answer-body{
+    display:block !important;
+    line-height:1.9;
+}
+
+/* バッジ下に文字を回り込ませない */
+#lateralQuiz .quiz-answer-body::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+
+/* ワンポイント */
+#lateralQuiz .quiz-answer-wide::after{
+    content:"✦  ☾  📖";
+    position:absolute;
+    right:28px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:28px;
+    opacity:.22;
+    letter-spacing:10px;
+    pointer-events:none;
+}
+
+@media(max-width:900px){
+    #lateralQuiz .quiz-answer-wide{
+        padding-right:24px !important;
+    }
+    #lateralQuiz .quiz-answer-wide::after{
+        display:none;
+    }
+}
+
+
+/* ===== スマホ版：文字サイズ・設定パネル追加 2026/6/16 ===== */
+:root{
+  --mobile-font-scale: 0.9;
+}
+
+.mobile-settings-button,
+.mobile-settings-panel,
+.mobile-settings-overlay{
+  display:none;
+}
+
+@media(max-width:900px){
+  body{
+    font-size:calc(14px * var(--mobile-font-scale));
+  }
+
+  .logo{
+    font-size:calc(30px * var(--mobile-font-scale)) !important;
+  }
+
+  nav a{
+    font-size:calc(11px * var(--mobile-font-scale)) !important;
+  }
+
+  .section-title{
+    font-size:calc(24px * var(--mobile-font-scale)) !important;
+    line-height:1.35;
+  }
+
+  .hero-title{
+    font-size:calc(40px * var(--mobile-font-scale)) !important;
+    line-height:1.2;
+  }
+
+  .home-lead,
+  .home-status-note,
+  .story-text,
+  .info-text,
+  .character-role,
+  .character-age,
+  .character-desc,
+  .author-role,
+  .author-text,
+  .clear-review-text,
+  .solution-lead,
+  .popup-text{
+    font-size:calc(13px * var(--mobile-font-scale)) !important;
+    line-height:1.7;
+  }
+
+  .story-title,
+  .home-status-title,
+  .popup-title{
+    font-size:calc(22px * var(--mobile-font-scale)) !important;
+  }
+
+  .character-name,
+  .ho-title,
+  .clear-review-title{
+    font-size:calc(25px * var(--mobile-font-scale)) !important;
+  }
+
+  .ho-text,
+  .ho-text.solution-mode,
+  .ending-text,
+  .credit-text,
+  .author-note-text{
+    font-size:calc(14px * var(--mobile-font-scale)) !important;
+    line-height:1.68 !important;
+  }
+
+  .solution-story{
+    font-size:calc(15px * var(--mobile-font-scale)) !important;
+    line-height:1.45 !important;
+  }
+
+  #lateralQuiz .quiz-title,
+  #lateralQuiz .quiz-question,
+  #lateralQuiz .quiz-difficulty-cell,
+  #lateralQuiz .quiz-viewed-cell,
+  #lateralQuiz .quiz-answer-body,
+  #lateralQuiz .quiz-answer-text,
+  #lateralQuiz .quiz-filter-label,
+  #lateralQuiz .quiz-page-info{
+    font-size:calc(13px * var(--mobile-font-scale)) !important;
+    line-height:1.65 !important;
+  }
+
+  #lateralQuiz .quiz-answer-badge,
+  #lateralQuiz .quiz-answer-label{
+    font-size:calc(12px * var(--mobile-font-scale)) !important;
+  }
+
+  .start-button,
+  .back-button,
+  .review-button,
+  .timer-button,
+  .vote-button,
+  .resume-button,
+  .ho-bottom-button,
+  .character-start,
+  .sidebar-back-button,
+  .quiz-tool-button,
+  .quiz-page-button,
+  .quiz-answer-button,
+  .quiz-filter-button,
+  .clear-review-button,
+  .solution-check-button,
+  .sns-button,
+  .mobile-ho-toggle{
+    font-size:calc(14px * var(--mobile-font-scale)) !important;
+  }
+
+  .popup-input,
+  .solution-input,
+  .quiz-range-select{
+    font-size:calc(15px * var(--mobile-font-scale)) !important;
+  }
+
+  .home-status-label{
+    font-size:calc(17px * var(--mobile-font-scale)) !important;
+  }
+
+  .home-status-number{
+    font-size:calc(40px * var(--mobile-font-scale)) !important;
+  }
+
+  .home-status-unit{
+    font-size:calc(15px * var(--mobile-font-scale)) !important;
+  }
+
+  .return-button{
+    font-size:calc(13px * var(--mobile-font-scale)) !important;
+    width:150px !important;
+    height:50px !important;
+  }
+
+  .mobile-settings-button{
+    display:flex;
+    position:fixed;
+    right:12px;
+    bottom:92px;
+    z-index:100006;
+    width:52px;
+    height:52px;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #c9a26f;
+    border-radius:50%;
+    background:rgba(20,10,5,.94);
+    color:#f6ead2;
+    font-size:24px !important;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+  }
+
+  .mobile-settings-button:hover{
+    background:rgba(61,36,21,.96);
+  }
+
+  .mobile-settings-overlay{
+    display:none !important;
+  }
+
+  .mobile-settings-panel{
+    display:block;
+    position:fixed;
+    right:12px;
+    bottom:152px;
+    transform:translateX(calc(100% + 24px));
+    opacity:0;
+    pointer-events:none;
+    z-index:100005;
+    width:min(88vw,380px);
+    max-height:72dvh;
+    overflow-y:auto;
+    padding:20px 18px;
+    background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#ead8b7;
+    color:#2b1a10;
+    border:3px solid #5b3921;
+    border-radius:10px;
+    box-shadow:0 18px 60px rgba(0,0,0,.55);
+    transition:transform .28s ease, opacity .22s ease;
+  }
+
+  .mobile-settings-panel.open,
+  .mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel,
+  .mobile-settings-panel:hover{
+    transform:translateX(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+
+  .mobile-settings-title{
+    text-align:center;
+    font-size:20px;
+    margin-bottom:16px;
+    letter-spacing:2px;
+  }
+
+  .mobile-setting-row{
+    display:grid;
+    grid-template-columns:105px 1fr auto;
+    align-items:center;
+    gap:10px;
+    padding:12px 0;
+    border-top:1px solid rgba(80,50,25,.18);
+    font-size:14px;
+  }
+
+  .mobile-setting-row:first-of-type{
+    border-top:none;
+  }
+
+  .mobile-setting-row input[type="range"]{
+    width:100%;
+  }
+
+  .mobile-setting-row input[type="checkbox"]{
+    width:22px;
+    height:22px;
+  }
+
+  .mobile-setting-value{
+    min-width:46px;
+    text-align:right;
+    font-weight:700;
+  }
+
+  .mobile-settings-close{
+    width:100%;
+    height:46px;
+    margin-top:16px;
+    border:2px solid #82613f;
+    background:rgba(255,250,240,0.65);
+    color:#2b1a10;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .mobile-settings-note{
+    margin-top:12px;
+    font-size:12px;
+    line-height:1.6;
+    opacity:.78;
+  }
+}
+
+
+/* ===== PC・スマホ共通：設定ボタン表示 2026/6/16 ===== */
+.mobile-settings-button{
+  display:flex;
+  position:fixed;
+  right:18px;
+  bottom:22px;
+  z-index:100006;
+  width:56px;
+  height:56px;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #c9a26f;
+  border-radius:50%;
+  background:rgba(20,10,5,.94);
+  color:#f6ead2;
+  font-size:26px !important;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.45);
+}
+
+.mobile-settings-button:hover{
+  background:rgba(61,36,21,.96);
+}
+
+.mobile-settings-overlay{
+  display:none !important;
+}
+
+.mobile-settings-panel{
+  display:block;
+  position:fixed;
+  right:18px;
+  bottom:90px;
+  transform:translateX(calc(100% + 28px));
+  opacity:0;
+  pointer-events:none;
+  z-index:100005;
+  width:min(92vw,390px);
+  max-height:72vh;
+  overflow-y:auto;
+  padding:20px 18px;
+  background:url('https://www.transparenttextures.com/patterns/paper-fibers.png'),#ead8b7;
+  color:#2b1a10;
+  border:3px solid #5b3921;
+  border-radius:10px;
+  box-shadow:0 18px 60px rgba(0,0,0,.55);
+  transition:transform .28s ease, opacity .22s ease;
+}
+
+.mobile-settings-panel.open,
+.mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel,
+.mobile-settings-panel:hover{
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mobile-settings-title{
+  text-align:center;
+  font-size:20px;
+  margin-bottom:16px;
+  letter-spacing:2px;
+}
+
+.mobile-setting-row{
+  display:grid;
+  grid-template-columns:105px 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding:12px 0;
+  border-top:1px solid rgba(80,50,25,.18);
+  font-size:14px;
+}
+
+.mobile-setting-row:first-of-type{
+  border-top:none;
+}
+
+.mobile-setting-row input[type="range"]{
+  width:100%;
+}
+
+.mobile-setting-row input[type="checkbox"]{
+  width:22px;
+  height:22px;
+}
+
+.mobile-setting-value{
+  min-width:46px;
+  text-align:right;
+  font-weight:700;
+}
+
+.mobile-settings-close{
+  width:100%;
+  height:46px;
+  margin-top:16px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.mobile-settings-note{
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.6;
+  opacity:.78;
+}
+
+@media(max-width:900px){
+  .mobile-settings-button{
+    right:12px;
+    bottom:92px;
+    width:52px;
+    height:52px;
+    font-size:24px !important;
+  }
+
+  .mobile-settings-panel{
+    right:12px;
+    bottom:152px;
+    width:min(88vw,380px);
+    max-height:72dvh;
+  }
+}
+
+
+
+/* ===== 設定パネル：文字サイズを小・中・大ボタンに変更 ===== */
+.mobile-setting-row-size{
+  grid-template-columns:105px 1fr 46px;
+}
+.mobile-font-size-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.mobile-font-size-buttons button{
+  height:38px;
+  border:2px solid #82613f;
+  background:rgba(255,250,240,0.65);
+  color:#2b1a10;
+  font-weight:700;
+  cursor:pointer;
+}
+.mobile-font-size-buttons button.active{
+  background:#3d2415;
+  color:#fff6df;
+  box-shadow:0 0 0 2px rgba(130,97,63,.18) inset;
+}
+body.font-small{zoom:0.95;}
+body.font-medium{zoom:1;}
+body.font-large{zoom:1.10;}
+@media(max-width:700px){
+  .mobile-setting-row-size{grid-template-columns:92px 1fr 36px;}
+  .mobile-font-size-buttons{gap:6px;}
+}
+</style>
+
 </head>
 <body>
 <div class="dust-container">
@@ -4923,6 +5739,26 @@ function getFilterLabel(){
 }
 
 
+
+function getAnswerDecoration(seed){
+  const decorations = [
+    {className:'deco-book', main:'☾', sub:'📖', a:'✦', b:'✧'},
+    {className:'deco-moon', main:'☽', sub:'✦', a:'✧', b:'⋆'},
+    {className:'deco-key', main:'⚿', sub:'✦', a:'✧', b:'⋆'},
+    {className:'deco-glass', main:'⌕', sub:'✦', a:'✧', b:'⋆'},
+    {className:'deco-book', main:'🪶', sub:'📖', a:'✦', b:'✧'}
+  ];
+  const deco = decorations[Math.abs(Number(seed) || 0) % decorations.length];
+  return `
+    <div class="quiz-answer-deco ${deco.className}">
+      <span class="deco-star-a">${deco.a}</span>
+      <span class="deco-star-b">${deco.b}</span>
+      <span class="deco-sub">${deco.sub}</span>
+      <span class="deco-main">${deco.main}</span>
+    </div>
+  `;
+}
+
 function getDifficultyStars(level){
   switch(Number(level)){
     case 1:
@@ -5158,9 +5994,12 @@ function renderQuizList(){
     answerRow.id = answerId;
     answerRow.innerHTML = `
       <div class="quiz-answer-spacer"></div>
-      <div class="quiz-answer-wide" colspan="4">
+      <div class="quiz-answer-wide">
         <span class="quiz-answer-badge">答え</span>
         <span class="quiz-answer-body">${escapeHtml(quiz.answer)}</span>
+      </div>
+      <div class="quiz-answer-illust" aria-hidden="true">
+        ${getAnswerDecoration(quizIndex)}
       </div>
     `;
 
@@ -5549,6 +6388,227 @@ loadLateralQuizzesFromExcel();
   setTimeout(updateMobileHOToggleVisibility, 0);
 })();
 </script>
+
+
+
+<button type="button" class="mobile-settings-button" id="mobileSettingsButton" aria-label="設定を開く" title="設定">⚙️</button>
+<div class="mobile-settings-overlay" id="mobileSettingsOverlay"></div>
+<div class="mobile-settings-panel" id="mobileSettingsPanel" role="dialog" aria-modal="true" aria-labelledby="mobileSettingsTitle">
+  <h2 class="mobile-settings-title" id="mobileSettingsTitle">表示・音量設定</h2>
+
+  <div class="mobile-setting-row mobile-setting-row-size">
+    <span>文字サイズ</span>
+    <div class="mobile-font-size-buttons" id="mobileFontSizeButtons" role="group" aria-label="文字サイズ">
+      <button type="button" data-font-size="small">小</button>
+      <button type="button" data-font-size="medium">中</button>
+      <button type="button" data-font-size="large">大</button>
+    </div>
+    <span class="mobile-setting-value" id="mobileFontSizeValue">中</span>
+  </div>
+
+  <label class="mobile-setting-row">
+    <span>BGM</span>
+    <input type="checkbox" id="mobileBgmEnabled" checked>
+    <span class="mobile-setting-value" id="mobileBgmState">ON</span>
+  </label>
+
+  <label class="mobile-setting-row">
+    <span>BGM音量</span>
+    <input type="range" id="mobileBgmVolume" min="0" max="100" step="5" value="60">
+    <span class="mobile-setting-value" id="mobileBgmVolumeValue">60%</span>
+  </label>
+
+  <label class="mobile-setting-row">
+    <span>効果音</span>
+    <input type="checkbox" id="mobileSeEnabled" checked>
+    <span class="mobile-setting-value" id="mobileSeState">ON</span>
+  </label>
+
+  <label class="mobile-setting-row">
+    <span>効果音音量</span>
+    <input type="range" id="mobileSeVolume" min="0" max="100" step="5" value="70">
+    <span class="mobile-setting-value" id="mobileSeVolumeValue">70%</span>
+  </label>
+
+  <button type="button" class="mobile-settings-close" id="mobileSettingsClose">閉じる</button>
+  <p class="mobile-settings-note">設定はこの端末に保存されます。PC・スマホどちらでも使えます。</p>
+</div>
+
+
+
+<script>
+/* ===== 共通設定：文字サイズ・BGM・効果音 2026/6/16 ===== */
+(function(){
+  const storageKey = 'akadaigakuSiteSettings';
+  const defaults = {
+    fontSize: 'medium',
+    bgmEnabled: true,
+    bgmVolume: 60,
+    seEnabled: true,
+    seVolume: 70
+  };
+
+  function loadSettings(){
+    try{
+      const loaded = Object.assign({}, defaults, JSON.parse(localStorage.getItem(storageKey) || '{}'));
+      if(!loaded.fontSize && typeof loaded.fontScale === 'number'){
+        loaded.fontSize = loaded.fontScale <= 95 ? 'small' : loaded.fontScale >= 110 ? 'large' : 'medium';
+      }
+      if(!['small','medium','large'].includes(loaded.fontSize)){
+        loaded.fontSize = defaults.fontSize;
+      }
+      return loaded;
+    }catch(e){
+      return Object.assign({}, defaults);
+    }
+  }
+
+  function saveSettings(settings){
+    localStorage.setItem(storageKey, JSON.stringify(settings));
+  }
+
+  function getAudioElements(type){
+    const selector = type === 'bgm'
+      ? 'audio[data-audio-type="bgm"], audio.bgm, #bgmAudio'
+      : 'audio[data-audio-type="se"], audio.se, audio.sound-effect, #seAudio';
+    return Array.from(document.querySelectorAll(selector));
+  }
+
+  function applySettings(settings){
+    const scaleMap = { small: 0.95, medium: 1, large: 1.10 };
+    const scale = String(scaleMap[settings.fontSize] || 1);
+    document.documentElement.style.setProperty('--mobile-font-scale', scale);
+    document.documentElement.style.setProperty('--site-font-scale', scale);
+    document.body.classList.remove('font-small','font-medium','font-large');
+    document.body.classList.add('font-' + settings.fontSize);
+    document.body.style.fontSize = 'calc(16px * ' + scale + ')';
+
+    getAudioElements('bgm').forEach(audio => {
+      audio.volume = settings.bgmEnabled ? settings.bgmVolume / 100 : 0;
+      audio.muted = !settings.bgmEnabled;
+    });
+
+    getAudioElements('se').forEach(audio => {
+      audio.volume = settings.seEnabled ? settings.seVolume / 100 : 0;
+      audio.muted = !settings.seEnabled;
+    });
+
+    window.mobileAudioSettings = {
+      bgmEnabled: settings.bgmEnabled,
+      bgmVolume: settings.bgmVolume / 100,
+      seEnabled: settings.seEnabled,
+      seVolume: settings.seVolume / 100
+    };
+  }
+
+  function initMobileSettings(){
+    const button = document.getElementById('mobileSettingsButton');
+    const panel = document.getElementById('mobileSettingsPanel');
+    const overlay = document.getElementById('mobileSettingsOverlay');
+    const close = document.getElementById('mobileSettingsClose');
+    const fontSizeButtons = Array.from(document.querySelectorAll('#mobileFontSizeButtons button'));
+    const fontSizeValue = document.getElementById('mobileFontSizeValue');
+    const bgmEnabled = document.getElementById('mobileBgmEnabled');
+    const bgmState = document.getElementById('mobileBgmState');
+    const bgmVolume = document.getElementById('mobileBgmVolume');
+    const bgmVolumeValue = document.getElementById('mobileBgmVolumeValue');
+    const seEnabled = document.getElementById('mobileSeEnabled');
+    const seState = document.getElementById('mobileSeState');
+    const seVolume = document.getElementById('mobileSeVolume');
+    const seVolumeValue = document.getElementById('mobileSeVolumeValue');
+
+    if(!button || !panel || !overlay) return;
+
+    let settings = loadSettings();
+
+    function syncControls(){
+      const labelMap = {small:'小', medium:'中', large:'大'};
+      fontSizeButtons.forEach(btn => {
+        const active = btn.dataset.fontSize === settings.fontSize;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      fontSizeValue.textContent = labelMap[settings.fontSize] || '中';
+      bgmEnabled.checked = settings.bgmEnabled;
+      bgmState.textContent = settings.bgmEnabled ? 'ON' : 'OFF';
+      bgmVolume.value = settings.bgmVolume;
+      bgmVolumeValue.textContent = settings.bgmVolume + '%';
+      seEnabled.checked = settings.seEnabled;
+      seState.textContent = settings.seEnabled ? 'ON' : 'OFF';
+      seVolume.value = settings.seVolume;
+      seVolumeValue.textContent = settings.seVolume + '%';
+    }
+
+    function update(partial){
+      settings = Object.assign({}, settings, partial);
+      syncControls();
+      applySettings(settings);
+      saveSettings(settings);
+    }
+
+    let closeTimer = null;
+
+    function openPanel(){
+      clearTimeout(closeTimer);
+      panel.classList.add('open');
+      button.setAttribute('aria-expanded', 'true');
+    }
+
+    function closePanel(){
+      clearTimeout(closeTimer);
+      panel.classList.remove('open');
+      button.setAttribute('aria-expanded', 'false');
+    }
+
+    function togglePanel(){
+      if(panel.classList.contains('open')){
+        closePanel();
+      }else{
+        openPanel();
+      }
+    }
+
+    function reserveClose(){
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(closePanel, 180);
+    }
+
+    button.setAttribute('aria-expanded', 'false');
+    button.addEventListener('click', togglePanel);
+    button.addEventListener('mouseenter', openPanel);
+    button.addEventListener('mouseleave', reserveClose);
+    panel.addEventListener('mouseenter', openPanel);
+    panel.addEventListener('mouseleave', reserveClose);
+    document.addEventListener('click', (event) => {
+      if(!panel.contains(event.target) && !button.contains(event.target)){
+        closePanel();
+      }
+    });
+    overlay.addEventListener('click', closePanel);
+    close.addEventListener('click', closePanel);
+
+    fontSizeButtons.forEach(btn => {
+      btn.addEventListener('click', () => update({fontSize:btn.dataset.fontSize}));
+    });
+    bgmEnabled.addEventListener('change', () => update({bgmEnabled:bgmEnabled.checked}));
+    bgmVolume.addEventListener('input', () => update({bgmVolume:Number(bgmVolume.value)}));
+    seEnabled.addEventListener('change', () => update({seEnabled:seEnabled.checked}));
+    seVolume.addEventListener('input', () => update({seVolume:Number(seVolume.value)}));
+
+    syncControls();
+    applySettings(settings);
+    window.addEventListener('resize', () => applySettings(settings));
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initMobileSettings);
+  }else{
+    initMobileSettings();
+  }
+})();
+</script>
+
+
 
 </body>
 </html>
