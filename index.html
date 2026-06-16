@@ -3930,6 +3930,139 @@ body.font-large{zoom:1.10;}
 }
 </style>
 
+
+<style id="settings-click-and-icon-final-fix">
+/* ===== 設定アイコン：PCクリックずれ・見た目修正 2026/6/16 21:30 ===== */
+/* body zoom はドラッグ座標とクリック位置をずらす原因になるため無効化 */
+body.font-small,
+body.font-medium,
+body.font-large{
+  zoom:1 !important;
+}
+
+/* 文字サイズはzoomではなくCSS変数で主要テキストだけ調整 */
+.story-text,
+.info-text,
+.ho-text,
+.ho-text.solution-mode,
+.ending-text,
+.credit-text,
+.author-note-text,
+.clear-review-text,
+.solution-lead,
+.solution-story,
+.popup-text,
+.author-text,
+.character-desc,
+#lateralQuiz .quiz-question,
+#lateralQuiz .quiz-title,
+#lateralQuiz .quiz-difficulty,
+#lateralQuiz .quiz-solved-label,
+#lateralQuiz .quiz-answer-body,
+#lateralQuiz .quiz-answer-text{
+  font-size:calc(1em * var(--site-font-scale, 1)) !important;
+}
+
+.mobile-settings-button{
+  width:56px !important;
+  height:56px !important;
+  min-width:56px !important;
+  min-height:56px !important;
+  border-radius:50% !important;
+  background:radial-gradient(circle at 45% 38%, rgba(80,48,26,.98), rgba(18,10,5,.98) 70%) !important;
+  border:2px solid #d9bd82 !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,245,210,.18) !important;
+  color:transparent !important;
+  text-shadow:none !important;
+  overflow:hidden !important;
+  cursor:grab !important;
+  touch-action:none !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+  transform:none !important;
+  -webkit-transform:none !important;
+}
+
+/* 端末差が出やすい絵文字をやめて、SVGの歯車1個に固定 */
+.mobile-settings-button::before{
+  content:"" !important;
+  display:block !important;
+  width:30px !important;
+  height:30px !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+  background-size:contain !important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f6ead2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2.7v2.1M12 19.2v2.1M4.7 4.7l1.5 1.5M17.8 17.8l1.5 1.5M2.7 12h2.1M19.2 12h2.1M4.7 19.3l1.5-1.5M17.8 6.2l1.5-1.5'/%3E%3Ccircle cx='12' cy='12' r='6.2'/%3E%3Ccircle cx='12' cy='12' r='2.4'/%3E%3C/svg%3E") !important;
+}
+
+.mobile-settings-button.dragging{
+  cursor:grabbing !important;
+}
+
+/* パネルが開いている時はパネル優先。歯車は下に隠れてOK */
+.mobile-settings-button.panel-open{
+  z-index:2147483645 !important;
+  opacity:.45 !important;
+}
+.mobile-settings-panel.open,
+.mobile-settings-panel.positioned.open{
+  z-index:2147483647 !important;
+}
+
+@media(max-width:900px){
+  .mobile-settings-button{
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    min-height:52px !important;
+  }
+  .mobile-settings-button::before{
+    width:28px !important;
+    height:28px !important;
+  }
+}
+</style>
+
+
+
+<style id="settings-clean-gear-final-fix">
+/* ===== 設定アイコン：歯車を見やすい1個マークに修正 2026/6/16 21:30 ===== */
+.mobile-settings-button{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  color:transparent !important;
+  font-size:0 !important;
+  line-height:1 !important;
+}
+.mobile-settings-button::before,
+.mobile-settings-button::after{
+  content:"" !important;
+}
+.mobile-settings-button::before{
+  display:block !important;
+  width:34px !important;
+  height:34px !important;
+  background-color:#f6ead2 !important;
+  background-image:none !important;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.37-.31-.6-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98L14.5 2.42C14.47 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42L9.12 5.07c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.48 0-.6.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.08.65-.08.98s.03.66.08.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.37.31.6.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .47-.18.5-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.08.48 0 .6-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z'/%3E%3C/svg%3E") !important;
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.37-.31-.6-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98L14.5 2.42C14.47 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42L9.12 5.07c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.08-.48 0-.6.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.08.65-.08.98s.03.66.08.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.37.31.6.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .47-.18.5-.42l.38-2.65c.61-.25 1.17-.58 1.69-.98l2.49 1c.23.08.48 0 .6-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z'/%3E%3C/svg%3E") !important;
+  -webkit-mask-repeat:no-repeat !important;
+  mask-repeat:no-repeat !important;
+  -webkit-mask-position:center !important;
+  mask-position:center !important;
+  -webkit-mask-size:contain !important;
+  mask-size:contain !important;
+}
+@media(max-width:900px){
+  .mobile-settings-button::before{
+    width:31px !important;
+    height:31px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="dust-container">
@@ -6902,6 +7035,7 @@ loadLateralQuizzesFromExcel();
 
     button.addEventListener('pointerdown', (event) => {
       if(event.button !== undefined && event.button !== 0) return;
+      event.preventDefault();
       clearTimeout(closeTimer);
       const rect = button.getBoundingClientRect();
       dragState = {
@@ -6920,7 +7054,7 @@ loadLateralQuizzesFromExcel();
       if(!dragState || dragState.pointerId !== event.pointerId) return;
       const dx = event.clientX - dragState.startX;
       const dy = event.clientY - dragState.startY;
-      if(Math.hypot(dx, dy) > 5){
+      if(Math.hypot(dx, dy) > 8){
         dragState.moved = true;
         suppressClick = true;
         closePanel();
@@ -6940,7 +7074,7 @@ loadLateralQuizzesFromExcel();
       button.classList.remove('dragging');
       if(dragState.moved){
         saveButtonPosition(buttonPosition);
-        setTimeout(() => { suppressClick = false; }, 160);
+        setTimeout(() => { suppressClick = false; }, 260);
       }
       dragState = null;
     }
