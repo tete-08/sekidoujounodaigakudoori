@@ -3317,6 +3317,158 @@ body.font-large{zoom:1.10;}
   }
 }
 
+
+
+/* ===== 設定ボタン：ドラッグ移動対応 2026/6/16 ===== */
+.mobile-settings-button{
+  touch-action:none !important;
+  user-select:none !important;
+  -webkit-user-select:none !important;
+  cursor:grab !important;
+  transition:opacity .18s ease, box-shadow .18s ease, background .18s ease !important;
+}
+.mobile-settings-button.dragging{
+  cursor:grabbing !important;
+  opacity:1 !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.7) !important;
+}
+.mobile-settings-button.position-ready{
+  right:auto !important;
+  bottom:auto !important;
+}
+.mobile-settings-panel.positioned{
+  right:auto !important;
+  bottom:auto !important;
+  transform:translateY(10px) !important;
+}
+.mobile-settings-panel.positioned.open,
+.mobile-settings-panel.positioned:hover{
+  transform:translateY(0) !important;
+}
+@media(max-width:900px){
+  .mobile-settings-button.position-ready{
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+  }
+  .mobile-settings-panel.positioned{
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+  }
+}
+
+
+
+/* ===== 設定ボタン：自由ドラッグ最終修正 2026/6/16 ===== */
+.mobile-settings-button.position-ready{
+  left:var(--settings-button-left) !important;
+  top:var(--settings-button-top) !important;
+  right:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  -webkit-transform:none !important;
+  touch-action:none !important;
+}
+.mobile-settings-panel.positioned{
+  left:var(--settings-panel-left) !important;
+  top:var(--settings-panel-top) !important;
+  right:auto !important;
+  bottom:auto !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  transform:translateY(10px) !important;
+}
+.mobile-settings-panel.positioned.open{
+  opacity:1 !important;
+  pointer-events:auto !important;
+  transform:translateY(0) !important;
+}
+.mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel.positioned:not(.open),
+.mobile-settings-panel.positioned:not(.open):hover{
+  opacity:0 !important;
+  pointer-events:none !important;
+  transform:translateY(10px) !important;
+}
+.mobile-settings-panel.positioned.open:hover{
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
+
+
+/* ===== 設定アイコン最終調整 2026/6/16 21:30 ===== */
+.mobile-settings-button{
+  font-size:0 !important;
+  line-height:1 !important;
+  touch-action:none;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.mobile-settings-button::before{
+  content:"⚙";
+  display:block;
+  font-size:30px;
+  line-height:1;
+}
+
+@media(max-width:900px){
+  .mobile-settings-button::before{
+    font-size:28px;
+  }
+}
+
+/* hoverだけでパネルが開かないようにして、「閉じる」後の再表示を防止 */
+.mobile-settings-button:hover + .mobile-settings-overlay + .mobile-settings-panel:not(.open),
+.mobile-settings-panel:not(.open):hover,
+.mobile-settings-panel.positioned:not(.open){
+  transform:translateX(calc(100% + 28px)) !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+.mobile-settings-panel.open{
+  transform:translateX(0) !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
+
+/* ===== 設定アイコン重なり・単独歯車修正 2026/6/16 21:30 ===== */
+.mobile-settings-button{
+  color:transparent !important;
+  text-shadow:none !important;
+  overflow:hidden !important;
+  z-index:2147483646 !important;
+}
+.mobile-settings-button::before{
+  content:"⚙" !important;
+  display:block !important;
+  color:#f6ead2 !important;
+  font-family:Arial,"Helvetica Neue",sans-serif !important;
+  font-size:30px !important;
+  line-height:1 !important;
+  width:1em !important;
+  height:1em !important;
+  text-align:center !important;
+}
+.mobile-settings-button.panel-open{
+  z-index:2147483645 !important;
+  opacity:.35 !important;
+}
+.mobile-settings-panel.open{
+  z-index:2147483647 !important;
+}
+.mobile-settings-panel.positioned.open{
+  z-index:2147483647 !important;
+}
+@media(max-width:900px){
+  .mobile-settings-button::before{
+    font-size:28px !important;
+  }
+}
+
 </style>
 
 <style id="chatgpt-answer-layout-fix">
@@ -3967,7 +4119,7 @@ body.font-large{zoom:1.10;}
 <div class="paper-box">
 <p>
 
-2026/6/15 18:20 : 最終更新
+2026/6/16 21:30 : 最終更新
 
 </p>
 </div>
@@ -6464,7 +6616,7 @@ loadLateralQuizzesFromExcel();
 
 
 
-<button type="button" class="mobile-settings-button" id="mobileSettingsButton" aria-label="設定を開く" title="設定" aria-expanded="false">設定</button>
+<button type="button" class="mobile-settings-button" id="mobileSettingsButton" aria-label="設定を開く" title="設定" aria-expanded="false"></button>
 <div class="mobile-settings-overlay" id="mobileSettingsOverlay"></div>
 <div class="mobile-settings-panel" id="mobileSettingsPanel" role="dialog" aria-modal="true" aria-labelledby="mobileSettingsTitle">
   <h2 class="mobile-settings-title" id="mobileSettingsTitle">表示・音量設定</h2>
@@ -6591,6 +6743,7 @@ loadLateralQuizzesFromExcel();
     const seVolumeValue = document.getElementById('mobileSeVolumeValue');
 
     if(!button || !panel || !overlay) return;
+    button.textContent = '';
 
     let settings = loadSettings();
 
@@ -6623,13 +6776,16 @@ loadLateralQuizzesFromExcel();
 
     function openPanel(){
       clearTimeout(closeTimer);
+      positionPanel();
       panel.classList.add('open');
+      button.classList.add('panel-open');
       button.setAttribute('aria-expanded', 'true');
     }
 
     function closePanel(){
       clearTimeout(closeTimer);
       panel.classList.remove('open');
+      button.classList.remove('panel-open');
       button.setAttribute('aria-expanded', 'false');
     }
 
@@ -6646,19 +6802,173 @@ loadLateralQuizzesFromExcel();
       closeTimer = setTimeout(closePanel, 180);
     }
 
+    const positionStorageKey = storageKey + 'ButtonPosition';
+    let buttonPosition = null;
+    let dragState = null;
+    let suppressClick = false;
+
+    function clampNumber(value, min, max){
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getButtonSafeMargin(){
+      return window.matchMedia('(max-width: 900px)').matches ? 8 : 12;
+    }
+
+    function loadButtonPosition(){
+      try{
+        const saved = JSON.parse(localStorage.getItem(positionStorageKey) || 'null');
+        if(saved && typeof saved.x === 'number' && typeof saved.y === 'number'){
+          return saved;
+        }
+      }catch(e){}
+      return null;
+    }
+
+    function saveButtonPosition(position){
+      localStorage.setItem(positionStorageKey, JSON.stringify(position));
+    }
+
+    function defaultButtonPosition(){
+      const margin = getButtonSafeMargin();
+      const rect = button.getBoundingClientRect();
+      const size = rect.width || (window.matchMedia('(max-width: 900px)').matches ? 52 : 56);
+      if(window.matchMedia('(max-width: 900px)').matches){
+        return { x: margin, y: window.innerHeight - size - margin };
+      }
+      return { x: window.innerWidth - size - margin, y: window.innerHeight - size - margin };
+    }
+
+    function normalizeButtonPosition(position){
+      const margin = getButtonSafeMargin();
+      const rect = button.getBoundingClientRect();
+      const width = rect.width || (window.matchMedia('(max-width: 900px)').matches ? 52 : 56);
+      const height = rect.height || width;
+      return {
+        x: clampNumber(position.x, margin, Math.max(margin, window.innerWidth - width - margin)),
+        y: clampNumber(position.y, margin, Math.max(margin, window.innerHeight - height - margin))
+      };
+    }
+
+    function applyButtonPosition(position, shouldSave){
+      buttonPosition = normalizeButtonPosition(position || defaultButtonPosition());
+      button.classList.add('position-ready');
+      button.style.setProperty('--settings-button-left', buttonPosition.x + 'px');
+      button.style.setProperty('--settings-button-top', buttonPosition.y + 'px');
+      button.style.setProperty('left', buttonPosition.x + 'px', 'important');
+      button.style.setProperty('top', buttonPosition.y + 'px', 'important');
+      button.style.setProperty('right', 'auto', 'important');
+      button.style.setProperty('bottom', 'auto', 'important');
+      if(shouldSave) saveButtonPosition(buttonPosition);
+      positionPanel();
+    }
+
+    function positionPanel(){
+      if(!panel || !button) return;
+      const gap = 10;
+      const margin = 8;
+      const buttonRect = button.getBoundingClientRect();
+      panel.classList.add('positioned');
+      panel.style.width = window.matchMedia('(max-width: 900px)').matches
+        ? 'min(calc(100vw - 16px), 390px)'
+        : 'min(92vw, 390px)';
+      panel.style.maxHeight = window.matchMedia('(max-width: 900px)').matches ? '72dvh' : '72vh';
+      const panelWidth = Math.min(window.innerWidth - margin * 2, 390);
+      const panelHeight = Math.min(window.innerHeight * 0.72, panel.scrollHeight || 420);
+      let left = buttonRect.left;
+      let top = buttonRect.bottom + gap;
+      if(left + panelWidth > window.innerWidth - margin){
+        left = window.innerWidth - panelWidth - margin;
+      }
+      if(left < margin){
+        left = margin;
+      }
+      if(top + panelHeight > window.innerHeight - margin){
+        top = buttonRect.top - panelHeight - gap;
+      }
+      if(top < margin){
+        top = margin;
+      }
+      panel.style.setProperty('--settings-panel-left', left + 'px');
+      panel.style.setProperty('--settings-panel-top', top + 'px');
+      panel.style.setProperty('left', left + 'px', 'important');
+      panel.style.setProperty('top', top + 'px', 'important');
+      panel.style.setProperty('right', 'auto', 'important');
+      panel.style.setProperty('bottom', 'auto', 'important');
+    }
+
     button.setAttribute('aria-expanded', 'false');
-    button.addEventListener('click', togglePanel);
-    button.addEventListener('mouseenter', openPanel);
-    button.addEventListener('mouseleave', reserveClose);
-    panel.addEventListener('mouseenter', openPanel);
-    panel.addEventListener('mouseleave', reserveClose);
+    applyButtonPosition(loadButtonPosition() || defaultButtonPosition(), false);
+
+    button.addEventListener('pointerdown', (event) => {
+      if(event.button !== undefined && event.button !== 0) return;
+      clearTimeout(closeTimer);
+      const rect = button.getBoundingClientRect();
+      dragState = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        offsetX: event.clientX - rect.left,
+        offsetY: event.clientY - rect.top,
+        moved: false
+      };
+      button.setPointerCapture?.(event.pointerId);
+      button.classList.add('dragging');
+    });
+
+    button.addEventListener('pointermove', (event) => {
+      if(!dragState || dragState.pointerId !== event.pointerId) return;
+      const dx = event.clientX - dragState.startX;
+      const dy = event.clientY - dragState.startY;
+      if(Math.hypot(dx, dy) > 5){
+        dragState.moved = true;
+        suppressClick = true;
+        closePanel();
+      }
+      if(dragState.moved){
+        event.preventDefault();
+        applyButtonPosition({
+          x: event.clientX - dragState.offsetX,
+          y: event.clientY - dragState.offsetY
+        }, false);
+      }
+    });
+
+    function finishDrag(event){
+      if(!dragState || dragState.pointerId !== event.pointerId) return;
+      button.releasePointerCapture?.(event.pointerId);
+      button.classList.remove('dragging');
+      if(dragState.moved){
+        saveButtonPosition(buttonPosition);
+        setTimeout(() => { suppressClick = false; }, 160);
+      }
+      dragState = null;
+    }
+
+    button.addEventListener('pointerup', finishDrag);
+    button.addEventListener('pointercancel', finishDrag);
+
+    button.addEventListener('click', (event) => {
+      if(suppressClick){
+        event.preventDefault();
+        event.stopPropagation();
+        suppressClick = false;
+        return;
+      }
+      togglePanel();
+    });
+    /* hoverで自動開閉すると「閉じる」後に再表示される端末があるため、クリック/タップのみで開閉 */
     document.addEventListener('click', (event) => {
       if(!panel.contains(event.target) && !button.contains(event.target)){
         closePanel();
       }
     });
     overlay.addEventListener('click', closePanel);
-    close.addEventListener('click', closePanel);
+    close.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closePanel();
+    });
 
     fontSizeButtons.forEach(btn => {
       btn.addEventListener('click', () => update({fontSize:btn.dataset.fontSize}));
@@ -6670,7 +6980,11 @@ loadLateralQuizzesFromExcel();
 
     syncControls();
     applySettings(settings);
-    window.addEventListener('resize', () => applySettings(settings));
+    window.addEventListener('resize', () => {
+      applySettings(settings);
+      applyButtonPosition(buttonPosition || defaultButtonPosition(), true);
+      positionPanel();
+    });
   }
 
   if(document.readyState === 'loading'){
