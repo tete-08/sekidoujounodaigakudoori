@@ -4063,6 +4063,109 @@ body.font-large{
 }
 </style>
 
+
+
+<style id="settings-font-size-real-fix">
+/* ===== 文字サイズ設定：PC/スマホ両対応 2026/6/16 ===== */
+:root{ --site-font-scale:1; --mobile-font-scale:1; }
+body.font-small, body.font-medium, body.font-large{ zoom:1 !important; }
+
+/* 共通：主要テキスト */
+nav a{font-size:calc(14px * var(--site-font-scale)) !important;}
+.logo{font-size:calc(62px * var(--site-font-scale)) !important;}
+.hero-title{font-size:calc(110px * var(--site-font-scale)) !important;}
+.section-title{font-size:calc(38px * var(--site-font-scale)) !important;}
+.book-title{font-size:calc(18px * var(--site-font-scale)) !important;}
+.paper-label{font-size:calc(30px * var(--site-font-scale)) !important;}
+.story-title{font-size:calc(30px * var(--site-font-scale)) !important;}
+.story-text,.info-text{font-size:calc(15px * var(--site-font-scale)) !important;}
+.start-button,.back-button,.review-button,.timer-button,.vote-button,.resume-button,.character-start,.ho-bottom-button,.sidebar-back-button,.return-button{font-size:calc(18px * var(--site-font-scale)) !important;}
+.character-name{font-size:calc(32px * var(--site-font-scale)) !important;}
+.character-role,.character-age,.character-desc{font-size:calc(16px * var(--site-font-scale)) !important;}
+.ho-item{font-size:calc(16px * var(--site-font-scale)) !important;}
+.ho-title{font-size:calc(44px * var(--site-font-scale)) !important;}
+.ho-text{font-size:calc(18px * var(--site-font-scale)) !important;}
+.ho-text.solution-mode{font-size:calc(18px * var(--site-font-scale)) !important;}
+.ho-timer{font-size:calc(48px * var(--site-font-scale)) !important;}
+.timer-button{font-size:calc(20px * var(--site-font-scale)) !important;}
+.vote-button{font-size:calc(24px * var(--site-font-scale)) !important;}
+.popup-title{font-size:calc(34px * var(--site-font-scale)) !important;}
+.popup-text{font-size:calc(16px * var(--site-font-scale)) !important;}
+.popup-input{font-size:calc(20px * var(--site-font-scale)) !important;}
+.author-name{font-size:calc(28px * var(--site-font-scale)) !important;}
+.author-role{font-size:calc(16px * var(--site-font-scale)) !important;}
+.author-text,.sns-button{font-size:calc(16px * var(--site-font-scale)) !important;}
+.solution-score-fixed{font-size:calc(18px * var(--site-font-scale)) !important;}
+.solution-lead{font-size:calc(16px * var(--site-font-scale)) !important;}
+.solution-story{font-size:calc(22px * var(--site-font-scale)) !important;}
+.solution-input{font-size:calc(18px * var(--site-font-scale)) !important;}
+.solution-check-button{font-size:calc(20px * var(--site-font-scale)) !important;}
+.solution-result{font-size:calc(16px * var(--site-font-scale)) !important;}
+.credit-text,.author-note-text,.ending-text{font-size:calc(16px * var(--site-font-scale)) !important;}
+.clear-review-button{font-size:calc(17px * var(--site-font-scale)) !important;}
+.clear-review-title{font-size:calc(36px * var(--site-font-scale)) !important;}
+.clear-review-text{font-size:calc(17px * var(--site-font-scale)) !important;}
+.home-lead{font-size:calc(20px * var(--site-font-scale)) !important;}
+.home-status-title{font-size:calc(26px * var(--site-font-scale)) !important;}
+.home-status-label{font-size:calc(20px * var(--site-font-scale)) !important;}
+.home-status-number{font-size:calc(54px * var(--site-font-scale)) !important;}
+.home-status-unit{font-size:calc(18px * var(--site-font-scale)) !important;}
+.home-status-note{font-size:calc(14px * var(--site-font-scale)) !important;}
+
+/* 水平思考クイズ */
+.quiz-range-select{font-size:calc(20px * var(--site-font-scale)) !important;}
+.quiz-tool-button,.quiz-page-button,.quiz-answer-button,.quiz-filter-button{font-size:calc(18px * var(--site-font-scale)) !important;}
+.quiz-progress-text,.quiz-page-info{font-size:calc(16px * var(--site-font-scale)) !important;}
+.quiz-title{font-size:calc(21px * var(--site-font-scale)) !important;}
+.quiz-question,.quiz-answer{font-size:calc(16px * var(--site-font-scale)) !important;}
+#lateralQuiz .quiz-th{font-size:calc(17px * var(--site-font-scale)) !important;}
+#lateralQuiz .quiz-title{font-size:calc(19px * var(--site-font-scale)) !important;}
+#lateralQuiz .quiz-question,#lateralQuiz .quiz-difficulty,#lateralQuiz .quiz-solved-label,#lateralQuiz .quiz-answer-body,#lateralQuiz .quiz-answer-text{font-size:calc(16px * var(--site-font-scale)) !important;}
+#lateralQuiz .quiz-answer-button{font-size:calc(15px * var(--site-font-scale)) !important;}
+#lateralQuiz .quiz-answer-badge,#lateralQuiz .quiz-answer-label{font-size:calc(16px * var(--site-font-scale)) !important;}
+
+/* 設定パネル内 */
+.mobile-settings-panel,.mobile-settings-panel *{font-size:calc(16px * var(--site-font-scale)) !important;}
+.mobile-settings-title{font-size:calc(26px * var(--site-font-scale)) !important;}
+.mobile-setting-row{font-size:calc(16px * var(--site-font-scale)) !important;}
+.mobile-font-size-buttons button{font-size:calc(16px * var(--site-font-scale)) !important;}
+.mobile-settings-close{font-size:calc(16px * var(--site-font-scale)) !important;}
+.mobile-settings-note{font-size:calc(14px * var(--site-font-scale)) !important;}
+
+@media(max-width:900px){
+  nav a{font-size:calc(12px * var(--site-font-scale)) !important;}
+  .logo{font-size:calc(34px * var(--site-font-scale)) !important;}
+  .hero-title{font-size:calc(48px * var(--site-font-scale)) !important;}
+  .section-title{font-size:calc(28px * var(--site-font-scale)) !important;}
+  .story-title{font-size:calc(26px * var(--site-font-scale)) !important;}
+  .story-text,.info-text{font-size:calc(14px * var(--site-font-scale)) !important;}
+  .ho-title{font-size:calc(30px * var(--site-font-scale)) !important;}
+  .ho-text{font-size:calc(16px * var(--site-font-scale)) !important;}
+  .ho-timer{font-size:calc(24px * var(--site-font-scale)) !important;}
+  .timer-button{font-size:calc(14px * var(--site-font-scale)) !important;}
+  .solution-score-fixed{font-size:calc(15px * var(--site-font-scale)) !important;}
+  .solution-lead{font-size:calc(15px * var(--site-font-scale)) !important;}
+  .solution-story{font-size:calc(17px * var(--site-font-scale)) !important;}
+  .solution-input{font-size:calc(16px * var(--site-font-scale)) !important;}
+  .solution-correct-label,.solution-correct{font-size:calc(17px * var(--site-font-scale)) !important;}
+  .ho-text.solution-mode{font-size:calc(16px * var(--site-font-scale)) !important;}
+  .clear-review-button{font-size:calc(15px * var(--site-font-scale)) !important;}
+  .clear-review-title{font-size:calc(26px * var(--site-font-scale)) !important;}
+  .clear-review-text{font-size:calc(15px * var(--site-font-scale)) !important;}
+  .home-lead{font-size:calc(15px * var(--site-font-scale)) !important;}
+  .home-status-title{font-size:calc(22px * var(--site-font-scale)) !important;}
+  .home-status-number{font-size:calc(46px * var(--site-font-scale)) !important;}
+  #lateralQuiz .quiz-head{font-size:calc(18px * var(--site-font-scale)) !important;}
+  #lateralQuiz .quiz-question{font-size:calc(16px * var(--site-font-scale)) !important;}
+  .mobile-settings-title{font-size:calc(24px * var(--site-font-scale)) !important;}
+}
+
+@media(max-width:420px){
+  .logo{font-size:calc(30px * var(--site-font-scale)) !important;}
+  .mobile-ho-toggle{font-size:calc(14px * var(--site-font-scale)) !important;}
+}
+</style>
+
 </head>
 <body>
 <div class="dust-container">
