@@ -3469,6 +3469,555 @@ body.font-large{zoom:1.10;}
   }
 }
 
+
+
+/* ===== オンライン部屋：Firebase同期テスト 2026/6/18 ===== */
+.online-room-panel{
+  position:fixed;
+  left:18px;
+  bottom:88px;
+  z-index:99998;
+  width:min(360px, calc(100vw - 36px));
+  padding:16px;
+  background:rgba(20,10,5,.88);
+  border:2px solid rgba(217,189,130,.75);
+  border-radius:12px;
+  box-shadow:0 12px 32px rgba(0,0,0,.55);
+  color:#f6ead2;
+  backdrop-filter:blur(3px);
+}
+.online-room-title{
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:8px;
+  color:#ffe7b8;
+}
+.online-room-note{
+  font-size:12px;
+  line-height:1.5;
+  opacity:.85;
+  margin-bottom:10px;
+}
+.online-room-row{
+  display:flex;
+  gap:8px;
+}
+.online-room-input{
+  flex:1;
+  min-width:0;
+  height:42px;
+  padding:0 10px;
+  border:1px solid rgba(217,189,130,.75);
+  background:rgba(255,250,240,.92);
+  color:#2b1a10;
+  border-radius:6px;
+  font-size:15px;
+}
+.online-room-button{
+  width:86px;
+  height:42px;
+  border:1px solid rgba(217,189,130,.75);
+  background:#3d2415;
+  color:#fff6df;
+  border-radius:6px;
+  font-weight:700;
+  cursor:pointer;
+}
+.online-room-button:hover{
+  background:#5a351f;
+}
+.online-room-status{
+  margin-top:10px;
+  min-height:20px;
+  font-size:13px;
+  line-height:1.6;
+  white-space:pre-line;
+}
+.online-room-status strong{
+  color:#ffe7b8;
+}
+@media(max-width:700px){
+  .online-room-panel{
+    left:10px;
+    right:10px;
+    bottom:72px;
+    width:auto;
+    padding:12px;
+  }
+}
+
+
+/* ===== オンライン参加モーダル ===== */
+.online-choice-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.72);
+  z-index:1000000;
+  padding:20px;
+}
+
+.online-choice-popup.open{
+  display:flex;
+}
+
+.online-choice-box{
+  width:min(92vw,560px);
+  background:rgba(28,14,7,.96);
+  color:#f6ead2;
+  border:2px solid #b88a52;
+  border-radius:14px;
+  padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+
+.online-choice-title{
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:#ffe7b8;
+}
+
+.online-choice-text{
+  line-height:1.8;
+  margin-bottom:18px;
+}
+
+.online-room-form{
+  display:grid;
+  gap:12px;
+  margin-top:16px;
+}
+
+.online-room-input{
+  width:100%;
+  min-height:52px;
+  padding:10px 14px;
+  border:2px solid #82613f;
+  border-radius:7px;
+  background:#f3eadc;
+  color:#2b1a10;
+  font-size:18px;
+}
+
+.online-room-actions{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.online-room-button{
+  flex:1;
+  min-width:150px;
+  min-height:52px;
+  border:2px solid #b88a52;
+  border-radius:7px;
+  background:rgba(255,250,240,.14);
+  color:#f6ead2;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.online-room-button:hover{
+  background:#3d2415;
+}
+
+.online-room-button.primary{
+  background:rgba(255,250,240,.72);
+  color:#2b1a10;
+}
+
+.online-room-status{
+  margin-top:14px;
+  line-height:1.7;
+  font-weight:700;
+  color:#ffe7b8;
+}
+
+.online-room-members{
+  margin-top:8px;
+  line-height:1.7;
+  opacity:.92;
+}
+
+.online-room-badge{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:99998;
+  display:none;
+  max-width:min(92vw,360px);
+  padding:12px 16px;
+  background:rgba(20,10,5,.86);
+  border:1px solid rgba(255,230,180,.30);
+  border-radius:10px;
+  color:#f6ead2;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.online-room-badge.show{
+  display:block;
+}
+
+@media(max-width:700px){
+  .online-choice-box{
+    padding:22px 18px;
+  }
+  .online-choice-title{
+    font-size:22px;
+  }
+  .online-room-actions{
+    flex-direction:column;
+  }
+  .online-room-button{
+    width:100%;
+  }
+}
+
+
+/* ===== 常時表示オンライン部屋パネルは使わない ===== */
+#onlineRoomPanel,
+.online-room-panel,
+#onlineRoomStatusBox{
+  display:none !important;
+}
+
+
+/* ===== 旧オンライン部屋UIは完全に非表示 ===== */
+#onlineRoomPanel,
+#onlineRoomStatusBox,
+#onlineRoomBadge,
+.online-room-panel,
+.online-room-box,
+.online-room,
+.online-room-area,
+.online-room-status,
+.online-room-members,
+.online-room-badge,
+#roomCode,
+#joinBtn,
+#status{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+
+
+/* ===== オンライン参加タブ：修正版 ===== */
+#onlineChoicePopup .online-room-status,
+#onlineChoicePopup .online-room-members{
+  display:block !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+}
+
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  right:18px;
+  bottom:18px;
+  padding:12px 16px;
+  background:rgba(20,10,5,.90);
+  border:2px solid rgba(217,189,130,.75);
+  border-radius:12px;
+  color:#f6ead2;
+  box-shadow:0 12px 32px rgba(0,0,0,.55);
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+}
+#onlineRoomBadge strong{
+  color:#ffe7b8;
+}
+.online-badge-edit{
+  margin-top:8px;
+  min-height:34px;
+  padding:4px 12px;
+  border:1px solid rgba(217,189,130,.75);
+  border-radius:6px;
+  background:rgba(255,250,240,.16);
+  color:#f6ead2;
+  font-weight:700;
+  cursor:pointer;
+}
+.online-badge-edit:hover{
+  background:#3d2415;
+}
+
+
+/* ===== オンライン参加タブ：折りたたみ版 v3 ===== */
+#onlineChoicePopup .online-room-button.primary{
+  background:rgba(255,250,240,.14) !important;
+  color:#f6ead2 !important;
+}
+#onlineChoicePopup .online-room-button.primary:hover{
+  background:#3d2415 !important;
+  color:#fff !important;
+}
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  position:fixed !important;
+  right:18px !important;
+  bottom:18px !important;
+  z-index:100000 !important;
+  width:auto !important;
+  max-width:min(92vw,420px) !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+}
+.online-tab-collapsed{
+  min-width:180px;
+  min-height:46px;
+  padding:10px 16px;
+  border:2px solid rgba(217,189,130,.78);
+  border-radius:999px;
+  background:rgba(20,10,5,.92);
+  color:#f6ead2;
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+  font-weight:700;
+  cursor:pointer;
+}
+.online-tab-collapsed:hover{
+  background:#3d2415;
+}
+.online-tab-panel{
+  width:min(92vw,420px);
+  padding:16px;
+  background:rgba(20,10,5,.94);
+  border:2px solid rgba(217,189,130,.78);
+  border-radius:14px;
+  color:#f6ead2;
+  box-shadow:0 14px 36px rgba(0,0,0,.55);
+  backdrop-filter:blur(3px);
+}
+.online-tab-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
+}
+.online-tab-title{
+  color:#ffe7b8;
+  font-weight:700;
+  line-height:1.5;
+}
+.online-tab-close{
+  min-width:72px;
+  min-height:34px;
+  padding:4px 10px;
+  border:1px solid rgba(217,189,130,.75);
+  border-radius:6px;
+  background:rgba(255,250,240,.12);
+  color:#f6ead2;
+  font-weight:700;
+  cursor:pointer;
+}
+.online-tab-close:hover{
+  background:#3d2415;
+}
+.online-tab-row{
+  padding:8px 0;
+  border-top:1px solid rgba(255,230,180,.18);
+  line-height:1.6;
+}
+.online-tab-members{
+  margin-top:6px;
+  display:grid;
+  gap:6px;
+}
+.online-tab-member{
+  padding:8px 10px;
+  border:1px solid rgba(255,230,180,.18);
+  border-radius:8px;
+  background:rgba(255,250,240,.06);
+}
+.online-tab-member strong{
+  color:#ffe7b8;
+}
+.online-badge-edit{
+  margin-top:10px;
+  min-height:36px;
+  padding:5px 12px;
+  border:1px solid rgba(217,189,130,.75);
+  border-radius:6px;
+  background:rgba(255,250,240,.12);
+  color:#f6ead2;
+  font-weight:700;
+  cursor:pointer;
+}
+@media(max-width:700px){
+  #onlineRoomBadge.online-room-badge{
+    right:10px !important;
+    bottom:76px !important;
+  }
+  .online-tab-collapsed{
+    min-width:150px;
+    min-height:42px;
+    font-size:13px;
+  }
+}
+
+
+
+/* ===== オンライン参加タブ v5 ===== */
+#onlineRoomBadge.online-room-badge{
+  cursor:grab;
+  touch-action:none;
+  user-select:none;
+}
+#onlineRoomBadge.online-room-badge.dragging{
+  cursor:grabbing;
+}
+.online-tab-collapsed{
+  background:rgba(20,10,5,.92) !important;
+}
+.online-tab-panel{
+  max-height:min(72vh,520px);
+  overflow:auto;
+}
+.online-tab-members{
+  margin-top:0;
+}
+.online-host-note{
+  margin-top:10px;
+  padding:8px 10px;
+  border:1px solid rgba(255,230,180,.16);
+  border-radius:8px;
+  background:rgba(255,250,240,.05);
+  font-size:14px;
+  line-height:1.6;
+  opacity:.9;
+}
+
+
+
+/* ===== v6: キャラ選択クリック安定化・オンラインタブ調整 ===== */
+.character-grid,
+.character-card,
+.character-select-buttons,
+.character-start{
+  position:relative;
+  z-index:5;
+  pointer-events:auto;
+}
+.character-card{
+  user-select:none;
+}
+.character-card.disabled-online{
+  opacity:.42;
+  cursor:not-allowed;
+}
+.character-card.disabled-online::after{
+  content:"選択済み";
+  position:absolute;
+  top:12px;
+  right:12px;
+  padding:4px 10px;
+  border:1px solid rgba(255,230,180,.55);
+  border-radius:999px;
+  background:rgba(20,10,5,.82);
+  color:#ffe7b8;
+  font-size:13px;
+  font-weight:700;
+}
+#onlineRoomBadge.online-room-badge{
+  pointer-events:none !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  pointer-events:auto !important;
+}
+#onlineRoomBadge.online-room-badge.expanded{
+  cursor:default !important;
+}
+#onlineRoomBadge.online-room-badge.expanded .online-tab-panel{
+  cursor:default;
+}
+.online-tab-title-small{
+  font-weight:700;
+  color:#ffe7b8;
+  line-height:1.5;
+}
+.online-tab-member{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.online-tab-member-name{
+  color:#ffe7b8;
+  font-weight:700;
+}
+.online-tab-member-character{
+  opacity:.95;
+  white-space:nowrap;
+}
+
+
+/* ===== v7: オンライン参加タブの展開表示 ===== */
+.online-tab-room-label{
+  font-size:13px;
+  opacity:.85;
+  margin-bottom:4px;
+}
+.online-tab-room-name{
+  font-size:22px;
+  font-weight:700;
+  color:#ffe7b8;
+}
+.online-tab-members-title{
+  margin:18px 0 10px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,230,180,.18);
+  font-weight:700;
+  color:#f6ead2;
+}
+.online-tab-member{
+  padding:12px 14px;
+  border:1px solid rgba(255,230,180,.18);
+  border-radius:8px;
+  background:rgba(255,250,240,.06);
+  margin-bottom:10px;
+}
+.online-tab-member-main{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.online-tab-member-name{
+  color:#ffe7b8;
+  font-weight:700;
+}
+.online-tab-member-character{
+  opacity:.95;
+  white-space:nowrap;
+}
+.online-tab-member-host{
+  margin-top:4px;
+  font-size:12px;
+  opacity:.72;
+}
+.online-tab-collapsed{
+  width:100%;
+  height:100%;
+}
+
 </style>
 
 <style id="chatgpt-answer-layout-fix">
@@ -4498,7 +5047,7 @@ nav a{font-size:calc(14px * var(--site-font-scale)) !important;}
   クリア済みHO一覧
   </a>
 
-  <a class="start-button" onclick="showSection('characterSelect')">
+  <a class="start-button" onclick="showOnlinePopup()">
   プレイ開始 →
   </a>
 </div>
@@ -4604,7 +5153,7 @@ margin-top:40px;
 <div class="character-select-buttons">
 
   <div class="character-start"
-       onclick="showSection('book')">
+       onclick="returnToLibrary()">
     ← 本棚へ戻る
   </div>
 
@@ -4917,15 +5466,33 @@ let lastViewedHOIndex = 0;
 
 function selectCharacter(id, element){
 
+  if(element && element.classList && element.classList.contains('disabled-online')){
+    alert('このPLは、すでに他の参加者が選択済みです。別のPLを選んでください。');
+    return;
+  }
+
   selectedCharacter = id;
 
   document.querySelectorAll('.character-card').forEach(card => {
     card.classList.remove('selected');
   });
 
-  element.classList.add('selected');
+  if(element){
+    element.classList.add('selected');
+  }
 
 }
+
+document.addEventListener('click', function(e){
+  const card = e.target.closest && e.target.closest('.character-card');
+  if(!card) return;
+  const id = card.dataset.character || ((card.getAttribute('onclick') || '').match(/selectCharacter\('([^']+)'/) || [])[1];
+  if(id){
+    e.preventDefault();
+    selectCharacter(id, card);
+  }
+}, true);
+
 
 const INITIAL_HO_DATA = {
 
@@ -5047,11 +5614,25 @@ PL1 砂場城一郎を除いて。
 
 let HO_DATA = JSON.parse(JSON.stringify(INITIAL_HO_DATA));
 
-function startGame(){
+async function startGame(){
 
   if(!selectedCharacter){
     alert('キャラクターを選択してください');
     return;
+  }
+
+  if (window.confirmOnlineCharacterChoice) {
+    const canStart = await window.confirmOnlineCharacterChoice(selectedCharacter);
+    if (!canStart) {
+      return;
+    }
+  }
+
+  if (window.requestOnlineGameStart && window.firebaseUID && localStorage.getItem("madamisuRoomKey")) {
+    const shouldContinueLocally = await window.requestOnlineGameStart();
+    if (!shouldContinueLocally) {
+      return;
+    }
   }
 
   showSection('hoPage');
@@ -6141,6 +6722,7 @@ function renderQuizLoadError(message){
         </label>
       </div>
     `;
+    requestAnimationFrame(() => applyBadgePosition(getBadgeSavedPosition()));
   }
 }
 
@@ -7231,8 +7813,2353 @@ loadLateralQuizzesFromExcel();
   }
 })();
 </script>
+<div id="onlineChoicePopup" class="online-choice-popup" aria-hidden="true">
+  <div class="online-choice-box">
+    <div class="online-choice-title">オンラインで参加しますか？</div>
+    <div class="online-choice-text">
+      同じ部屋コードを入れると、同じ部屋に入れます。日本語の部屋コードも使えます。<br>
+      オフラインで遊ぶ場合は「今回は使わない」を選んでください。
+    </div>
+
+    <div class="online-room-form">
+      <input id="onlinePlayerNameInput" class="online-room-input" type="text" placeholder="参加者名">
+      <input id="onlineRoomCodeInput" class="online-room-input" type="text" placeholder="部屋コード">
+    </div>
+
+    <div id="onlineRoomStatus" class="online-room-status"></div>
+    <div id="onlineRoomMembers" class="online-room-members"></div>
+
+    <div class="online-room-actions">
+      <button id="onlineJoinBtn" class="online-room-button primary" type="button">オンラインで入室</button>
+      <button id="offlineStartBtn" class="online-room-button" type="button">今回は使わない</button>
+      <button id="onlineCloseBtn" class="online-room-button" type="button">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div id="onlineRoomBadge" class="online-room-badge" aria-live="polite"></div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getDatabase,
+    ref,
+    set,
+    onValue,
+    update,
+    get
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import {
+    getAuth,
+    signInAnonymously,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfodMJBKMsAx4XV0cbQXT4JFEWyk6NlWw",
+    authDomain: "sekidoujounodaigakudoori.firebaseapp.com",
+    databaseURL: "https://sekidoujounodaigakudoori-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "sekidoujounodaigakudoori",
+    storageBucket: "sekidoujounodaigakudoori.firebasestorage.app",
+    messagingSenderId: "445276228900",
+    appId: "1:445276228900:web:47a4bce8ddef97edff37b1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth(app);
+
+  let currentUid = "";
+  let currentRoomKey = "";
+  let currentRoomCode = "";
+  let onlineBadgeExpanded = false;
+  let latestRoomPlayers = {};
+  let roomMembersUnsubscribe = null;
+  let roomStateUnsubscribe = null;
+  let currentHostUid = "";
+  let onlineStartHandledAt = 0;
+  let onlineBadgeDragStarted = false;
+
+  signInAnonymously(auth).catch(console.error);
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) return;
+    currentUid = user.uid;
+    window.currentUid = user.uid;
+    window.firebaseUID = user.uid;
+    console.log("ログインUID:", user.uid);
+  });
+
+  // 接続確認用（確認できたら削除してOK）
+  set(ref(db, "test"), {
+    message: "Hello Firebase!"
+  });
+
+  window.firebaseDB = db;
+
+  function roomCodeToKey(roomCode){
+    const normalized = String(roomCode || "").trim().normalize("NFKC");
+    const bytes = new TextEncoder().encode(normalized);
+    let binary = "";
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return btoa(binary)
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/g, "");
+  }
+
+  function sanitizePlayerName(name){
+    return String(name || "")
+      .trim()
+      .normalize("NFKC")
+      .slice(0, 24);
+  }
+
+  // 「プレイ開始」直後に呼び出す
+  window.showOnlinePopup = showOnlinePopup;
+  function showOnlinePopup(){
+    const popup = document.getElementById("onlineChoicePopup");
+    if (!popup) return;
+    popup.classList.add("open");
+    popup.setAttribute("aria-hidden", "false");
+
+    const nameInput = document.getElementById("onlinePlayerNameInput");
+    const roomInput = document.getElementById("onlineRoomCodeInput");
+    if (nameInput && !nameInput.value.trim()) {
+      const savedName = localStorage.getItem("madamisuPlayerName") || "";
+      nameInput.value = savedName;
+    }
+    if (roomInput && !roomInput.value.trim()) {
+      const savedRoom = localStorage.getItem("madamisuRoomCode") || "";
+      roomInput.value = savedRoom;
+    }
+  }
+
+  // 以前の「全スタートボタンに後付けでポップアップを出す処理」は、
+  // キャラ選択後にも再表示される原因になるため使わない。
+  function attachOnlinePromptToStartButtons(){}
+
+  function hideOnlinePopup(){
+    const popup = document.getElementById("onlineChoicePopup");
+    if (!popup) return;
+    popup.classList.remove("open");
+    popup.setAttribute("aria-hidden", "true");
+  }
+
+  const CHARACTER_LABELS = {
+    pl1: "PL1（医師）",
+    pl2: "PL2（警察）",
+    pl3: "PL3（村長）",
+    pl4: "PL4（使用人）"
+  };
+
+  function getMemberListHtml(){
+    const entries = Object.entries(latestRoomPlayers || {});
+    if (!entries.length) {
+      return '<div class="online-tab-member"><div class="online-tab-member-main"><span class="online-tab-member-name">取得中</span><span class="online-tab-member-character">PL未選択</span></div></div>';
+    }
+    return entries.map(([uid, p]) => {
+      const name = escapeHtml(p?.name || "参加者");
+      const character = p?.character ? CHARACTER_LABELS[p.character] || p.character : "PL未選択";
+      const me = uid === currentUid ? "（自分）" : "";
+      const host = uid === currentHostUid ? '<div class="online-tab-member-host">ホスト</div>' : '';
+      return `
+        <div class="online-tab-member">
+          <div class="online-tab-member-main">
+            <span class="online-tab-member-name">${name}${me}</span>
+            <span class="online-tab-member-character">${escapeHtml(character)}</span>
+          </div>
+          ${host}
+        </div>
+      `;
+    }).join("");
+  }
+
+  function refreshCharacterCardsAvailability(){
+    const occupied = new Set();
+    Object.entries(latestRoomPlayers || {}).forEach(([uid, p]) => {
+      if (uid !== currentUid && p?.character) occupied.add(p.character);
+    });
+    document.querySelectorAll('.character-card').forEach(card => {
+      const onclick = card.getAttribute('onclick') || '';
+      const m = onclick.match(/selectCharacter\('([^']+)'/);
+      const id = m ? m[1] : card.dataset.character;
+      if (!id) return;
+      card.dataset.character = id;
+      card.classList.toggle('disabled-online', occupied.has(id));
+    });
+  }
+
+  function updateOnlineBadge(){
+    const badge = document.getElementById("onlineRoomBadge");
+    if (!badge) return;
+
+    if (!currentRoomCode || !currentRoomKey) {
+      badge.classList.remove("show");
+      badge.classList.remove("expanded");
+      badge.innerHTML = "";
+      return;
+    }
+
+    badge.classList.add("show");
+
+    if (!onlineBadgeExpanded) {
+      badge.classList.remove("expanded");
+      badge.innerHTML = `
+        <div class="online-tab-collapsed">
+          <div class="online-tab-collapsed-title">
+            ${escapeHtml(currentRoomCode)} に参加中
+          </div>
+          <button type="button"
+                  class="online-tab-detail-button">
+            詳細
+          </button>
+        </div>
+      `;
+
+      const detailButton = badge.querySelector(".online-tab-detail-button");
+      detailButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.toggleOnlineRoomBadge(true);
+      });
+
+      requestAnimationFrame(() => applyBadgePosition(getBadgeSavedPosition()));
+      return;
+    }
+
+    badge.classList.add("expanded");
+    badge.innerHTML = `
+      <div class="online-tab-panel">
+        <div class="online-tab-header">
+          <div>
+            <div class="online-tab-room-label">参加中の部屋</div>
+            <div class="online-tab-room-name">${escapeHtml(currentRoomCode)}</div>
+          </div>
+          <button type="button" class="online-tab-close" onclick="window.toggleOnlineRoomBadge(false)">閉じる</button>
+        </div>
+        <div class="online-tab-members-title">メンバー一覧</div>
+        <div class="online-tab-members">${getMemberListHtml()}</div>
+        <div class="online-host-note">各メンバーの選択PLもここに表示されます。ホストが「ゲーム開始」を押すと、オンライン参加者は同時に開始します。</div>
+        <button type="button" class="online-badge-edit" onclick="window.changeOnlinePlayerName()">名前を変更</button>
+      </div>
+    `;
+  }
+
+  function toggleOnlineRoomBadge(force){
+    if (onlineBadgeDragStarted) return;
+    onlineBadgeExpanded = typeof force === "boolean" ? force : !onlineBadgeExpanded;
+    updateOnlineBadge();
+    requestAnimationFrame(() => applyBadgePosition(getBadgeSavedPosition()));
+  }
+  window.toggleOnlineRoomBadge = toggleOnlineRoomBadge;
+
+  function escapeHtml(text){
+    return String(text).replace(/[&<>"']/g, (m) => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m]));
+  }
+
+  async function joinOnlineRoom(){
+    const nameInput = document.getElementById("onlinePlayerNameInput");
+    const roomInput = document.getElementById("onlineRoomCodeInput");
+    const status = document.getElementById("onlineRoomStatus");
+
+    const playerName = sanitizePlayerName(nameInput?.value);
+    const roomCode = String(roomInput?.value || "").trim().normalize("NFKC");
+
+    if (!playerName) {
+      if (status) status.textContent = "参加者名を入力してください。";
+      return;
+    }
+
+    if (!roomCode) {
+      if (status) status.textContent = "部屋コードを入力してください。";
+      return;
+    }
+
+    if (!currentUid) {
+      if (status) status.textContent = "ログイン準備中です。数秒待ってからもう一度押してください。";
+      return;
+    }
+
+    const roomKey = roomCodeToKey(roomCode);
+    currentRoomKey = roomKey;
+    currentRoomCode = roomCode;
+    window.currentRoomKey = roomKey;
+    window.currentRoomCode = roomCode;
+    window.onlineRoomJoined = true;
+
+    localStorage.setItem("madamisuPlayerName", playerName);
+    window.currentPlayerName = playerName;
+    localStorage.setItem("madamisuRoomCode", roomCode);
+    localStorage.setItem("madamisuRoomKey", roomKey);
+
+    const roomRef = ref(db, `rooms/${roomKey}`);
+    const snapshot = await get(roomRef);
+    const now = Date.now();
+
+    if (!snapshot.exists()) {
+      await set(roomRef, {
+        roomCode,
+        hostUid: currentUid,
+        createdAt: now,
+        updatedAt: now,
+        state: { status: "waiting", updatedAt: now }
+      });
+      currentHostUid = currentUid;
+    } else {
+      const roomData = snapshot.val() || {};
+      currentHostUid = roomData.hostUid || currentUid;
+      await update(roomRef, {
+        roomCode,
+        hostUid: currentHostUid,
+        updatedAt: now
+      });
+    }
+
+    await update(ref(db, `rooms/${roomKey}/players/${currentUid}`), {
+      name: playerName,
+      character: null,
+      joinedAt: now,
+      lastSeenAt: now
+    });
+
+    if (status) status.textContent = `${roomCode} に ${playerName} として入室中`;
+
+    onlineBadgeExpanded = false;
+    watchRoomMembers(roomKey);
+    watchRoomState(roomKey);
+    initOnlineBadgeDrag();
+    updateOnlineBadge();
+    hideOnlinePopup();
+    showSection('characterSelect');
+  }
+
+  window.joinOnlineRoom = joinOnlineRoom;
+
+  function showOnlineCharacterError(message){
+    alert(message);
+  }
+
+  async function confirmOnlineCharacterChoice(characterId){
+    if (!currentRoomKey || !currentUid || !characterId) {
+      updateOnlineBadge();
+      return true;
+    }
+
+    const playersRef = ref(db, `rooms/${currentRoomKey}/players`);
+    const snapshot = await get(playersRef);
+    const players = snapshot.val() || {};
+    const conflict = Object.entries(players).find(([uid, player]) => {
+      return uid !== currentUid && player?.character === characterId;
+    });
+
+    if (conflict) {
+      const [, player] = conflict;
+      const characterLabel = CHARACTER_LABELS[characterId] || characterId;
+      const name = player?.name || "他の参加者";
+      showOnlineCharacterError(`${characterLabel} は、すでに ${name} が選択しています。\n別のキャラクターを選んでください。`);
+      updateOnlineBadge();
+      return false;
+    }
+
+    await update(ref(db, `rooms/${currentRoomKey}/players/${currentUid}`), {
+      character: characterId,
+      lastSeenAt: Date.now()
+    });
+    updateOnlineBadge();
+    return true;
+  }
+
+  async function updateOnlinePlayerCharacter(characterId){
+    return confirmOnlineCharacterChoice(characterId);
+  }
+
+  window.confirmOnlineCharacterChoice = confirmOnlineCharacterChoice;
+  window.updateOnlinePlayerCharacter = updateOnlinePlayerCharacter;
+
+  async function changeOnlinePlayerName(){
+    const currentName = localStorage.getItem("madamisuPlayerName") || "";
+    const nextNameRaw = prompt("新しい参加者名を入力してください。", currentName);
+    if (nextNameRaw === null) return;
+    const nextName = sanitizePlayerName(nextNameRaw);
+    if (!nextName) return;
+    localStorage.setItem("madamisuPlayerName", nextName);
+
+    const nameInput = document.getElementById("onlinePlayerNameInput");
+    if (nameInput) nameInput.value = nextName;
+
+    if (currentRoomKey && currentUid) {
+      await update(ref(db, `rooms/${currentRoomKey}/players/${currentUid}`), {
+        name: nextName,
+        lastSeenAt: Date.now()
+      });
+    }
+    updateOnlineBadge();
+  }
+  window.changeOnlinePlayerName = changeOnlinePlayerName;
+
+  function watchRoomMembers(roomKey){
+    const membersBox = document.getElementById("onlineRoomMembers");
+    if (roomMembersUnsubscribe) {
+      roomMembersUnsubscribe();
+      roomMembersUnsubscribe = null;
+    }
+
+    const playersRef = ref(db, `rooms/${roomKey}/players`);
+    roomMembersUnsubscribe = onValue(playersRef, (snapshot) => {
+      const players = snapshot.val() || {};
+      latestRoomPlayers = players;
+      window.roomPlayers = players;
+      const names = Object.values(players)
+        .map((p) => p?.name)
+        .filter(Boolean);
+
+      if (membersBox) {
+        if (names.length === 0) {
+          membersBox.textContent = "参加者：0人";
+        } else {
+          membersBox.textContent =
+            `参加者：${names.length}人（${names.join("、")}）`;
+        }
+      }
+      refreshCharacterCardsAvailability();
+      updateOnlineBadge();
+    });
+  }
 
 
+
+  function isOnlineHost(){
+    return !!currentRoomKey && !!currentUid && (!currentHostUid || currentHostUid === currentUid);
+  }
+  window.isOnlineHost = isOnlineHost;
+
+  async function requestOnlineGameStart(){
+    if (!currentRoomKey || !currentUid) return false;
+    if (!isOnlineHost()) {
+      alert("ゲーム開始はホストに同期されます。ホストが開始するまで待ってください。");
+      return false;
+    }
+    const startAt = Date.now() + 1500;
+    await update(ref(db, `rooms/${currentRoomKey}/state`), {
+      status: "starting",
+      gameStartAt: startAt,
+      updatedAt: Date.now()
+    });
+    return false;
+  }
+  window.requestOnlineGameStart = requestOnlineGameStart;
+
+  function beginOnlineGameAt(startAt){
+    if (!selectedCharacter) return;
+    if (onlineStartHandledAt === startAt) return;
+    onlineStartHandledAt = startAt;
+    const delay = Math.max(0, Number(startAt || Date.now()) - Date.now());
+    setTimeout(() => {
+      showSection('hoPage');
+      buildHOList();
+      showHOByIndex(0);
+    }, delay);
+  }
+
+  function watchRoomState(roomKey){
+    if (roomStateUnsubscribe) {
+      roomStateUnsubscribe();
+      roomStateUnsubscribe = null;
+    }
+    roomStateUnsubscribe = onValue(ref(db, `rooms/${roomKey}`), (snapshot) => {
+      const room = snapshot.val() || {};
+      currentHostUid = room.hostUid || currentHostUid;
+      const startAt = room.state?.gameStartAt;
+      if (room.state?.status === "starting" && startAt) {
+        beginOnlineGameAt(startAt);
+      }
+      updateOnlineBadge();
+    });
+  }
+
+  function getBadgeSavedPosition(){
+    try{
+      return JSON.parse(localStorage.getItem("onlineRoomBadgePosition") || "null");
+    }catch(e){
+      return null;
+    }
+  }
+
+  function applyBadgePosition(pos){
+    const badge = document.getElementById("onlineRoomBadge");
+    if (!badge || !pos) return;
+    const rect = badge.getBoundingClientRect();
+    const width = rect.width || 220;
+    const height = rect.height || 56;
+    const x = Math.min(Math.max(8, Number(pos.x) || 8), window.innerWidth - width - 8);
+    const y = Math.min(Math.max(8, Number(pos.y) || 8), window.innerHeight - height - 8);
+    badge.style.left = `${x}px`;
+    badge.style.top = `${y}px`;
+    badge.style.right = "auto";
+    badge.style.bottom = "auto";
+  }
+
+  function initOnlineBadgeDrag(){
+    const badge = document.getElementById("onlineRoomBadge");
+    if (!badge || badge.dataset.dragReady === "1") return;
+    badge.dataset.dragReady = "1";
+    const saved = getBadgeSavedPosition();
+    if (saved) applyBadgePosition(saved);
+
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let baseX = 0;
+    let baseY = 0;
+
+    badge.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("input, textarea")) return;
+      const rect = badge.getBoundingClientRect();
+      dragging = true;
+      onlineBadgeDragStarted = false;
+      startX = event.clientX;
+      startY = event.clientY;
+      baseX = rect.left;
+      baseY = rect.top;
+      badge.classList.add("dragging");
+      badge.setPointerCapture?.(event.pointerId);
+    });
+
+    badge.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (Math.abs(dx) + Math.abs(dy) > 4) onlineBadgeDragStarted = true;
+      applyBadgePosition({x: baseX + dx, y: baseY + dy});
+    });
+
+    badge.addEventListener("pointerup", (event) => {
+      if (!dragging) return;
+      dragging = false;
+      badge.classList.remove("dragging");
+      const rect = badge.getBoundingClientRect();
+      localStorage.setItem("onlineRoomBadgePosition", JSON.stringify({x: rect.left, y: rect.top}));
+      if (onlineBadgeDragStarted) {
+        event.preventDefault();
+        event.stopPropagation();
+        setTimeout(() => { onlineBadgeDragStarted = false; }, 0);
+      }
+    }, true);
+
+    window.addEventListener("resize", () => applyBadgePosition(getBadgeSavedPosition()));
+  }
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const joinBtn = document.getElementById("onlineJoinBtn");
+    const offlineBtn = document.getElementById("offlineStartBtn");
+    const closeBtn = document.getElementById("onlineCloseBtn");
+
+    joinBtn?.addEventListener("click", joinOnlineRoom);
+    offlineBtn?.addEventListener("click", () => {
+      currentRoomCode = "";
+      currentRoomKey = "";
+      window.currentRoomCode = "";
+      window.currentRoomKey = "";
+      window.onlineRoomJoined = false;
+      updateOnlineBadge();
+      hideOnlinePopup();
+      showSection('characterSelect');
+    });
+    closeBtn?.addEventListener("click", hideOnlinePopup);
+
+    const savedRoomCode = localStorage.getItem("madamisuRoomCode") || "";
+    const roomInput = document.getElementById("onlineRoomCodeInput");
+    if (roomInput && savedRoomCode) roomInput.value = savedRoomCode;
+  });
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("#onlineRoomPanel, .online-room-panel, #onlineRoomStatusBox").forEach(el => {
+    el.remove();
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(
+    "#onlineRoomPanel, #onlineRoomStatusBox, .online-room-panel, .online-room-box, .online-room, .online-room-area, #roomCode, #joinBtn, #status"
+  ).forEach(el => el.remove());
+});
+</script>
+
+
+
+<style id="chatgpt-online-badge-v8-fix">
+/* v8: 参加タブが巨大化する問題を修正 */
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  position:fixed !important;
+  z-index:100000 !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+  visibility:visible !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded){
+  width:220px !important;
+  height:52px !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded) .online-tab-collapsed{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:220px !important;
+  height:52px !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  padding:0 18px !important;
+  border:2px solid rgba(217,189,130,.78) !important;
+  border-radius:999px !important;
+  background:rgba(20,10,5,.92) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.45) !important;
+  cursor:pointer !important;
+}
+#onlineRoomBadge.online-room-badge.expanded{
+  width:min(92vw,420px) !important;
+  height:auto !important;
+}
+#onlineRoomBadge.online-room-badge.expanded .online-tab-panel{
+  width:100% !important;
+  max-height:min(72vh,520px) !important;
+  overflow:auto !important;
+}
+</style>
+
+<script id="chatgpt-online-badge-v8-fix-script">
+(function(){
+  function safeEscape(text){
+    return String(text ?? '').replace(/[&<>"']/g, function(m){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m];
+    });
+  }
+
+  function getCharacterLabel(characterId){
+    const map = {
+      doctor:'PL1（医師）', police:'PL2（警察）', mayor:'PL3（村長）', servant:'PL4（使用人）',
+      pl1:'PL1（医師）', pl2:'PL2（警察）', pl3:'PL3（村長）', pl4:'PL4（使用人）'
+    };
+    return map[characterId] || characterId || 'PL未選択';
+  }
+
+  function buildMembersHtml(){
+    const players = (typeof roomPlayers === 'object' && roomPlayers) ? roomPlayers : {};
+    const uid = (typeof currentUid !== 'undefined') ? currentUid : '';
+    const entries = Object.entries(players);
+    if (!entries.length) {
+      const name = (typeof currentPlayerName !== 'undefined' && currentPlayerName) ? currentPlayerName : '自分';
+      const ch = (typeof selectedCharacter !== 'undefined') ? selectedCharacter : '';
+      return `<div class="online-tab-member"><div class="online-tab-member-main"><span class="online-tab-member-name">${safeEscape(name)}（自分）</span><span class="online-tab-member-character">${safeEscape(getCharacterLabel(ch))}</span></div></div>`;
+    }
+    return entries.map(function(pair){
+      const id = pair[0];
+      const p = pair[1] || {};
+      const isMe = id === uid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const host = p.isHost ? '<div class="online-tab-member-host">ホスト</div>' : '';
+      return `<div class="online-tab-member"><div class="online-tab-member-main"><span class="online-tab-member-name">${safeEscape(name)}${isMe ? '（自分）' : ''}</span><span class="online-tab-member-character">${safeEscape(getCharacterLabel(p.character))}</span></div>${host}</div>`;
+    }).join('');
+  }
+
+  function savedPos(){
+    try { return JSON.parse(localStorage.getItem('onlineRoomBadgePosition') || 'null'); }
+    catch(e){ return null; }
+  }
+
+  function placeBadge(pos){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge) return;
+    const r = badge.getBoundingClientRect();
+    const w = r.width || (badge.classList.contains('expanded') ? 420 : 220);
+    const h = r.height || 52;
+    const fallback = {x:18, y: Math.max(18, window.innerHeight - h - 18)};
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : fallback.x;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : fallback.y;
+    const x = Math.min(Math.max(8, x0), Math.max(8, window.innerWidth - w - 8));
+    const y = Math.min(Math.max(8, y0), Math.max(8, window.innerHeight - h - 8));
+    badge.style.left = x + 'px';
+    badge.style.top = y + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+
+  window.updateOnlineBadge = function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge) return;
+    if (!window.currentRoomCode && typeof currentRoomCode !== 'undefined') window.currentRoomCode = currentRoomCode;
+    const room = (typeof currentRoomCode !== 'undefined' && currentRoomCode) ? currentRoomCode : (window.currentRoomCode || '');
+    const key = (typeof currentRoomKey !== 'undefined' && currentRoomKey) ? currentRoomKey : (window.currentRoomKey || room);
+    if (!room || !key) {
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      return;
+    }
+    const expanded = !!window.onlineBadgeExpanded;
+    badge.className = 'online-room-badge show' + (expanded ? ' expanded' : '');
+    if (!expanded) {
+      badge.innerHTML = `<button type="button" class="online-tab-collapsed">${safeEscape(room)} に参加中</button>`;
+    } else {
+      badge.innerHTML = `<div class="online-tab-panel">
+        <div class="online-tab-header">
+          <div><div class="online-tab-room-label">参加中の部屋</div><div class="online-tab-room-name">${safeEscape(room)}</div></div>
+          <button type="button" class="online-tab-close">閉じる</button>
+        </div>
+        <div class="online-tab-members">${buildMembersHtml()}</div>
+        <button type="button" class="online-badge-edit">名前を変更</button>
+      </div>`;
+    }
+    requestAnimationFrame(function(){ placeBadge(savedPos()); });
+  };
+
+  window.toggleOnlineRoomBadge = function(force){
+    window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+    window.updateOnlineBadge();
+  };
+
+  document.addEventListener('click', function(e){
+    const collapsed = e.target.closest('#onlineRoomBadge .online-tab-collapsed');
+    if (collapsed) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.toggleOnlineRoomBadge(true);
+      return;
+    }
+    const close = e.target.closest('#onlineRoomBadge .online-tab-close');
+    if (close) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.toggleOnlineRoomBadge(false);
+      return;
+    }
+    const edit = e.target.closest('#onlineRoomBadge .online-badge-edit');
+    if (edit) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof window.changeOnlinePlayerName === 'function') window.changeOnlinePlayerName();
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge || badge.dataset.v8DragReady === '1') return;
+    badge.dataset.v8DragReady = '1';
+    let dragging = false, moved = false, sx=0, sy=0, bx=0, by=0;
+    badge.addEventListener('pointerdown', function(e){
+      if (e.target.closest('input, textarea, .online-tab-close, .online-badge-edit')) return;
+      const rect = badge.getBoundingClientRect();
+      dragging = true; moved = false; sx=e.clientX; sy=e.clientY; bx=rect.left; by=rect.top;
+      badge.setPointerCapture?.(e.pointerId);
+    });
+    badge.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if (Math.abs(dx)+Math.abs(dy) > 5) moved = true;
+      if (moved) placeBadge({x:bx+dx, y:by+dy});
+    });
+    badge.addEventListener('pointerup', function(e){
+      if (!dragging) return;
+      dragging = false;
+      if (moved) {
+        const r = badge.getBoundingClientRect();
+        localStorage.setItem('onlineRoomBadgePosition', JSON.stringify({x:r.left, y:r.top}));
+        e.preventDefault(); e.stopPropagation();
+      }
+    }, true);
+    window.addEventListener('resize', function(){ placeBadge(savedPos()); });
+  });
+})();
+</script>
+
+
+
+<style id="chatgpt-online-badge-v9-final">
+/* v9: 参加タブ詳細表示・コンパクト版 */
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  position:fixed !important;
+  z-index:100000 !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  pointer-events:auto !important;
+  cursor:default !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+  visibility:visible !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded){
+  width:220px !important;
+  height:52px !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded) .online-tab-collapsed{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:220px !important;
+  height:52px !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  padding:0 18px !important;
+  border:2px solid rgba(217,189,130,.82) !important;
+  border-radius:999px !important;
+  background:rgba(20,10,5,.92) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.45) !important;
+  cursor:pointer !important;
+}
+#onlineRoomBadge.online-room-badge.expanded{
+  width:min(92vw,360px) !important;
+  height:auto !important;
+}
+#onlineRoomBadge.online-room-badge.expanded .online-tab-panel{
+  width:100% !important;
+  max-height:min(72vh,460px) !important;
+  overflow:auto !important;
+  padding:16px 18px 18px !important;
+  background:rgba(20,10,5,.95) !important;
+  border:2px solid rgba(217,189,130,.82) !important;
+  border-radius:14px !important;
+  color:#f6ead2 !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.55) !important;
+  backdrop-filter:blur(3px) !important;
+}
+#onlineRoomBadge .online-tab-header{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding-bottom:12px !important;
+  border-bottom:1px solid rgba(255,230,180,.18) !important;
+  margin-bottom:14px !important;
+}
+#onlineRoomBadge .online-tab-room-name{
+  font-size:18px !important;
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-close{
+  min-width:58px !important;
+  min-height:34px !important;
+  padding:4px 10px !important;
+  border:1px solid rgba(217,189,130,.75) !important;
+  border-radius:6px !important;
+  background:rgba(255,250,240,.12) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+}
+#onlineRoomBadge .online-tab-members-title{
+  margin:0 0 10px !important;
+  padding:0 !important;
+  border:0 !important;
+  font-weight:700 !important;
+  color:#f6ead2 !important;
+}
+#onlineRoomBadge .online-tab-members{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+  margin:0 0 14px !important;
+}
+#onlineRoomBadge .online-tab-member{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  border-radius:0 !important;
+  line-height:1.55 !important;
+}
+#onlineRoomBadge .online-tab-member-name{
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-member-character{
+  color:#f6ead2 !important;
+  opacity:.95 !important;
+  white-space:nowrap !important;
+}
+#onlineRoomBadge .online-tab-member-host{
+  margin-left:6px !important;
+  font-size:12px !important;
+  opacity:.7 !important;
+}
+#onlineRoomBadge .online-badge-edit{
+  min-height:38px !important;
+  padding:5px 14px !important;
+  border:1px solid rgba(217,189,130,.75) !important;
+  border-radius:6px !important;
+  background:rgba(255,250,240,.12) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+}
+</style>
+
+<script id="chatgpt-online-badge-v9-final-script">
+(function(){
+  function esc(text){
+    return String(text ?? '').replace(/[&<>"']/g, function(m){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m];
+    });
+  }
+  function characterLabel(value){
+    const v = String(value || '').toLowerCase();
+    const map = {
+      doctor:'PL1（医師）', police:'PL2（警察）', mayor:'PL3（村長）', servant:'PL4（使用人）',
+      pl1:'PL1（医師）', pl2:'PL2（警察）', pl3:'PL3（村長）', pl4:'PL4（使用人）'
+    };
+    if (v === 'spectator' || v === 'watch' || v === 'observer' || v === 'kansen') return '観戦中';
+    return map[v] || value || 'PL未選択';
+  }
+  function isSpectatorPlayer(p){
+    if (!p) return false;
+    const role = String(p.role || p.mode || p.type || '').toLowerCase();
+    const ch = String(p.character || p.selectedCharacter || '').toLowerCase();
+    return !!(p.isSpectator || p.spectator || role === 'spectator' || role === 'observer' || role === 'watch' || ch === 'spectator');
+  }
+  function currentRoom(){
+    return (typeof currentRoomCode !== 'undefined' && currentRoomCode) ? currentRoomCode : (window.currentRoomCode || '');
+  }
+  function currentKey(){
+    const room = currentRoom();
+    return (typeof currentRoomKey !== 'undefined' && currentRoomKey) ? currentRoomKey : (window.currentRoomKey || room);
+  }
+  function membersHtml(){
+    const players = (typeof roomPlayers === 'object' && roomPlayers) ? roomPlayers : (window.roomPlayers || {});
+    const uid = (typeof currentUid !== 'undefined' && currentUid) ? currentUid : (window.currentUid || '');
+    const entries = Object.entries(players || {});
+    if (!entries.length) {
+      const name = (typeof currentPlayerName !== 'undefined' && currentPlayerName) ? currentPlayerName : (window.currentPlayerName || '自分');
+      const ch = (typeof selectedCharacter !== 'undefined') ? selectedCharacter : window.selectedCharacter;
+      return `<div class="online-tab-member"><span class="online-tab-member-name">・${esc(name)}（自分）</span><span class="online-tab-member-character">${esc(characterLabel(ch))}</span></div>`;
+    }
+    return entries.map(function([id,p]){
+      p = p || {};
+      const isMe = id === uid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const charText = isSpectatorPlayer(p) ? '観戦中' : characterLabel(p.character || p.selectedCharacter || '');
+      const host = p.isHost ? '<span class="online-tab-member-host">ホスト</span>' : '';
+      return `<div class="online-tab-member"><span class="online-tab-member-name">・${esc(name)}${isMe ? '（自分）' : ''}${host}</span><span class="online-tab-member-character">${esc(charText)}</span></div>`;
+    }).join('');
+  }
+  function savedPos(){
+    try { return JSON.parse(localStorage.getItem('onlineRoomBadgePosition') || 'null'); }
+    catch(e){ return null; }
+  }
+  function placeBadge(pos){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge) return;
+    const rect = badge.getBoundingClientRect();
+    const w = rect.width || (badge.classList.contains('expanded') ? 360 : 220);
+    const h = rect.height || 52;
+    const fallback = {x:18, y:Math.max(18, window.innerHeight - h - 18)};
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : fallback.x;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : fallback.y;
+    const x = Math.min(Math.max(8, x0), Math.max(8, window.innerWidth - w - 8));
+    const y = Math.min(Math.max(8, y0), Math.max(8, window.innerHeight - h - 8));
+    badge.style.left = x + 'px';
+    badge.style.top = y + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+  window.updateOnlineBadge = function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge) return;
+    const room = currentRoom();
+    if (!room || !currentKey()) {
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      return;
+    }
+    const expanded = !!window.onlineBadgeExpanded;
+    badge.className = 'online-room-badge show' + (expanded ? ' expanded' : '');
+    if (!expanded) {
+      badge.innerHTML = `<button type="button" class="online-tab-collapsed" onclick="window.toggleOnlineRoomBadge(true); return false;">${esc(room)} に参加中</button>`;
+    } else {
+      badge.innerHTML = `<div class="online-tab-panel">
+        <div class="online-tab-header">
+          <div class="online-tab-room-name">${esc(room)} に参加中</div>
+          <button type="button" class="online-tab-close" onclick="window.toggleOnlineRoomBadge(false); return false;">閉じる</button>
+        </div>
+        <div class="online-tab-members-title">メンバー</div>
+        <div class="online-tab-members">${membersHtml()}</div>
+        <button type="button" class="online-badge-edit" onclick="if(window.changeOnlinePlayerName) window.changeOnlinePlayerName(); return false;">名前を変更</button>
+      </div>`;
+    }
+    requestAnimationFrame(function(){ placeBadge(savedPos()); });
+  };
+  window.toggleOnlineRoomBadge = function(force){
+    window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+    window.updateOnlineBadge();
+  };
+  document.addEventListener('click', function(e){
+    const badge = e.target.closest && e.target.closest('#onlineRoomBadge');
+    if (!badge) return;
+    const collapsed = e.target.closest('.online-tab-collapsed');
+    if (collapsed) { e.preventDefault(); e.stopPropagation(); window.toggleOnlineRoomBadge(true); return; }
+    const close = e.target.closest('.online-tab-close');
+    if (close) { e.preventDefault(); e.stopPropagation(); window.toggleOnlineRoomBadge(false); return; }
+    const edit = e.target.closest('.online-badge-edit');
+    if (edit) { e.preventDefault(); e.stopPropagation(); if (window.changeOnlinePlayerName) window.changeOnlinePlayerName(); return; }
+  }, true);
+  document.addEventListener('DOMContentLoaded', function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if (!badge || badge.dataset.v9DragReady === '1') return;
+    badge.dataset.v9DragReady = '1';
+    let dragging=false, moved=false, sx=0, sy=0, bx=0, by=0;
+    badge.addEventListener('pointerdown', function(e){
+      if (e.target.closest('.online-tab-close, .online-badge-edit')) return;
+      const rect = badge.getBoundingClientRect();
+      dragging=true; moved=false; sx=e.clientX; sy=e.clientY; bx=rect.left; by=rect.top;
+      try { badge.setPointerCapture(e.pointerId); } catch(_e) {}
+    });
+    badge.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if (Math.abs(dx)+Math.abs(dy) > 6) moved=true;
+      if (moved) placeBadge({x:bx+dx, y:by+dy});
+    });
+    badge.addEventListener('pointerup', function(e){
+      if (!dragging) return;
+      dragging=false;
+      if (moved) {
+        const r=badge.getBoundingClientRect();
+        localStorage.setItem('onlineRoomBadgePosition', JSON.stringify({x:r.left, y:r.top}));
+        e.preventDefault(); e.stopPropagation();
+      }
+    }, true);
+    window.addEventListener('resize', function(){ placeBadge(savedPos()); });
+  });
+})();
+</script>
+
+
+<style id="chatgpt-online-badge-v10-settings-style">
+/* v10: 設定ボタン方式に合わせたオンライン参加タブ */
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  position:fixed !important;
+  left:136px;
+  top:126px;
+  right:auto !important;
+  bottom:auto !important;
+  z-index:2147483645 !important;
+  width:auto !important;
+  height:auto !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  overflow:visible !important;
+  pointer-events:auto !important;
+  user-select:none !important;
+  touch-action:none !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+}
+#onlineRoomBadge .online-tab-collapsed{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:220px !important;
+  height:52px !important;
+  padding:0 18px !important;
+  border:2px solid rgba(217,189,130,.9) !important;
+  border-radius:999px !important;
+  background:rgba(20,10,5,.94) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  font-size:15px !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.45) !important;
+  cursor:grab !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge.dragging .online-tab-collapsed{
+  cursor:grabbing !important;
+}
+#onlineRoomBadge.expanded{
+  width:min(92vw,380px) !important;
+}
+#onlineRoomBadge.expanded .online-tab-collapsed{
+  display:none !important;
+}
+#onlineRoomBadge .online-tab-panel{
+  display:none !important;
+}
+#onlineRoomBadge.expanded .online-tab-panel{
+  display:block !important;
+  width:min(92vw,380px) !important;
+  max-height:min(72vh,480px) !important;
+  overflow:auto !important;
+  padding:16px 18px 18px !important;
+  border:2px solid rgba(217,189,130,.9) !important;
+  border-radius:14px !important;
+  background:rgba(20,10,5,.96) !important;
+  color:#f6ead2 !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.55) !important;
+  backdrop-filter:blur(3px) !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge .online-tab-header{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding-bottom:12px !important;
+  margin-bottom:14px !important;
+  border-bottom:1px solid rgba(255,230,180,.18) !important;
+}
+#onlineRoomBadge .online-tab-room-name{
+  font-size:18px !important;
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-close,
+#onlineRoomBadge .online-badge-edit{
+  min-height:36px !important;
+  padding:5px 14px !important;
+  border:1px solid rgba(217,189,130,.75) !important;
+  border-radius:6px !important;
+  background:rgba(255,250,240,.12) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+}
+#onlineRoomBadge .online-tab-members-title{
+  margin:0 0 10px !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-members{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+  margin:0 0 14px !important;
+}
+#onlineRoomBadge .online-tab-member{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+  line-height:1.55 !important;
+}
+#onlineRoomBadge .online-tab-member-name{
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-member-character{
+  color:#f6ead2 !important;
+  white-space:nowrap !important;
+}
+</style>
+
+<script id="chatgpt-online-badge-v10-settings-script">
+(function(){
+  function esc(text){
+    return String(text ?? '').replace(/[&<>"']/g, function(m){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m];
+    });
+  }
+  function getRoom(){
+    try{
+      if (typeof currentRoomCode !== 'undefined' && currentRoomCode) return currentRoomCode;
+      if (window.onlineRoomJoined && window.currentRoomCode) return window.currentRoomCode;
+      return '';
+    }catch(e){ return ''; }
+  }
+  function getUid(){
+    try{
+      if (typeof currentUid !== 'undefined' && currentUid) return currentUid;
+      return window.currentUid || '';
+    }catch(e){ return ''; }
+  }
+  function label(ch){
+    const v = String(ch || '').toLowerCase();
+    const map = {
+      pl1:'PL1（医師）', doctor:'PL1（医師）',
+      pl2:'PL2（警察）', police:'PL2（警察）',
+      pl3:'PL3（村長）', mayor:'PL3（村長）',
+      pl4:'PL4（使用人）', servant:'PL4（使用人）'
+    };
+    if(['spectator','observer','watch','kansen'].includes(v)) return '観戦中';
+    return map[v] || ch || 'PL未選択';
+  }
+  function members(){
+    let players = {};
+    try{ players = (typeof roomPlayers === 'object' && roomPlayers) ? roomPlayers : (window.roomPlayers || {}); }catch(e){}
+    const uid = getUid();
+    const entries = Object.entries(players || {});
+    if(!entries.length){
+      let name = '自分';
+      let ch = '';
+      try{ name = (typeof currentPlayerName !== 'undefined' && currentPlayerName) ? currentPlayerName : (window.currentPlayerName || '自分'); }catch(e){}
+      try{ ch = (typeof selectedCharacter !== 'undefined') ? selectedCharacter : (window.selectedCharacter || ''); }catch(e){}
+      return `<div class="online-tab-member"><span class="online-tab-member-name">・${esc(name)}（自分）</span><span class="online-tab-member-character">${esc(label(ch))}</span></div>`;
+    }
+    return entries.map(function(pair){
+      const id = pair[0];
+      const p = pair[1] || {};
+      const isMe = id === uid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const mode = String(p.role || p.mode || p.type || '').toLowerCase();
+      const ch = String(p.character || p.selectedCharacter || '').toLowerCase();
+      const status = (p.isSpectator || p.spectator || mode === 'spectator' || mode === 'observer' || mode === 'watch' || ch === 'spectator') ? '観戦中' : label(p.character || p.selectedCharacter || '');
+      return `<div class="online-tab-member"><span class="online-tab-member-name">・${esc(name)}${isMe ? '（自分）' : ''}</span><span class="online-tab-member-character">${esc(status)}</span></div>`;
+    }).join('');
+  }
+  function savedPos(){
+    try{ return JSON.parse(localStorage.getItem('onlineRoomBadgePosition') || 'null'); }catch(e){ return null; }
+  }
+  function place(pos){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge) return;
+    const rect = badge.getBoundingClientRect();
+    const w = rect.width || (badge.classList.contains('expanded') ? 380 : 220);
+    const h = rect.height || (badge.classList.contains('expanded') ? 240 : 52);
+    const fallback = {x:136, y:126};
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : fallback.x;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : fallback.y;
+    const x = Math.min(Math.max(8, x0), Math.max(8, window.innerWidth - w - 8));
+    const y = Math.min(Math.max(8, y0), Math.max(8, window.innerHeight - h - 8));
+    badge.style.left = x + 'px';
+    badge.style.top = y + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+  function render(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge) return;
+    const room = getRoom();
+    const hasRoom = !!room && !!window.onlineRoomJoined && !!window.currentRoomKey;
+    if(!hasRoom){
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      return;
+    }
+    const open = !!window.onlineBadgeExpanded;
+    badge.className = 'online-room-badge show' + (open ? ' expanded' : '');
+    badge.innerHTML = `
+      <button type="button" class="online-tab-collapsed">${esc(room)} に参加中</button>
+      <div class="online-tab-panel" role="dialog" aria-label="オンライン参加情報">
+        <div class="online-tab-header">
+          <div class="online-tab-room-name">${esc(room)} に参加中</div>
+          <button type="button" class="online-tab-close">閉じる</button>
+        </div>
+        <div class="online-tab-members-title">メンバー</div>
+        <div class="online-tab-members">${members()}</div>
+        <button type="button" class="online-badge-edit">名前を変更</button>
+      </div>`;
+    requestAnimationFrame(function(){ place(savedPos()); });
+  }
+  window.updateOnlineBadge = render;
+  window.toggleOnlineRoomBadge = function(force){
+    window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+    render();
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge) return;
+    let down=false, moved=false, sx=0, sy=0, bx=0, by=0;
+    badge.addEventListener('pointerdown', function(e){
+      if(e.target.closest('.online-tab-close,.online-badge-edit,.online-tab-panel')) return;
+      down=true; moved=false;
+      sx=e.clientX; sy=e.clientY;
+      const r=badge.getBoundingClientRect(); bx=r.left; by=r.top;
+      badge.classList.add('dragging');
+      try{ badge.setPointerCapture(e.pointerId); }catch(_e){}
+    }, true);
+    badge.addEventListener('pointermove', function(e){
+      if(!down) return;
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if(Math.abs(dx)+Math.abs(dy)>6) moved=true;
+      if(moved){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        place({x:bx+dx,y:by+dy});
+      }
+    }, true);
+    badge.addEventListener('pointerup', function(e){
+      if(!down) return;
+      down=false;
+      badge.classList.remove('dragging');
+      if(moved){
+        const r=badge.getBoundingClientRect();
+        localStorage.setItem('onlineRoomBadgePosition', JSON.stringify({x:r.left,y:r.top}));
+        e.preventDefault(); e.stopPropagation();
+      }else if(e.target.closest('.online-tab-collapsed')){
+        e.preventDefault(); e.stopPropagation();
+        window.onlineBadgeExpanded = true;
+        render();
+      }
+    }, true);
+    badge.addEventListener('click', function(e){
+      const collapsed = e.target.closest('.online-tab-collapsed');
+      const close = e.target.closest('.online-tab-close');
+      const edit = e.target.closest('.online-badge-edit');
+      if(collapsed){ e.preventDefault(); e.stopPropagation(); window.onlineBadgeExpanded=true; render(); return; }
+      if(close){ e.preventDefault(); e.stopPropagation(); window.onlineBadgeExpanded=false; render(); return; }
+      if(edit){ e.preventDefault(); e.stopPropagation(); if(window.changeOnlinePlayerName) window.changeOnlinePlayerName(); return; }
+    }, true);
+    window.addEventListener('resize', function(){ place(savedPos()); });
+    render();
+  });
+  setTimeout(render, 0);
+  setTimeout(render, 500);
+})();
+</script>
+
+
+
+<style id="chatgpt-online-badge-v13-detail-button-final">
+/* v13: 小さい参加タブ内に独立した詳細ボタンを作る最終版 */
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  position:fixed !important;
+  z-index:2147483646 !important;
+  width:auto !important;
+  height:auto !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  overflow:visible !important;
+  pointer-events:auto !important;
+  user-select:none !important;
+  touch-action:none !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded){
+  width:260px !important;
+  height:64px !important;
+}
+#onlineRoomBadge .online-tab-collapsed{
+  display:none !important;
+}
+#onlineRoomBadge .online-tab-collapsed-v13{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  width:260px !important;
+  height:64px !important;
+  padding:9px 10px 9px 18px !important;
+  border:2px solid rgba(217,189,130,.92) !important;
+  border-radius:999px !important;
+  background:linear-gradient(180deg, rgba(35,17,8,.96), rgba(18,8,4,.96)) !important;
+  color:#f6ead2 !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.48), inset 0 0 0 1px rgba(255,235,190,.05) !important;
+  cursor:grab !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge.dragging .online-tab-collapsed-v13{
+  cursor:grabbing !important;
+}
+#onlineRoomBadge .online-tab-collapsed-title-v13{
+  flex:1 !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  text-overflow:ellipsis !important;
+  text-align:center !important;
+  color:#ffe7b8 !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  line-height:1.1 !important;
+}
+#onlineRoomBadge .online-tab-detail-button-v13{
+  flex:0 0 auto !important;
+  min-width:58px !important;
+  height:38px !important;
+  padding:0 12px !important;
+  border:1px solid rgba(217,189,130,.9) !important;
+  border-radius:999px !important;
+  background:rgba(255,246,225,.13) !important;
+  color:#fff2d2 !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+}
+#onlineRoomBadge .online-tab-detail-button-v13:hover{
+  background:rgba(255,246,225,.24) !important;
+  color:#fff8e8 !important;
+}
+#onlineRoomBadge.online-room-badge.expanded{
+  width:min(92vw,360px) !important;
+  height:auto !important;
+}
+#onlineRoomBadge.online-room-badge.expanded .online-tab-collapsed-v13{
+  display:none !important;
+}
+#onlineRoomBadge .online-tab-panel-v13{
+  display:none !important;
+}
+#onlineRoomBadge.online-room-badge.expanded .online-tab-panel-v13{
+  display:block !important;
+  width:min(92vw,360px) !important;
+  max-height:min(72vh,480px) !important;
+  overflow:auto !important;
+  padding:16px 18px 18px !important;
+  border:2px solid rgba(217,189,130,.92) !important;
+  border-radius:14px !important;
+  background:rgba(20,10,5,.97) !important;
+  color:#f6ead2 !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.58) !important;
+  backdrop-filter:blur(3px) !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge .online-tab-header-v13{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding-bottom:12px !important;
+  margin-bottom:14px !important;
+  border-bottom:1px solid rgba(255,230,180,.18) !important;
+}
+#onlineRoomBadge .online-tab-room-name-v13{
+  color:#ffe7b8 !important;
+  font-size:18px !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-close-v13,
+#onlineRoomBadge .online-badge-edit-v13{
+  min-height:36px !important;
+  padding:5px 14px !important;
+  border:1px solid rgba(217,189,130,.75) !important;
+  border-radius:8px !important;
+  background:rgba(255,250,240,.12) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge .online-tab-close-v13:hover,
+#onlineRoomBadge .online-badge-edit-v13:hover{
+  background:rgba(255,250,240,.22) !important;
+}
+#onlineRoomBadge .online-tab-members-title-v13{
+  margin:0 0 10px !important;
+  font-weight:700 !important;
+  color:#f6ead2 !important;
+}
+#onlineRoomBadge .online-tab-members-v13{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+  margin:0 0 14px !important;
+}
+#onlineRoomBadge .online-tab-member-v13{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+  line-height:1.55 !important;
+}
+#onlineRoomBadge .online-tab-member-name-v13{
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-member-character-v13{
+  color:#f6ead2 !important;
+  white-space:nowrap !important;
+}
+</style>
+
+<script id="chatgpt-online-badge-v13-detail-button-final-script">
+(function(){
+  function esc(text){
+    return String(text ?? '').replace(/[&<>"']/g, function(m){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m];
+    });
+  }
+  function getRoom(){
+    return window.currentRoomCode || '';
+  }
+  function hasRoom(){
+    return !!(window.onlineRoomJoined && window.currentRoomCode && window.currentRoomKey);
+  }
+  function getUid(){
+    return window.currentUid || window.firebaseUID || '';
+  }
+  function label(ch){
+    const v = String(ch || '').toLowerCase();
+    const map = {
+      pl1:'PL1（医師）', doctor:'PL1（医師）',
+      pl2:'PL2（警察）', police:'PL2（警察）',
+      pl3:'PL3（村長）', mayor:'PL3（村長）',
+      pl4:'PL4（使用人）', servant:'PL4（使用人）'
+    };
+    if(['spectator','observer','watch','kansen'].includes(v)) return '観戦中';
+    return map[v] || ch || 'PL未選択';
+  }
+  function members(){
+    const players = window.roomPlayers || {};
+    const uid = getUid();
+    const entries = Object.entries(players || {});
+    if(!entries.length){
+      const name = window.currentPlayerName || '自分';
+      const ch = window.selectedCharacter || '';
+      return `<div class="online-tab-member-v13"><span class="online-tab-member-name-v13">・${esc(name)}（自分）</span><span class="online-tab-member-character-v13">${esc(label(ch))}</span></div>`;
+    }
+    return entries.map(function([id,p]){
+      p = p || {};
+      const isMe = id === uid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const mode = String(p.role || p.mode || p.type || '').toLowerCase();
+      const ch = String(p.character || p.selectedCharacter || '').toLowerCase();
+      const status = (p.isSpectator || p.spectator || mode === 'spectator' || mode === 'observer' || mode === 'watch' || ch === 'spectator') ? '観戦中' : label(p.character || p.selectedCharacter || '');
+      return `<div class="online-tab-member-v13"><span class="online-tab-member-name-v13">・${esc(name)}${isMe ? '（自分）' : ''}</span><span class="online-tab-member-character-v13">${esc(status)}</span></div>`;
+    }).join('');
+  }
+  function savedPos(){
+    try{ return JSON.parse(localStorage.getItem('onlineRoomBadgePosition') || 'null'); }catch(e){ return null; }
+  }
+  function place(pos){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge) return;
+    const rect = badge.getBoundingClientRect();
+    const w = rect.width || (badge.classList.contains('expanded') ? 360 : 260);
+    const h = rect.height || (badge.classList.contains('expanded') ? 240 : 64);
+    const fallback = {x:136, y:126};
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : fallback.x;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : fallback.y;
+    const x = Math.min(Math.max(8, x0), Math.max(8, window.innerWidth - w - 8));
+    const y = Math.min(Math.max(8, y0), Math.max(8, window.innerHeight - h - 8));
+    badge.style.left = x + 'px';
+    badge.style.top = y + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+  function render(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge) return;
+    if(!hasRoom()){
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      return;
+    }
+    const room = getRoom();
+    const open = !!window.onlineBadgeExpanded;
+    badge.className = 'online-room-badge show' + (open ? ' expanded' : '');
+    badge.innerHTML = `
+      <div class="online-tab-collapsed-v13" aria-label="オンライン参加情報">
+        <div class="online-tab-collapsed-title-v13">${esc(room)} に参加中</div>
+        <button type="button" class="online-tab-detail-button-v13">詳細</button>
+      </div>
+      <div class="online-tab-panel-v13" role="dialog" aria-label="オンライン参加詳細">
+        <div class="online-tab-header-v13">
+          <div class="online-tab-room-name-v13">${esc(room)} に参加中</div>
+          <button type="button" class="online-tab-close-v13">閉じる</button>
+        </div>
+        <div class="online-tab-members-title-v13">メンバー</div>
+        <div class="online-tab-members-v13">${members()}</div>
+        <button type="button" class="online-badge-edit-v13">名前を変更</button>
+      </div>`;
+    requestAnimationFrame(function(){ place(savedPos()); });
+  }
+  window.updateOnlineBadge = render;
+  window.toggleOnlineRoomBadge = function(force){
+    window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+    render();
+  };
+
+  document.addEventListener('pointerdown', function(e){
+    const detail = e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-detail-button-v13');
+    if(detail){
+      e.preventDefault();
+      e.stopPropagation();
+      window.onlineBadgeExpanded = true;
+      render();
+      return;
+    }
+  }, true);
+  document.addEventListener('click', function(e){
+    const detail = e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-detail-button-v13');
+    if(detail){
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    const close = e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-close-v13');
+    if(close){
+      e.preventDefault();
+      e.stopPropagation();
+      window.onlineBadgeExpanded = false;
+      render();
+      return;
+    }
+    const edit = e.target.closest && e.target.closest('#onlineRoomBadge .online-badge-edit-v13');
+    if(edit){
+      e.preventDefault();
+      e.stopPropagation();
+      if(window.changeOnlinePlayerName) window.changeOnlinePlayerName();
+      return;
+    }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const badge = document.getElementById('onlineRoomBadge');
+    if(!badge || badge.dataset.v13DragReady === '1') return;
+    badge.dataset.v13DragReady = '1';
+    let down=false, moved=false, sx=0, sy=0, bx=0, by=0;
+    badge.addEventListener('pointerdown', function(e){
+      if(e.target.closest('.online-tab-detail-button-v13,.online-tab-close-v13,.online-badge-edit-v13,.online-tab-panel-v13')) return;
+      down=true; moved=false;
+      sx=e.clientX; sy=e.clientY;
+      const r=badge.getBoundingClientRect(); bx=r.left; by=r.top;
+      badge.classList.add('dragging');
+      try{ badge.setPointerCapture(e.pointerId); }catch(_e){}
+    }, true);
+    badge.addEventListener('pointermove', function(e){
+      if(!down) return;
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if(Math.abs(dx)+Math.abs(dy)>6) moved=true;
+      if(moved){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        place({x:bx+dx,y:by+dy});
+      }
+    }, true);
+    badge.addEventListener('pointerup', function(e){
+      if(!down) return;
+      down=false;
+      badge.classList.remove('dragging');
+      if(moved){
+        const r=badge.getBoundingClientRect();
+        localStorage.setItem('onlineRoomBadgePosition', JSON.stringify({x:r.left,y:r.top}));
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+    window.addEventListener('resize', function(){ place(savedPos()); });
+    render();
+  });
+  setTimeout(render, 0);
+  setTimeout(render, 500);
+})();
+</script>
+
+
+
+<!-- ChatGPT v15: オンライン詳細クリック整理版 -->
+<style id="chatgpt-online-badge-v15-clean-style">
+#onlineRoomBadge .online-tab-detail-button-v13,
+#onlineRoomBadge .online-tab-detail-button-v15{
+  pointer-events:auto !important;
+  cursor:pointer !important;
+  -webkit-tap-highlight-color:rgba(255,255,255,.25) !important;
+  touch-action:manipulation !important;
+}
+#onlineRoomBadge .online-tab-detail-button-v15{
+  flex:0 0 auto !important;
+  min-width:58px !important;
+  height:38px !important;
+  padding:0 12px !important;
+  border:1px solid rgba(217,189,130,.9) !important;
+  border-radius:999px !important;
+  background:rgba(255,246,225,.13) !important;
+  color:#fff2d2 !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+}
+</style>
+<script id="chatgpt-online-badge-v15-clean-script">
+(function(){
+  const BADGE_ID = 'onlineRoomBadge';
+  const DETAIL_SELECTOR = '#onlineRoomBadge .online-tab-detail-button-v13, #onlineRoomBadge .online-tab-detail-button-v15, #onlineRoomBadge .online-tab-detail-button';
+  const CLOSE_SELECTOR = '#onlineRoomBadge .online-tab-close-v13, #onlineRoomBadge .online-tab-close-v15, #onlineRoomBadge .online-tab-close';
+  const EDIT_SELECTOR = '#onlineRoomBadge .online-badge-edit-v13, #onlineRoomBadge .online-badge-edit-v15, #onlineRoomBadge .online-badge-edit';
+
+  function esc(text){
+    return String(text ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  }
+  function hasRoom(){
+    return !!(window.onlineRoomJoined && window.currentRoomCode && window.currentRoomKey);
+  }
+  function getUid(){
+    return window.currentUid || window.firebaseUID || '';
+  }
+  function label(ch){
+    const v = String(ch || '').toLowerCase();
+    const map = {pl1:'PL1（医師）',doctor:'PL1（医師）',pl2:'PL2（警察）',police:'PL2（警察）',pl3:'PL3（村長）',mayor:'PL3（村長）',pl4:'PL4（使用人）',servant:'PL4（使用人）'};
+    if(['spectator','observer','watch','kansen'].includes(v)) return '観戦中';
+    return map[v] || ch || 'PL未選択';
+  }
+  function memberHtml(){
+    const players = window.roomPlayers || {};
+    const entries = Object.entries(players || {});
+    const uid = getUid();
+    if(!entries.length){
+      return `<div class="online-tab-member-v13"><span class="online-tab-member-name-v13">・${esc(window.currentPlayerName || '自分')}（自分）</span><span class="online-tab-member-character-v13">${esc(label(window.selectedCharacter || ''))}</span></div>`;
+    }
+    return entries.map(([id,p]) => {
+      p = p || {};
+      const isMe = id === uid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const mode = String(p.role || p.mode || p.type || '').toLowerCase();
+      const ch = String(p.character || p.selectedCharacter || '').toLowerCase();
+      const status = (p.isSpectator || p.spectator || mode === 'spectator' || mode === 'observer' || mode === 'watch' || ch === 'spectator') ? '観戦中' : label(p.character || p.selectedCharacter || '');
+      return `<div class="online-tab-member-v13"><span class="online-tab-member-name-v13">・${esc(name)}${isMe ? '（自分）' : ''}</span><span class="online-tab-member-character-v13">${esc(status)}</span></div>`;
+    }).join('');
+  }
+  function savedPos(){
+    try{return JSON.parse(localStorage.getItem('onlineRoomBadgePosition') || 'null');}catch(_){return null;}
+  }
+  function place(pos){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge) return;
+    const r = badge.getBoundingClientRect();
+    const w = r.width || (badge.classList.contains('expanded') ? 360 : 260);
+    const h = r.height || (badge.classList.contains('expanded') ? 240 : 64);
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : 136;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : 126;
+    badge.style.left = Math.min(Math.max(8,x0), Math.max(8,innerWidth-w-8)) + 'px';
+    badge.style.top = Math.min(Math.max(8,y0), Math.max(8,innerHeight-h-8)) + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+  function render(){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge) return;
+    if(!hasRoom()){
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      return;
+    }
+    const open = !!window.onlineBadgeExpanded;
+    const room = esc(window.currentRoomCode || '');
+    badge.className = 'online-room-badge show' + (open ? ' expanded' : '');
+    badge.innerHTML = `
+      <div class="online-tab-collapsed-v13" aria-label="オンライン参加情報">
+        <div class="online-tab-collapsed-title-v13">${room} に参加中</div>
+        <button type="button" class="online-tab-detail-button-v13 online-tab-detail-button-v15" aria-label="参加情報の詳細を開く">詳細</button>
+      </div>
+      <div class="online-tab-panel-v13" role="dialog" aria-label="オンライン参加詳細">
+        <div class="online-tab-header-v13">
+          <div class="online-tab-room-name-v13">${room} に参加中</div>
+          <button type="button" class="online-tab-close-v13">閉じる</button>
+        </div>
+        <div class="online-tab-members-title-v13">メンバー</div>
+        <div class="online-tab-members-v13">${memberHtml()}</div>
+        <button type="button" class="online-badge-edit-v13">名前を変更</button>
+      </div>`;
+    requestAnimationFrame(() => place(savedPos()));
+  }
+  function openDetail(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    window.onlineBadgeExpanded = true;
+    render();
+  }
+  function closeDetail(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    window.onlineBadgeExpanded = false;
+    render();
+  }
+
+  window.updateOnlineBadge = render;
+  window.toggleOnlineRoomBadge = function(force){
+    window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+    render();
+  };
+
+  // 詳細ボタンだけ：触った瞬間に開く。クリック、マウス、タッチ、PointerEventすべて対応。
+  ['pointerdown','mousedown','touchstart','click'].forEach(type => {
+    window.addEventListener(type, function(e){
+      const detail = e.target && e.target.closest && e.target.closest(DETAIL_SELECTOR);
+      if(detail) openDetail(e);
+    }, true);
+  });
+
+  window.addEventListener('click', function(e){
+    const close = e.target && e.target.closest && e.target.closest(CLOSE_SELECTOR);
+    if(close) return closeDetail(e);
+    const edit = e.target && e.target.closest && e.target.closest(EDIT_SELECTOR);
+    if(edit){
+      e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      if(window.changeOnlinePlayerName) window.changeOnlinePlayerName();
+    }
+  }, true);
+
+  function setupDrag(){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge || badge.dataset.v15DragReady === '1') return;
+    badge.dataset.v15DragReady = '1';
+    let down = false, moved = false, sx = 0, sy = 0, bx = 0, by = 0;
+    badge.addEventListener('pointerdown', function(e){
+      if(e.target.closest(DETAIL_SELECTOR + ',' + CLOSE_SELECTOR + ',' + EDIT_SELECTOR + ',.online-tab-panel-v13')) return;
+      down = true; moved = false; sx = e.clientX; sy = e.clientY;
+      const r = badge.getBoundingClientRect(); bx = r.left; by = r.top;
+      badge.classList.add('dragging');
+      try{badge.setPointerCapture(e.pointerId);}catch(_){}
+    }, true);
+    badge.addEventListener('pointermove', function(e){
+      if(!down) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if(Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+      if(moved){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        place({x:bx+dx,y:by+dy});
+      }
+    }, true);
+    badge.addEventListener('pointerup', function(e){
+      if(!down) return;
+      down = false; badge.classList.remove('dragging');
+      if(moved){
+        const r = badge.getBoundingClientRect();
+        localStorage.setItem('onlineRoomBadgePosition', JSON.stringify({x:r.left,y:r.top}));
+        e.preventDefault(); e.stopPropagation();
+      }
+    }, true);
+  }
+  document.addEventListener('DOMContentLoaded', function(){setupDrag(); render();});
+  setupDrag();
+  render();
+  setTimeout(render, 300);
+  setTimeout(render, 1000);
+  window.addEventListener('resize', () => place(savedPos()));
+})();
+</script>
+
+
+<!-- ChatGPT v16: オンライン開始ボタン安定化 -->
+<script id="chatgpt-online-start-v16-stable">
+(function(){
+  function openOnlinePopupFallback(){
+    const popup = document.getElementById('onlineChoicePopup');
+    if(!popup) return;
+    popup.classList.add('open');
+    popup.setAttribute('aria-hidden','false');
+
+    const nameInput = document.getElementById('onlinePlayerNameInput');
+    const roomInput = document.getElementById('onlineRoomCodeInput');
+    if(nameInput && !nameInput.value.trim()){
+      nameInput.value = localStorage.getItem('madamisuPlayerName') || '';
+    }
+    if(roomInput && !roomInput.value.trim()){
+      roomInput.value = localStorage.getItem('madamisuRoomCode') || '';
+    }
+  }
+
+  const existingShowOnlinePopup = window.showOnlinePopup;
+  window.showOnlinePopup = function(){
+    if(typeof existingShowOnlinePopup === 'function'){
+      try{
+        existingShowOnlinePopup();
+        return;
+      }catch(e){
+        console.warn('showOnlinePopup fallback used:', e);
+      }
+    }
+    openOnlinePopupFallback();
+  };
+
+  function closeOnlinePopup(){
+    const popup = document.getElementById('onlineChoicePopup');
+    if(!popup) return;
+    popup.classList.remove('open');
+    popup.setAttribute('aria-hidden','true');
+  }
+
+  function startOffline(){
+    window.currentRoomCode = '';
+    window.currentRoomKey = '';
+    window.onlineRoomJoined = false;
+    if(typeof window.updateOnlineBadge === 'function') window.updateOnlineBadge();
+    closeOnlinePopup();
+    if(typeof showSection === 'function') showSection('characterSelect');
+  }
+
+  function bindOnlineButtons(){
+    document.querySelectorAll('.book-action-buttons .start-button').forEach(btn => {
+      const text = (btn.textContent || '').trim();
+      if(text.includes('プレイ開始')){
+        btn.removeAttribute('onclick');
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          window.showOnlinePopup();
+        });
+      }
+    });
+
+    const closeBtn = document.getElementById('onlineCloseBtn');
+    if(closeBtn && closeBtn.dataset.v16Bound !== '1'){
+      closeBtn.dataset.v16Bound = '1';
+      closeBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        closeOnlinePopup();
+      });
+    }
+
+    const offlineBtn = document.getElementById('offlineStartBtn');
+    if(offlineBtn && offlineBtn.dataset.v16Bound !== '1'){
+      offlineBtn.dataset.v16Bound = '1';
+      offlineBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        startOffline();
+      });
+    }
+
+    const joinBtn = document.getElementById('onlineJoinBtn');
+    if(joinBtn && joinBtn.dataset.v16Guard !== '1'){
+      joinBtn.dataset.v16Guard = '1';
+      joinBtn.addEventListener('click', function(e){
+        const status = document.getElementById('onlineRoomStatus');
+        if(typeof window.joinOnlineRoom !== 'function'){
+          e.preventDefault();
+          e.stopPropagation();
+          if(status) status.textContent = 'オンライン準備中です。数秒待ってからもう一度押してください。';
+        }
+      }, true);
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bindOnlineButtons);
+  }else{
+    bindOnlineButtons();
+  }
+  setTimeout(bindOnlineButtons, 300);
+  setTimeout(bindOnlineButtons, 1000);
+})();
+</script>
+
+
+<!-- ChatGPT v17: オンラインアイコン最終整理版（古いクリック処理をリセット） -->
+<style id="chatgpt-online-badge-v17-stable-style">
+#onlineRoomBadge.online-room-badge{
+  display:none !important;
+  position:fixed !important;
+  left:136px;
+  top:126px;
+  right:auto !important;
+  bottom:auto !important;
+  z-index:2147483646 !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+  user-select:none !important;
+  touch-action:none !important;
+}
+#onlineRoomBadge.online-room-badge.show{
+  display:block !important;
+}
+#onlineRoomBadge.online-room-badge:not(.expanded){
+  width:260px !important;
+  height:64px !important;
+}
+#onlineRoomBadge.online-room-badge.expanded{
+  width:min(92vw,360px) !important;
+  height:auto !important;
+}
+#onlineRoomBadge .online-tab-collapsed,
+#onlineRoomBadge .online-tab-panel,
+#onlineRoomBadge .online-tab-collapsed-v13,
+#onlineRoomBadge .online-tab-panel-v13{
+  display:none !important;
+}
+#onlineRoomBadge .online-tab-mini-v17{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  width:260px !important;
+  height:64px !important;
+  padding:9px 10px 9px 18px !important;
+  border:2px solid rgba(217,189,130,.92) !important;
+  border-radius:999px !important;
+  background:linear-gradient(180deg, rgba(35,17,8,.96), rgba(18,8,4,.96)) !important;
+  color:#f6ead2 !important;
+  box-shadow:0 10px 26px rgba(0,0,0,.48), inset 0 0 0 1px rgba(255,235,190,.05) !important;
+  cursor:grab !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge.dragging .online-tab-mini-v17{
+  cursor:grabbing !important;
+}
+#onlineRoomBadge.expanded .online-tab-mini-v17{
+  display:none !important;
+}
+#onlineRoomBadge .online-tab-title-v17{
+  flex:1 !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  text-overflow:ellipsis !important;
+  text-align:center !important;
+  color:#ffe7b8 !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  line-height:1.1 !important;
+}
+#onlineRoomBadge .online-tab-detail-v17{
+  flex:0 0 auto !important;
+  min-width:58px !important;
+  height:38px !important;
+  padding:0 12px !important;
+  border:1px solid rgba(217,189,130,.9) !important;
+  border-radius:999px !important;
+  background:rgba(255,246,225,.13) !important;
+  color:#fff2d2 !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+}
+#onlineRoomBadge .online-tab-detail-v17:hover{
+  background:rgba(255,246,225,.24) !important;
+}
+#onlineRoomBadge .online-tab-panel-v17{
+  display:none !important;
+}
+#onlineRoomBadge.expanded .online-tab-panel-v17{
+  display:block !important;
+  width:min(92vw,360px) !important;
+  max-height:min(72vh,480px) !important;
+  overflow:auto !important;
+  padding:16px 18px 18px !important;
+  border:2px solid rgba(217,189,130,.92) !important;
+  border-radius:14px !important;
+  background:rgba(20,10,5,.97) !important;
+  color:#f6ead2 !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.58) !important;
+  backdrop-filter:blur(3px) !important;
+  pointer-events:auto !important;
+  touch-action:auto !important;
+}
+#onlineRoomBadge .online-tab-header-v17{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding-bottom:12px !important;
+  margin-bottom:14px !important;
+  border-bottom:1px solid rgba(255,230,180,.18) !important;
+}
+#onlineRoomBadge .online-tab-room-v17{
+  min-width:0 !important;
+  overflow:hidden !important;
+  white-space:nowrap !important;
+  text-overflow:ellipsis !important;
+  color:#ffe7b8 !important;
+  font-size:18px !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-close-v17,
+#onlineRoomBadge .online-tab-edit-v17{
+  min-height:36px !important;
+  padding:5px 14px !important;
+  border:1px solid rgba(217,189,130,.75) !important;
+  border-radius:8px !important;
+  background:rgba(255,250,240,.12) !important;
+  color:#f6ead2 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+}
+#onlineRoomBadge .online-tab-close-v17:hover,
+#onlineRoomBadge .online-tab-edit-v17:hover{
+  background:rgba(255,250,240,.22) !important;
+}
+#onlineRoomBadge .online-tab-members-title-v17{
+  margin:0 0 10px !important;
+  font-weight:700 !important;
+  color:#f6ead2 !important;
+}
+#onlineRoomBadge .online-tab-members-v17{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+  margin:0 0 14px !important;
+}
+#onlineRoomBadge .online-tab-member-v17{
+  display:flex !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+  line-height:1.55 !important;
+}
+#onlineRoomBadge .online-tab-member-name-v17{
+  color:#ffe7b8 !important;
+  font-weight:700 !important;
+}
+#onlineRoomBadge .online-tab-member-character-v17{
+  color:#f6ead2 !important;
+  white-space:nowrap !important;
+}
+@media(max-width:700px){
+  #onlineRoomBadge.online-room-badge:not(.expanded),
+  #onlineRoomBadge .online-tab-mini-v17{
+    width:236px !important;
+  }
+  #onlineRoomBadge .online-tab-title-v17{
+    font-size:14px !important;
+  }
+}
+</style>
+<script id="chatgpt-online-badge-v17-stable-script">
+(function(){
+  const BADGE_ID = 'onlineRoomBadge';
+  const POS_KEY = 'onlineRoomBadgePosition';
+  let dragReady = false;
+  let internalRendering = false;
+
+  function esc(text){
+    return String(text ?? '').replace(/[&<>"']/g, function(m){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m];
+    });
+  }
+  function room(){ return window.currentRoomCode || ''; }
+  function hasRoom(){ return !!(window.onlineRoomJoined && window.currentRoomCode && window.currentRoomKey); }
+  function uid(){ return window.currentUid || window.firebaseUID || ''; }
+  function label(ch){
+    const v = String(ch || '').toLowerCase();
+    const map = {pl1:'PL1（医師）',doctor:'PL1（医師）',pl2:'PL2（警察）',police:'PL2（警察）',pl3:'PL3（村長）',mayor:'PL3（村長）',pl4:'PL4（使用人）',servant:'PL4（使用人）'};
+    if(['spectator','observer','watch','kansen'].includes(v)) return '観戦中';
+    return map[v] || ch || 'PL未選択';
+  }
+  function membersHtml(){
+    const players = window.roomPlayers || {};
+    const entries = Object.entries(players || {});
+    const myUid = uid();
+    if(!entries.length){
+      return `<div class="online-tab-member-v17"><span class="online-tab-member-name-v17">・${esc(window.currentPlayerName || '自分')}（自分）</span><span class="online-tab-member-character-v17">${esc(label(window.selectedCharacter || ''))}</span></div>`;
+    }
+    return entries.map(function([id,p]){
+      p = p || {};
+      const isMe = id === myUid;
+      const name = p.name || (isMe ? '自分' : '参加者');
+      const mode = String(p.role || p.mode || p.type || '').toLowerCase();
+      const ch = String(p.character || p.selectedCharacter || '').toLowerCase();
+      const status = (p.isSpectator || p.spectator || mode === 'spectator' || mode === 'observer' || mode === 'watch' || ch === 'spectator') ? '観戦中' : label(p.character || p.selectedCharacter || '');
+      return `<div class="online-tab-member-v17"><span class="online-tab-member-name-v17">・${esc(name)}${isMe ? '（自分）' : ''}</span><span class="online-tab-member-character-v17">${esc(status)}</span></div>`;
+    }).join('');
+  }
+  function savedPos(){
+    try{ return JSON.parse(localStorage.getItem(POS_KEY) || 'null'); }catch(_){ return null; }
+  }
+  function place(pos){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge) return;
+    const r = badge.getBoundingClientRect();
+    const w = r.width || (badge.classList.contains('expanded') ? 360 : 260);
+    const h = r.height || (badge.classList.contains('expanded') ? 240 : 64);
+    const x0 = pos && Number.isFinite(Number(pos.x)) ? Number(pos.x) : 136;
+    const y0 = pos && Number.isFinite(Number(pos.y)) ? Number(pos.y) : 126;
+    const x = Math.min(Math.max(8, x0), Math.max(8, window.innerWidth - w - 8));
+    const y = Math.min(Math.max(8, y0), Math.max(8, window.innerHeight - h - 8));
+    badge.style.left = x + 'px';
+    badge.style.top = y + 'px';
+    badge.style.right = 'auto';
+    badge.style.bottom = 'auto';
+  }
+  function resetBadgeElement(){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge || badge.dataset.v17Reset === '1') return badge;
+    const clone = badge.cloneNode(false);
+    clone.id = BADGE_ID;
+    clone.className = 'online-room-badge';
+    clone.dataset.v17Reset = '1';
+    badge.replaceWith(clone);
+    return clone;
+  }
+  function render(){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge) return;
+    /* ドラッグ中に再描画すると保存済み位置へ戻されて震えるため、ドラッグ中は描画を止める */
+    if(badge.classList.contains('dragging')) return;
+    if(internalRendering) return;
+    internalRendering = true;
+    if(!hasRoom()){
+      badge.className = 'online-room-badge';
+      badge.innerHTML = '';
+      internalRendering = false;
+      return;
+    }
+    const open = !!window.onlineBadgeExpanded;
+    const roomText = esc(room());
+    badge.className = 'online-room-badge show' + (open ? ' expanded' : '');
+    badge.innerHTML = `
+      <div class="online-tab-mini-v17" aria-label="オンライン参加情報" data-online-drag-handle="1">
+        <div class="online-tab-title-v17">${roomText} に参加中</div>
+        <button type="button" class="online-tab-detail-v17">詳細</button>
+      </div>
+      <div class="online-tab-panel-v17" role="dialog" aria-label="オンライン参加詳細">
+        <div class="online-tab-header-v17">
+          <div class="online-tab-room-v17">${roomText} に参加中</div>
+          <button type="button" class="online-tab-close-v17">閉じる</button>
+        </div>
+        <div class="online-tab-members-title-v17">メンバー</div>
+        <div class="online-tab-members-v17">${membersHtml()}</div>
+        <button type="button" class="online-tab-edit-v17">名前を変更</button>
+      </div>`;
+    requestAnimationFrame(function(){ place(savedPos()); internalRendering = false; });
+  }
+  function openDetail(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    window.onlineBadgeExpanded = true;
+    render();
+  }
+  function closeDetail(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    window.onlineBadgeExpanded = false;
+    render();
+  }
+  function editName(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation(); }
+    if(typeof window.changeOnlinePlayerName === 'function') window.changeOnlinePlayerName();
+  }
+  function setupDrag(){
+    const badge = document.getElementById(BADGE_ID);
+    if(!badge || dragReady) return;
+    dragReady = true;
+    let down=false, moved=false, sx=0, sy=0, bx=0, by=0;
+    badge.addEventListener('pointerdown', function(e){
+      if(e.target.closest('.online-tab-detail-v17,.online-tab-close-v17,.online-tab-edit-v17,.online-tab-panel-v17')) return;
+      if(!e.target.closest('[data-online-drag-handle="1"]')) return;
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      down=true; moved=false; sx=e.clientX; sy=e.clientY;
+      const r=badge.getBoundingClientRect(); bx=r.left; by=r.top;
+      badge.classList.add('dragging');
+      try{ badge.setPointerCapture(e.pointerId); }catch(_e){}
+    }, true);
+    badge.addEventListener('pointermove', function(e){
+      if(!down) return;
+      const dx=e.clientX-sx, dy=e.clientY-sy;
+      if(Math.abs(dx)+Math.abs(dy)>6) moved=true;
+      if(moved){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        place({x:bx+dx,y:by+dy});
+      }
+    }, true);
+    badge.addEventListener('pointerup', function(e){
+      if(!down) return;
+      down=false;
+      badge.classList.remove('dragging');
+      if(moved){
+        const r=badge.getBoundingClientRect();
+        localStorage.setItem(POS_KEY, JSON.stringify({x:r.left,y:r.top}));
+        e.preventDefault(); e.stopPropagation(); if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+      }
+    }, true);
+  }
+  function install(){
+    const badge = resetBadgeElement();
+    if(!badge) return;
+    setupDrag();
+    window.updateOnlineBadge = render;
+    window.toggleOnlineRoomBadge = function(force){
+      window.onlineBadgeExpanded = typeof force === 'boolean' ? force : !window.onlineBadgeExpanded;
+      render();
+    };
+    render();
+  }
+
+  ['pointerdown','mousedown','touchstart','click'].forEach(function(type){
+    window.addEventListener(type, function(e){
+      const detail = e.target && e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-detail-v17');
+      if(detail) return openDetail(e);
+      const close = e.target && e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-close-v17');
+      if(close) return closeDetail(e);
+      const edit = e.target && e.target.closest && e.target.closest('#onlineRoomBadge .online-tab-edit-v17');
+      if(edit) return editName(e);
+    }, true);
+  });
+
+  const observer = new MutationObserver(function(){
+    if(internalRendering) return;
+    if(hasRoom()) requestAnimationFrame(render);
+  });
+  function startObserver(){
+    const badge = document.getElementById(BADGE_ID);
+    if(badge) observer.observe(badge, {childList:true, attributes:true, subtree:false});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ install(); startObserver(); });
+  }else{
+    install(); startObserver();
+  }
+  window.addEventListener('resize', function(){ place(savedPos()); });
+  setTimeout(install, 300);
+  setTimeout(render, 800);
+  setInterval(function(){
+    const badge = document.getElementById(BADGE_ID);
+    if(hasRoom() && !(badge && badge.classList.contains('dragging'))) render();
+  }, 1200);
+})();
+</script>
 
 </body>
 </html>
